@@ -1,0 +1,17 @@
+@mixin retina-bg($file, $type, $breakpoint: min-width: 320px, $webp: true) {
+  @if $webp == true {
+    .webp & {
+      background-image: url(#{$file}.webp);
+    }
+  }
+
+  @media ($breakpoint) and (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) {
+    background-image: url(#{$file}_2x.#{$type});
+
+    @if $webp == true {
+      .webp & {
+        background-image: url(#{$file}_2x.webp);
+      }
+    }
+  }
+}

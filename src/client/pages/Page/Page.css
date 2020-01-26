@@ -1,0 +1,228 @@
+.Page {
+  border-bottom: 3px solid var(--color-grey-bg);
+  overflow: hidden;
+
+  &__section {
+    position: relative;
+    width: 100%;
+
+    &--greyFade {
+      background: linear-gradient(to bottom, var(--color-white) 0%, var(--color-light-grey-fade) 100%);
+    }
+
+    &--darkFull {
+      background: var(--color-dark-full);
+      border: 1px solid var(--color-black);
+      border-width: 1px 0 2px;
+      box-shadow: inset 0 2px 3px 0 var(--color-black);
+    }
+
+    &--whiteOverlay {
+      background-color: var(--color-white);
+      z-index: var(--z-index-Page__section--whiteOverlay);
+    }
+
+    &--withFilter {
+      overflow: hidden;
+    }
+  }
+
+  &__hero {
+    overflow: hidden;
+
+    h1 {
+      position: relative;
+      z-index: var(--z-index-Page__hero__h1);
+
+      @media (--custom-650) {
+        width: 51%;
+      }
+    }
+
+    .Breadcrumbs {
+      margin-bottom: 20px;
+
+      @media (--custom-650) {
+        margin-bottom: 0;
+      }
+    }
+
+    &__imgWrap {
+      border-radius: 3px;
+      bottom: -140px;
+      box-shadow: 3px 3px 3px var(--color-sb-grey);
+      position: absolute;
+
+      @media (--custom-650) {
+        right: 44px;
+        transform: rotate(25deg);
+      }
+
+      @media (--custom-1000) {
+        bottom: -105px;
+        width: 392px;
+      }
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+
+  &__sectionInner {
+    padding: 40px 0;
+    position: relative;
+
+    @media (--mobile-landscape) {
+      padding: 60px 0;
+    }
+
+    @media (--tablet-portrait) {
+      padding: 80px 0;
+    }
+
+    &--dark-arrow {
+      &::before {
+        display: none;
+
+        @media (--custom-650) {
+          background: transparent url(../img/arrow-projectIndicator_2x.png) 0 0;
+          background-size: 54px 33px;
+          content: '';
+          display: block;
+          height: 33px;
+          left: 5%;
+          position: absolute;
+          top: -28px;
+          width: 54px;
+        }
+      }
+    }
+  }
+
+  &__headingWrap {
+    margin-bottom: 40px;
+
+    h2 {
+      color: var(--color-qm-heading);
+      margin-bottom: 0;
+    }
+  }
+
+  &__content {
+    p,
+    blockquote,
+    ul,
+    ol,
+    .aspectWrap {
+      margin-bottom: 40px;
+
+      &:last-child {
+        margin: 0;
+      }
+    }
+
+    ul {
+      list-style-type: disc;
+      padding-left: 25px;
+    }
+
+    li {
+      margin-bottom: 5px;
+
+      &:last-child {
+        margin: 0;
+      }
+    }
+
+    p,
+    li {
+      font-size: 1.5rem;
+      line-height: 2.2rem;
+
+      @media (--mobile-landscape) {
+        font-size: 1.6rem;
+        line-height: 2.4rem;
+      }
+
+      @media (--tablet-portrait) {
+        font-size: 1.7rem;
+        line-height: 2.5rem;
+      }
+
+      &.Page__content__introText {
+        color: var(--color-black);
+        font-size: 1.7rem;
+        line-height: 2.5rem;
+
+        @media (--mobile-landscape) {
+          font-size: 1.9rem;
+          line-height: 2.8rem;
+        }
+
+        @media (--tablet-portrait) {
+          font-size: 2rem;
+          line-height: 3rem;
+        }
+      }
+    }
+
+    h2 {
+      font-size: 4rem;
+      line-height: 5rem;
+    }
+
+    h3 {
+      color: var(--color-emperor);
+      font-size: 1.6rem;
+      line-height: 2.2rem;
+      margin-bottom: 10px;
+
+      @media (--mobile-landscape) {
+        font-size: 1.7rem;
+        line-height: 2.3rem;
+        margin-bottom: 15px;
+      }
+
+      @media (--tablet-portrait) {
+        font-size: 1.8rem;
+        line-height: 2.4rem;
+        margin-bottom: 20px;
+      }
+    }
+
+    blockquote {
+      border: 1px solid var(--color-alto);
+      border-width: 1px 0;
+      padding: 20px;
+
+      p {
+        display: inline;
+        font-size: 4rem;
+        font-weight: 300;
+        line-height: 5.4rem;
+      }
+
+      &::before,
+      &::after {
+        font-size: 40px;
+        line-height: 1;
+        position: relative;
+        top: 7px;
+      }
+
+      &::before {
+        content: '\201C';
+        margin: 0 6px 0 -23px;
+      }
+
+      &::after {
+        content: '\201D';
+      }
+    }
+
+    iframe {
+      width: 100%;
+    }
+  }
+}

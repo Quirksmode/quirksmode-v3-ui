@@ -1,0 +1,40 @@
+.SubfooterLatestTweets {
+  &__tweets {
+    margin-bottom: 20px;
+  }
+
+  &__tweet {
+    margin-bottom: 10px;
+    padding-left: 42px;
+    position: relative;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__tweetIcon {
+    background-color: var(--color-tundora);
+    border-radius: 50%;
+    fill: var(--color-white);
+    height: 30px;
+    left: 0;
+    padding: 6px;
+    position: absolute;
+    top: 5px;
+    width: 30px;
+  }
+
+  &__tweetText {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  &__tweetLink {
+    background: transparent url(../img/divide-footer-bottom.png) 0 100% repeat-x;
+    display: block;
+    font-size: 1.3rem;
+    line-height: 1.3rem;
+    padding-bottom: 18px;
+  }
+}

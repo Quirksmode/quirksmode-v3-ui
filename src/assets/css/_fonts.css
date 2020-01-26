@@ -1,0 +1,75 @@
+:root {
+  --font-body-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-heading-main: BebasNeue, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+@font-face {
+  font-family: 'HelveticaNeueStd';
+  src:
+    url('../fonts/helveticaneue/helveticaneue.woff2') format('woff2'),
+    url('../fonts/helveticaneue/helveticaneue.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'BebasNeue';
+  src:
+    url('../fonts/bebasneue/bebasneue.woff2') format('woff2'),
+    url('../fonts/bebasneue/bebasneue.woff') format('woff');
+}
+
+/* Better font rendering */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Font sizing */
+html {
+  font-size: 62.5%;
+  text-size-adjust: 100%;
+}
+
+p {
+  margin-bottom: 20px;
+}
+
+h1,
+h2 {
+  color: var(--color-qm-heading);
+  font-family: var(--font-heading-main);
+  font-weight: 500;
+  text-rendering: optimizelegibility;
+
+  /* removing text decoration from all headline links */
+  a {
+    text-decoration: none;
+  }
+}
+
+h1 {
+  font-size: 4.5rem;
+  line-height: 5rem;
+  margin-bottom: 10px;
+}
+
+h2 {
+  color: var(--color-qm-middlebody);
+  font-size: 2.8rem;
+  line-height: 2.8rem;
+  margin-bottom: 40px;
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: none;
+  transition: color .2s ease-out;
+
+  &:hover {
+    color: var(--link-hover);
+  }
+}

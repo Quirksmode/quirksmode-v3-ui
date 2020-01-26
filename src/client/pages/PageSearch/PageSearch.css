@@ -1,0 +1,38 @@
+.PageSearch {
+  &__searchForm {
+    width: 100%;
+  }
+
+  &__searchInput {
+    border: none;
+    border-radius: 4px;
+    color: var(--color-qm-body);
+    font-size: 1.4rem;
+    height: 34px;
+    padding: 10px 8px 9px 10px;
+    transition: background .2s ease-out;
+    width: 100%;
+
+    @media (--tablet-portrait) {
+      font-size: 1.6rem;
+      height: 50px;
+    }
+
+    &:hover {
+      background-color: var(--color-white);
+    }
+  }
+
+  /* Issue with placeholder and Autoprefixer */
+  ::-webkit-input-placeholder {
+    color: var(--color-lighterbody);
+  }
+
+  ::-moz-placeholder {
+    color: var(--color-lighterbody);
+  }
+
+  ::-ms-input-placeholder {
+    color: var(--color-lighterbody);
+  }
+}

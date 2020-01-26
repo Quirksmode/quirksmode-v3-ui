@@ -1,0 +1,115 @@
+@import './LogoNav/LogoNav';
+
+.Header {
+  background: var(--color-primary-red);
+  background-size: 100px 100px;
+  border-bottom: 7px solid var(--color-grey-bg);
+  position: relative;
+  z-index: var(--z-index-Header);
+
+  &__innerWrap {
+    padding: 46px 0;
+
+    @media (--mobile-landscape) {
+      padding-bottom: 0;
+    }
+
+    @media (--tablet-portrait) {
+      padding: 70px 0 0;
+    }
+  }
+
+  &__sliderOuterWrap {
+    @media (--mobile-landscape) {
+      padding: 0 40px;
+    }
+
+    @media (--tablet-portrait) {
+      padding: 0;
+    }
+  }
+
+  &__sliderWrap {
+    background: transparent url(../img/sliderShell-tablet.png) 0 0 no-repeat;
+    background-size: contain;
+    bottom: -34px;
+    display: none;
+    padding: 7.4% 9.5% 10% 10.1%;
+    position: relative;
+    z-index: var(--z-index-Header__sliderWrap);
+
+    @include retina-bg(../img/sliderShell-tablet, png);
+
+    @media (--mobile-landscape) {
+      display: block;
+    }
+
+    @media (--tablet-portrait) {
+      @include retina-bg(../img/sliderShell-mac, png, min-width: 768px);
+      background: transparent url(../img/sliderShell-mac.png) 0 0 no-repeat;
+      background-size: contain;
+      padding: 3.4% 11.9% 9% 12.1%;
+    }
+
+    &::after {
+      background: url(../img/reflection-mac.png) 96.3% 4px no-repeat;
+      background-size: contain;
+      content: '';
+      height: 88.5%;
+      pointer-events: none;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 100%;
+      z-index: var(--z-index-Header__sliderWrap__after);
+
+      @include retina-bg(../img/reflection-mac, png);
+
+      @media (--tablet-portrait) {
+        background-position: 86.2% 4px;
+        height: 88%;
+      }
+    }
+  }
+
+  .swiper-wrapper {
+    height: auto;
+    padding-bottom: 5.5%;
+  }
+
+  .swiper-container {
+    margin-bottom: -5.5%;
+  }
+
+  .swiper-pagination {
+    bottom: 0;
+
+    @media (--tablet-portrait) {
+      bottom: 4.1%;
+    }
+
+    @media (--tablet-landscape) {
+      bottom: 22px;
+    }
+  }
+
+  .slider {
+    &__directionNav {
+      display: none;
+      opacity: 0;
+
+      &--active {
+        opacity: 1;
+      }
+
+      @media (--mobile-landscape) {
+        display: block;
+        top: 65.4%;
+      }
+
+      @media (--tablet-portrait) {
+        top: 60.5%;
+      }
+    }
+  }
+}

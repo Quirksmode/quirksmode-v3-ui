@@ -1,0 +1,14 @@
+.AccessibilityLinks {
+  left: 20px;
+  list-style-type: none;
+  position: absolute;
+  top: 20px;
+  z-index: var(--z-index-AccessibilityLinks);
+
+  a {
+    background: var(--color-black);
+    color: var(--color-white);
+    font: 2.2rem/2.6rem var(--font-body-main);
+    padding: 10px;
+  }
+}

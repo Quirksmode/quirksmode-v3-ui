@@ -1,0 +1,121 @@
+@import './SubfooterLatestTweets/SubfooterLatestTweets.css';
+@import './SubfooterInstagram/SubfooterInstagram.css';
+@import './SubfooterContact/SubfooterContact.css';
+
+.Subfooter {
+  background: var(--color-dark-full);
+  background-size: 140px 195px;
+  border-bottom: 1px solid var(--color-black);
+  border-top: 1px solid var(--color-tundora-2);
+  box-shadow: inset 0 1px 3px 0 var(--color-black);
+  position: relative;
+
+  &__innerWrap {
+    padding: 50px 0 0;
+
+    @media (--custom-1000) {
+      display: flex;
+      height: auto;
+      justify-content: space-between;
+    }
+  }
+
+  &__sectionsWrap {
+    @media (--mobile-landscape) {
+      display: flex;
+      height: auto;
+      justify-content: space-between;
+    }
+
+    @media (--custom-1000) {
+      width: 100%;
+    }
+
+    &--last {
+      @media (--custom-1000) {
+        flex-direction: column;
+        margin-right: 0;
+        max-width: 286px;
+
+        .Subfooter__section {
+          margin-right: 0;
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    margin-bottom: 30px;
+    position: relative;
+
+    @media (--mobile-landscape) {
+      margin: 0 5.6% 50px 0;
+      width: 50%;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    @media (--custom-1000) {
+      margin-right: 56px;
+
+      &:last-child {
+        margin-right: 56px;
+      }
+
+      &.SubfooterAbout {
+        max-width: 286px;
+      }
+    }
+  }
+
+  &__sectionHeading {
+    color: var(--color-white);
+    font-size: 2.4rem;
+    line-height: 2.3rem;
+    margin-bottom: 25px;
+  }
+
+  p,
+  li {
+    color: var(--color-qm-subfooter);
+  }
+
+  a {
+    color: var(--color-qm-blue);
+    text-decoration: none;
+
+    &:hover,
+    &:active {
+      color: var(--color-qm-blue);
+      text-decoration: underline;
+    }
+  }
+
+  .Subfooter__link {
+    background: transparent url(../img/divide-footer-bottom.png) 0 100% repeat-x;
+    color: var(--color-qm-subfooter);
+    display: inline-block;
+    margin-top: auto;
+    padding: 0 0 30px;
+    width: 100%;
+
+    @media (--mobile-landscape) {
+      background-position-y: 0;
+      padding: 10px 0 0;
+    }
+
+    span {
+      color: var(--color-qm-blue);
+    }
+
+    &:hover {
+      color: var(--color-qm-subfooter);
+    }
+  }
+}

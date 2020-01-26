@@ -1,0 +1,85 @@
+.PageHomeSkills {
+  clear: both;
+  margin-bottom: 60px;
+
+  @media (--tablet-portrait) {
+    margin-bottom: 0;
+  }
+
+  &__skills {
+    background-color: var(--color-light-grey-bg);
+    border-radius: 6px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: -10px;
+    padding: 12px 15px;
+    position: relative;
+    width: 100%;
+
+    &::before {
+      background: url(../img/quirksmodeCollar-skillsBox.png) 0 0 no-repeat;
+      background-size: contain;
+      content: '';
+      height: 66px;
+      position: absolute;
+      right: 25px;
+      top: -44px;
+      width: 100px;
+
+      @media (--mobile-landscape) {
+        top: -66px;
+        width: 149px;
+      }
+
+      @media (--tablet-portrait) {
+        top: -44px;
+        width: 100px;
+      }
+
+      @media (--custom-1000) {
+        top: -66px;
+        width: 149px;
+      }
+    }
+  }
+
+  &__skill {
+    align-items: center;
+    display: flex;
+    margin-bottom: 7px;
+    width: calc(100% / 2);
+
+    @media (--mobile-landscape) {
+      width: calc(100% / 4);
+    }
+
+    @media (--tablet-portrait) {
+      width: calc(100% / 3);
+    }
+
+    &:hover {
+      .PageHomeSkills__skillLink {
+        color: var(--color-qm-blue);
+      }
+
+      .PageHomeSkills__skillIcon {
+        transform: rotate(30deg);
+      }
+    }
+  }
+
+  &__skillLink {
+    color: var(--color-qm-body);
+    text-decoration: none;
+    transition: color .2s ease-out;
+  }
+
+  &__skillIcon {
+    display: inline-block;
+    fill: var(--color-qm-blue);
+    height: 14px;
+    margin-right: 5px;
+    transition: transform .2s ease-out;
+    width: 14px;
+  }
+}

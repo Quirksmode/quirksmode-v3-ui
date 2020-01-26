@@ -1,0 +1,19 @@
+.PageHome {
+  &__colWrap {
+    @media (--tablet-portrait) {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  &__col {
+    @media (--tablet-portrait) {
+      margin-right: 5.6%;
+      width: 50%;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

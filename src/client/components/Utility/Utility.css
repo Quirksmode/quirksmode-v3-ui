@@ -1,0 +1,296 @@
+.Utility {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: var(--z-index-Utility);
+
+  &__outer {
+    background: linear-gradient(var(--color-utility-fade-light), var(--color-utility-fade-dark));
+    border-bottom: 1px solid var(--color-black);
+    box-shadow: 0 0 3px 1px var(--color-black);
+    height: 41px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: var(--z-index-Utility);
+  }
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__iconsWrap {
+    display: flex;
+    list-style-type: none;
+    position: relative;
+
+    &::after {
+      background: var(--color-utility-bg);
+      bottom: 0;
+      content: '';
+      height: 100%;
+      left: 0;
+      margin: auto 0;
+      position: absolute;
+      top: 0;
+      width: 1px;
+    }
+  }
+
+  &__icon {
+    position: relative;
+
+    &::after {
+      background: var(--color-utility-bg);
+      bottom: 0;
+      content: '';
+      height: 100%;
+      margin: auto 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 1px;
+    }
+
+    a,
+    button {
+      background: none;
+      border: none;
+      color: var(--color-utility-icon);
+      display: inline-block;
+      font-size: 2.1rem;
+      line-height: 2.1rem;
+      opacity: .8;
+      padding: 8px 8px 5px;
+      text-shadow: 1px 1px 1px var(--color-black), 1px 1px 1px var(--color-black);
+      transition: background .5s ease-out;
+
+      &:hover {
+        cursor: pointer;
+
+        svg {
+          fill: var(--color-white);
+        }
+      }
+
+      &:focus {
+        outline: none;
+
+        svg {
+          fill: var(--color-white);
+        }
+      }
+    }
+
+    svg {
+      display: inline-block;
+      fill: var(--color-utility-icon);
+      height: 25px;
+      text-shadow: 1px 1px 1px var(--color-black), 1px 1px 1px var(--color-black);
+      transition: fill .5s ease-out;
+      width: 25px;
+    }
+
+    &--menu {
+      overflow: hidden;
+      transition: width .3s ease-out;
+      width: 42px;
+
+      @media (--mobile-landscape) {
+        margin-left: -1px;
+        width: 1px;
+
+        .Utility__navBtn--show & {
+          width: 42px;
+        }
+      }
+
+      button {
+        transition: background .5s ease-out;
+
+        .Utility__nav--open & {
+          background: var(--color-black);
+          color: var(--color-white);
+        }
+      }
+    }
+
+    &--search {
+      button {
+        transition: background .5s ease-out;
+
+        .Utility__search--open & {
+          background: var(--color-black);
+          color: var(--color-white);
+
+          .Utility__iconSvgSearch {
+            display: none;
+          }
+
+          .Utility__iconSvgClose {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+
+  &__iconSvgClose {
+    display: none;
+  }
+
+  &__nav,
+  &__search {
+    background: var(--color-primary-red);
+    box-shadow: 0 0 6px 1px var(--color-black);
+    left: 0;
+    padding: 10px 2.5%;
+    position: fixed;
+    top: 43px;
+    transform: translate3d(0, -105%, 0);
+    transition: transform .2s ease-out;
+    width: 100%;
+    z-index: var(--z-index-Utility__nav);
+  }
+
+  /* Override the Logo Nav styles */
+  &__nav {
+    @media (--mobile-landscape) {
+      padding-bottom: 15px;
+      padding-top: 15px;
+    }
+
+    .Utility__nav--open & {
+      transform: translate3d(0, 0, 0);
+
+      @media (--mobile-landscape) {
+        display: none;
+      }
+    }
+
+    .Utility__navBtn--show & {
+      @media (--mobile-landscape) {
+        display: block;
+      }
+    }
+
+    .LogoNav {
+      margin: 0 auto;
+      max-width: 1000px;
+      padding-bottom: 0;
+
+      &__logo {
+        display: none;
+
+        @media (--mobile-landscape) {
+          display: block;
+          margin-bottom: 10px;
+          max-width: 150px;
+        }
+
+        @media (--tablet-portrait) {
+          margin: 0;
+        }
+      }
+
+      &__nav {
+        display: block;
+        padding: 0;
+
+        &__item {
+          margin-bottom: 5px;
+
+          @media (--mobile-landscape) {
+            margin-bottom: 0;
+          }
+        }
+
+        &__link {
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+
+  &__search {
+    @media (--tablet-portrait) {
+      padding: 20px 4%;
+    }
+
+    .Utility__search--open & {
+      transform: translate3d(0, 0, 0);
+    }
+
+    &__form {
+      margin: 0 auto;
+      max-width: 1000px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    &__submit {
+      background: none;
+      border: none;
+      height: 22px;
+      margin: 0;
+      padding: 0;
+      position: absolute;
+      right: 5px;
+      top: 5px;
+      width: 22px;
+
+      svg {
+        transition: fill .2s ease-out;
+      }
+
+      &:hover {
+        cursor: pointer;
+
+        svg {
+          fill: var(--color-lightbody);
+        }
+      }
+
+      @media (--tablet-portrait) {
+        height: 25px;
+        right: 8px;
+        top: 13px;
+        width: 25px;
+      }
+    }
+
+    &__input {
+      border: none;
+      border-radius: 4px;
+      color: var(--color-qm-body);
+      font-size: 1.4rem;
+      height: 34px;
+      padding: 10px 8px 9px 10px;
+      transition: background .2s ease-out;
+      width: 100%;
+
+      @media (--tablet-portrait) {
+        font-size: 1.6rem;
+        height: 50px;
+      }
+
+      &:hover {
+        background-color: var(--color-white);
+      }
+    }
+
+    /* Issue with placeholder and Autoprefixer */
+    ::-webkit-input-placeholder {
+      color: var(--color-lighterbody);
+    }
+
+    ::-moz-placeholder {
+      color: var(--color-lighterbody);
+    }
+
+    ::-ms-input-placeholder {
+      color: var(--color-lighterbody);
+    }
+  }
+}

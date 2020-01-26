@@ -1,0 +1,5 @@
+Dockerfile
+.git
+.hg
+.svn
+node_modules

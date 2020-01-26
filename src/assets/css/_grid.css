@@ -1,0 +1,53 @@
+.grid {
+  margin: 0 auto;
+  max-width: 1000px;
+  width: 95%;
+
+  &__content {
+    max-width: 650px;
+
+    &--full {
+      max-width: none;
+    }
+
+    &--center {
+      margin: 0 auto;
+    }
+  }
+
+  &--sidebar {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    @media (--tablet-portrait) {
+      grid-gap: 10%;
+      grid-template-columns: 1fr 225px;
+    }
+
+    .Sidebar {
+      @media (--tablet-portrait) {
+        /* This swaps the grid positon to ensure as the sidebar content renders first for mobile */
+        order: 1;
+      }
+    }
+  }
+
+  &--frames {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 1fr;
+
+    @media (--custom-370) {
+      grid-gap: 30px;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @media (--tablet-portrait) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    @media (--custom-1000) {
+      grid-gap: 56px;
+    }
+  }
+}

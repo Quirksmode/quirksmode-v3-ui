@@ -1,0 +1,21 @@
+stages:
+  - deploy
+
+Deploy:
+  before_script:
+    - "which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )"
+    - eval $(ssh-agent -s)
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - echo "$SSH_PRIVATE_KEY" | ssh-add - > ~/.ssh/id_rsa
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+  script:
+    - ./bin/deploy production
+  when: on_success
+  stage: deploy
+  only:
+    - master
+  environment:
+    name: Production
+    url: https://cms.quirksmode.co.uk
+  allow_failure: false

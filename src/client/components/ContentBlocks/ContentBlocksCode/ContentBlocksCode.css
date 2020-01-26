@@ -1,0 +1,19 @@
+.ContentBlocksCode {
+  &:last-child {
+    margin-bottom: 80px;
+  }
+
+  &__intro {
+    margin-bottom: 15px;
+
+    .Page__content {
+      h3 {
+        margin-bottom: 4px;
+      }
+    }
+  }
+
+  + .ContentBlocksCode {
+    margin-top: 40px;
+  }
+}

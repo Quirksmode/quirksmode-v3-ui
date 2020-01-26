@@ -1,0 +1,91 @@
+/*doc
+---
+title: Buttons
+name: button
+category: Base
+---
+
+Button styles:
+
+```html_example
+<a class="btn" href="http://google.com">Google</a>
+<a class="btn btn--blue" href="http://yahoo.com">Yahoo</a>
+```
+
+*/
+.btn {
+  &--submitIcon {
+    background: var(--color-qm-blue);
+    border-radius: 3px;
+    box-shadow: 0 1px 4px var(--color-qm-subfooter);
+    color: var(--color-white);
+    cursor: pointer;
+    display: inline-block;
+    font-family: var(--font-heading-main);
+    font-size: 2rem;
+    line-height: 2.2rem;
+    margin-bottom: 20px;
+    padding: 8px 46px 7px 14px;
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background .5s ease-out;
+    vertical-align: middle;
+
+    svg {
+      fill: var(--color-white);
+      position: absolute;
+      right: 12px;
+      width: 20px;
+    }
+
+    &:hover {
+      background: var(--color-qm-grey);
+      color: var(--color-white);
+      text-decoration: none;
+    }
+
+    .btn--submitIconSvg--loading {
+      display: none;
+    }
+
+    &--loading {
+      .btn--submitIconSvg {
+        display: none;
+      }
+
+      .btn--submitIconSvg--loading {
+        display: block;
+
+        svg {
+          animation: rotate 2s linear infinite;
+          top: 8px;
+        }
+      }
+    }
+  }
+}
+
+.link {
+  &--withHeading {
+    color: var(--link-color);
+    display: inline-block;
+    font-weight: 400;
+    text-decoration: none;
+    transition: color .2s ease-out;
+
+    &:focus,
+    &:hover {
+      color: var(--link-hover);
+    }
+  }
+
+  &--withIcon {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    &::after {
+      content: ' \2192';
+    }
+  }
+}

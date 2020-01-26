@@ -1,0 +1,42 @@
+.SubfooterContact {
+  flex-grow: 1;
+
+  &__contentWrap {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  &__imgWrap {
+    flex: 0 0 68px;
+    margin-right: 12px;
+
+    img {
+      border: 1px solid var(--color-gray);
+    }
+
+    @media (--mobile-landscape) {
+      display: none;
+    }
+
+    @media (--custom-650) {
+      display: block;
+    }
+
+    @media (--custom-1000) {
+      margin: 0 12px 0 0;
+    }
+  }
+
+  &__textWrap {
+    width: 100%;
+
+    p {
+      margin: 0;
+
+      &:first-child {
+        color: var(--color-white);
+      }
+    }
+  }
+}

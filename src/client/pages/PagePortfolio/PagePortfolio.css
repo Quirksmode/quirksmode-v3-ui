@@ -1,0 +1,85 @@
+.PagePortfolio {
+  &__sketch {
+    @media (--mobile-landscape) {
+      &::before {
+        background: url(../img/sketch_portfolio_2x.png) 0 0 no-repeat;
+        background-size: 286px 564px;
+        content: '';
+        height: 513px;
+        pointer-events: none;
+        position: absolute;
+        right: 10px;
+        top: 56px;
+        width: 286px;
+        z-index: var(--z-index-PagePortfolio__sketch__before);
+      }
+
+      &::after {
+        background-image: url(../img/sketch_portfolio_hand_2x.png);
+        background-size: 286px 170px;
+        content: '';
+        height: 170px;
+        pointer-events: none;
+        position: absolute;
+        right: 10px;
+        top: 56px;
+        width: 286px;
+        z-index: var(--z-index-PagePortfolio__sketch__after);
+      }
+    }
+  }
+
+  &__categoryWrap {
+    padding: 80px 0;
+  }
+
+  &__project {
+    z-index: var(--z-index-PagePortfolio__project);
+
+    &--selected {
+      position: relative;
+
+      &::after {
+        @media (--mobile-landscape) {
+          background: transparent url(../img/arrow-projectIndicator_2x.png) 0 0;
+          background-size: 54px 33px;
+          bottom: -62px;
+          content: '';
+          display: block;
+          height: 33px;
+          left: 0;
+          margin: 0 auto;
+          position: absolute;
+          right: 0;
+          width: 54px;
+        }
+      }
+    }
+  }
+
+  /* Pull this div outside of it's parent div to the screen edges */
+  .PagePortfolioSingleContent {
+    display: none;
+
+    @media (--mobile-landscape) {
+      display: block;
+      grid-column: 1 / -1;
+      left: 50%;
+      margin: 26px -50vw;
+      overflow: hidden;
+      position: relative;
+      right: 50%;
+      width: 100vw;
+    }
+
+    @media (--custom-1000) {
+      margin: 0 -50vw;
+    }
+  }
+
+  .Page__sectionInner--dark-arrow {
+    &::before {
+      display: none;
+    }
+  }
+}

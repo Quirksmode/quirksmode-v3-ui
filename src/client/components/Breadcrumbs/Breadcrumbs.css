@@ -1,0 +1,31 @@
+.Breadcrumbs {
+  align-items: center;
+  display: flex;
+  font-size: 1.3rem;
+  line-height: 1.3rem;
+  margin-bottom: 60px;
+
+  &__divider {
+    color: var(--color-lightbody);
+    display: inline-block;
+    font-size: 1.4rem;
+    line-height: 1.4rem;
+    margin: 0 5px;
+  }
+
+  &__crumb {
+    &--home {
+      fill: var(--color-sb-grey);
+      transition: fill .2s ease-out;
+
+      &:hover {
+        fill: var(--link-hover);
+      }
+
+      svg {
+        height: 16px;
+        width: 16px;
+      }
+    }
+  }
+}

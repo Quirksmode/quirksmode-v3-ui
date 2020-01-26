@@ -1,0 +1,7 @@
+@import './PagePortfolioSingleContent/PagePortfolioSingleContent.css';
+
+.PagePortfolioSingle {
+  .RelatedContent {
+    background: linear-gradient(to bottom, var(--color-white) 0%, var(--color-light-grey-fade) 100%);
+  }
+}

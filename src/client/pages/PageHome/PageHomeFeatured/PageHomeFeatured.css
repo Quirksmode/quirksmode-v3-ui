@@ -1,0 +1,62 @@
+.PageHomeFeatured {
+  .grid {
+    max-width: 1012px;
+  }
+
+  .Page__headingWrap {
+    padding: 0 6px;
+  }
+
+  .swiper-container {
+    padding: 6px;
+  }
+
+  .swiper-wrapper {
+    display: flex;
+
+    /* Show a grid when JS is turned off */
+    .no-js & {
+      display: grid;
+      grid-gap: 20px;
+      grid-template-columns: 1fr;
+
+      @media (--custom-370) {
+        grid-gap: 30px;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      @media (--tablet-portrait) {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+
+      @media (--custom-1000) {
+        grid-gap: 56px;
+      }
+    }
+  }
+
+  /* Prevent UI jump when initializing */
+  &:not(.swiper-container-initialized) {
+    .swiper-slide {
+      .js & {
+        margin-right: 5%;
+        width: 30%;
+      }
+    }
+  }
+
+  .Slider {
+    &__directionNav {
+      display: none;
+      opacity: 0;
+
+      @media (--mobile-landscape) {
+        display: block;
+      }
+
+      &--active {
+        opacity: 1;
+      }
+    }
+  }
+}

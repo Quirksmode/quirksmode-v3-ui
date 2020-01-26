@@ -1,0 +1,33 @@
+/* doc
+---
+title: Z-Index
+name: z-index
+category: Base
+---
+
+Z-Index elements order
+
+*/
+:root {
+  --z-index-Slider__directionNav: 9999;
+  --z-index-Header__sliderWrap: 9999;
+  --z-index-Header__sliderWrap__after: 999;
+  --z-index-Utility: 999;
+  --z-index-Utility__nav: 999;
+  --z-index-AccessibilityLinks: 9000;
+  --z-index-Header: 600;
+  --z-index-swiper-pagination: 500;
+  --z-index-PagePortfolioSingleContent__sliderWrap__after: 500;
+  --z-index-PagePortfolio__project: 500;
+  --z-index-PagePortfolio__sketch__before: 400;
+  --z-index-PagePortfolio__sketch__after: 250;
+  --z-index-PageAbout__introText: 250;
+  --z-index-Filter: 200;
+  --z-index-PageAbout__sketch__before: 200;
+  --z-index-Frame__new: 80;
+  --z-index-Frame__title: 80;
+  --z-index-Frame--rollover__after: 50;
+  --z-index-Frame--rollover__before: 40;
+  --z-index-Frame--reflection__before: 35;
+  --z-index-Page__hero__h1: 5;
+}

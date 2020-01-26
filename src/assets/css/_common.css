@@ -1,0 +1,70 @@
+/* doc
+---
+title: Common Styles
+name: common-styles
+category: Base
+---
+
+Common styles used across the website
+
+*/
+
+/* Custom Resets */
+p,
+pre,
+blockquote,
+a,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+figure,
+fieldset,
+form,
+button {
+  margin: 0;
+  padding: 0;
+}
+
+iframe {
+  border: 0;
+  max-width: 100%;
+}
+
+/* Fix the box sizing */
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+body {
+  color: var(--color-qm-body);
+  font-family: var(--font-body-main);
+  font-size: 1.4rem;
+  font-weight: 300;
+  line-height: 2.2rem;
+  overflow-x: hidden;
+  padding-top: 41px;
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+}
+
+/* Fix for srcset and picture elements */
+.img {
+  &--responsive {
+    width: 100%;
+  }
+}
+
+ul {
+  list-style-type: none;
+}

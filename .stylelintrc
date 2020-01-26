@@ -1,0 +1,41 @@
+{
+  "extends": ["stylelint-config-standard"],
+  "ignoreFiles": "./src/assets/css/lib/**/*.css",
+  "plugins": ["stylelint-order"],
+  "rules": {
+    "indentation": 2,
+    "at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": [
+          "else",
+          "each",
+          "@each",
+          "custom-media",
+          "@custom-media",
+          "extends",
+          "include",
+          "@include",
+          "mixin",
+          "if",
+          "content",
+          "function",
+          "return",
+          "define-mixin"
+        ]
+      }
+    ],
+    "string-quotes": "single",
+    "property-no-unknown": [
+      true,
+      {
+        "ignoreProperties": ["font-smoothing"]
+      }
+    ],
+    "declaration-empty-line-before": "never",
+    "number-leading-zero": "never",
+    "order/order": ["custom-properties", "declarations"],
+    "order/properties-alphabetical-order": true,
+    "no-descending-specificity": null
+  }
+}

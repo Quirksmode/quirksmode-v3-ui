@@ -1,0 +1,121 @@
+.Filter {
+  align-items: center;
+  background: var(--color-grey-bg);
+  background-size: 100px 100px;
+  border: 1px solid var(--color-grey-bg);
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  position: relative;
+  width: 100%;
+  z-index: var(--z-index-Filter);
+
+  &__tagToggle {
+    background: var(--color-white);
+    border: none;
+    border-radius: 6px;
+    display: block;
+    height: 40px;
+    left: 0;
+    margin: 0;
+    padding: 8px 8px 6px;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 40px;
+
+    &:hover {
+      cursor: pointer;
+
+      svg {
+        fill: var(--color-qm-body);
+      }
+    }
+
+    svg {
+      fill: var(--color-lightbody);
+      height: 18px;
+      transition: fill .2s ease-out;
+      width: 19px;
+    }
+
+    .Filter--toggled & {
+      box-shadow: 0 1px 11px 5px var(--color-qm-subfooter);
+      color: var(--color-qm-body);
+    }
+  }
+
+  &__lists {
+    width: calc(100% - 60px);
+  }
+
+  &__list {
+    align-items: center;
+    display: flex;
+    overflow-x: scroll;
+
+    &--categories {
+      .Filter--toggled & {
+        display: none;
+      }
+    }
+
+    &--tags {
+      display: none;
+
+      .Filter--toggled & {
+        display: flex;
+      }
+
+      .Filter__listItem {
+        &--selected,
+        &:hover {
+          a {
+            background: var(--color-qm-blue);
+          }
+        }
+      }
+    }
+  }
+
+  &__listItem {
+    margin-right: 10px;
+
+    @media (--tablet-portrait) {
+      margin-right: 25px;
+    }
+
+    @media (--custom-1080) {
+      margin-right: 20px;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &--selected,
+    &:hover {
+      a {
+        background: var(--color-alert-red);
+        color: var(--color-white);
+      }
+    }
+  }
+
+  &__listItemLink {
+    background: var(--color-qm-grey);
+    border-radius: 6px;
+    box-shadow: 0 1px 4px var(--color-qm-subfooter);
+    color: var(--color-white);
+    display: block;
+    padding: 9px 14px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background .3s ease-out;
+    white-space: nowrap;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}

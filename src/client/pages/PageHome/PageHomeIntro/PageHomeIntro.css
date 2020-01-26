@@ -1,0 +1,35 @@
+.PageHomeIntro {
+  margin-bottom: 50px;
+
+  &__intro {
+    display: flex;
+  }
+
+  &__imgWrap {
+    display: none;
+    margin-right: 25px;
+    transition: margin .5s ease-out;
+    width: 100%;
+
+    @media (--mobile-landscape) {
+      display: block;
+      flex: 0 0 110px;
+    }
+
+    @media (--desktop) {
+      margin-left: -55px;
+    }
+  }
+
+  &__textWrap {
+    transition: width .5s ease-out;
+
+    @media (--mobile-landscape) {
+      width: 70%;
+    }
+
+    @media (--desktop) {
+      width: 76%;
+    }
+  }
+}

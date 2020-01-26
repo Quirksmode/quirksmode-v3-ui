@@ -1,0 +1,9 @@
+.ContentBlocksImageFull {
+  &:last-child {
+    margin-bottom: 80px;
+  }
+
+  img {
+    width: 100%;
+  }
+}

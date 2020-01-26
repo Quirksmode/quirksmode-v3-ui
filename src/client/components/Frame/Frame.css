@@ -1,0 +1,162 @@
+.Frame {
+  background-color: var(--color-white);
+  border-radius: 3px;
+  box-shadow: 0 1px 4px var(--color-alto-2);
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+
+  &__new {
+    border-left: 40px solid transparent;
+    border-top: 40px solid var(--color-primary-red);
+    filter: drop-shadow(0 0 1px var(--color-mine-shaft));
+    height: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 0;
+    z-index: var(--z-index-Frame__new);
+
+    span {
+      bottom: 20px;
+      color: var(--color-white);
+      font-family: var(--font-body-main);
+      font-size: 1rem;
+      font-weight: 500;
+      line-height: 1.4rem;
+      position: absolute;
+      right: 2px;
+      transform: rotate(45deg);
+      z-index: var(--z-index-Frame__new);
+    }
+  }
+
+  &--rollover {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+    &::before {
+      background-color: var(--color-black);
+      bottom: 0;
+      content: '';
+      height: 100%;
+      left: 0;
+      opacity: 0;
+      position: absolute;
+      right: 0;
+      text-align: center;
+      top: 0;
+      transition: opacity .4s ease-out;
+      width: 100%;
+      z-index: var(--z-index-Frame--rollover__before);
+    }
+
+    &::after {
+      background: transparent url(../icons/quirksmode--white.svg) 50% 50%;
+      background-size: contain;
+      content: '';
+      display: block;
+      height: 35px;
+      opacity: 0;
+      position: absolute;
+      transition: opacity .4s ease-out, transform .2s ease-out;
+      width: 35px;
+      z-index: var(--z-index-Frame--rollover__after);
+    }
+
+    &:hover {
+      &::before {
+        cursor: pointer;
+        opacity: .7;
+      }
+
+      &::after {
+        opacity: 1;
+        transform: rotate(30deg);
+      }
+    }
+  }
+
+  &--reflection {
+    width: 100%;
+
+    &::before {
+      background: url(../img/reflection-medium.png) 100% 0 no-repeat;
+      background-size: contain;
+      content: '';
+      height: 100%;
+      left: 0;
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      z-index: var(--z-index-Frame--reflection__before);
+    }
+
+    img {
+      display: block;
+      width: 100%;
+    }
+  }
+
+  &__aspect {
+    height: 0;
+    padding-bottom: 90.2%;
+    position: relative;
+  }
+
+  picture {
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+  }
+
+  &__title {
+    background-color: var(--color-white);
+    border-radius: 0 3px 0 0;
+    bottom: 0;
+    color: var(--color-tundora-2);
+    font-family: var(--font-heading-main);
+    font-size: 1.4rem;
+    font-weight: 200;
+    left: 0;
+    line-height: 1.4rem;
+    padding: 7px 12px;
+    position: absolute;
+    text-transform: uppercase;
+    z-index: var(--z-index-Frame__title);
+  }
+
+  &__date {
+    bottom: 0;
+    bottom: auto;
+    left: 0;
+    margin: 0 auto;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 0;
+    width: 100%;
+    z-index: var(--z-index-Frame__title);
+
+    span {
+      background-color: rgba(var(--color-white), .9);
+      border-radius: 0 0 3px 3px;
+      color: var(--color-tundora-2);
+      display: inline-block;
+      font-family: var(--font-heading-main);
+      font-size: 1.4rem;
+      font-weight: 200;
+      line-height: 1.4rem;
+      margin: 0 auto;
+      padding: 7px 12px;
+      text-transform: uppercase;
+      width: auto;
+    }
+  }
+}

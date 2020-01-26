@@ -1,0 +1,45 @@
+/* doc
+---
+title: Breakpoints
+name: Breakpoints
+category: Breakpoints
+---
+
+List of breakpoints used in the website
+
+*/
+
+/* Passing as variables */
+:root {
+  --mobile-portrait: 320px;
+  --custom-370: 370px;
+  --to-mobile-landscape: 480px;
+  --mobile-landscape: 481px;
+  --custom-570: 570px;
+  --custom-650: 650px;
+  --to-tablet-portrait: 767px;
+  --tablet-portrait: 768px;
+  --custom-1000: 1000px;
+  --tablet-landscape: 1024px;
+  --custom-1080: 1080px;
+  --desktop: 1280px;
+  --wide-desktop: 1440px;
+  --extra-wide-desktop: 1920px;
+}
+
+/* Defining the media queries */
+@custom-media --mobile-portrait (min-width: 320px);
+@custom-media --custom-370 (min-width: 370px);
+@custom-media --to-mobile-landscape (max-width: 480px);
+@custom-media --mobile-landscape (min-width: 481px);
+@custom-media --custom-570 (min-width: 570px);
+@custom-media --custom-650 (min-width: 650px);
+@custom-media --to-tablet-portrait (max-width: 767px);
+@custom-media --tablet-portrait (min-width: 768px);
+@custom-media --custom-1000 (min-width: 1000px);
+@custom-media --tablet-landscape (min-width: 1024px);
+@custom-media --to-tablet-landscape (max-width: 1023px);
+@custom-media --custom-1080 (min-width: 1080px);
+@custom-media --desktop (min-width: 1280px);
+@custom-media --wide-desktop (min-width: 1440px);
+@custom-media --extra-wide-desktop (min-width: 1920px);
