@@ -1,11 +1,9 @@
 import React, {
-  useEffect,
-  Fragment
+  useEffect
 } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
-import { NavLink } from 'react-router-dom';
 import Breadcrumbs from 'components/Breadcrumbs/Breadcrumbs';
 import Filter from 'components/Filter/Filter';
 import Frame from 'components/Frame/Frame';
@@ -30,11 +28,6 @@ const PagePortfolio = ({
   useEffect(() => {
     if (!title) fetchPortfolioDataAction();
   }, [fetchPortfolioDataAction, title]);
-
-  const handleClick = (e, slug, href) => {
-    e.preventDefault();
-    fetchPortfolioSingleDataAction(slug, href);
-  };
 
   return title && (
     <div className="page PagePortfolio">
@@ -71,15 +64,17 @@ const PagePortfolio = ({
                       isNew
                     } = project;
                     return (
-                      <Fragment key={ postName }>
-                        <NavLink
-                          to={ `/portfolio/${postName}/` }
-                          className={ `PagePortfolio__project${loading === postName ? ' PagePortfolio__project--loading' : ''}` }
-                          onClick={ e => handleClick(e, postName, `/portfolio/${postName}/`) }
-                        >
-                          <Frame featuredImage={ featuredImage } title={ postTitle } isNew={ isNew } size="Medium" />
-                        </NavLink>
-                      </Fragment>
+                      <Frame
+                        key={ postName }
+                        type="portfolio"
+                        slug={ postName }
+                        action={ fetchPortfolioSingleDataAction }
+                        loading={ loading === postName }
+                        featuredImage={ featuredImage }
+                        title={ postTitle }
+                        isNew={ isNew }
+                        size="Medium"
+                      />
                     );
                   })
                 }

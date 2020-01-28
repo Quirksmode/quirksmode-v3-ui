@@ -1,10 +1,74 @@
 .Frame {
-  background-color: var(--color-white);
-  border-radius: 3px;
-  box-shadow: 0 1px 4px var(--color-alto-2);
-  overflow: hidden;
-  padding: 0;
-  position: relative;
+  &__inner {
+    align-items: center;
+    background-color: var(--color-white);
+    border-radius: 3px;
+    box-shadow: 0 1px 4px var(--color-alto-2);
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+
+    &--rollover {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+
+      &::before {
+        background-color: var(--color-black);
+        bottom: 0;
+        content: '';
+        height: 100%;
+        left: 0;
+        opacity: 0;
+        position: absolute;
+        right: 0;
+        text-align: center;
+        top: 0;
+        transition: opacity .4s ease-out;
+        width: 100%;
+        z-index: var(--z-index-Frame--rollover__before);
+      }
+
+      &::after {
+        background: transparent url(../icons/quirksmode--white.svg) 50% 50%;
+        background-size: contain;
+        content: '';
+        display: block;
+        height: 35px;
+        opacity: 0;
+        position: absolute;
+        transform: rotate(30deg);
+        transition: opacity .4s ease-out, transform .2s ease-out;
+        width: 35px;
+        z-index: var(--z-index-Frame--rollover__after);
+      }
+
+      &:hover {
+        &::before {
+          cursor: pointer;
+          opacity: .7;
+        }
+
+        &::after {
+          opacity: 1;
+          transform: rotate(0deg);
+        }
+      }
+    }
+
+    &--loading {
+      &::after {
+        animation: rotate 3s linear infinite;
+        opacity: 1;
+      }
+
+      &::before {
+        opacity: 1;
+      }
+    }
+  }
 
   &__new {
     border-left: 40px solid transparent;
@@ -28,53 +92,6 @@
       right: 2px;
       transform: rotate(45deg);
       z-index: var(--z-index-Frame__new);
-    }
-  }
-
-  &--rollover {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-
-    &::before {
-      background-color: var(--color-black);
-      bottom: 0;
-      content: '';
-      height: 100%;
-      left: 0;
-      opacity: 0;
-      position: absolute;
-      right: 0;
-      text-align: center;
-      top: 0;
-      transition: opacity .4s ease-out;
-      width: 100%;
-      z-index: var(--z-index-Frame--rollover__before);
-    }
-
-    &::after {
-      background: transparent url(../icons/quirksmode--white.svg) 50% 50%;
-      background-size: contain;
-      content: '';
-      display: block;
-      height: 35px;
-      opacity: 0;
-      position: absolute;
-      transition: opacity .4s ease-out, transform .2s ease-out;
-      width: 35px;
-      z-index: var(--z-index-Frame--rollover__after);
-    }
-
-    &:hover {
-      &::before {
-        cursor: pointer;
-        opacity: .7;
-      }
-
-      &::after {
-        opacity: 1;
-        transform: rotate(30deg);
-      }
     }
   }
 

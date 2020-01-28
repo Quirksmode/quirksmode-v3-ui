@@ -9,6 +9,7 @@ import Breadcrumbs from 'components/Breadcrumbs/Breadcrumbs';
 import Filter from 'components/Filter/Filter';
 import Sidebar from 'components/sidebar/sidebar';
 import Frame from 'components/Frame/Frame';
+import { fetchBlogSingleData } from 'pages/PageBlogSingle/PageBlogSingle.actions';
 import { fetchBlogData } from './PageBlog.actions';
 
 /**
@@ -19,10 +20,12 @@ import { fetchBlogData } from './PageBlog.actions';
  */
 const PageBlog = ({
   fetchBlogDataAction,
+  fetchBlogSingleDataAction,
   title,
   blogPosts,
   blogCategories,
-  blogTags
+  blogTags,
+  loading
 }) => {
   useEffect(() => {
     if (!title) fetchBlogDataAction();
@@ -41,7 +44,7 @@ const PageBlog = ({
             <span className="Breadcrumbs__divider">&gt;</span>
             <span className="Breadcrumbs__active">{ title }</span>
           </Breadcrumbs>
-          <Filter categories={ blogCategories } tags={ blogTags } fetchDataAction={ fetchBlogDataAction } type="portfolio" />
+          <Filter categories={ blogCategories } tags={ blogTags } fetchDataAction={ fetchBlogDataAction } type="blog" />
         </div>
       </section>
       <section className="Page__section Page__section--greyFade project-row-wrap clearfix">
@@ -62,12 +65,16 @@ const PageBlog = ({
                   <article className="PageHomeBlog__post" key={ ID }>
                     { featuredImage && (
                       <div className="PageHomeBlog__imgWrap PageHomeBlog__imgWrap--large">
-                        <NavLink
-                          to={ `/blog/${postName}` }
+                        <Frame
+                          key={ postName }
+                          type="blog"
+                          slug={ postName }
+                          action={ fetchBlogSingleDataAction }
+                          loading={ loading === postName }
+                          featuredImage={ featuredImage }
                           title={ postTitle }
-                        >
-                          <Frame featuredImage={ featuredImage } size="Medium" />
-                        </NavLink>
+                          size="Medium"
+                        />
                       </div>
                     )}
                     <div className="PageHomeBlog__textWrap">
@@ -111,14 +118,17 @@ const PageBlog = ({
 };
 
 PageBlog.propTypes = {
+  loading: PropTypes.string,
   fetchBlogDataAction: PropTypes.func,
+  fetchBlogSingleDataAction: PropTypes.func,
   title: PropTypes.string,
   blogPosts: PropTypes.array,
   blogCategories: PropTypes.array,
   blogTags: PropTypes.array
 };
 
-const mapStateToProps = ({ app, pageBlog }) => ({
+const mapStateToProps = ({ app, pageBlog, pageBlogSingle }) => ({
+  loading: pageBlogSingle.loading,
   title: pageBlog.title,
   blogPosts: pageBlog.blogPosts,
   blogCategories: app.blogCategories,
@@ -126,7 +136,8 @@ const mapStateToProps = ({ app, pageBlog }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchBlogDataAction: (...args) => dispatch(fetchBlogData(...args))
+  fetchBlogDataAction: (...args) => dispatch(fetchBlogData(...args)),
+  fetchBlogSingleDataAction: (...args) => dispatch(fetchBlogSingleData(...args))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PageBlog);

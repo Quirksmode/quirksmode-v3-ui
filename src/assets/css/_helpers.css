@@ -85,23 +85,23 @@
   -moz-box-orient: vertical;
   -ms-box-orient: vertical;
   display: -webkit-box;
-  -webkit-lineClamp: 1;
-  -moz-lineClamp: 1;
+  -webkit-line-clamp: 1;
+  -moz-line-clamp: 1;
   overflow: hidden;
   word-wrap: break-word;
 
   &--2 {
-    -webkit-lineClamp: 2;
-    -moz-lineClamp: 2;
+    -webkit-line-clamp: 2;
+    -moz-line-clamp: 2;
   }
 
   &--3 {
-    -webkit-lineClamp: 3;
-    -moz-lineClamp: 3;
+    -webkit-line-clamp: 3;
+    -moz-line-clamp: 3;
   }
 
   &--4 {
-    -webkit-lineClamp: 4;
-    -moz-lineClamp: 4;
+    -webkit-line-clamp: 4;
+    -moz-line-clamp: 4;
   }
 }

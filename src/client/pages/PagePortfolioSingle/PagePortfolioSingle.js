@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet';
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ContentBlocks from 'components/ContentBlocks/ContentBlocks';
@@ -15,24 +15,14 @@ import PagePortfolioSingleContent from './PagePortfolioSingleContent/PagePortfol
  * @param  {object} props []
  */
 const PagePortfolioSingle = ({
-  fetchPortfolioSingleDataAction,
-  match,
   title,
-  slug,
   url,
   hero,
   content,
   related,
   noRelated,
   contentBlocks
-}) =>
-// useEffect(() => {
-//   if (slug !== match.params.slug) {
-//     fetchPortfolioSingleDataAction(match.params.slug);
-//   }
-// }, [fetchPortfolioSingleDataAction, match.params.slug, slug]);
-
-  title && (
+}) => title && (
   <div className="Page PagePortfolioSingle">
     <Helmet>
       <title>Portfolio Single Helmet Test</title>
@@ -48,7 +38,7 @@ const PagePortfolioSingle = ({
         && <PagePortfolioSingleContent content={ content } /> }
     { related && <RelatedContent related={ related } type="portfolio" noRelated={ noRelated } /> }
   </div>
-  );
+);
 PagePortfolioSingle.propTypes = {
   fetchPortfolioSingleDataAction: PropTypes.func,
   match: PropTypes.object,

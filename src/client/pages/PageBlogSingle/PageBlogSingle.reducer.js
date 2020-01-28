@@ -1,6 +1,12 @@
-import { FETCH_BLOG_SINGLE } from './PageBlogSingle.actions';
+import {
+  FETCH_BLOG_SINGLE_REQUEST,
+  FETCH_BLOG_SINGLE_SUCCESS,
+  FETCH_BLOG_SINGLE_ERROR
+} from './PageBlogSingle.actions';
 
 const initialState = {
+  loading: '',
+  error: false,
   id: null,
   title: '',
   url: '',
@@ -15,7 +21,12 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_BLOG_SINGLE:
+    case FETCH_BLOG_SINGLE_REQUEST:
+      return {
+        ...state,
+        loading: action.payload
+      };
+    case FETCH_BLOG_SINGLE_SUCCESS:
       return {
         ...state,
         id: action.payload.data.id,
@@ -26,6 +37,11 @@ export default (state = initialState, action) => {
         related: action.payload.data.related,
         noRelated: action.payload.data.noRelated,
         hero: action.payload.data.hero
+      };
+    case FETCH_BLOG_SINGLE_ERROR:
+      return {
+        ...initialState,
+        error: true
       };
     default:
       return state;

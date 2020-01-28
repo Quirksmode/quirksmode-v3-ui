@@ -40,3 +40,13 @@ Animations for the website
     transform: rotate(360deg);
   }
 }
+
+@keyframes rotateScale {
+  from {
+    transform: rotate(0deg) scale(3);
+  }
+
+  to {
+    transform: rotate(360deg) scale(3);
+  }
+}

@@ -21,7 +21,7 @@ export const fetchPortfolioSingleData = (slug, href = null) => async (
     payload: res
   });
 
-  // Content has loaded, so now navigate to the page
+  // If a href is passed, navigate to it
   if (href) {
     dispatch(push(href));
   }

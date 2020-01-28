@@ -1,10 +1,12 @@
 import {
   FETCH_PORTFOLIO_SINGLE_REQUEST,
-  FETCH_PORTFOLIO_SINGLE_SUCCESS
+  FETCH_PORTFOLIO_SINGLE_SUCCESS,
+  FETCH_PORTFOLIO_SINGLE_ERROR
 } from './PagePortfolioSingle.actions';
 
 const initialState = {
   loading: '',
+  error: false,
   id: null,
   title: '',
   slug: '',
@@ -26,12 +28,12 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_PORTFOLIO_SINGLE_REQUEST: {
+    case FETCH_PORTFOLIO_SINGLE_REQUEST:
       return {
         ...state,
-        loading: action.payload
+        loading: action.payload,
+        error: false
       };
-    }
     case FETCH_PORTFOLIO_SINGLE_SUCCESS:
       return {
         ...state,
@@ -45,7 +47,13 @@ export default (state = initialState, action) => {
         related: action.payload.data.related,
         hero: action.payload.data.hero,
         noRelated: action.payload.data.noRelated,
-        loading: ''
+        loading: '',
+        error: false
+      };
+    case FETCH_PORTFOLIO_SINGLE_ERROR:
+      return {
+        ...initialState,
+        error: true
       };
     default:
       return state;
