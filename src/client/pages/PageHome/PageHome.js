@@ -2,11 +2,13 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
+import { fetchBlogSingleData } from 'pages/PageBlogSingle/PageBlogSingle.actions';
 import { fetchHomeData } from './PageHome.actions';
 import PageHomeFeatured from './PageHomeFeatured/PageHomeFeatured';
 import PageHomeIntro from './PageHomeIntro/PageHomeIntro';
 import PageHomeSkills from './PageHomeSkills/PageHomeSkills';
 import PageHomeBlog from './PageHomeBlog/PageHomeBlog';
+
 
 /**
  * Description
@@ -20,7 +22,9 @@ const PageHome = ({
   featuredWork,
   intro,
   latestBlogPosts,
-  skills
+  skills,
+  fetchBlogSingleDataAction,
+  loading
 }) => {
   useEffect(() => {
     if (!intro) fetchHomeDataAction();
@@ -42,7 +46,7 @@ const PageHome = ({
               { skills.length > 0 && <PageHomeSkills skills={ skills } /> }
             </div>
             <div className="PageHome__col">
-              <PageHomeBlog latestBlogPosts={ latestBlogPosts } />
+              <PageHomeBlog latestBlogPosts={ latestBlogPosts } action={ fetchBlogSingleDataAction } loading={ loading } />
             </div>
           </div>
         </div>
@@ -60,16 +64,18 @@ PageHome.propTypes = {
   skills: PropTypes.array
 };
 
-const mapStateToProps = ({ app, pageHome }) => ({
+const mapStateToProps = ({ app, pageHome, pageBlogSingle }) => ({
   cv: app.siteSettings.cv,
   featuredWork: pageHome.featuredWork,
   intro: pageHome.intro,
   latestBlogPosts: pageHome.latestBlogPosts,
+  loading: pageBlogSingle.loading,
   skills: pageHome.skills
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchHomeDataAction: (...args) => dispatch(fetchHomeData(...args))
+  fetchHomeDataAction: (...args) => dispatch(fetchHomeData(...args)),
+  fetchBlogSingleDataAction: (...args) => dispatch(fetchBlogSingleData(...args))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PageHome);

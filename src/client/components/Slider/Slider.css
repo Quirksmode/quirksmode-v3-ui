@@ -6,6 +6,10 @@
     transition: all .4s linear;
     width: 100%;
     z-index: var(--z-index-Slider__directionNav);
+
+    .no-js & {
+      display: none;
+    }
   }
 
   &__next,
@@ -19,7 +23,7 @@
     position: absolute;
     right: 0;
     text-indent: -9999px;
-    transition: all .25s ease-out;
+    transition: left .25s ease-out, right .25s ease-out;
     width: 50px;
 
     &:hover {

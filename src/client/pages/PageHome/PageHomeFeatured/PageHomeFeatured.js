@@ -6,6 +6,7 @@ import Swiper from 'react-id-swiper';
 import { useInView } from 'react-intersection-observer';
 import { NavLink } from 'react-router-dom';
 import Frame from 'components/Frame/Frame';
+import LinkLoader from 'components/LinkLoader/LinkLoader';
 
 /**
  * Description
@@ -33,7 +34,7 @@ const PageHomeFeatured = ({
     updateOnImagesReady: true,
     slidesPerView: 1,
     spaceBetween: 10,
-    loop: true,
+    loop: false,
     autoHeight: true,
     breakpoints: {
       481: {
@@ -88,22 +89,37 @@ const PageHomeFeatured = ({
             to="/portfolio"
             className="link--withHeading link--withIcon"
           >
-              View All Work
+            View All Work
           </NavLink>
         </div>
         <Swiper
           getSwiper={ updateSwiper }
           { ...params }
         >
-          { featuredWork.map(project => (
-            <div className="PageHomeFeatured__slide" key={ project.id }>
-              <NavLink
-                to={ `/portfolio/${project.slug}` }
-              >
-                <Frame featuredImage={ project.featuredImage } title={ project.title } isNew={ project.isNew } size="Medium" />
-              </NavLink>
-            </div>
-          ))}
+          { featuredWork.map((project) => {
+            const {
+              id,
+              slug,
+              featuredImage,
+              title,
+              isNew
+            } = project;
+            return (
+              <div className="PageHomeFeatured__slide" key={ id }>
+                <LinkLoader
+                  type="portfolio"
+                  slug={ slug }
+                >
+                  <Frame
+                    featuredImage={ featuredImage }
+                    title={ title }
+                    isNew={ isNew }
+                    size="Medium"
+                  />
+                </LinkLoader>
+              </div>
+            );
+          })}
         </Swiper>
       </div>
       <div

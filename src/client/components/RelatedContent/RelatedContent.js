@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import Frame from 'components/Frame/Frame';
+import LinkLoader from 'components/LinkLoader/LinkLoader';
 
 const RelatedContent = ({
   related,
@@ -34,13 +35,19 @@ const RelatedContent = ({
             } = item;
 
             return (
-              <NavLink
-                to={ `/${type}/${postName}/` }
-                className="PagePortfolio__project"
-                key={ postId }
-              >
-                <Frame featuredImage={ featuredImage } title={ postTitle } isNew={ isNew } size="Medium" />
-              </NavLink>
+              <div className="PagePortfolio__project" key={ postId }>
+                <LinkLoader
+                  type={ type }
+                  slug={ postName }
+                >
+                  <Frame
+                    featuredImage={ featuredImage }
+                    title={ postTitle }
+                    isNew={ isNew }
+                    size="Medium"
+                  />
+                </LinkLoader>
+              </div>
             );
           })
         }

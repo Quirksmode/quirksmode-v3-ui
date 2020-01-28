@@ -39,7 +39,6 @@ const Share = ({
    * @param {Event} e [Event]
    */
   const handleClick = (e) => {
-    console.log('e', e.target.href);
     e.preventDefault();
     openWindow(e.target.href);
   };

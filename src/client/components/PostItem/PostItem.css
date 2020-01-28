@@ -1,4 +1,4 @@
-.PageHomeBlog {
+.PostItem {
   &__post {
     margin-bottom: 30px;
     position: relative;
@@ -45,7 +45,7 @@
       margin-right: 20px;
     }
 
-    &--large {
+    &--Medium {
       @media (--custom-1000) {
         flex-basis: 236px;
       }
@@ -73,19 +73,19 @@
     @media (--custom-370) {
       padding-left: 0;
     }
-  }
 
-  &__postTitleLink {
-    color: var(--color-emperor);
-    display: inline-block;
-    font-family: var(--font-body-main);
-    font-size: 1.6rem;
-    font-weight: 400;
-    line-height: 1.9rem;
-    transition: color .2s ease-out;
+    a {
+      color: var(--color-emperor);
+      display: inline-block;
+      font-family: var(--font-body-main);
+      font-size: 1.6rem;
+      font-weight: 400;
+      line-height: 1.9rem;
+      transition: color .2s ease-out;
 
-    &:hover {
-      color: var(--link-hover);
+      &:hover {
+        color: var(--link-hover);
+      }
     }
   }
 

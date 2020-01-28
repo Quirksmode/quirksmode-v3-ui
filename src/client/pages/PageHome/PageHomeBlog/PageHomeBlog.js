@@ -1,7 +1,9 @@
-import React from 'react';
+import React, {
+  Fragment
+} from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
-import Frame from 'components/Frame/Frame';
+import PostItem from 'components/PostItem/PostItem';
 
 /**
  * Description
@@ -10,7 +12,9 @@ import Frame from 'components/Frame/Frame';
  * @param  {object} props.latestBlogPosts []
  */
 const PageHomeBlog = ({
-  latestBlogPosts
+  latestBlogPosts,
+  loading,
+  action
 }) => (
   <div className="PageHomeBlog">
     <div className="Page__headingWrap">
@@ -24,52 +28,23 @@ const PageHomeBlog = ({
     </div>
     <div className="PageHomeBlog__posts">
       { latestBlogPosts.map(post => (
-        <article className="PageHomeBlog__post" key={ post.postName }>
-          <div className="PageHomeBlog__imgWrap">
-            <NavLink
-              to={ `/blog/${post.postName}` }
-              title={ post.postTitle }
-            >
-              <Frame featuredImage={ post.featuredImage } size="Small" />
-            </NavLink>
-          </div>
-          <div className="PageHomeBlog__textWrap">
-            <header className="PageHomeBlog__textHeader">
-              <h3 className="PageHomeBlog__postTitle">
-                <NavLink
-                  className="PageHomeBlog__postTitleLink"
-                  to={ `/blog/${post.postName}` }
-                  title={ post.postTitle }
-                >
-                  { post.postTitle }
-                </NavLink>
-              </h3>
-              <p className="PageHomeBlog__postDate">
-                { post.date }
-              </p>
-            </header>
-            <section>
-              <p className="PageHomeBlog__postExcerpt lineClamp lineClamp--3">
-                { post.postExcerpt }
-              </p>
-              <NavLink
-                to={ `/blog/${post.postName}` }
-                title={ post.postTitle }
-                className="PageHomeBlog__postLink link--withHeading link--withIcon"
-              >
-                Read More
-              </NavLink>
-            </section>
-          </div>
-        </article>
-      ))
-      }
+        <PostItem
+          key={ post.postID }
+          post={ post }
+          loading={ loading }
+          action={ action }
+          size="Small"
+          lineClamp="3"
+        />
+      ))}
     </div>
   </div>
 );
 
 PageHomeBlog.propTypes = {
-  latestBlogPosts: PropTypes.array
+  latestBlogPosts: PropTypes.array,
+  loading: PropTypes.string,
+  action: PropTypes.func
 };
 
 export default PageHomeBlog;

@@ -36,11 +36,13 @@ export default (state = initialState, action) => {
         date: action.payload.data.date,
         related: action.payload.data.related,
         noRelated: action.payload.data.noRelated,
-        hero: action.payload.data.hero
+        hero: action.payload.data.hero,
+        loading: ''
       };
     case FETCH_BLOG_SINGLE_ERROR:
       return {
         ...initialState,
+        loading: '',
         error: true
       };
     default:

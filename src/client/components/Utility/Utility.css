@@ -152,6 +152,10 @@
     transition: transform .2s ease-out;
     width: 100%;
     z-index: var(--z-index-Utility__nav);
+
+    .no-js & {
+      display: none;
+    }
   }
 
   /* Override the Logo Nav styles */

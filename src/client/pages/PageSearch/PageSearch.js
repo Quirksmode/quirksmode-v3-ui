@@ -7,10 +7,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import queryString from 'query-string';
-import { NavLink } from 'react-router-dom';
 import SVGInline from 'react-svg-inline';
 import Breadcrumbs from 'components/Breadcrumbs/Breadcrumbs';
-import Frame from 'components/Frame/Frame';
+import PostItem from 'components/PostItem/PostItem';
 import { fetchSearchData } from './PageSearch.actions';
 import IconSearch from '!!raw-loader!icons/search.svg';
 
@@ -97,51 +96,16 @@ const PageSearch = ({
       </section>
       <section className="Page__section Page__section--greyFade">
         <div className="Page__sectionInner grid grid--sidebar">
-          <div className="PageBlog__posts">
+          <div className="PageSearch__posts">
             {value && (
               <h2>{`Showing results for the search term: ${value}`}</h2>
             )}
             { searchPosts.length > 0 && value ? searchPosts.map(post => (
-              <article className="PageHomeBlog__post" key={ post.ID }>
-                { post.featuredImage && (
-                <div className="PageHomeBlog__imgWrap PageHomeBlog__imgWrap--large">
-                  <NavLink
-                    to={ `/blog/${post.post_name}` }
-                    title={ post.post_title }
-                  >
-                    <Frame featuredImage={ post.featuredImage } />
-                  </NavLink>
-                </div>
-                )}
-                <div className="PageHomeBlog__textWrap">
-                  <header className="PageHomeBlog__textHeader">
-                    <h3 className="PageHomeBlog__postTitle">
-                      <NavLink
-                        className="PageHomeBlog__postTitleLink"
-                        to={ `/blog/${post.post_name}` }
-                        title={ post.post_title }
-                      >
-                        { post.post_title }
-                      </NavLink>
-                    </h3>
-                    <p className="PageHomeBlog__postDate">
-                      { post.date }
-                    </p>
-                  </header>
-                  <section>
-                    <p className="PageHomeBlog__postExcerpt">
-                      { post.post_excerpt }
-                    </p>
-                    <NavLink
-                      to={ `/blog/${post.post_name}` }
-                      title={ post.post_title }
-                      className="PageHomeBlog__postLink link--withHeading link--withIcon"
-                    >
-                      Read More
-                    </NavLink>
-                  </section>
-                </div>
-              </article>
+              <PostItem
+                key={ post.postID }
+                post={ post }
+                size="Medium"
+              />
             )) : (
               <Fragment>
                 { value && (

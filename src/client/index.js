@@ -17,7 +17,6 @@ const history = createBrowserHistory();
  * Hydrate redux store from back-end data
  */
 const initialState = window.INITIAL_STATE;
-console.log('initialState', initialState);
 delete window.INITIAL_STATE;
 const store = configureStore(initialState, {
   baseURL: process.env.API_URL

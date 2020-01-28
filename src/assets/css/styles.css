@@ -25,6 +25,7 @@
 @import '../../client/components/Slider/Slider';
 @import '../../client/components/Utility/Utility';
 @import '../../client/components/Frame/Frame';
+@import '../../client/components/PostItem/PostItem';
 @import '../../client/components/Header/Header';
 @import '../../client/components/Subfooter/Subfooter';
 @import '../../client/components/Footer/Footer';
@@ -38,7 +39,6 @@
 @import '../../client/pages/PageHome/PageHomeFeatured/PageHomeFeatured';
 @import '../../client/pages/PageHome/PageHomeIntro/PageHomeIntro';
 @import '../../client/pages/PageHome/PageHomeSkills/PageHomeSkills';
-@import '../../client/pages/PageHome/PageHomeBlog/PageHomeBlog';
 @import '../../client/pages/PageAbout/PageAbout';
 @import '../../client/pages/PageBlog/PageBlog';
 @import '../../client/pages/PageBlogSingle/PageBlogSingle';

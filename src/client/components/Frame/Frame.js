@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
 import { useSpring, animated } from 'react-spring';
 
 /**
@@ -42,10 +41,7 @@ const Frame = ({
   title = null,
   size = 'Small',
   date = null,
-  type = null,
-  slug,
-  loading,
-  action
+  loading = false
 }) => {
   /**
    * React Ref for the Frame
@@ -54,14 +50,6 @@ const Frame = ({
    * @type {object}
    */
   const frameRef = React.createRef();
-
-  /**
-   * Create the href based on the type e.g. Page, Portfolio or Blog
-   *
-   * @name href
-   * @type {object}
-   */
-  const href = type ? `/${type}/${slug}` : `/${slug}`;
 
   /**
    * React Spring Hook for defining the animation
@@ -73,67 +61,56 @@ const Frame = ({
   const [styles, set] = useSpring(() => (
     { xys: [0, 0, 1], config: { mass: 5, tension: 350, friction: 40 } }));
 
-  const handleClick = (e) => {
-    e.preventDefault();
-    action(slug, href);
-  };
-
   return (
-    <NavLink
-      to={ href }
-      onClick={ e => handleClick(e) }
-      className="Frame"
+    <animated.div
+      ref={ frameRef }
+      className={ `Frame Frame--rollover${loading ? ' Frame--loading' : ''}` }
+      onMouseMove={ e => set({ xys: calc(e, frameRef) }) }
+      onMouseLeave={ () => set({ xys: [0, 0, 1] }) }
+      style={ { transform: styles.xys.interpolate(trans), } }
     >
-      <animated.div
-        ref={ frameRef }
-        className={ `Frame__inner Frame__inner--rollover${loading ? ' Frame__inner--loading' : ''}` }
-        onMouseMove={ e => set({ xys: calc(e, frameRef) }) }
-        onMouseLeave={ () => set({ xys: [0, 0, 1] }) }
-        style={ { transform: styles.xys.interpolate(trans), } }
-      >
-        { isNew && (
-          <div className="Frame__new">
-            <span>New</span>
-          </div>
+      { isNew && (
+        <div className="Frame__new">
+          <span>New</span>
+        </div>
+      )}
+
+      <div className="Frame__aspect Frame--reflection">
+        <picture>
+          <source
+            type="image/webp"
+            srcSet={
+              `${featuredImage.sizes[`quirksmode${size}2x`]}.webp 1x,
+                ${featuredImage.sizes[`quirksmode${size}2x`]}.webp 1.5x,
+                ${featuredImage.sizes[`quirksmode${size}2x`]}.webp 2x`
+            }
+          />
+          <img
+            srcSet={
+              `${featuredImage.sizes[`quirksmode${size}`]} 1x,
+                ${featuredImage.sizes[`quirksmode${size}2x`]} 1.5x,
+                ${featuredImage.sizes[`quirksmode${size}2x`]} 2x`
+            }
+            src={ featuredImage.sizes[`quirksmode${size}`] }
+            alt={ featuredImage.alt }
+            width={ featuredImage.width }
+            height={ featuredImage.width }
+            loading="lazy"
+          />
+        </picture>
+        { title && (
+          <h3 className="Frame__title">
+            { title }
+          </h3>
         )}
 
-        <div className="Frame__aspect Frame--reflection">
-          <picture>
-            <source
-              type="image/webp"
-              srcSet={
-                `${featuredImage.sizes[`quirksmode${size}2x`]}.webp 1x,
-                  ${featuredImage.sizes[`quirksmode${size}2x`]}.webp 1.5x,
-                  ${featuredImage.sizes[`quirksmode${size}2x`]}.webp 2x`
-              }
-            />
-            <img
-              srcSet={
-                `${featuredImage.sizes[`quirksmode${size}`]} 1x,
-                  ${featuredImage.sizes[`quirksmode${size}2x`]} 1.5x,
-                  ${featuredImage.sizes[`quirksmode${size}2x`]} 2x`
-              }
-              src={ featuredImage.sizes[`quirksmode${size}`] }
-              alt={ featuredImage.alt }
-              width={ featuredImage.width }
-              height={ featuredImage.width }
-              loading="lazy"
-            />
-          </picture>
-          { title && (
-            <h3 className="Frame__title">
-              { title }
-            </h3>
-          )}
-
-          { date && (
-            <div className="Frame__date">
-              <span>{ date }</span>
-            </div>
-          )}
-        </div>
-      </animated.div>
-    </NavLink>
+        { date && (
+          <div className="Frame__date">
+            <span>{ date }</span>
+          </div>
+        )}
+      </div>
+    </animated.div>
   );
 };
 
@@ -143,10 +120,7 @@ Frame.propTypes = {
   size: PropTypes.string,
   isNew: PropTypes.bool,
   date: PropTypes.string,
-  type: PropTypes.string,
-  slug: PropTypes.string,
-  loading: PropTypes.bool,
-  action: PropTypes.func
+  loading: PropTypes.bool
 };
 
 export default Frame;
