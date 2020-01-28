@@ -12,6 +12,7 @@ const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const LoadablePlugin = require('@loadable/webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const { ifProduction, ifNotProduction } = getIfUtils(process.env.NODE_ENV);
 const IS_DEV = process.env.NODE_ENV !== 'production';
@@ -98,6 +99,9 @@ const config = {
       swSrc: './src/sw.js',
       swDest: 'sw.js'
     }),
+    new CopyWebpackPlugin([
+      { from: path.resolve(__dirname, 'src/assets/img/favicon'), to: path.resolve(__dirname, 'build/public/img/favicon') }
+    ]),
     ifNotProduction(new webpack.HotModuleReplacementPlugin()),
     ifNotProduction(new FriendlyErrorsWebpackPlugin()),
     ifProduction(new CleanWebpackPlugin({
@@ -169,7 +173,7 @@ const config = {
           {
             loader: 'file-loader',
             options: {
-              name: 'images/[name].[hash].[ext]'
+              name: 'img/[name].[hash].[ext]'
             }
           },
           'img-loader'

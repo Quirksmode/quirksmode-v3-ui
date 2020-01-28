@@ -39,7 +39,7 @@
     position: relative;
 
     @media (--tablet-portrait) {
-      padding-bottom: 4%;
+      padding-bottom: 43px;
     }
 
     &::after {
@@ -66,19 +66,6 @@
     }
   }
 
-  &__slide,
-  .swiper-wrapper {
-    height: 200px;
-
-    @media (--mobile-landscape) {
-      height: 300px;
-    }
-
-    @media (--tablet-portrait) {
-      height: 500px;
-    }
-  }
-
   &__slide {
     overflow: hidden;
     position: relative;
@@ -96,6 +83,7 @@
       top: 0;
       transition: opacity .4s ease-out;
       width: 100%;
+      z-index: var(--z-index-PagePortfolioSingleContent__sliderWrap__after);
     }
 
     &::after {
@@ -114,6 +102,7 @@
       transform: rotate(45deg);
       transition: opacity .4s ease-out, transform .2s ease-out;
       width: 35px;
+      z-index: var(--z-index-PagePortfolioSingleContent__sliderWrap__after);
     }
 
     &:hover {
@@ -129,6 +118,10 @@
       }
     }
 
+    picture {
+      text-align: center;
+    }
+
     img {
       width: 100%;
     }
@@ -139,7 +132,11 @@
   }
 
   .swiper-pagination {
-    bottom: 12px;
+    bottom: 16px;
+
+    @media (--tablet-portrait) {
+      bottom: 13px;
+    }
   }
 
   /* Lib Overides */

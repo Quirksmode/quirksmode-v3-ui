@@ -20,24 +20,6 @@ const Hero = ({
       <source
         type="image/webp"
         srcSet={
-                `${hero.image.sizes.fullWidth1024}.webp 1x,
-                ${hero.image.sizes.fullWidth1024_2x}.webp 1.5x,
-                ${hero.image.sizes.fullWidth1024_2x}.webp 2x`
-              }
-        media="(min-width: 1024px)"
-      />
-      <source
-        type="image/jpeg"
-        srcSet={
-                `${hero.image.sizes.fullWidth1024} 1x,
-                ${hero.image.sizes.fullWidth1024_2x} 1.5x,
-                ${hero.image.sizes.fullWidth1024_2x} 2x`
-              }
-        media="(min-width: 1024px)"
-      />
-      <source
-        type="image/webp"
-        srcSet={
                 `${hero.image.sizes.fullWidth1800}.webp 1x,
                 ${hero.image.sizes.fullWidth1800_2x}.webp 1.5x,
                 ${hero.image.sizes.fullWidth1800_2x}.webp 2x`
@@ -109,7 +91,7 @@ const Hero = ({
       />
     </picture>
     <div className="Hero__inner grid">
-      <div className={`Hero__textWrap grid__content${hero.alignCenter ? ' grid__content--center' : ''}`}>
+      <div className={ `Hero__textWrap grid__content${hero.alignCenter ? ' grid__content--center' : ''}` }>
         <h1 className="Hero__textWrapTitle">{ title }</h1>
         <h3>
           { subtitle }

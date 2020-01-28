@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
 const webpackNodeExternals = require('webpack-node-externals');
@@ -81,7 +82,12 @@ const config = {
   plugins: [
     new CopyPlugin([
       { from: path.resolve(__dirname, 'robots.txt'), to: path.resolve(__dirname, 'build/public') }
-    ])
+    ]),
+    new webpack.DefinePlugin({
+      __CLIENT__: false,
+      __SERVER__: true,
+      'typeof window': JSON.stringify('object')
+    }),
   ],
   externals: [webpackNodeExternals()]
 };

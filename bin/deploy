@@ -1,0 +1,94 @@
+#!/usr/bin/env bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+PROJECT_ROOT=$(dirname ${DIR})
+
+# Parse command line arguments
+POSITIONAL=()
+while [[ $# -gt 0 ]]; do
+    key="$1"
+    case $key in
+        *)    # unknown option
+            POSITIONAL+=("$1") # save it in an array for later
+            shift # past argument
+            ;;
+    esac
+done
+set -- "${POSITIONAL[@]}" # restore positional parameters
+
+function usage_help {
+    echo "Usage: $0 [environment name]"
+    echo "Example: ./bin/deploy dev"
+}
+
+function wpengine_cleanup {
+    git rm -r docker
+}
+
+function wpengine_add_theme {
+    git add -f wp-content/themes/quirksmode-v3
+}
+
+function wpengine_deploy {
+    export BUILD_BRANCH=build-${WPENGINE_GIT_COMMIT}
+
+    echo "*** Checkout current branch"
+    git checkout ${CI_COMMIT_REF_NAME} \
+        || { echo "Failed to create build branch"; exit 1; }
+
+    echo "*** Create deployment build commit"
+    if [ "${WPENGINE_GIT_CURRENT_BRANCH}" != "" ]; then
+        local msg="WP Engine deployment build from"
+        git commit -m "${msg} ${WPENGINE_GIT_CURRENT_BRANCH} branch"
+    else
+        local msg="WP Engine deployment build from"
+        git commit -m "${msg} ${WPENGINE_GIT_COMMIT} commit"
+    fi
+
+    echo "*** Push code to WP Engine for deployment"
+    git push --force ${WPENGINE_GIT_REMOTE} ${CI_COMMIT_REF_NAME}
+}
+
+function init_environment {
+    local env_name=$1
+
+    if [ "$env_name" == "" ]; then
+        usage_help
+        exit 1git 
+    fi
+
+    if [ "$CI" == "true" ]; then
+        export WPENGINE_GIT_COMMIT="${CI_COMMIT_SHA}"
+        export WPENGINE_GIT_CURRENT_BRANCH="${CI_COMMIT_REF_NAME}"
+        git config --global user.email "david@quirksmode.co.uk"
+        git config --global user.name "David Plunkett"
+    else
+        export WPENGINE_GIT_COMMIT="$(git rev-parse --short HEAD)"
+        export WPENGINE_GIT_CURRENT_BRANCH="$(git rev-parse --abbrev-ref HEAD)"
+    fi
+
+    if [ "${env_name}" = "development" ]; then
+        export WPENGINE_GIT_REMOTE="git@git.wpengine.com:development/quirksmode.git"
+    elif [ "${env_name}" = "staging" ]; then
+        export WPENGINE_GIT_REMOTE="git@git.wpengine.com:staging/quirksmode.git"
+    elif [ "${env_name}" = "production" ]; then
+        export WPENGINE_GIT_REMOTE="git@git.wpengine.com:production/quirksmode.git"
+    else
+        usage_help
+        exit 1
+    fi
+}
+
+cd $PROJECT_ROOT
+
+# Initialise environment config
+init_environment $1
+
+# Add theme files
+wpengine_add_theme
+
+# Cleanup unwanted files before deployment
+wpengine_cleanup
+
+# Deploy application using WP Engine Git push
+wpengine_deploy

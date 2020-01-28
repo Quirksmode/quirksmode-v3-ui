@@ -11,6 +11,9 @@
       "classes": true
     }
   },
+  "globals": {
+    "__CLIENT__": true
+  },
   "env": {
     "browser": true,
     "node": true,

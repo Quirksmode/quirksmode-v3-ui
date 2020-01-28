@@ -9,11 +9,13 @@ import { matchRoutes, renderRoutes } from 'react-router-config';
 import serialize from 'serialize-javascript';
 import { minify } from 'html-minifier';
 import chalk from 'chalk';
+import https from 'https';
 import { ChunkExtractor, ChunkExtractorManager } from '@loadable/server';
 import routes from '../client/routes';
-import createStore from '../client/redux/store';
+import configureStore from '../client/redux/store';
 
 const IS_DEV = process.env.NODE_ENV !== 'production';
+const UI_URL = process.env.UI_URL ? process.env.UI_URL : '';
 
 const getCssString = extractor => extractor.getCssString();
 
@@ -34,6 +36,13 @@ const render = (req, store, context, extractor, css) => {
     <html class="no-js" lang="en">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" sizes="180x180" href="${UI_URL}/img/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="${UI_URL}/img/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="${UI_URL}/img/favicon/favicon-16x16.png">
+        <link rel="manifest" href="${UI_URL}/img/favicon/site.webmanifest">
+        <link rel="mask-icon" href="${UI_URL}/img/favicon/safari-pinned-tab.svg" color="#cc2d32">
+        <meta name="msapplication-TileColor" content="#cc2d32">
+        <meta name="theme-color" content="#ffffff">
         ${helmet.title.toString()}
         ${helmet.base.toString()}
         ${helmet.meta.toString()}
@@ -68,7 +77,14 @@ const render = (req, store, context, extractor, css) => {
 
 // Get all (fetchData) API data from components
 export default () => (req, res) => {
-  const store = createStore(req);
+  const store = configureStore({}, {
+    baseURL: process.env.API_URL,
+    headers: { cookie: req.get('cookie') || '' },
+    // Used for Local Development - Prevents content being blocked by a self signed certificate
+    httpsAgent: new https.Agent({
+      rejectUnauthorized: (process.env.LOCALENV !== 'true')
+    })
+  });
 
   // Loop through the routes array and get the data for each route (page)
   const loadRouteData = () => {

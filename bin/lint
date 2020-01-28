@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+cd ui
+
+echo "*** Lint JS and CSS"
+npm run lint

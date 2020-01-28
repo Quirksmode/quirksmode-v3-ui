@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+init_nvm() {
+    if [ -z "$NVM_DIR" ]; then
+        echo "ERROR: NVM not found"
+        exit 1
+    else
+        # Initialise nvm if installed
+        [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+    fi
+}
+
+use_nvm() {
+    echo ""
+    echo "*** Use/Install Node.js with NVM"
+    nvm use
+}
+
+init_nvm
+use_nvm
+
+echo "*** Run Development server"
+npm run dev

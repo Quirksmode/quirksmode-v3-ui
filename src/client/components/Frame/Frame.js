@@ -79,7 +79,7 @@ const Frame = ({
           <source
             type="image/webp"
             srcSet={
-              `${featuredImage.sizes[`quirksmode${size}`]}.webp 1x,
+              `${featuredImage.sizes[`quirksmode${size}2x`]}.webp 1x,
                 ${featuredImage.sizes[`quirksmode${size}2x`]}.webp 1.5x,
                 ${featuredImage.sizes[`quirksmode${size}2x`]}.webp 2x`
             }

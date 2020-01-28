@@ -9,6 +9,7 @@ import { NavLink } from 'react-router-dom';
 import Breadcrumbs from 'components/Breadcrumbs/Breadcrumbs';
 import Filter from 'components/Filter/Filter';
 import Frame from 'components/Frame/Frame';
+import { fetchPortfolioSingleData } from 'pages/PagePortfolioSingle/PagePortfolioSingle.actions';
 import { fetchPortfolioData } from './PagePortfolio.actions';
 
 /**
@@ -19,14 +20,21 @@ import { fetchPortfolioData } from './PagePortfolio.actions';
  */
 const PagePortfolio = ({
   fetchPortfolioDataAction,
+  fetchPortfolioSingleDataAction,
   projects,
   projectCategories,
   projectTags,
-  title
+  title,
+  loading
 }) => {
   useEffect(() => {
     if (!title) fetchPortfolioDataAction();
   }, [fetchPortfolioDataAction, title]);
+
+  const handleClick = (e, slug, href) => {
+    e.preventDefault();
+    fetchPortfolioSingleDataAction(slug, href);
+  };
 
   return title && (
     <div className="page PagePortfolio">
@@ -66,7 +74,8 @@ const PagePortfolio = ({
                       <Fragment key={ postName }>
                         <NavLink
                           to={ `/portfolio/${postName}/` }
-                          className="PagePortfolio__project"
+                          className={ `PagePortfolio__project${loading === postName ? ' PagePortfolio__project--loading' : ''}` }
+                          onClick={ e => handleClick(e, postName, `/portfolio/${postName}/`) }
                         >
                           <Frame featuredImage={ featuredImage } title={ postTitle } isNew={ isNew } size="Medium" />
                         </NavLink>
@@ -92,6 +101,7 @@ const PagePortfolio = ({
 };
 
 PagePortfolio.propTypes = {
+  loading: PropTypes.string,
   fetchPortfolioDataAction: PropTypes.func,
   title: PropTypes.string,
   projects: PropTypes.array,
@@ -99,7 +109,8 @@ PagePortfolio.propTypes = {
   projectTags: PropTypes.array
 };
 
-const mapStateToProps = ({ pagePortfolio, app }) => ({
+const mapStateToProps = ({ pagePortfolio, pagePortfolioSingle, app }) => ({
+  loading: pagePortfolioSingle.loading,
   title: pagePortfolio.title,
   projects: pagePortfolio.projects,
   projectCategories: app.projectCategories,
@@ -107,7 +118,8 @@ const mapStateToProps = ({ pagePortfolio, app }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchPortfolioDataAction: (...args) => dispatch(fetchPortfolioData(...args))
+  fetchPortfolioDataAction: (...args) => dispatch(fetchPortfolioData(...args)),
+  fetchPortfolioSingleDataAction: (...args) => dispatch(fetchPortfolioSingleData(...args))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PagePortfolio);

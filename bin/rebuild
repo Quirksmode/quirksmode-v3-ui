@@ -1,0 +1,65 @@
+#!/usr/bin/env bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+PROJECT_ROOT=$(dirname ${DIR})
+
+# Use project directory name as the project name
+PROJECT_NAME=$(basename $PROJECT_ROOT)
+
+###
+# Print error
+###
+error() {
+    echo "$@" 1>&2;
+}
+
+command -v docker-compose > /dev/null \
+    || { error "FAILED: You need docker-compose installed"; exit 1; }
+
+set -e
+
+echo "*** Stop and Remove wordpress service"
+docker-compose -f .$PROJECT_ROOT/docker-compose.yml stop wordpress
+docker-compose -f .$PROJECT_ROOT/docker-compose.yml rm --force wordpress
+
+WORDPRESS_IMAGE="${PROJECT_NAME}_wordpress"
+if docker image ls | grep -q ${WORDPRESS_IMAGE} ; then
+    echo "*** Remove WordPress image"
+    docker image rm ${WORDPRESS_IMAGE}
+fi
+
+WORDPRESS_VOLUME="${PROJECT_NAME}_wordpress"
+if docker volume ls | grep -q ${WORDPRESS_VOLUME} ; then
+    echo "*** Delete WordPress volume"
+    docker volume rm ${WORDPRESS_VOLUME}
+fi
+
+echo "*** Stop and Remove UI service"
+docker-compose -f .$PROJECT_ROOT/docker-compose.yml stop ui
+docker-compose -f .$PROJECT_ROOT/docker-compose.yml rm --force ui
+
+UI_IMAGE="${PROJECT_NAME}_wordpress"
+if docker image ls | grep -q ${UI_IMAGE} ; then
+    echo "*** Remove WordPress image"
+    docker image rm ${UI_IMAGE}
+fi
+
+UI_VOLUME="${PROJECT_NAME}_wordpress"
+if docker volume ls | grep -q ${UI_VOLUME} ; then
+    echo "*** Delete WordPress volume"
+    docker volume rm ${UI_VOLUME}
+fi
+
+echo "*** Stop and Remove phpmyadmin service"
+docker-compose -f .$PROJECT_ROOT/docker-compose.yml stop phpmyadmin
+docker-compose -f .$PROJECT_ROOT/docker-compose.yml rm --force phpmyadmin
+
+echo "*** Stop and Remove db service"
+docker-compose -f .$PROJECT_ROOT/docker-compose.yml stop db
+docker-compose -f .$PROJECT_ROOT/docker-compose.yml rm --force db
+
+echo "*** Build Docker images"
+docker-compose -f .$PROJECT_ROOT/docker-compose.yml build --pull
+
+echo "*** Start services"
+docker-compose -f .$PROJECT_ROOT/docker-compose.yml up -d

@@ -4,6 +4,7 @@ import {
 } from './PagePortfolioSingle.actions';
 
 const initialState = {
+  loading: '',
   id: null,
   title: '',
   slug: '',
@@ -18,7 +19,6 @@ const initialState = {
   contentBlocks: [],
   related: [],
   noRelated: false,
-  loading: true,
   hero: {
     url: ''
   }
@@ -26,8 +26,12 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_PORTFOLIO_SINGLE_REQUEST:
-      return initialState;
+    case FETCH_PORTFOLIO_SINGLE_REQUEST: {
+      return {
+        ...state,
+        loading: action.payload
+      };
+    }
     case FETCH_PORTFOLIO_SINGLE_SUCCESS:
       return {
         ...state,
@@ -41,7 +45,7 @@ export default (state = initialState, action) => {
         related: action.payload.data.related,
         hero: action.payload.data.hero,
         noRelated: action.payload.data.noRelated,
-        loading: false
+        loading: ''
       };
     default:
       return state;

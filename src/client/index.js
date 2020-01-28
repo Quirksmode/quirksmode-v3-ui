@@ -2,26 +2,26 @@ import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
-import axios from 'axios';
 import { AppContainer } from 'react-hot-loader';
 import { loadableReady } from '@loadable/component';
 import { createBrowserHistory } from 'history';
-import reducers from './redux/combineReducers';
+import configureStore from './redux/store';
 import Container from './Container';
 
+/**
+ * Setup history API
+ */
 const history = createBrowserHistory();
 
-const axiosInstance = axios.create({
+/**
+ * Hydrate redux store from back-end data
+ */
+const initialState = window.INITIAL_STATE;
+console.log('initialState', initialState);
+delete window.INITIAL_STATE;
+const store = configureStore(initialState, {
   baseURL: process.env.API_URL
-});
-
-const store = createStore(
-  reducers,
-  window.INITIAL_STATE,
-  applyMiddleware(thunk.withExtraArgument(axiosInstance))
-);
+}, history);
 
 const render = (Component) => {
   ReactDOM.hydrate(

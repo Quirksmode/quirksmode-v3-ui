@@ -22,7 +22,7 @@ const PagePortfolioSingleContent = ({
     preloadImages: true,
     shouldSwiperUpdate: true,
     updateOnImagesReady: true,
-    loop: true,
+    loop: false,
     pagination: {
       el: '.swiper-pagination',
       clickable: true
@@ -73,7 +73,7 @@ const PagePortfolioSingleContent = ({
       slide: index
     });
     if (swiper !== null) {
-      swiper.slideTo(index);
+      swiper.slideTo(index - 1);
     }
   }, [lightboxController.toggler, swiper]);
 
@@ -88,18 +88,52 @@ const PagePortfolioSingleContent = ({
                 getSwiper={ updateSwiper }
                 { ...params }
               >
-                { content.projectScreenshots.map((item, index) => (
+                { content.projectScreenshots.map((slide, index) => (
                   <a
-                    href={ item.add_screenshot.url }
-                    key={ item.add_screenshot.id }
+                    href={ slide.url }
+                    key={ slide.id }
                     onClick={ e => openLightboxOnSlide(e, index + 1) }
-                    className="PagePortfolioSingleContent__slide"
+                    className="PagePortfolioSingleContent__slide aspectWrap aspectWrap--ratio-16-10"
                   >
-                    <img
-                      src={ item.add_screenshot.sizes.fullWidth1800_2x }
-                      srcSet={ `${item.add_screenshot.sizes.fullWidth1800_2x}, ${item.add_screenshot.sizes.fullWidth1800_2x} 2x` }
-                      alt={ item.add_screenshot.alt }
-                    />
+                    <picture>
+                      <source
+                        type="image/webp"
+                        srcSet={
+                          `${slide.sizes.heroSlider768up2x}.webp 1x,
+                          ${slide.sizes.heroSlider768up2x}.webp 1.5x,
+                          ${slide.sizes.heroSlider768up2x}.webp 2x`
+                        }
+                        media="(min-width: 768px)"
+                      />
+                      <source
+                        type="image/jpeg"
+                        srcSet={
+                          `${slide.sizes.heroSlider768up} 1x,
+                          ${slide.sizes.heroSlider768up2x} 1.5x,
+                          ${slide.sizes.heroSlider768up2x} 2x`
+                        }
+                        media="(min-width: 768px)"
+                      />
+                      <source
+                        type="image/webp"
+                        srcSet={
+                          `${slide.sizes.heroSlider481up}.webp 1x,
+                          ${slide.sizes.heroSlider481up2x}.webp 1.5x,
+                          ${slide.sizes.heroSlider481up2x}.webp 2x`
+                        }
+                      />
+                      <img
+                        srcSet={
+                          `${slide.sizes.heroSlider481up} 1x,
+                          ${slide.sizes.heroSlider481up2x} 1.5x,
+                          ${slide.sizes.heroSlider481up2x} 2x`
+                        }
+                        src={ slide.sizes.heroSlider481up }
+                        alt={ slide.alt }
+                        width={ slide.width }
+                        height={ slide.height }
+                      />
+                    </picture>
                   </a>
                 ))}
               </Swiper>
@@ -109,7 +143,7 @@ const PagePortfolioSingleContent = ({
           <FsLightbox
             toggler={ lightboxController.toggler }
             type="image"
-            sources={ content.projectScreenshots.map(item => item.add_screenshot.url) }
+            sources={ content.projectScreenshots.map(slide => slide.url) }
             slide={ lightboxController.slide }
           />
           ) }

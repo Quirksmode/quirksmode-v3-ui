@@ -25,31 +25,30 @@ const PagePortfolioSingle = ({
   related,
   noRelated,
   contentBlocks
-}) => {
-  useEffect(() => {
-    if (slug !== match.params.slug) {
-      fetchPortfolioSingleDataAction(match.params.slug);
-    }
-  }, [fetchPortfolioSingleDataAction, match.params.slug, slug]);
+}) =>
+// useEffect(() => {
+//   if (slug !== match.params.slug) {
+//     fetchPortfolioSingleDataAction(match.params.slug);
+//   }
+// }, [fetchPortfolioSingleDataAction, match.params.slug, slug]);
 
-  return title && (
-    <div className="Page PagePortfolioSingle">
-      <Helmet>
-        <title>Portfolio Single Helmet Test</title>
-        <meta property="og:title" content="Portfolio Single Page" />
-      </Helmet>
-      <Hero hero={ hero } title={ title } subtitle={ content.projectRole } url={ url } />
-      <ContentBlocks
-        contentBlocks={ contentBlocks }
-        tags={ content.projectTags }
-        projectURL={ content.projectURL }
-      />
-      { content.projectScreenshots.length && <PagePortfolioSingleContent content={ content } /> }
-      { related && <RelatedContent related={ related } type="portfolio" noRelated={ noRelated } /> }
-    </div>
+  title && (
+  <div className="Page PagePortfolioSingle">
+    <Helmet>
+      <title>Portfolio Single Helmet Test</title>
+      <meta property="og:title" content="Portfolio Single Page" />
+    </Helmet>
+    <Hero hero={ hero } title={ title } subtitle={ content.projectRole } url={ url } />
+    <ContentBlocks
+      contentBlocks={ contentBlocks }
+      tags={ content.projectTags }
+      projectURL={ content.projectURL }
+    />
+    { content.projectScreenshots.length > 0
+        && <PagePortfolioSingleContent content={ content } /> }
+    { related && <RelatedContent related={ related } type="portfolio" noRelated={ noRelated } /> }
+  </div>
   );
-};
-
 PagePortfolioSingle.propTypes = {
   fetchPortfolioSingleDataAction: PropTypes.func,
   match: PropTypes.object,
