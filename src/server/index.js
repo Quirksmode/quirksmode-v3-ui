@@ -17,7 +17,7 @@ const serverConfig = require('../../webpack.server');
 // Load the .env variables
 dotenv.config();
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 
@@ -56,8 +56,8 @@ if (process.env.NODE_ENV !== 'production') {
     publicPath,
     headers: { 'Access-Control-Allow-Origin': '*' },
     hot: true,
-    quiet: true, // Turn it on for friendly-errors-webpack-plugin
-    noInfo: true,
+    quiet: false, // Turn it on for friendly-errors-webpack-plugin
+    noInfo: false,
     writeToDisk: true,
     stats: 'minimal',
     serverSideRender: true

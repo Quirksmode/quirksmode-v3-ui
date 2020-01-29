@@ -1,15 +1,13 @@
 version: "3"
 services:
   ui:
-    depends_on:
-      - wordpress
     build:
-      context: ./ui/
+      context: .
     volumes:
-      - "./ui/webpack.client.js:/usr/src/app/webpack.client.js"
-      - "./ui/webpack.server.js:/usr/src/app/webpack.server.js"
-      - "./ui/postcss.config.js:/usr/src/app/postcss.config.js"
-      - "./ui/src/:/usr/src/app/src"
+      - "./webpack.client.js:/usr/src/app/webpack.client.js"
+      - "./webpack.server.js:/usr/src/app/webpack.server.js"
+      - "./postcss.config.js:/usr/src/app/postcss.config.js"
+      - "./src/:/usr/src/app/src"
       - /usr/src/app/node_modules/
     ports:
-      - "8080:8080"
+      - "3000:3000"

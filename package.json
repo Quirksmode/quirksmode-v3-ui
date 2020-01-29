@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Server side rendering project",
   "scripts": {
+    "start": "run-s prod:*",
     "dev": "NODE_ENV=\"development\" node src/server/index.js",
     "prod": "run-s prod:*",
     "prod:build-client": "NODE_ENV=\"production\" webpack --config webpack.client.js",
@@ -26,6 +27,7 @@
     "express-http-proxy": "1.6.0",
     "fslightbox-react": "^1.4.7",
     "history": "4.10.1",
+    "http2": "^3.3.7",
     "https": "^1.0.0",
     "is-object": "1.0.1",
     "nodemailer": "6.3.1",

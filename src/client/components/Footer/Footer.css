@@ -39,7 +39,7 @@
     width: 100%;
 
     @media (--mobile-landscape) {
-      background: transparent url(../img/divide-nav-Footer.png) 100% 50% no-repeat;
+      background: transparent url(../img/divide-nav-footer.png) 100% 50% no-repeat;
       margin-bottom: 0;
       padding: 0 12px;
       width: auto;

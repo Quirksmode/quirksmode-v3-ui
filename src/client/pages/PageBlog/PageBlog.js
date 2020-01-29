@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import Breadcrumbs from 'components/Breadcrumbs/Breadcrumbs';
 import Filter from 'components/Filter/Filter';
-import Sidebar from 'components/sidebar/sidebar';
+import Sidebar from 'components/Sidebar/Sidebar';
 import PostItem from 'components/PostItem/PostItem';
 import { fetchBlogData } from './PageBlog.actions';
 

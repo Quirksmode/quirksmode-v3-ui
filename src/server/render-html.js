@@ -75,7 +75,7 @@ const render = (req, store, context, extractor, css) => {
 };
 
 // Get all (fetchData) API data from components
-export default (req, res) => {
+export default () => (req, res) => {
   const store = configureStore({}, {
     baseURL: process.env.API_URL,
     headers: { cookie: req.get('cookie') || '' },

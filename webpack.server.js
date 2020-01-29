@@ -17,7 +17,7 @@ const config = {
       icons: path.resolve(__dirname, 'src/assets/icons')
     }
   },
-  entry: './src/server/index.js',
+  entry: IS_DEV ? './src/server/render-html.js' : './src/server/index.js',
   output: {
     filename: 'server.js',
     path: path.resolve(__dirname, 'build')

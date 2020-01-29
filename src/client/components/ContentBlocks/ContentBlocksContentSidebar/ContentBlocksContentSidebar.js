@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Sidebar from 'components/sidebar/sidebar';
+import Sidebar from 'components/Sidebar/Sidebar';
 
 /**
  * Description
