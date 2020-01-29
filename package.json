@@ -7,7 +7,7 @@
     "prod": "run-s prod:*",
     "prod:build-client": "NODE_ENV=\"production\" webpack --config webpack.client.js",
     "prod:build-server": "NODE_ENV=\"production\" webpack --config webpack.server.js",
-    "prod:server": "NODE_ENV=\"production\" node src/server/index.js",
+    "prod:server": "NODE_ENV=\"production\" node build/server.js",
     "lint": "npm-run-all lint:*",
     "lint:js": "eslint './src/**/*.js'",
     "lint:css": "stylelint ./src/**/*.css"

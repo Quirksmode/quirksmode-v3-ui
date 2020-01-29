@@ -88,6 +88,9 @@ const config = {
       __SERVER__: true,
       'typeof window': JSON.stringify('object')
     }),
+    new webpack.optimize.LimitChunkCountPlugin({
+      maxChunks: 1,
+    }),
   ],
   externals: [webpackNodeExternals()]
 };

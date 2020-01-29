@@ -102,7 +102,14 @@
     svg {
       fill: var(--color-white);
       height: 20px;
+      transition: fill .2s ease-out;
       width: 20px;
+
+      &:hover {
+        .no-touch & {
+          fill: var(--color-qm-blue);
+        }
+      }
     }
 
     a,
@@ -110,6 +117,13 @@
       color: var(--color-white);
       font-size: 1.4rem;
       line-height: 1.4rem;
+      transition: color .2s ease-out;
+
+      &:hover {
+        .no-touch & {
+          color: var(--color-qm-blue);
+        }
+      }
     }
   }
 

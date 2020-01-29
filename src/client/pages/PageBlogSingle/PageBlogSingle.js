@@ -44,7 +44,7 @@ const PageBlogSingle = ({
         <title>Blog Single Helmet Test</title>
         <meta property="og:title" content="Blog Single Page" />
       </Helmet>
-      <Hero hero={ hero } title={ title } subtitle={ date } url={ url } />
+      <Hero hero={ hero } title={ title } subtitle={ date } url={ url } type="Portfolio" />
       <ContentBlocks contentBlocks={ contentBlocks } />
       { related && <RelatedContent related={ related } type="blog" noRelated={ noRelated } /> }
     </div>

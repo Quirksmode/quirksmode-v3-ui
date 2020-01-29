@@ -13,7 +13,8 @@ const Hero = ({
   hero,
   title,
   subtitle = '',
-  url
+  url,
+  type
 }) => (
   <section className="Hero">
     <picture>
@@ -99,7 +100,7 @@ const Hero = ({
       </div>
       <Breadcrumbs>
         <span className="Breadcrumbs__divider">&gt;</span>
-        <NavLink to="/blog" className="Breadcrumbs__link">Blog</NavLink>
+        <NavLink to={ `/${type}` } className="Breadcrumbs__link">{` ${type === 'blog' ? 'Blog' : 'Portfolio'} `}</NavLink>
       </Breadcrumbs>
       <div className="Hero__share">
         <Share title={ title } url={ url } />

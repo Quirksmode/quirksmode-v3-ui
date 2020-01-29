@@ -28,7 +28,7 @@ const PagePortfolioSingle = ({
       <title>Portfolio Single Helmet Test</title>
       <meta property="og:title" content="Portfolio Single Page" />
     </Helmet>
-    <Hero hero={ hero } title={ title } subtitle={ content.projectRole } url={ url } />
+    <Hero hero={ hero } title={ title } subtitle={ content.projectRole } url={ url } type="Portfolio" />
     <ContentBlocks
       contentBlocks={ contentBlocks }
       tags={ content.projectTags }
