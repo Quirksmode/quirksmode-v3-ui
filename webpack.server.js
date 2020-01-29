@@ -19,6 +19,7 @@ const config = {
   },
   entry: IS_DEV ? './src/server/render-html.js' : './src/server/index.js',
   output: {
+    libraryTarget: 'commonjs2',
     filename: 'server.js',
     path: path.resolve(__dirname, 'build')
   },

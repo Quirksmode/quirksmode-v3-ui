@@ -3,7 +3,6 @@ const hpp = require('hpp');
 const logger = require('morgan');
 const express = require('express');
 const webpack = require('webpack');
-const path = require('path');
 const compression = require('compression');
 const dotenv = require('dotenv');
 const fs = require('fs');
@@ -59,7 +58,7 @@ if (process.env.NODE_ENV !== 'production') {
     quiet: false, // Turn it on for friendly-errors-webpack-plugin
     noInfo: false,
     writeToDisk: true,
-    stats: 'minimal',
+    stats: 'normal',
     serverSideRender: true
   };
   app.use(webpackDevMiddleware(compiler, options));
@@ -70,6 +69,9 @@ if (process.env.NODE_ENV !== 'production') {
     log: false // Turn it off for friendly-errors-webpack-plugin
   }));
 } else {
+  // eslint-disable-next-line global-require
+  const serverRenderer = require('./render-html').default;
+
   // Configuring HTTP caching behavior (https://web.dev/codelab-http-cache/)
   app.use(express.static('build/public', {
     etag: true, // Just being explicit about the default.
@@ -87,9 +89,7 @@ if (process.env.NODE_ENV !== 'production') {
     },
   }));
 
-  app.get('*', (req, res) => {
-    require('./render-html').default(req, res);
-  });
+  app.use(serverRenderer());
 }
 
 // start the HTTP/2 server with express
