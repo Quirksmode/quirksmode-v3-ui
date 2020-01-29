@@ -27,14 +27,12 @@ app.use(helmet());
 app.use(hpp());
 
 // Use for http request debug (show errors only)
-app.use(logger('dev', { skip: (req, res) => res.statusCode < 400 }));
-// app.use(favicon(path.resolve(process.cwd(), 'public/favicon.ico')));
-
+// app.use(logger('dev', { skip: (req, res) => res.statusCode < 400 }));
 
 // create your own certificate with openssl for development
 const sslOptions = {
-  key: fs.readFileSync(path.join(__dirname, '../../local.quirksmode.co.uk.quirksmode.key.pem')),
-  cert: fs.readFileSync(path.join(__dirname, '../../local.quirksmode.co.uk.quirksmode.cert.pem'))
+  key: fs.readFileSync('local.quirksmode.co.uk.quirksmode.key.pem'),
+  cert: fs.readFileSync('local.quirksmode.co.uk.quirksmode.cert.pem')
 };
 
 const shouldCompress = (req, res) => {
@@ -72,11 +70,8 @@ if (process.env.NODE_ENV !== 'production') {
     log: false // Turn it off for friendly-errors-webpack-plugin
   }));
 } else {
-  const publicPath = path.join(__dirname, '../../build/public');
-  const serverRenderer = require('../../build/server.js').default;
-
   // Configuring HTTP caching behavior (https://web.dev/codelab-http-cache/)
-  app.use(express.static(publicPath, {
+  app.use(express.static('build/public', {
     etag: true, // Just being explicit about the default.
     lastModified: true, // Just being explicit about the default.
     setHeaders: (res, thePath) => {
@@ -92,7 +87,9 @@ if (process.env.NODE_ENV !== 'production') {
     },
   }));
 
-  app.use(serverRenderer());
+  app.get('*', (req, res) => {
+    require('./render-html').default(req, res);
+  });
 }
 
 // start the HTTP/2 server with express
