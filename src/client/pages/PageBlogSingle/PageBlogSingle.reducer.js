@@ -16,7 +16,8 @@ const initialState = {
   noRelated: false,
   hero: {
     url: ''
-  }
+  },
+  metadata: {}
 };
 
 export default (state = initialState, action) => {
@@ -37,6 +38,7 @@ export default (state = initialState, action) => {
         related: action.payload.data.related,
         noRelated: action.payload.data.noRelated,
         hero: action.payload.data.hero,
+        metadata: action.payload.data.metadata,
         loading: ''
       };
     case FETCH_BLOG_SINGLE_ERROR:

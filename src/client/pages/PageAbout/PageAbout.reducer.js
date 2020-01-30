@@ -8,7 +8,8 @@ const initialState = {
     skillsTitle: '',
     skills: []
   },
-  cvSections: []
+  cvSections: [],
+  metadata: {}
 };
 
 export default (state = initialState, action) => {
@@ -19,7 +20,8 @@ export default (state = initialState, action) => {
         title: action.payload.data.title,
         content: action.payload.data.content,
         skillsSections: action.payload.data.skillsSections,
-        cvSections: action.payload.data.cvSections
+        cvSections: action.payload.data.cvSections,
+        metadata: action.payload.data.metadata
       };
     default:
       return state;

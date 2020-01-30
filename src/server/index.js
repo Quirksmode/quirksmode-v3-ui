@@ -1,12 +1,11 @@
 const helmet = require('helmet');
 const hpp = require('hpp');
-const logger = require('morgan');
 const express = require('express');
 const webpack = require('webpack');
 const compression = require('compression');
 const dotenv = require('dotenv');
-const fs = require('fs');
 const spdy = require('spdy');
+const fs = require('fs');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 const webpackHotServerMiddleware = require('webpack-hot-server-middleware');
@@ -25,14 +24,15 @@ app.use(helmet());
 // Prevent HTTP parameter pollution
 app.use(hpp());
 
-// Use for http request debug (show errors only)
-// app.use(logger('dev', { skip: (req, res) => res.statusCode < 400 }));
-
 // create your own certificate with openssl for development
-const sslOptions = {
-  key: fs.readFileSync('local.quirksmode.co.uk.quirksmode.key.pem'),
-  cert: fs.readFileSync('local.quirksmode.co.uk.quirksmode.cert.pem')
-};
+// const spdyOptions = {
+//   key: fs.readFileSync('local.quirksmode.co.uk.quirksmode.key.pem'),
+//   cert: fs.readFileSync('local.quirksmode.co.uk.quirksmode.cert.pem'),
+//   // spdy: {
+//   //   plain: true,
+//   //   ssl: false,
+//   // }
+// };
 
 const shouldCompress = (req, res) => {
   // don't compress responses asking explicitly not
@@ -92,15 +92,15 @@ if (process.env.NODE_ENV !== 'production') {
   app.use(serverRenderer());
 }
 
-// start the HTTP/2 server with express
-spdy.createServer(sslOptions, app).listen(PORT, (error) => {
-  if (error) {
-    console.error(error);
-    return process.exit(1);
-  }
-  console.log(`HTTP/2 server listening on port: ${PORT}`);
-});
-
-// app.listen(8080, () => {
-//   console.log('Listening on port 8080');
+// // start the HTTP/2 server with express
+// spdy.createServer(spdyOptions, app).listen(PORT, (error) => {
+//   if (error) {
+//     console.error(error);
+//     return process.exit(1);
+//   }
+//   console.log(`HTTP/2 server listening on port: ${PORT}`);
 // });
+
+app.listen(PORT, () => {
+  console.log(`HTTP server listening on port: ${PORT}`);
+});

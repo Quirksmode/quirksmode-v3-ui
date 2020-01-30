@@ -23,7 +23,8 @@ const initialState = {
   noRelated: false,
   hero: {
     url: ''
-  }
+  },
+  metadata: {}
 };
 
 export default (state = initialState, action) => {
@@ -47,6 +48,7 @@ export default (state = initialState, action) => {
         related: action.payload.data.related,
         hero: action.payload.data.hero,
         noRelated: action.payload.data.noRelated,
+        metadata: action.payload.data.metadata,
         loading: '',
         error: false
       };

@@ -4,7 +4,8 @@ import {
 
 const initialState = {
   title: '',
-  projects: []
+  projects: [],
+  metadata: {}
 };
 
 export default (state = initialState, action) => {
@@ -13,7 +14,8 @@ export default (state = initialState, action) => {
       return {
         ...state,
         title: action.payload.data.title,
-        projects: action.payload.data.projects
+        projects: action.payload.data.projects,
+        metadata: action.payload.data.metadata
       };
     default:
       return state;

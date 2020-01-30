@@ -1,18 +1,16 @@
-import { FETCH_SEARCH_DATA } from './PageSearch.actions';
+import { FETCH_CONTACT_DATA } from './PageContact.actions';
 
 const initialState = {
   title: '',
-  searchPosts: [],
   metadata: {}
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_SEARCH_DATA:
+    case FETCH_CONTACT_DATA:
       return {
         ...state,
         title: action.payload.data.title,
-        searchPosts: action.payload.data.searchPosts,
         metadata: action.payload.data.metadata
       };
     default:

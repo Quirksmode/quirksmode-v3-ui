@@ -3,11 +3,11 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Helmet } from 'react-helmet';
 import Prism from 'prismjs';
 import ContentBlocks from 'components/ContentBlocks/ContentBlocks';
 import RelatedContent from 'components/RelatedContent/RelatedContent';
 import Hero from 'components/Hero/Hero';
+import Meta from 'components/Meta/Meta';
 import { fetchBlogSingleData } from './PageBlogSingle.actions';
 
 /**
@@ -26,7 +26,8 @@ const PageBlogSingle = ({
   date,
   related,
   noRelated,
-  hero
+  hero,
+  metadata
 }) => {
   useEffect(() => {
     if (slug !== match.params.slug) {
@@ -40,10 +41,7 @@ const PageBlogSingle = ({
 
   return title && (
     <div className="Page PageBlogSingle">
-      <Helmet>
-        <title>Blog Single Helmet Test</title>
-        <meta property="og:title" content="Blog Single Page" />
-      </Helmet>
+      <Meta { ...metadata } />
       <Hero hero={ hero } title={ title } subtitle={ date } url={ url } type="Portfolio" />
       <ContentBlocks contentBlocks={ contentBlocks } />
       { related && <RelatedContent related={ related } type="blog" noRelated={ noRelated } /> }
@@ -63,7 +61,8 @@ PageBlogSingle.propTypes = {
   date: PropTypes.string,
   related: PropTypes.array,
   noRelated: PropTypes.bool,
-  hero: PropTypes.object
+  hero: PropTypes.object,
+  metadata: PropTypes.object
 };
 
 const mapStateToProps = ({ pageBlogSingle }) => ({
@@ -74,7 +73,8 @@ const mapStateToProps = ({ pageBlogSingle }) => ({
   date: pageBlogSingle.date,
   related: pageBlogSingle.related,
   noRelated: pageBlogSingle.noRelated,
-  hero: pageBlogSingle.hero
+  hero: pageBlogSingle.hero,
+  metadata: pageBlogSingle.metadata
 });
 
 const mapDispatchToProps = dispatch => ({

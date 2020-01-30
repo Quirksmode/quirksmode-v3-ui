@@ -156,22 +156,21 @@ const Filter = ({
                 All
               </a>
             </li>
-            {
-              categories.map(category => (
-                <li
-                  className={ `Filter__listItem${catButtons[category.slug] ? ' Filter__listItem--selected' : ''}` }
-                  id={ `cat-${category.slug}` }
-                  key={ category.term_id }
+            { categories.length > 0 && categories.map(category => (
+              <li
+                className={ `Filter__listItem${catButtons[category.slug] ? ' Filter__listItem--selected' : ''}` }
+                id={ `cat-${category.slug}` }
+                key={ category.term_id }
+              >
+                <a
+                  className="Filter__listItemLink"
+                  href={ `/${type}?cat=${category.slug}` }
+                  onClick={ e => toggleCategory(e, category.slug) }
                 >
-                  <a
-                    className="Filter__listItemLink"
-                    href={ `/${type}?cat=${category.slug}` }
-                    onClick={ e => toggleCategory(e, category.slug) }
-                  >
-                    { category.name }
-                  </a>
-                </li>
-              ))
+                  { category.name }
+                </a>
+              </li>
+            ))
             }
           </ul>
         )}

@@ -3,8 +3,8 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Helmet } from 'react-helmet';
 import Breadcrumbs from 'components/Breadcrumbs/Breadcrumbs';
+import Meta from 'components/Meta/Meta';
 import Filter from 'components/Filter/Filter';
 import Sidebar from 'components/Sidebar/Sidebar';
 import PostItem from 'components/PostItem/PostItem';
@@ -21,13 +21,11 @@ const PageBlog = ({
   title,
   blogPosts,
   blogCategories,
-  blogTags
+  blogTags,
+  metadata
 }) => title && (
   <div className="page PageBlog">
-    <Helmet>
-      <title>Portfolio Helmet Test</title>
-      <meta property="og:title" content="Portfolio Page" />
-    </Helmet>
+    <Meta { ...metadata } />
     <section className="Page__section Page__section--greyFade Page__section--withFilter clearfix">
       <div className="Page__sectionInner PagePortfolio__sketch grid">
         <h1>{ title }</h1>
@@ -63,14 +61,16 @@ PageBlog.propTypes = {
   title: PropTypes.string,
   blogPosts: PropTypes.array,
   blogCategories: PropTypes.array,
-  blogTags: PropTypes.array
+  blogTags: PropTypes.array,
+  metadata: PropTypes.object
 };
 
 const mapStateToProps = ({ app, pageBlog }) => ({
   title: pageBlog.title,
   blogPosts: pageBlog.blogPosts,
   blogCategories: app.blogCategories,
-  blogTags: app.blogTags
+  blogTags: app.blogTags,
+  metadata: pageBlog.metadata
 });
 
 const mapDispatchToProps = dispatch => ({

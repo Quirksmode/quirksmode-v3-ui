@@ -8,7 +8,8 @@ const initialState = {
   loading: '',
   title: '',
   content: '',
-  contentBlocks: []
+  contentBlocks: [],
+  metadata: {}
 };
 
 export default (state = initialState, action) => {
@@ -24,6 +25,7 @@ export default (state = initialState, action) => {
         title: action.payload.data.title,
         content: action.payload.data.content,
         contentBlocks: action.payload.data.contentBlocks,
+        metadata: action.payload.data.metadata,
         loading: ''
       };
     case FETCH_PAGE_ERROR:

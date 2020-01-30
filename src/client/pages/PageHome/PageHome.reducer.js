@@ -5,7 +5,8 @@ const initialState = {
   featuredWork: [],
   intro: null,
   latestBlogPosts: [],
-  skills: []
+  skills: [],
+  metadata: {}
 };
 
 export default (state = initialState, action) => {
@@ -17,7 +18,8 @@ export default (state = initialState, action) => {
         featuredWork: action.payload.data.featuredWork,
         intro: action.payload.data.intro,
         latestBlogPosts: action.payload.data.latestBlogPosts,
-        skills: action.payload.data.skills
+        skills: action.payload.data.skills,
+        metadata: action.payload.data.metadata
       };
     default:
       return state;

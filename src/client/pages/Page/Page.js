@@ -3,8 +3,8 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Helmet } from 'react-helmet';
 import Breadcrumbs from 'components/Breadcrumbs/Breadcrumbs';
+import Meta from 'components/Meta/Meta';
 import ContentBlocks from 'components/ContentBlocks/ContentBlocks';
 import { fetchPageData } from './Page.actions';
 
@@ -19,7 +19,8 @@ const Page = ({
   match,
   title,
   slug,
-  contentBlocks
+  contentBlocks,
+  metadata
 }) => {
   useEffect(() => {
     if (slug !== match.params.slug) {
@@ -29,10 +30,7 @@ const Page = ({
 
   return (
     <div className="page">
-      <Helmet>
-        <title>Page Helmet Test</title>
-        <meta property="og:title" content="Home Page" />
-      </Helmet>
+      <Meta { ...metadata } />
       <section className="Page__section Page__section--greyFade Page__hero">
         <div className="Page__sectionInner grid">
           <h1>{ title }</h1>
@@ -52,14 +50,16 @@ Page.propTypes = {
   match: PropTypes.object,
   title: PropTypes.string,
   slug: PropTypes.string,
-  contentBlocks: PropTypes.array
+  contentBlocks: PropTypes.array,
+  metadata: PropTypes.object
 };
 
 const mapStateToProps = ({ page }) => ({
   title: page.title,
   slug: page.slug,
   content: page.content,
-  contentBlocks: page.contentBlocks
+  contentBlocks: page.contentBlocks,
+  metadata: page.metadata
 });
 
 const mapDispatchToProps = dispatch => ({

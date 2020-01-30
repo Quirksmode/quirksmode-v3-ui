@@ -10,6 +10,7 @@ import PageSearch from './pages/PageSearch/PageSearch';
 import Page from './pages/Page/Page';
 import { fetchHomeData } from './pages/PageHome/PageHome.actions';
 import { fetchAboutData } from './pages/PageAbout/PageAbout.actions';
+import { fetchContactData } from './pages/PageContact/PageContact.actions';
 import { fetchPortfolioData } from './pages/PagePortfolio/PagePortfolio.actions';
 import { fetchPortfolioSingleData } from './pages/PagePortfolioSingle/PagePortfolioSingle.actions';
 import { fetchBlogData } from './pages/PageBlog/PageBlog.actions';
@@ -47,7 +48,8 @@ export default [
       {
         component: PageContact,
         path: '/contact',
-        exact: true
+        exact: true,
+        loadData: store => store.dispatch(fetchContactData())
       },
       {
         component: PageBlog,

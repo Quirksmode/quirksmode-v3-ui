@@ -9,6 +9,7 @@ import { Helmet } from 'react-helmet';
 import queryString from 'query-string';
 import SVGInline from 'react-svg-inline';
 import Breadcrumbs from 'components/Breadcrumbs/Breadcrumbs';
+import Meta from 'components/Meta/Meta';
 import PostItem from 'components/PostItem/PostItem';
 import { fetchSearchData } from './PageSearch.actions';
 import IconSearch from '!!raw-loader!icons/search.svg';
@@ -23,7 +24,8 @@ const PageSearch = ({
   fetchSearchDataAction,
   location,
   title,
-  searchPosts
+  searchPosts,
+  metadata
 }) => {
   /**
    * react state mutator for setting the values
@@ -54,10 +56,7 @@ const PageSearch = ({
 
   return title && (
     <div className="Page PageSearch">
-      <Helmet>
-        <title>Portfolio Helmet Test</title>
-        <meta property="og:title" content="Portfolio Page" />
-      </Helmet>
+      <Meta { ...metadata } />
       <section className="Page__section Page__section--greyFade Page__section--withFilter">
         <div className="Page__sectionInner PagePortfolio__sketch grid">
           <h1>{ title }</h1>
@@ -123,7 +122,8 @@ const PageSearch = ({
 PageSearch.propTypes = {
   fetchSearchDataAction: PropTypes.func,
   title: PropTypes.string,
-  searchPosts: PropTypes.array
+  searchPosts: PropTypes.array,
+  metadata: PropTypes.object
 };
 
 const mapStateToProps = ({ pageSearch }) => ({

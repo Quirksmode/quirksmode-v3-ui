@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import ContentBlocks from 'components/ContentBlocks/ContentBlocks';
 import RelatedContent from 'components/RelatedContent/RelatedContent';
 import Hero from 'components/Hero/Hero';
+import Meta from 'components/Meta/Meta';
 import { fetchPortfolioSingleData } from './PagePortfolioSingle.actions';
 import PagePortfolioSingleContent from './PagePortfolioSingleContent/PagePortfolioSingleContent';
 
@@ -21,13 +22,11 @@ const PagePortfolioSingle = ({
   content,
   related,
   noRelated,
-  contentBlocks
+  contentBlocks,
+  metadata
 }) => title && (
   <div className="Page PagePortfolioSingle">
-    <Helmet>
-      <title>Portfolio Single Helmet Test</title>
-      <meta property="og:title" content="Portfolio Single Page" />
-    </Helmet>
+    <Meta { ...metadata } />
     <Hero hero={ hero } title={ title } subtitle={ content.projectRole } url={ url } type="Portfolio" />
     <ContentBlocks
       contentBlocks={ contentBlocks }
@@ -48,7 +47,8 @@ PagePortfolioSingle.propTypes = {
   featuredImage: PropTypes.object,
   content: PropTypes.object,
   related: PropTypes.array,
-  noRelated: PropTypes.bool
+  noRelated: PropTypes.bool,
+  metadata: PropTypes.object
 };
 
 const mapStateToProps = ({ pagePortfolioSingle }) => ({
@@ -60,7 +60,8 @@ const mapStateToProps = ({ pagePortfolioSingle }) => ({
   content: pagePortfolioSingle.content,
   related: pagePortfolioSingle.related,
   noRelated: pagePortfolioSingle.noRelated,
-  contentBlocks: pagePortfolioSingle.contentBlocks
+  contentBlocks: pagePortfolioSingle.contentBlocks,
+  metadata: pagePortfolioSingle.metadata
 });
 
 const mapDispatchToProps = dispatch => ({

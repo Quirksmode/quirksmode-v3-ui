@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Helmet } from 'react-helmet';
 import SVGInline from 'react-svg-inline';
 import Breadcrumbs from 'components/Breadcrumbs/Breadcrumbs';
+import Meta from 'components/Meta/Meta';
 import IconArrowDown from '!!raw-loader!icons/arrowdown.svg';
 import IconBook from '!!raw-loader!icons/book.svg';
 import IconChart from '!!raw-loader!icons/chart.svg';
@@ -39,7 +39,8 @@ const PageAbout = ({
   content,
   cv,
   skillsSections,
-  cvSections
+  cvSections,
+  metadata
 }) => {
   useEffect(() => {
     if (!title) fetchAboutDataAction();
@@ -47,10 +48,7 @@ const PageAbout = ({
 
   return title && (
     <div className="Page PageAbout">
-      <Helmet>
-        <title>About Me Page Helmet Test</title>
-        <meta property="og:title" content="About Me Page" />
-      </Helmet>
+      <Meta { ...metadata } />
       <section className="Page__section Page__section--greyFade">
         <div className="Page__sectionInner grid">
           <h1>{ title }</h1>
@@ -162,7 +160,8 @@ PageAbout.propTypes = {
   content: PropTypes.string,
   cv: PropTypes.object,
   skillsSections: PropTypes.object,
-  cvSections: PropTypes.array
+  cvSections: PropTypes.array,
+  metadata: PropTypes.object
 };
 
 const mapStateToProps = ({ app, pageAbout }) => ({
@@ -170,7 +169,8 @@ const mapStateToProps = ({ app, pageAbout }) => ({
   title: pageAbout.title,
   content: pageAbout.content,
   skillsSections: pageAbout.skillsSections,
-  cvSections: pageAbout.cvSections
+  cvSections: pageAbout.cvSections,
+  metadata: pageAbout.metadata
 });
 
 const mapDispatchToProps = dispatch => ({
