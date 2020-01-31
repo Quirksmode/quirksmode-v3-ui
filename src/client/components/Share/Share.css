@@ -46,7 +46,9 @@
     }
 
     &:hover {
-      background: var(--color-qm-grey);
+      .no-touch & {
+        background: var(--color-qm-grey);
+      }
     }
 
     &:last-child {

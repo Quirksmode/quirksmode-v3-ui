@@ -50,7 +50,7 @@ if (module.hot) {
 /**
  * Register service worker
  */
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
   window.addEventListener('load', () => {
     // eslint-disable-next-line compat/compat
     navigator.serviceWorker.register('/sw.js').then((registration) => {

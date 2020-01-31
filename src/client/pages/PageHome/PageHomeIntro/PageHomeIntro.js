@@ -44,6 +44,8 @@ const PageHomeIntro = ({
               }
               src={ intro.image.url }
               alt={ intro.image.alt }
+              width={ intro.image.width }
+              height={ intro.image.width }
               loading="lazy"
             />
           </picture>

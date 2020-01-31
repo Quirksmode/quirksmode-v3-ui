@@ -106,15 +106,17 @@
     }
 
     &:hover {
-      cursor: pointer;
+      .no-touch & {
+        cursor: pointer;
 
-      &::before {
-        opacity: .7;
-      }
+        &::before {
+          opacity: .7;
+        }
 
-      &::after {
-        opacity: 1;
-        transform: rotate(90deg);
+        &::after {
+          opacity: 1;
+          transform: rotate(90deg);
+        }
       }
     }
 

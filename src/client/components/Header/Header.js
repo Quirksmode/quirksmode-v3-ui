@@ -34,8 +34,8 @@ const Header = ({
    */
   const params = {
     autoHeight: true,
-    preloadImages: true,
-    loop: true,
+    preloadImages: false,
+    loop: false,
     shouldSwiperUpdate: true,
     updateOnImagesReady: true,
     pagination: {
@@ -124,6 +124,9 @@ const Header = ({
                         }
                         src={ slide.image.sizes.heroSlider481up }
                         alt={ slide.image.alt }
+                        width={ slide.image.width }
+                        height={ slide.image.height }
+                        loading="lazy"
                       />
                     </picture>
                   </div>

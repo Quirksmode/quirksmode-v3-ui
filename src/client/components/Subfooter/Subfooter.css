@@ -1,5 +1,7 @@
 @import './SubfooterLatestTweets/SubfooterLatestTweets.css';
+
 @import './SubfooterInstagram/SubfooterInstagram.css';
+
 @import './SubfooterContact/SubfooterContact.css';
 
 .Subfooter {
@@ -90,7 +92,13 @@
     color: var(--color-qm-blue);
     text-decoration: none;
 
-    &:hover,
+    &:hover {
+      .no-touch & {
+        color: var(--color-qm-blue);
+        text-decoration: underline;
+      }
+    }
+
     &:active {
       color: var(--color-qm-blue);
       text-decoration: underline;
@@ -115,7 +123,9 @@
     }
 
     &:hover {
-      color: var(--color-qm-subfooter);
+      .no-touch & {
+        color: var(--color-qm-subfooter);
+      }
     }
   }
 }

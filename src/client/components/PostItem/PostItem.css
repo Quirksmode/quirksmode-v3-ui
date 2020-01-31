@@ -3,7 +3,7 @@
     margin-bottom: 30px;
     position: relative;
 
-    @media (--custom-370) {
+    @media (--custom-420) {
       display: flex;
       justify-content: space-between;
     }
@@ -25,7 +25,7 @@
     top: 0;
     width: 100%;
 
-    @media (--custom-370) {
+    @media (--custom-420) {
       flex: 0 0 120px;
       margin: 0 15px 0 0;
       max-width: none;
@@ -60,7 +60,7 @@
     margin-bottom: 15px;
     min-height: 64px;
 
-    @media (--custom-370) {
+    @media (--custom-420) {
       margin-bottom: 0;
       min-height: 0;
     }
@@ -70,7 +70,7 @@
     margin-bottom: 2px;
     padding-left: 80px;
 
-    @media (--custom-370) {
+    @media (--custom-420) {
       padding-left: 0;
     }
 
@@ -84,7 +84,9 @@
       transition: color .2s ease-out;
 
       &:hover {
-        color: var(--link-hover);
+        .no-touch & {
+          color: var(--link-hover);
+        }
       }
     }
   }
@@ -96,7 +98,7 @@
     margin-bottom: 15px;
     padding-left: 80px;
 
-    @media (--custom-370) {
+    @media (--custom-420) {
       margin-bottom: 12px;
       padding-left: 0;
     }

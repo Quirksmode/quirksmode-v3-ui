@@ -41,4 +41,4 @@ workbox.routing.registerRoute('/', workbox.strategies.cacheFirst({
   cacheName: 'home',
 }));
 
-// workbox.googleAnalytics.initialize();
+workbox.googleAnalytics.initialize();

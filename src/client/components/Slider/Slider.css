@@ -27,7 +27,9 @@
     width: 50px;
 
     &:hover {
-      right: -5px;
+      .no-touch & {
+        right: -5px;
+      }
     }
   }
 
@@ -37,7 +39,9 @@
     transform: rotate(180deg);
 
     &:hover {
-      left: -5px;
+      .no-touch & {
+        left: -5px;
+      }
     }
   }
 }
@@ -63,7 +67,6 @@
     width: 18px;
     zoom: 1;
 
-    &-active,
     &:hover {
       .no-touch & {
         background: transparent url(../img/sliderBullet-selected_2x.png) 50% 50% no-repeat;
@@ -74,7 +77,11 @@
     }
 
     &-active {
+      background: transparent url(../img/sliderBullet-selected_2x.png) 50% 50% no-repeat;
+      background-size: 18px 18px;
       cursor: default;
+      position: relative;
+      top: 1px;
     }
   }
 }

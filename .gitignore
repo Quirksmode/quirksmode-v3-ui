@@ -32,6 +32,7 @@ wp-content/mysql.sql
 # Sensitve
 *.key
 *.env
+.env*
 *.pem
 *.p12
 *.csr

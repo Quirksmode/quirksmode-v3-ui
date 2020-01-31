@@ -70,7 +70,9 @@
         cursor: pointer;
 
         svg {
-          fill: var(--color-white);
+          .no-touch & {
+            fill: var(--color-white);
+          }
         }
       }
 
@@ -252,7 +254,9 @@
         cursor: pointer;
 
         svg {
-          fill: var(--color-lightbody);
+          .no-touch & {
+            fill: var(--color-lightbody);
+          }
         }
       }
 
@@ -280,7 +284,9 @@
       }
 
       &:hover {
-        background-color: var(--color-white);
+        .no-touch & {
+          background-color: var(--color-white);
+        }
       }
     }
 

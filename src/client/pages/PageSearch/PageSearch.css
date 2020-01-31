@@ -19,7 +19,9 @@
     }
 
     &:hover {
-      background-color: var(--color-white);
+      .no-touch & {
+        background-color: var(--color-white);
+      }
     }
   }
 

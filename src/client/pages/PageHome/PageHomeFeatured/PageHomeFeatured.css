@@ -40,7 +40,10 @@
     .swiper-slide {
       .js & {
         margin-right: 5%;
-        width: 30%;
+
+        @media (--mobile-landscape) {
+          width: 30%;
+        }
       }
     }
   }

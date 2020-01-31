@@ -29,7 +29,7 @@ const PageHomeFeatured = ({
    * @type {object}
    */
   const params = {
-    preloadImages: true,
+    preloadImages: false,
     lazyLoading: true,
     updateOnImagesReady: true,
     slidesPerView: 1,

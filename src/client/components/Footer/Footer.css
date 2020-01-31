@@ -69,10 +69,14 @@
       line-height: 1.2rem;
     }
 
-    &:hover,
-    &:focus,
-    &--selected {
+    &:hover {
       color: var(--color-white);
+    }
+
+    &--selected {
+      .no-touch & {
+        color: var(--color-white);
+      }
     }
   }
 
@@ -100,12 +104,13 @@
 
     a,
     button {
-      &:hover,
-      &:focus {
+      &:hover {
         cursor: pointer;
 
         svg {
-          fill: var(--color-white);
+          .no-touch & {
+            fill: var(--color-white);
+          }
         }
       }
     }
@@ -133,9 +138,10 @@
         font-size: 1.8rem;
         line-height: 1.8rem;
 
-        &:hover,
-        &:focus {
-          color: var(--color-white);
+        &:hover {
+          .no-touch & {
+            color: var(--color-white);
+          }
         }
 
         .Footer__nav--open & {

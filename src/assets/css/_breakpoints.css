@@ -13,6 +13,7 @@ List of breakpoints used in the website
 :root {
   --mobile-portrait: 320px;
   --custom-370: 370px;
+  --custom-420: 420px;
   --to-mobile-landscape: 480px;
   --mobile-landscape: 481px;
   --custom-570: 570px;
@@ -30,6 +31,7 @@ List of breakpoints used in the website
 /* Defining the media queries */
 @custom-media --mobile-portrait (min-width: 320px);
 @custom-media --custom-370 (min-width: 370px);
+@custom-media --custom-420 (min-width: 420px);
 @custom-media --to-mobile-landscape (max-width: 480px);
 @custom-media --mobile-landscape (min-width: 481px);
 @custom-media --custom-570 (min-width: 570px);

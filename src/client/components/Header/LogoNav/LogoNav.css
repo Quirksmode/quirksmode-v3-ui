@@ -88,10 +88,14 @@
         margin-right: 46px;
       }
 
-      &.selected,
-      &:hover,
-      &:focus {
+      &.selected {
         color: var(--color-white);
+      }
+
+      &:hover {
+        .no-touch & {
+          color: var(--color-white);
+        }
       }
     }
   }

@@ -58,12 +58,14 @@
     }
 
     &:hover {
-      .PageHomeSkills__skillLink {
-        color: var(--color-qm-blue);
-      }
+      .no-touch & {
+        .PageHomeSkills__skillLink {
+          color: var(--color-qm-blue);
+        }
 
-      .PageHomeSkills__skillIcon {
-        transform: rotate(30deg);
+        .PageHomeSkills__skillIcon {
+          transform: rotate(30deg);
+        }
       }
     }
   }

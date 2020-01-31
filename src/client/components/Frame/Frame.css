@@ -68,13 +68,17 @@
 
     &:hover {
       &::before {
-        cursor: pointer;
-        opacity: .7;
+        .no-touch & {
+          cursor: pointer;
+          opacity: .7;
+        }
       }
 
       &::after {
-        opacity: 1;
-        transform: rotate(0);
+        .no-touch & {
+          opacity: 1;
+          transform: rotate(0);
+        }
       }
     }
   }

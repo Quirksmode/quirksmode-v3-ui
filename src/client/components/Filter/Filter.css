@@ -28,7 +28,9 @@
       cursor: pointer;
 
       svg {
-        fill: var(--color-qm-body);
+        .no-touch & {
+          fill: var(--color-qm-body);
+        }
       }
     }
 
@@ -68,10 +70,17 @@
       }
 
       .Filter__listItem {
-        &--selected,
-        &:hover {
+        &--selected {
           a {
             background: var(--color-qm-blue);
+          }
+        }
+
+        &:hover {
+          a {
+            .no-touch & {
+              background: var(--color-qm-blue);
+            }
           }
         }
       }
@@ -93,11 +102,19 @@
       margin-right: 0;
     }
 
-    &--selected,
-    &:hover {
+    &--selected {
       a {
         background: var(--color-alert-red);
         color: var(--color-white);
+      }
+    }
+
+    &:hover {
+      a {
+        .no-touch & {
+          background: var(--color-alert-red);
+          color: var(--color-white);
+        }
       }
     }
   }
@@ -115,7 +132,9 @@
     white-space: nowrap;
 
     &:hover {
-      text-decoration: none;
+      .no-touch & {
+        text-decoration: none;
+      }
     }
   }
 }

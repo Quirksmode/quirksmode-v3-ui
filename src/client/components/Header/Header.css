@@ -75,6 +75,10 @@
   .swiper-wrapper {
     height: auto;
     padding-bottom: 5.5%;
+
+    img {
+      width: 100%;
+    }
   }
 
   .swiper-container {
@@ -93,7 +97,7 @@
     }
   }
 
-  .slider {
+  .Slider {
     &__directionNav {
       display: none;
       opacity: 0;

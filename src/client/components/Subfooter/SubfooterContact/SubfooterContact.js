@@ -55,9 +55,9 @@ const SunFooterContact = ({
         </div>
       </div>
       { link && (
-        <NavLink
+        <a
+          href={ link.url }
           className="Subfooter__link"
-          to={ link.url }
           dangerouslySetInnerHTML={ { __html: linkText } }
         />
       )}

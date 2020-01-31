@@ -17,9 +17,9 @@ const SubfooterAbout = ({
       <h2 className="Subfooter__sectionHeading">{ title }</h2>
       <div dangerouslySetInnerHTML={ { __html: content } } />
       { link && (
-        <NavLink
+        <a
+          href={ link.url }
           className="Subfooter__link"
-          to={ link.url }
           dangerouslySetInnerHTML={ { __html: linkText } }
         />
       )}

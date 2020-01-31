@@ -8,7 +8,6 @@ import { Provider } from 'react-redux';
 import { matchRoutes, renderRoutes } from 'react-router-config';
 import serialize from 'serialize-javascript';
 import { minify } from 'html-minifier';
-import chalk from 'chalk';
 import https from 'https';
 import { ChunkExtractor, ChunkExtractorManager } from '@loadable/server';
 import routes from '../client/routes';
@@ -54,6 +53,9 @@ const render = (req, store, context, extractor, css) => {
         <meta name="twitter:site" content="@tobaccofreeca" />
         <script>let docEl=document.documentElement;docEl.className=docEl.className.replace( /(?:^|s)no-js(?!S)/g , ' js' );let isTouch="ontouchstart"in docEl;isTouch?docEl.classList.add("touch"):docEl.classList.add("no-touch"),function(e){"use strict";function t(t){if(t){var s=e.documentElement;s.classList?s.classList.add("webp"):s.className+=" webp",window.sessionStorage.setItem("webpSupport",!0)}}!function(e){if(window.sessionStorage&&window.sessionStorage.getItem("webpSupport"))t(!0);else{var s=new Image;s.onload=s.onerror=function(){e(2===s.height)},s.src="data:image/webp;base64,UklGRi4AAABXRUJQVlA4TCEAAAAvAUAAEB8wAiMwAgSSNtse/cXjxyCCmrYNWPwmHRH9jwMA"}}(t)}(document);</script>
         ${IS_DEV ? extractor.getStyleTags() : css}
+        <link rel="preconnect" href="${process.env.CMS_URL}">
+        <link rel="preconnect" href="https://storage.googleapis.com" crossorigin>
+        <link rel="preconnect" href="https://www.google-analytics.com" crossorigin>
         <!-- Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106775674-1"></script>
         <script>
@@ -89,13 +91,13 @@ const render = (req, store, context, extractor, css) => {
 };
 
 // Get all (fetchData) API data from components
-export default () => (req, res) => {
+export default () => (req, res, next) => {
   const store = configureStore({}, {
     baseURL: process.env.API_URL,
     headers: { cookie: req.get('cookie') || '' },
     // Used for Local Development - Prevents content being blocked by a self signed certificate
     httpsAgent: new https.Agent({
-      rejectUnauthorized: (process.env.LOCALENV !== 'true')
+      rejectUnauthorized: (process.env.IS_LOCAL !== 'true')
     })
   });
 
@@ -151,8 +153,15 @@ export default () => (req, res) => {
 
       res.send(content);
     } catch (err) {
-      res.status(404).send('Not Found');
-      console.error(chalk.red(`Rendering routes error: ${err}`));
+      // TO SORT THIS OUT
+      if (process.env.NODE_ENV === 'development') {
+        res.send(err);
+        console.error(err);
+        console.trace();
+      } else {
+        res.send('Something went wrong, if the problem persits please contact us'); // Use a 500 error template
+      }
+      // return next(err);
     }
   })();
 };

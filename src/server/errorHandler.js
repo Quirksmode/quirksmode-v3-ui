@@ -9,7 +9,7 @@
  * @param  {Object}   res  [express.js response object]
  * @return {void}
  */
-export default (err, req, res) => {
+module.exports = (err, req, res) => {
   if (process.env.NODE_ENV === 'development') {
     console.error(err);
     console.trace();

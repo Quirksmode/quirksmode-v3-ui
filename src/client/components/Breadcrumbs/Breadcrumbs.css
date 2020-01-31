@@ -19,7 +19,9 @@
       transition: fill .2s ease-out;
 
       &:hover {
-        fill: var(--link-hover);
+        .no-touch & {
+          fill: var(--link-hover);
+        }
       }
 
       svg {

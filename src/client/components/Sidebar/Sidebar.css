@@ -39,7 +39,9 @@
       transition: background .2s ease-out;
 
       &:hover {
-        background: var(--color-qm-blue);
+        .no-touch & {
+          background: var(--color-qm-blue);
+        }
       }
     }
   }
@@ -58,8 +60,10 @@
     transition: background .2s ease-out;
 
     &:hover {
-      background: var(--color-alert-green);
-      color: var(--color-white);
+      .no-touch & {
+        background: var(--color-alert-green);
+        color: var(--color-white);
+      }
     }
   }
 }

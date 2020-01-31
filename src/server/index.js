@@ -9,11 +9,14 @@ const fs = require('fs');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 const webpackHotServerMiddleware = require('webpack-hot-server-middleware');
+const errorHandler = require('./errorHandler');
 const clientConfig = require('../../webpack.client');
 const serverConfig = require('../../webpack.server');
 
 // Load the .env variables
 dotenv.config();
+
+const IS_LOCAL = process.env.IS_LOCAL === 'true';
 
 const PORT = process.env.PORT || 3000;
 
@@ -25,17 +28,17 @@ app.use(helmet());
 app.use(hpp());
 
 // create your own certificate with openssl for development
-// const spdyOptions = {
-//   key: fs.readFileSync('local.quirksmode.co.uk.quirksmode.key.pem'),
-//   cert: fs.readFileSync('local.quirksmode.co.uk.quirksmode.cert.pem'),
-//   // spdy: {
-//   //   plain: true,
-//   //   ssl: false,
-//   // }
-// };
+const spdyOptions = {
+  key: fs.readFileSync('local.quirksmode.co.uk.quirksmode.key.pem'),
+  cert: fs.readFileSync('local.quirksmode.co.uk.quirksmode.cert.pem'),
+  spdy: {
+    plain: !IS_LOCAL,
+    ssl: IS_LOCAL,
+  }
+};
 
 const shouldCompress = (req, res) => {
-  // don't compress responses asking explicitly not
+  // don't compress responses asking explicitly not to
   if (req.headers['x-no-compression']) {
     return false;
   }
@@ -89,18 +92,20 @@ if (process.env.NODE_ENV !== 'production') {
     },
   }));
 
-  app.use(serverRenderer());
+  app
+    .use(serverRenderer())
+    .use(errorHandler);
 }
 
-// // start the HTTP/2 server with express
-// spdy.createServer(spdyOptions, app).listen(PORT, (error) => {
-//   if (error) {
-//     console.error(error);
-//     return process.exit(1);
-//   }
-//   console.log(`HTTP/2 server listening on port: ${PORT}`);
-// });
-
-app.listen(PORT, () => {
-  console.log(`HTTP server listening on port: ${PORT}`);
+// start the HTTP/2 server with express
+spdy.createServer(spdyOptions, app).listen(PORT, (error) => {
+  if (error) {
+    console.error(error);
+    return process.exit(1);
+  }
+  console.log(`HTTP/2 server listening on port: ${PORT}`);
 });
+
+// app.listen(PORT, () => {
+//   console.log(`HTTP server listening on port: ${PORT}`);
+// });

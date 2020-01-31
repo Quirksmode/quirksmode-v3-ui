@@ -40,9 +40,11 @@ Button styles:
     }
 
     &:hover {
-      background: var(--color-qm-grey);
-      color: var(--color-white);
-      text-decoration: none;
+      .no-touch & {
+        background: var(--color-qm-grey);
+        color: var(--color-white);
+        text-decoration: none;
+      }
     }
 
     .btn--submitIconSvg--loading {
@@ -76,7 +78,9 @@ Button styles:
 
     &:focus,
     &:hover {
-      color: var(--link-hover);
+      .no-touch & {
+        color: var(--link-hover);
+      }
     }
   }
 

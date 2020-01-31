@@ -14,6 +14,7 @@ const Meta = ({
   <Helmet>
     <title>{ metaTitle }</title>
     <meta property="og:title" content={ metaTitle } />
+    <meta name="description" content={ metaDesc } />
     <meta property="og:description" content={ metaDesc } />
     <link rel="canonical" href={ process.env.UI_URL + metaUrl } />
     <meta property="og:url" content={ process.env.UI_URL + metaUrl } />

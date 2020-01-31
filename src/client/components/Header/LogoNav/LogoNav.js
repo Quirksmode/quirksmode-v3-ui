@@ -41,7 +41,7 @@ const LogoNav = ({
           <li className="LogoNav__nav__item" key={ item.id }>
             <NavLink
               className="LogoNav__nav__link"
-              exact={ index === 0 }
+              exact={ item.slug === '/' }
               activeClassName="selected"
               to={ item.slug }
             >
