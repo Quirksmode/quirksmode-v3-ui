@@ -8,7 +8,6 @@ import { Provider } from 'react-redux';
 import { matchRoutes, renderRoutes } from 'react-router-config';
 import serialize from 'serialize-javascript';
 import { minify } from 'html-minifier';
-import https from 'https';
 import { ChunkExtractor, ChunkExtractorManager } from '@loadable/server';
 import routes from '../client/routes';
 import configureStore from '../client/redux/store';
@@ -52,7 +51,7 @@ const render = (req, store, context, extractor, css) => {
         <meta name="twitter:creator" content="@tobaccofreeca" />
         <meta name="twitter:site" content="@tobaccofreeca" />
         <script>let docEl=document.documentElement;docEl.className=docEl.className.replace( /(?:^|s)no-js(?!S)/g , ' js' );let isTouch="ontouchstart"in docEl;isTouch?docEl.classList.add("touch"):docEl.classList.add("no-touch"),function(e){"use strict";function t(t){if(t){var s=e.documentElement;s.classList?s.classList.add("webp"):s.className+=" webp",window.sessionStorage.setItem("webpSupport",!0)}}!function(e){if(window.sessionStorage&&window.sessionStorage.getItem("webpSupport"))t(!0);else{var s=new Image;s.onload=s.onerror=function(){e(2===s.height)},s.src="data:image/webp;base64,UklGRi4AAABXRUJQVlA4TCEAAAAvAUAAEB8wAiMwAgSSNtse/cXjxyCCmrYNWPwmHRH9jwMA"}}(t)}(document);</script>
-        ${IS_DEV ? extractor.getStyleTags() : css}
+        ${IS_DEV ? extractor.getStyleTags() : `<style>${css}</style>`}
         <link rel="preconnect" href="${process.env.CMS_URL}">
         <link rel="preconnect" href="https://storage.googleapis.com" crossorigin>
         <link rel="preconnect" href="https://www.google-analytics.com" crossorigin>
@@ -93,24 +92,16 @@ const render = (req, store, context, extractor, css) => {
 // Get all (fetchData) API data from components
 export default () => (req, res, next) => {
   const store = configureStore({}, {
-    baseURL: process.env.API_URL,
-    headers: { cookie: req.get('cookie') || '' },
-    // Used for Local Development - Prevents content being blocked by a self signed certificate
-    httpsAgent: new https.Agent({
-      rejectUnauthorized: (process.env.IS_LOCAL !== 'true')
-    })
+    baseURL: `${process.env.CMS_URL}/wp-json`,
+    headers: { cookie: req.get('cookie') || '' }
   });
 
   // Loop through the routes array and get the data for each route (page)
   const loadRouteData = () => {
     const promises = matchRoutes(routes, req.path)
       .map(({ route, match }) => (route.loadData ? route.loadData(store, match, req.query) : null))
-      .map((promise) => {
-        if (promise) {
-          return new Promise(resolve => promise.then(resolve).catch(resolve));
-        }
-        return Promise.resolve(null);
-      });
+      .map(promise => (
+        promise ? new Promise(resolve => promise.then(resolve).catch(resolve)) : null));
     return Promise.all(promises);
   };
 
@@ -119,7 +110,13 @@ export default () => (req, res, next) => {
     try {
       // Load data from server-side first
       await loadRouteData();
-
+    } catch (err) {
+      // if (process.env.NODE_ENV === 'development') {
+      res.send(err);
+      console.error(err);
+      console.trace();
+      // }
+    } finally {
       // Get the stats file which contains references to all the generated assets
       const statsFile = path.resolve(process.cwd(), 'build/public/loadable-stats.json');
 
@@ -128,11 +125,7 @@ export default () => (req, res, next) => {
 
       // Get the CSS chunks as a string
       let cssString = await getCssString(extractor);
-      cssString = renderToString(
-        <style
-          dangerouslySetInnerHTML={ { __html: cssString } }
-        />
-      );
+      cssString = `<style>${cssString}</style>`;
 
       const context = {};
 
@@ -150,18 +143,7 @@ export default () => (req, res, next) => {
       if (context.notFound) {
         res.status(404);
       }
-
       res.send(content);
-    } catch (err) {
-      // TO SORT THIS OUT
-      if (process.env.NODE_ENV === 'development') {
-        res.send(err);
-        console.error(err);
-        console.trace();
-      } else {
-        res.send('Something went wrong, if the problem persits please contact us'); // Use a 500 error template
-      }
-      // return next(err);
     }
   })();
 };

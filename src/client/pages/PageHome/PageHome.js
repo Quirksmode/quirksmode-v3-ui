@@ -16,16 +16,24 @@ import PageHomeBlog from './PageHomeBlog/PageHomeBlog';
  * @param  {object} props.cv []
  */
 const PageHome = ({
-  fetchHomeDataAction,
-  cv,
-  featuredWork,
-  intro,
-  latestBlogPosts,
-  skills,
+  content,
   metadata,
+  loading,
+  siteSettings,
+  fetchHomeDataAction,
   fetchBlogSingleDataAction,
-  loading
 }) => {
+  const {
+    featuredWork,
+    intro,
+    latestBlogPosts,
+    skills
+  } = content;
+
+  const {
+    cv
+  } = siteSettings;
+
   useEffect(() => {
     if (!intro) fetchHomeDataAction();
   }, [fetchHomeDataAction, intro]);
@@ -43,7 +51,11 @@ const PageHome = ({
               { skills.length > 0 && <PageHomeSkills skills={ skills } /> }
             </div>
             <div className="PageHome__col">
-              <PageHomeBlog latestBlogPosts={ latestBlogPosts } action={ fetchBlogSingleDataAction } loading={ loading } />
+              <PageHomeBlog
+                latestBlogPosts={ latestBlogPosts }
+                action={ fetchBlogSingleDataAction }
+                loading={ loading }
+              />
             </div>
           </div>
         </div>
@@ -53,23 +65,21 @@ const PageHome = ({
 };
 
 PageHome.propTypes = {
-  fetchHomeDataAction: PropTypes.func,
-  cv: PropTypes.object,
-  featuredWork: PropTypes.array,
-  intro: PropTypes.object,
-  latestBlogPosts: PropTypes.array,
-  skills: PropTypes.array,
-  metadata: PropTypes.object
+  content: PropTypes.object,
+  metadata: PropTypes.object,
+  siteSettings: PropTypes.object,
+  fetchHomeDataAction: PropTypes.func
 };
 
-const mapStateToProps = ({ app, pageHome, pageBlogSingle }) => ({
-  cv: app.siteSettings.cv,
-  featuredWork: pageHome.featuredWork,
-  intro: pageHome.intro,
-  latestBlogPosts: pageHome.latestBlogPosts,
+const mapStateToProps = ({
+  pageHome,
+  pageBlogSingle,
+  app
+}) => ({
+  content: pageHome.content,
+  metadata: pageHome.metadata,
   loading: pageBlogSingle.loading,
-  skills: pageHome.skills,
-  metadata: pageHome.metadata
+  siteSettings: app.siteSettings
 });
 
 const mapDispatchToProps = dispatch => ({

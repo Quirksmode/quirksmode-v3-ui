@@ -144,11 +144,6 @@
   /* Lib Overides */
   .fslightbox-container {
     background: rgba(0, 0, 0, .85) !important;
-    display: none;
-
-    @media (--mobile-landscape) {
-      display: block;
-    }
   }
 
   .fslightbox-loader {

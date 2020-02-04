@@ -80,7 +80,7 @@ const Header = ({
     <header className="Header">
       <div className="Header__innerWrap grid">
         <LogoNav />
-        { location.pathname === '/' && (
+        { location.pathname === '/' && heroSlides && heroSlides.length > 0 && (
           <div className="Header__sliderOuterWrap">
             <div className="Header__sliderWrap">
               <Swiper
@@ -126,7 +126,6 @@ const Header = ({
                         alt={ slide.image.alt }
                         width={ slide.image.width }
                         height={ slide.image.height }
-                        loading="lazy"
                       />
                     </picture>
                   </div>
@@ -168,7 +167,7 @@ Header.propTypes = {
 };
 
 const mapStateToProps = ({ pageHome }) => ({
-  heroSlides: pageHome.heroSlides
+  heroSlides: pageHome.content.heroSlides
 });
 
 export default connect(

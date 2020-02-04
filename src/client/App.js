@@ -12,6 +12,7 @@ import Footer from 'components/Footer/Footer';
 import AccessibilityLinks from 'components/AccessibilityLinks/AccessibilityLinks';
 import { fetchHomeData } from 'pages/PageHome/PageHome.actions';
 import { fetchAboutData } from 'pages/PageAbout/PageAbout.actions';
+import { fetchContactData } from 'pages/PageContact/PageContact.actions';
 import { fetchPortfolioData } from 'pages/PagePortfolio/PagePortfolio.actions';
 import { fetchBlogData } from 'pages/PageBlog/PageBlog.actions';
 import { fetchAppData } from './App.actions';
@@ -30,6 +31,7 @@ const App = ({
   fetchHomeDataAction,
   fetchAboutDataAction,
   fetchPortfolioDataAction,
+  fetchContactDataAction,
   fetchBlogDataAction,
   location,
   route
@@ -40,11 +42,13 @@ const App = ({
     fetchHomeDataAction();
     fetchAboutDataAction();
     fetchPortfolioDataAction();
+    fetchContactDataAction();
     fetchBlogDataAction();
   }, [
     fetchAboutDataAction,
     fetchAppDataAction,
     fetchBlogDataAction,
+    fetchContactDataAction,
     fetchHomeDataAction,
     fetchPortfolioDataAction
   ]);
@@ -80,6 +84,7 @@ const mapDispatchToProps = dispatch => ({
   fetchHomeDataAction: (...args) => dispatch(fetchHomeData(...args)),
   fetchAboutDataAction: (...args) => dispatch(fetchAboutData(...args)),
   fetchPortfolioDataAction: (...args) => dispatch(fetchPortfolioData(...args)),
+  fetchContactDataAction: (...args) => dispatch(fetchContactData(...args)),
   fetchBlogDataAction: (...args) => dispatch(fetchBlogData(...args))
 });
 

@@ -1,5 +1,5 @@
 import App from './App';
-import PageHome from './pages/PageHome/index';
+import PageHome from './pages/PageHome/PageHome';
 import PageAbout from './pages/PageAbout/PageAbout';
 import PageBlog from './pages/PageBlog/PageBlog';
 import PageBlogSingle from './pages/PageBlogSingle/PageBlogSingle';

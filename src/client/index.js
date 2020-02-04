@@ -19,7 +19,7 @@ const history = createBrowserHistory();
 const initialState = window.INITIAL_STATE;
 delete window.INITIAL_STATE;
 const store = configureStore(initialState, {
-  baseURL: process.env.API_URL
+  baseURL: `${process.env.CMS_URL}/wp-json`
 }, history);
 
 const render = (Component) => {
