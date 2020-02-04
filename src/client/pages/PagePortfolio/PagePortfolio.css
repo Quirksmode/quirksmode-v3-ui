@@ -1,6 +1,6 @@
 .PagePortfolio {
   &__sketch {
-    @media (--mobile-landscape) {
+    @media (--tablet-portrait) {
       &::before {
         background: url(../img/sketch_portfolio_2x.png) 0 0 no-repeat;
         background-size: 286px 564px;

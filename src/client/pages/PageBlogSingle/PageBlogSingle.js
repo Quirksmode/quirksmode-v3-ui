@@ -4,6 +4,7 @@ import React, {
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Prism from 'prismjs';
+import Page404 from 'pages/Page404/Page404';
 import ContentBlocks from 'components/ContentBlocks/ContentBlocks';
 import RelatedContent from 'components/RelatedContent/RelatedContent';
 import Hero from 'components/Hero/Hero';
@@ -39,13 +40,15 @@ const PageBlogSingle = ({
     Prism.highlightAll();
   });
 
-  return title && (
+  return (title && title !== '404') ? (
     <div className="Page PageBlogSingle">
       <Meta { ...metadata } />
       <Hero hero={ hero } title={ title } subtitle={ date } url={ url } type="Portfolio" />
       <ContentBlocks contentBlocks={ contentBlocks } />
       { related && <RelatedContent related={ related } type="blog" noRelated={ noRelated } /> }
     </div>
+  ) : (
+    <Page404 />
   );
 };
 

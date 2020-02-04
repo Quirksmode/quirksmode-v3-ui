@@ -1,10 +1,10 @@
-import { Helmet } from 'react-helmet';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ContentBlocks from 'components/ContentBlocks/ContentBlocks';
 import RelatedContent from 'components/RelatedContent/RelatedContent';
 import Hero from 'components/Hero/Hero';
+import Page404 from 'pages/Page404/Page404';
 import Meta from 'components/Meta/Meta';
 import { fetchPortfolioSingleData } from './PagePortfolioSingle.actions';
 import PagePortfolioSingleContent from './PagePortfolioSingleContent/PagePortfolioSingleContent';
@@ -24,7 +24,7 @@ const PagePortfolioSingle = ({
   noRelated,
   contentBlocks,
   metadata
-}) => title && (
+}) => (title && title !== '404' ? (
   <div className="Page PagePortfolioSingle">
     <Meta { ...metadata } />
     <Hero hero={ hero } title={ title } subtitle={ content.projectRole } url={ url } type="Portfolio" />
@@ -37,17 +37,21 @@ const PagePortfolioSingle = ({
         && <PagePortfolioSingleContent content={ content } /> }
     { related && <RelatedContent related={ related } type="portfolio" noRelated={ noRelated } /> }
   </div>
-);
+) : (
+  <Page404 />
+));
 PagePortfolioSingle.propTypes = {
   fetchPortfolioSingleDataAction: PropTypes.func,
   match: PropTypes.object,
   title: PropTypes.string,
   slug: PropTypes.string,
+  hero: PropTypes.object,
   url: PropTypes.string,
   featuredImage: PropTypes.object,
   content: PropTypes.object,
   related: PropTypes.array,
   noRelated: PropTypes.bool,
+  contentBlocks: PropTypes.array,
   metadata: PropTypes.object
 };
 

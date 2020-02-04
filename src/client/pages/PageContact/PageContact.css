@@ -1,7 +1,7 @@
 .PageContact {
   .Page__sectionInner {
     @media (--tablet-portrait) {
-      background: url(../img/sketch_contact_behind.jpg) 100% 86px no-repeat;
+      background: url(../img/sketch_contact_behind_2x.jpg) 100% 86px no-repeat;
       background-size: 517px 1121px;
     }
   }

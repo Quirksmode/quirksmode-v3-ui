@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Breadcrumbs from 'components/Breadcrumbs/Breadcrumbs';
 import Meta from 'components/Meta/Meta';
+import Page404 from 'pages/Page404/Page404';
 import ContentBlocks from 'components/ContentBlocks/ContentBlocks';
 import { fetchPageData } from './Page.actions';
 
@@ -28,7 +29,7 @@ const Page = ({
     }
   }, [fetchPageDataAction, match.params.slug, slug]);
 
-  return (
+  return (title && title !== '404') ? (
     <div className="page">
       <Meta { ...metadata } />
       <section className="Page__section Page__section--greyFade Page__hero">
@@ -42,6 +43,8 @@ const Page = ({
       </section>
       <ContentBlocks contentBlocks={ contentBlocks } />
     </div>
+  ) : (
+    <Page404 />
   );
 };
 

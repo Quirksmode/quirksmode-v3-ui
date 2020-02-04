@@ -7,6 +7,7 @@ import PageContact from './pages/PageContact/PageContact';
 import PagePortfolio from './pages/PagePortfolio/PagePortfolio';
 import PagePortfolioSingle from './pages/PagePortfolioSingle/PagePortfolioSingle';
 import PageSearch from './pages/PageSearch/PageSearch';
+import Page404 from './pages/Page404/Page404';
 import Page from './pages/Page/Page';
 import { fetchHomeData } from './pages/PageHome/PageHome.actions';
 import { fetchAboutData } from './pages/PageAbout/PageAbout.actions';
@@ -74,6 +75,9 @@ export default [
         component: Page,
         path: '/:slug',
         loadData: store => store.dispatch(fetchPageData())
+      },
+      {
+        component: Page404
       }
     ]
   }
