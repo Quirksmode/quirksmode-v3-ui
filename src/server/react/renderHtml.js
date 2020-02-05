@@ -111,11 +111,10 @@ export default () => (req, res, next) => {
       // Load data from server-side first
       await loadRouteData();
     } catch (err) {
-      // if (process.env.NODE_ENV === 'development') {
-      res.send(err);
-      console.error(err);
-      console.trace();
-      // }
+      if (process.env.NODE_ENV === 'development') {
+        console.error(err);
+        console.trace();
+      }
     } finally {
       // Get the stats file which contains references to all the generated assets
       const statsFile = path.resolve(process.cwd(), 'build/public/loadable-stats.json');

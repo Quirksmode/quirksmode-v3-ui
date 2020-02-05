@@ -35,13 +35,21 @@ const icons = {
  */
 const PageAbout = ({
   fetchAboutDataAction,
-  title,
   content,
-  cv,
-  skillsSections,
-  cvSections,
-  metadata
+  metadata,
+  siteSettings,
 }) => {
+  const {
+    title,
+    intro,
+    skillsSections,
+    cvSections
+  } = content;
+
+  const {
+    cv
+  } = siteSettings;
+
   useEffect(() => {
     if (!title) fetchAboutDataAction();
   }, [fetchAboutDataAction, title]);
@@ -58,7 +66,7 @@ const PageAbout = ({
           </Breadcrumbs>
           <div className="PageAbout__intro">
             <div
-              dangerouslySetInnerHTML={ { __html: content } }
+              dangerouslySetInnerHTML={ { __html: intro } }
               className="PageAbout__introText"
             />
             <a
@@ -156,21 +164,15 @@ const PageAbout = ({
 
 PageAbout.propTypes = {
   fetchAboutDataAction: PropTypes.func,
-  title: PropTypes.string,
-  content: PropTypes.string,
-  cv: PropTypes.object,
-  skillsSections: PropTypes.object,
-  cvSections: PropTypes.array,
-  metadata: PropTypes.object
+  content: PropTypes.object,
+  metadata: PropTypes.object,
+  siteSettings: PropTypes.object,
 };
 
-const mapStateToProps = ({ app, pageAbout }) => ({
-  cv: app.siteSettings.cv,
-  title: pageAbout.title,
+const mapStateToProps = ({ pageAbout, app }) => ({
   content: pageAbout.content,
-  skillsSections: pageAbout.skillsSections,
-  cvSections: pageAbout.cvSections,
-  metadata: pageAbout.metadata
+  metadata: pageAbout.metadata,
+  siteSettings: app.siteSettings,
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -1,27 +1,44 @@
-import { FETCH_ABOUT_DATA } from './PageAbout.actions';
+import {
+  FETCH_ABOUT_REQUEST,
+  FETCH_ABOUT_SUCCESS,
+  FETCH_ABOUT_ERROR
+} from './PageAbout.actions';
 
 const initialState = {
-  title: '',
-  content: '',
-  skillsSections: {
-    skillsIcon: '',
-    skillsTitle: '',
-    skills: []
+  content: {
+    title: '',
+    intro: '',
+    skillsSections: {
+      skillsIcon: '',
+      skillsTitle: '',
+      skills: []
+    },
+    cvSections: []
   },
-  cvSections: [],
   metadata: {}
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_ABOUT_DATA:
+    case FETCH_ABOUT_REQUEST:
       return {
         ...state,
-        title: action.payload.data.title,
+        loading: true,
+        error: false
+      };
+    case FETCH_ABOUT_SUCCESS:
+      return {
+        ...state,
         content: action.payload.data.content,
-        skillsSections: action.payload.data.skillsSections,
-        cvSections: action.payload.data.cvSections,
-        metadata: action.payload.data.metadata
+        metadata: action.payload.data.metadata,
+        loading: false,
+        error: false
+      };
+    case FETCH_ABOUT_ERROR:
+      return {
+        ...state,
+        loading: false,
+        error: true
       };
     default:
       return state;

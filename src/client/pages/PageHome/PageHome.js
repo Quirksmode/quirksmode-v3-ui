@@ -16,12 +16,12 @@ import PageHomeBlog from './PageHomeBlog/PageHomeBlog';
  * @param  {object} props.cv []
  */
 const PageHome = ({
+  fetchHomeDataAction,
+  fetchBlogSingleDataAction,
   content,
   metadata,
   loading,
-  siteSettings,
-  fetchHomeDataAction,
-  fetchBlogSingleDataAction,
+  siteSettings
 }) => {
   const {
     featuredWork,

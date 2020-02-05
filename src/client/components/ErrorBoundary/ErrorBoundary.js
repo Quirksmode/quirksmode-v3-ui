@@ -21,13 +21,17 @@ export default class ErrorBoundary extends PureComponent {
     // If there's an error, render error path
     return errorInfo ? (
       // ".error-view" used by unit testing
-      <div className="error-view">
-        <h2>Something went wrong.</h2>
-        <details style={ { whiteSpace: 'pre-wrap' } }>
-          {error && error.toString()}
-          <br />
-          {errorInfo.componentStack}
-        </details>
+      <div className="ErrorBoundary">
+        <section className="Page__section Page__section--greyFade">
+          <div className="Page__sectionInner grid">
+            <h1>Something went wrong.</h1>
+            <details style={ { whiteSpace: 'pre-wrap' } }>
+              {error && error.toString()}
+              <br />
+              {errorInfo.componentStack}
+            </details>
+          </div>
+        </section>
       </div>
     ) : (
       children || null
