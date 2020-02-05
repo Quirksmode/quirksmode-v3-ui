@@ -1,4 +1,5 @@
 import { push } from 'connected-react-router';
+import { setLinkLoading, setLinkLoaded } from '../../App.actions';
 
 export const FETCH_PAGE_REQUEST = 'fetch_page_request';
 export const FETCH_PAGE_SUCCESS = 'fetch_page_success';
@@ -14,6 +15,11 @@ export const fetchPageData = (slug, href = null) => async (
     payload: slug
   });
 
+  // If href, dispatch custom Link Loader Functionality
+  if (href) {
+    dispatch(setLinkLoading(href));
+  }
+
   const res = await api.get(`quirksmode/v1/pages/${slug}`);
 
   dispatch({
@@ -21,8 +27,9 @@ export const fetchPageData = (slug, href = null) => async (
     payload: res
   });
 
-  // If a href is passed, navigate to it
+  // If href, navigate to it
   if (href) {
+    dispatch(setLinkLoaded());
     dispatch(push(href));
   }
 };

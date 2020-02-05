@@ -1,6 +1,4 @@
-import React, {
-  Fragment
-} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import PostItem from 'components/PostItem/PostItem';
@@ -13,7 +11,6 @@ import PostItem from 'components/PostItem/PostItem';
  */
 const PageHomeBlog = ({
   latestBlogPosts,
-  loading,
   action
 }) => (
   <div className="PageHomeBlog">
@@ -31,7 +28,6 @@ const PageHomeBlog = ({
         <PostItem
           key={ post.postID }
           post={ post }
-          loading={ loading }
           action={ action }
           size="Small"
           lineClamp="3"
@@ -43,7 +39,6 @@ const PageHomeBlog = ({
 
 PageHomeBlog.propTypes = {
   latestBlogPosts: PropTypes.array,
-  loading: PropTypes.string,
   action: PropTypes.func
 };
 

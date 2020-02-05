@@ -40,8 +40,7 @@ const Frame = ({
   featuredImage,
   title = null,
   size = 'Small',
-  date = null,
-  loading = false
+  date = null
 }) => {
   /**
    * React Ref for the Frame
@@ -64,7 +63,7 @@ const Frame = ({
   return (
     <animated.div
       ref={ frameRef }
-      className={ `Frame Frame--rollover${loading ? ' Frame--loading' : ''}` }
+      className="Frame Frame--rollover"
       onMouseMove={ e => set({ xys: calc(e, frameRef) }) }
       onMouseLeave={ () => set({ xys: [0, 0, 1] }) }
       style={ { transform: styles.xys.interpolate(trans), } }
@@ -119,8 +118,7 @@ Frame.propTypes = {
   title: PropTypes.string,
   size: PropTypes.string,
   isNew: PropTypes.bool,
-  date: PropTypes.string,
-  loading: PropTypes.bool
+  date: PropTypes.string
 };
 
 export default Frame;

@@ -1,4 +1,5 @@
 import { push } from 'connected-react-router';
+import { setLinkLoading, setLinkLoaded } from '../../App.actions';
 
 export const FETCH_PORTFOLIO_SINGLE_REQUEST = 'fetch_portfolio_single_request';
 export const FETCH_PORTFOLIO_SINGLE_SUCCESS = 'fetch_portfolio_single_success';
@@ -14,6 +15,11 @@ export const fetchPortfolioSingleData = (slug, href = null) => async (
     payload: slug
   });
 
+  // If href, dispatch custom Link Loader Functionality
+  if (href) {
+    dispatch(setLinkLoading(href));
+  }
+
   const res = await api.get(`quirksmode/v1/pages/portfolio/${slug}`);
 
   dispatch({
@@ -21,8 +27,9 @@ export const fetchPortfolioSingleData = (slug, href = null) => async (
     payload: res
   });
 
-  // If a href is passed, navigate to it
+  // If href, navigate to it
   if (href) {
+    dispatch(setLinkLoaded());
     dispatch(push(href));
   }
 };

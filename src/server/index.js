@@ -76,7 +76,7 @@ if (process.env.NODE_ENV !== 'production') {
   }));
 
   // eslint-disable-next-line global-require
-  const serverRenderer = require('./render-html').default;
+  const serverRenderer = require('./react/renderHtml').default;
   app.use(serverRenderer());
 }
 

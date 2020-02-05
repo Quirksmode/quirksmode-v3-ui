@@ -1,4 +1,4 @@
-import { FETCH_APP_DATA } from './App.actions';
+import { FETCH_APP_DATA, SET_LINK_LOADING, SET_LINK_LOADED } from './App.actions';
 
 const initialState = {
   siteSettings: {
@@ -28,7 +28,8 @@ const initialState = {
     contact: {
       link: ''
     }
-  }
+  },
+  loadingSlug: ''
 };
 
 export default (state = initialState, action) => {
@@ -44,6 +45,16 @@ export default (state = initialState, action) => {
         blogTags: action.payload.data.blogTags,
         blogCategories: action.payload.data.blogCategories,
         subfooter: action.payload.data.subfooter
+      };
+    case SET_LINK_LOADING:
+      return {
+        ...state,
+        loadingSlug: action.payload
+      };
+    case SET_LINK_LOADED:
+      return {
+        ...state,
+        loadingSlug: ''
       };
     default:
       return state;

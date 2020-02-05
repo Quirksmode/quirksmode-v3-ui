@@ -17,7 +17,7 @@ const config = {
       icons: path.resolve(__dirname, 'src/assets/icons')
     }
   },
-  entry: IS_DEV ? './src/server/render-html.js' : './src/server/index.js',
+  entry: IS_DEV ? './src/server/react/renderHtml.js' : './src/server/index.js',
   output: {
     libraryTarget: 'commonjs2',
     filename: 'server.js',

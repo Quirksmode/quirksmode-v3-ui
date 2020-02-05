@@ -5,7 +5,7 @@ import {
 } from './PageBlogSingle.actions';
 
 const initialState = {
-  loading: '',
+  loading: false,
   error: false,
   id: null,
   title: '',
@@ -25,7 +25,7 @@ export default (state = initialState, action) => {
     case FETCH_BLOG_SINGLE_REQUEST:
       return {
         ...state,
-        loading: action.payload
+        loading: true
       };
     case FETCH_BLOG_SINGLE_SUCCESS:
       return {
@@ -39,12 +39,12 @@ export default (state = initialState, action) => {
         noRelated: action.payload.data.noRelated,
         hero: action.payload.data.hero,
         metadata: action.payload.data.metadata,
-        loading: ''
+        loading: false
       };
     case FETCH_BLOG_SINGLE_ERROR:
       return {
         ...initialState,
-        loading: '',
+        loading: false,
         error: true
       };
     default:

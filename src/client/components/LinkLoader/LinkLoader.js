@@ -19,9 +19,7 @@ const LinkLoader = ({
   fetchPageDataAction,
   fetchPortfolioSingleDataAction,
   fetchBlogSingleDataAction,
-  loadingPage,
-  loadingBlog,
-  loadingPortfolio
+  loadingSlug
 }) => {
   /**
    * Create the href based on the type e.g. Page, Portfolio or Blog
@@ -54,7 +52,7 @@ const LinkLoader = ({
     <NavLink
       to={ href }
       onClick={ e => handleClick(e) }
-      className={ `LinkLoader${(loadingBlog || loadingPortfolio || loadingPage) === slug ? ' LinkLoader--loading' : ''}` }
+      className={ `LinkLoader${loadingSlug === href ? ' LinkLoader--loading' : ''}` }
     >
       { children }
     </NavLink>
@@ -68,16 +66,11 @@ LinkLoader.propTypes = {
   fetchPageDataAction: PropTypes.func,
   fetchPortfolioSingleDataAction: PropTypes.func,
   fetchBlogSingleDataAction: PropTypes.func,
-  loadingPage: PropTypes.string,
-  loadingBlog: PropTypes.string,
-  loadingPortfolio: PropTypes.string
+  loadingSlug: PropTypes.string
 };
 
-const mapStateToProps = ({ pageBlogSingle, pagePortfolioSingle, page }) => ({
-  pageBlogSingle,
-  loadingBlog: pageBlogSingle.loading,
-  loadingPortfolio: pagePortfolioSingle.loading,
-  loadingPage: page.loading
+const mapStateToProps = ({ app }) => ({
+  loadingSlug: app.loadingSlug
 });
 
 const mapDispatchToProps = dispatch => ({

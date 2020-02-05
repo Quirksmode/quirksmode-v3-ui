@@ -9,6 +9,7 @@ import PagePortfolioSingle from './pages/PagePortfolioSingle/PagePortfolioSingle
 import PageSearch from './pages/PageSearch/PageSearch';
 import Page404 from './pages/Page404/Page404';
 import Page from './pages/Page/Page';
+import { fetchAppData } from './App.actions';
 import { fetchHomeData } from './pages/PageHome/PageHome.actions';
 import { fetchAboutData } from './pages/PageAbout/PageAbout.actions';
 import { fetchContactData } from './pages/PageContact/PageContact.actions';
@@ -21,7 +22,8 @@ import { fetchPageData } from './pages/Page/Page.actions';
 
 export default [
   {
-    ...App,
+    component: App,
+    loadData: store => store.dispatch(fetchAppData()),
     routes: [
       {
         component: PageHome,

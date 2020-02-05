@@ -9,8 +9,8 @@ import { matchRoutes, renderRoutes } from 'react-router-config';
 import serialize from 'serialize-javascript';
 import { minify } from 'html-minifier';
 import { ChunkExtractor, ChunkExtractorManager } from '@loadable/server';
-import routes from '../client/routes';
-import configureStore from '../client/redux/store';
+import routes from '../../client/routes';
+import configureStore from '../../client/redux/store';
 
 const IS_DEV = process.env.NODE_ENV !== 'production';
 const UI_URL = process.env.UI_URL ? process.env.UI_URL : '';

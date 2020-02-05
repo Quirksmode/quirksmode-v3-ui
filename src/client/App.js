@@ -74,6 +74,7 @@ App.propTypes = {
   fetchHomeDataAction: PropTypes.func,
   fetchAboutDataAction: PropTypes.func,
   fetchPortfolioDataAction: PropTypes.func,
+  fetchContactDataAction: PropTypes.func,
   fetchBlogDataAction: PropTypes.func,
   location: PropTypes.object,
   route: PropTypes.object
@@ -88,13 +89,4 @@ const mapDispatchToProps = dispatch => ({
   fetchBlogDataAction: (...args) => dispatch(fetchBlogData(...args))
 });
 
-// Used for SSR
-function loadData(store) {
-  return store.dispatch(fetchAppData());
-}
-export { loadData };
-
-export default {
-  loadData,
-  component: connect(null, mapDispatchToProps)(App)
-};
+export default connect(null, mapDispatchToProps)(App);
