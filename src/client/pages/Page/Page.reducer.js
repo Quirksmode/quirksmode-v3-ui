@@ -5,11 +5,14 @@ import {
 } from './Page.actions';
 
 const initialState = {
-  loading: '',
-  title: '',
-  content: '',
-  contentBlocks: [],
-  metadata: {}
+  content: {
+    title: '',
+    pageContent: '',
+    contentBlocks: []
+  },
+  metadata: {},
+  loading: false,
+  error: false
 };
 
 export default (state = initialState, action) => {
@@ -17,21 +20,21 @@ export default (state = initialState, action) => {
     case FETCH_PAGE_REQUEST:
       return {
         ...state,
-        loading: action.payload
+        loading: true,
+        error: false
       };
     case FETCH_PAGE_SUCCESS:
       return {
         ...state,
-        title: action.payload.data.title,
         content: action.payload.data.content,
-        contentBlocks: action.payload.data.contentBlocks,
         metadata: action.payload.data.metadata,
-        loading: ''
+        loading: false,
+        error: false
       };
     case FETCH_PAGE_ERROR:
       return {
         ...initialState,
-        loading: '',
+        loading: false,
         error: true
       };
     default:

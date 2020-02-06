@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Breadcrumbs from 'components/Breadcrumbs/Breadcrumbs';
 import Meta from 'components/Meta/Meta';
-import Page404 from 'pages/Page404/Page404';
+import PageWrapper from 'components/PageWrapper/PageWrapper';
 import ContentBlocks from 'components/ContentBlocks/ContentBlocks';
 import { fetchPageData } from './Page.actions';
 
@@ -17,52 +17,54 @@ import { fetchPageData } from './Page.actions';
  */
 const Page = ({
   fetchPageDataAction,
-  match,
-  title,
-  slug,
-  contentBlocks,
-  metadata
+  content,
+  metadata,
+  error,
+  match
 }) => {
+  const {
+    title,
+    slug,
+    contentBlocks
+  } = content;
+
   useEffect(() => {
     if (slug !== match.params.slug) {
       fetchPageDataAction(match.params.slug);
     }
   }, [fetchPageDataAction, match.params.slug, slug]);
 
-  return (title && title !== '404') ? (
-    <div className="page">
-      <Meta { ...metadata } />
-      <section className="Page__section Page__section--greyFade Page__hero">
-        <div className="Page__sectionInner grid">
-          <h1>{ title }</h1>
-          <Breadcrumbs>
-            <span className="Breadcrumbs__divider">&gt;</span>
-            <span className="Breadcrumbs__active">{ title }</span>
-          </Breadcrumbs>
-        </div>
-      </section>
-      <ContentBlocks contentBlocks={ contentBlocks } />
-    </div>
-  ) : (
-    <Page404 />
+  return (
+    <PageWrapper error={ error }>
+      <div className="page">
+        { metadata && <Meta { ...metadata } /> }
+        <section className="Page__section Page__section--greyFade Page__hero">
+          <div className="Page__sectionInner grid">
+            <h1>{ title }</h1>
+            <Breadcrumbs>
+              <span className="Breadcrumbs__divider">&gt;</span>
+              <span className="Breadcrumbs__active">{ title }</span>
+            </Breadcrumbs>
+          </div>
+        </section>
+        <ContentBlocks contentBlocks={ contentBlocks } />
+      </div>
+    </PageWrapper>
   );
 };
 
 Page.propTypes = {
   fetchPageDataAction: PropTypes.func,
-  match: PropTypes.object,
-  title: PropTypes.string,
-  slug: PropTypes.string,
-  contentBlocks: PropTypes.array,
-  metadata: PropTypes.object
+  content: PropTypes.object,
+  metadata: PropTypes.object,
+  error: PropTypes.bool,
+  match: PropTypes.object
 };
 
 const mapStateToProps = ({ page }) => ({
-  title: page.title,
-  slug: page.slug,
   content: page.content,
-  contentBlocks: page.contentBlocks,
-  metadata: page.metadata
+  metadata: page.metadata,
+  error: page.error
 });
 
 const mapDispatchToProps = dispatch => ({

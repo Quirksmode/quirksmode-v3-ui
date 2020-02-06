@@ -13,6 +13,7 @@ const config = {
     alias: {
       components: path.resolve(__dirname, 'src/client/components'),
       pages: path.resolve(__dirname, 'src/client/pages'),
+      hooks: path.resolve(__dirname, 'src/client/hooks'),
       assets: path.resolve(__dirname, 'src/assets'),
       icons: path.resolve(__dirname, 'src/assets/icons')
     }

@@ -6,7 +6,7 @@ import { Helmet } from 'react-helmet';
  * @name Page404
  */
 const Page404 = () => (
-  <div className="page page404">
+  <div className="Page Page404">
     <Helmet>
       <title>Error - 404</title>
       <meta property="og:title" content="Error - 404" />

@@ -15,8 +15,8 @@ import { fetchAboutData } from 'pages/PageAbout/PageAbout.actions';
 import { fetchContactData } from 'pages/PageContact/PageContact.actions';
 import { fetchPortfolioData } from 'pages/PagePortfolio/PagePortfolio.actions';
 import { fetchBlogData } from 'pages/PageBlog/PageBlog.actions';
+import ScrollToTop from 'components/ScrollToTop/ScrollToTop';
 import { fetchAppData } from './App.actions';
-import ScrollToTop from './ScrollToTop';
 
 /**
  * Description
@@ -27,31 +27,28 @@ import ScrollToTop from './ScrollToTop';
  * @param  {object} props.route []
  */
 const App = ({
-  fetchAppDataAction,
   fetchHomeDataAction,
   fetchAboutDataAction,
   fetchPortfolioDataAction,
   fetchContactDataAction,
   fetchBlogDataAction,
+  pageHomeContent,
+  pageAboutContent,
+  pagePortfolioContent,
+  pageContactContent,
+  pageBlogContent,
   location,
   route
 }) => {
   // Load all of the top page data on load
   useEffect(() => {
-    fetchAppDataAction();
-    fetchHomeDataAction();
-    fetchAboutDataAction();
-    fetchPortfolioDataAction();
-    fetchContactDataAction();
-    fetchBlogDataAction();
-  }, [
-    fetchAboutDataAction,
-    fetchAppDataAction,
-    fetchBlogDataAction,
-    fetchContactDataAction,
-    fetchHomeDataAction,
-    fetchPortfolioDataAction
-  ]);
+    if (!pageHomeContent.title) fetchHomeDataAction();
+    if (!pageAboutContent.title) fetchAboutDataAction();
+    if (!pagePortfolioContent.title) fetchPortfolioDataAction();
+    if (!pageContactContent.title) fetchContactDataAction();
+    if (!pageBlogContent.title) fetchBlogDataAction();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <Fragment>
@@ -70,18 +67,35 @@ const App = ({
 };
 
 App.propTypes = {
-  fetchAppDataAction: PropTypes.func,
   fetchHomeDataAction: PropTypes.func,
   fetchAboutDataAction: PropTypes.func,
   fetchPortfolioDataAction: PropTypes.func,
   fetchContactDataAction: PropTypes.func,
   fetchBlogDataAction: PropTypes.func,
+  pageHomeContent: PropTypes.object,
+  pageAboutContent: PropTypes.object,
+  pagePortfolioContent: PropTypes.object,
+  pageContactContent: PropTypes.object,
+  pageBlogContent: PropTypes.object,
   location: PropTypes.object,
   route: PropTypes.object
 };
 
+const mapStateToProps = ({
+  pageHome,
+  pageAbout,
+  pagePortfolio,
+  pageContact,
+  pageBlog
+}) => ({
+  pageHomeContent: pageHome.content,
+  pageAboutContent: pageAbout.content,
+  pagePortfolioContent: pagePortfolio.content,
+  pageContactContent: pageContact.content,
+  pageBlogContent: pageBlog.content,
+});
+
 const mapDispatchToProps = dispatch => ({
-  fetchAppDataAction: (...args) => dispatch(fetchAppData(...args)),
   fetchHomeDataAction: (...args) => dispatch(fetchHomeData(...args)),
   fetchAboutDataAction: (...args) => dispatch(fetchAboutData(...args)),
   fetchPortfolioDataAction: (...args) => dispatch(fetchPortfolioData(...args)),
@@ -89,4 +103,4 @@ const mapDispatchToProps = dispatch => ({
   fetchBlogDataAction: (...args) => dispatch(fetchBlogData(...args))
 });
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

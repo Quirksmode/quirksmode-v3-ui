@@ -10,8 +10,7 @@ import PostItem from 'components/PostItem/PostItem';
  * @param  {object} props.latestBlogPosts []
  */
 const PageHomeBlog = ({
-  latestBlogPosts,
-  action
+  latestBlogPosts
 }) => (
   <div className="PageHomeBlog">
     <div className="Page__headingWrap">
@@ -28,7 +27,6 @@ const PageHomeBlog = ({
         <PostItem
           key={ post.postID }
           post={ post }
-          action={ action }
           size="Small"
           lineClamp="3"
         />
@@ -38,8 +36,7 @@ const PageHomeBlog = ({
 );
 
 PageHomeBlog.propTypes = {
-  latestBlogPosts: PropTypes.array,
-  action: PropTypes.func
+  latestBlogPosts: PropTypes.array
 };
 
 export default PageHomeBlog;

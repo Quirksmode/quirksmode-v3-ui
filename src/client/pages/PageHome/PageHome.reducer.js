@@ -6,6 +6,7 @@ import {
 
 const initialState = {
   content: {
+    title: '',
     heroSlides: [],
     featuredWork: [],
     intro: null,

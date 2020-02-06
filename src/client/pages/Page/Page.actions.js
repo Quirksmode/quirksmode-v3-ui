@@ -11,8 +11,7 @@ export const fetchPageData = (slug, href = null) => async (
 ) => {
   // Set the loading state
   dispatch({
-    type: FETCH_PAGE_REQUEST,
-    payload: slug
+    type: FETCH_PAGE_REQUEST
   });
 
   // If href, dispatch custom Link Loader Functionality
@@ -20,16 +19,22 @@ export const fetchPageData = (slug, href = null) => async (
     dispatch(setLinkLoading(href));
   }
 
-  const res = await api.get(`quirksmode/v1/pages/${slug}`);
+  try {
+    const res = await api.get(`quirksmode/v1/pages/${slug}`);
 
-  dispatch({
-    type: FETCH_PAGE_SUCCESS,
-    payload: res
-  });
+    dispatch({
+      type: FETCH_PAGE_SUCCESS,
+      payload: res
+    });
 
-  // If href, navigate to it
-  if (href) {
-    dispatch(setLinkLoaded());
-    dispatch(push(href));
+    // If href, navigate to it
+    if (href) {
+      dispatch(setLinkLoaded());
+      dispatch(push(href));
+    }
+  } catch {
+    dispatch({
+      type: FETCH_PAGE_ERROR
+    });
   }
 };

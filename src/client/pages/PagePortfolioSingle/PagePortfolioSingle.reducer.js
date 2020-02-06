@@ -5,25 +5,23 @@ import {
 } from './PagePortfolioSingle.actions';
 
 const initialState = {
-  loading: '',
-  error: false,
-  id: null,
-  title: '',
-  slug: '',
-  url: '',
-  featuredImage: {},
   content: {
-    postContent: '',
+    id: null,
+    title: '',
+    slug: '',
+    url: '',
+    hero: {
+      url: ''
+    },
     projectTags: [],
-    projectScreenshots: [],
+    screenshots: [],
     projectURL: '',
+    contentBlocks: [],
+    related: [],
+    noRelated: false,
   },
-  contentBlocks: [],
-  related: [],
-  noRelated: false,
-  hero: {
-    url: ''
-  },
+  loading: false,
+  error: false,
   metadata: {}
 };
 
@@ -32,29 +30,21 @@ export default (state = initialState, action) => {
     case FETCH_PORTFOLIO_SINGLE_REQUEST:
       return {
         ...state,
-        loading: action.payload,
+        loading: true,
         error: false
       };
     case FETCH_PORTFOLIO_SINGLE_SUCCESS:
       return {
         ...state,
-        id: action.payload.data.id,
-        title: action.payload.data.title,
-        slug: action.payload.data.slug,
-        url: action.payload.data.url,
-        featuredImage: action.payload.data.featuredImage,
         content: action.payload.data.content,
-        contentBlocks: action.payload.data.contentBlocks,
-        related: action.payload.data.related,
-        hero: action.payload.data.hero,
-        noRelated: action.payload.data.noRelated,
         metadata: action.payload.data.metadata,
-        loading: '',
+        loading: false,
         error: false
       };
     case FETCH_PORTFOLIO_SINGLE_ERROR:
       return {
-        ...initialState,
+        ...state,
+        loading: false,
         error: true
       };
     default:

@@ -12,7 +12,7 @@ export const fetchHomeData = () => async (dispatch, getState, api) => {
       type: FETCH_HOME_SUCCESS,
       payload: res
     });
-  } catch {
+  } catch (err) {
     dispatch({
       type: FETCH_HOME_ERROR
     });

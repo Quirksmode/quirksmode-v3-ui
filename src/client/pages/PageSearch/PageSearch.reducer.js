@@ -1,19 +1,38 @@
-import { FETCH_SEARCH_DATA } from './PageSearch.actions';
+import {
+  FETCH_SEARCH_REQUEST,
+  FETCH_SEARCH_SUCCESS,
+  FETCH_SEARCH_ERROR
+} from './PageSearch.actions';
 
 const initialState = {
-  title: '',
-  searchPosts: [],
+  content: {
+    title: '',
+    searchPosts: []
+  },
   metadata: {}
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_SEARCH_DATA:
+    case FETCH_SEARCH_REQUEST:
       return {
         ...state,
-        title: action.payload.data.title,
-        searchPosts: action.payload.data.searchPosts,
-        metadata: action.payload.data.metadata
+        loading: true,
+        error: false
+      };
+    case FETCH_SEARCH_SUCCESS:
+      return {
+        ...state,
+        content: action.payload.data.content,
+        metadata: action.payload.data.metadata,
+        loading: false,
+        error: false
+      };
+    case FETCH_SEARCH_ERROR:
+      return {
+        ...initialState,
+        loading: false,
+        error: true
       };
     default:
       return state;

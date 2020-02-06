@@ -1,32 +1,32 @@
 import {
-  SENDING_MAIL, SEND_MAIL_SUCCESS, SEND_MAIL_ERROR, RESET_FORM
+  SEND_MAIL_REQUEST, SEND_MAIL_SUCCESS, SEND_MAIL_ERROR, RESET_FORM
 } from './PageContactForm.actions';
 
 const initialState = {
-  sending: false,
-  error: false,
-  success: false,
-  response: null
+  formSending: false,
+  formError: false,
+  formSuccess: false,
+  formResponse: null
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case SENDING_MAIL:
+    case SEND_MAIL_REQUEST:
       return {
         ...state,
-        sending: true
+        formSending: true
       };
     case SEND_MAIL_SUCCESS:
       return {
         ...state,
-        sending: false,
-        success: true
+        formSending: false,
+        formSuccess: true
       };
     case SEND_MAIL_ERROR:
       return {
         ...state,
-        sending: false,
-        error: true
+        formSending: false,
+        formError: true
       };
     case RESET_FORM:
       return initialState;

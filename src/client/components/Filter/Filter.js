@@ -6,6 +6,7 @@ import React, {
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import SVGInline from 'react-svg-inline';
+import useIsMounting from 'hooks/isMounting';
 import IconTags from '!!raw-loader!icons/tags.svg';
 
 /**
@@ -20,6 +21,8 @@ const Filter = ({
   tags,
   type
 }) => {
+  const isMounting = useIsMounting();
+
   /**
    * react state mutator for setting the toggleTags Boolean
    *
@@ -106,28 +109,30 @@ const Filter = ({
   }, [tagButtons]);
 
   useEffect(() => {
-    // Category Buttons
-    const trueCatButtons = {};
-    Object.keys(catButtons).forEach((cat) => {
-      if (catButtons[cat]) { trueCatButtons[cat] = catButtons[cat]; }
-    });
-    const trueCatButtonsArr = Object.keys(trueCatButtons);
-    const catQueryString = trueCatButtonsArr.length > 0 ? `cat=${trueCatButtonsArr.join(',')}` : '';
+    if (!isMounting) {
+      // Category Buttons
+      const trueCatButtons = {};
+      Object.keys(catButtons).forEach((cat) => {
+        if (catButtons[cat]) { trueCatButtons[cat] = catButtons[cat]; }
+      });
+      const trueCatButtonsArr = Object.keys(trueCatButtons);
+      const catQueryString = trueCatButtonsArr.length > 0 ? `cat=${trueCatButtonsArr.join(',')}` : '';
 
-    // Tag Buttons
-    const trueTagButtons = {};
-    Object.keys(tagButtons).forEach((tag) => {
-      if (tagButtons[tag]) { trueTagButtons[tag] = tagButtons[tag]; }
-    });
-    const trueTagButtonsArr = Object.keys(trueTagButtons);
-    const tagQueryString = trueTagButtonsArr.length > 0 ? `tag=${trueTagButtonsArr.join(',')}` : '';
+      // Tag Buttons
+      const trueTagButtons = {};
+      Object.keys(tagButtons).forEach((tag) => {
+        if (tagButtons[tag]) { trueTagButtons[tag] = tagButtons[tag]; }
+      });
+      const trueTagButtonsArr = Object.keys(trueTagButtons);
+      const tagQueryString = trueTagButtonsArr.length > 0 ? `tag=${trueTagButtonsArr.join(',')}` : '';
 
-    // Define the query string
-    const queryString = `?${catQueryString}&${tagQueryString}`;
+      // Define the query string
+      const queryString = `?${catQueryString}&${tagQueryString}`;
 
-    // Fetch the Portfolio Data passing the Cat and Tag Query Vars
-    fetchDataAction(queryString);
-  }, [catButtons, fetchDataAction, tagButtons]);
+      // Fetch the Portfolio Data passing the Cat and Tag Query Vars
+      fetchDataAction(queryString);
+    }
+  }, [catButtons, fetchDataAction, isMounting, tagButtons]);
 
   return (
     <div className={ `Filter${isTagsToggled ? ' Filter Filter--toggled' : ''}` }>

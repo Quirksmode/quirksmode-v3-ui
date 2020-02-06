@@ -5,19 +5,21 @@ import {
 } from './PageBlogSingle.actions';
 
 const initialState = {
-  loading: false,
-  error: false,
-  id: null,
-  title: '',
-  url: '',
-  contentBlocks: [],
-  date: '',
-  related: [],
-  noRelated: false,
-  hero: {
-    url: ''
+  content: {
+    id: null,
+    title: '',
+    url: '',
+    date: '',
+    hero: {
+      url: ''
+    },
+    contentBlocks: [],
+    related: [],
+    noRelated: false
   },
-  metadata: {}
+  metadata: {},
+  loading: false,
+  error: false
 };
 
 export default (state = initialState, action) => {
@@ -25,25 +27,20 @@ export default (state = initialState, action) => {
     case FETCH_BLOG_SINGLE_REQUEST:
       return {
         ...state,
-        loading: true
+        loading: true,
+        error: false
       };
     case FETCH_BLOG_SINGLE_SUCCESS:
       return {
         ...state,
-        id: action.payload.data.id,
-        title: action.payload.data.title,
-        url: action.payload.data.url,
-        contentBlocks: action.payload.data.contentBlocks,
-        date: action.payload.data.date,
-        related: action.payload.data.related,
-        noRelated: action.payload.data.noRelated,
-        hero: action.payload.data.hero,
+        content: action.payload.data.content,
         metadata: action.payload.data.metadata,
-        loading: false
+        loading: false,
+        error: false
       };
     case FETCH_BLOG_SINGLE_ERROR:
       return {
-        ...initialState,
+        ...state,
         loading: false,
         error: true
       };

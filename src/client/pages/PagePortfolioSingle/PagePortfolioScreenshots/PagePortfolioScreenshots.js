@@ -7,8 +7,8 @@ import Swiper from 'react-id-swiper';
 import FsLightbox from 'fslightbox-react';
 import { useInView } from 'react-intersection-observer';
 
-const PagePortfolioSingleContent = ({
-  content
+const PagePortfolioScreenshots = ({
+  screenshots
 }) => {
   /**
    *
@@ -77,23 +77,23 @@ const PagePortfolioSingleContent = ({
     }
   }, [lightboxController.toggler, swiper]);
 
-  return content.projectScreenshots.length && (
-    <section className="PagePortfolioSingleContent Page__section Page__section--darkFull">
+  return screenshots.length && (
+    <section className="PagePortfolioScreenshots Page__section Page__section--darkFull">
       <div className="Page__sectionInner grid">
-        { content.projectScreenshots.length && (
-        <div className="PagePortfolioSingleContent__sliderWrap">
-          <div className="PagePortfolioSingleContent__screenshotOuter">
-            <div className="PagePortfolioSingleContent__screenshotInner">
+        { screenshots.length && (
+        <div className="PagePortfolioScreenshots__sliderWrap">
+          <div className="PagePortfolioScreenshots__screenshotOuter">
+            <div className="PagePortfolioScreenshots__screenshotInner">
               <Swiper
                 getSwiper={ updateSwiper }
                 { ...params }
               >
-                { content.projectScreenshots.map((slide, index) => (
+                { screenshots.map((slide, index) => (
                   <a
                     href={ slide.url }
                     key={ slide.id }
                     onClick={ e => openLightboxOnSlide(e, index + 1) }
-                    className="PagePortfolioSingleContent__slide aspectWrap aspectWrap--ratio-16-10"
+                    className="PagePortfolioScreenshots__slide aspectWrap aspectWrap--ratio-16-10"
                   >
                     <picture>
                       <source
@@ -139,11 +139,11 @@ const PagePortfolioSingleContent = ({
               </Swiper>
             </div>
           </div>
-          { content.projectScreenshots.length && (
+          { screenshots.length && (
           <FsLightbox
             toggler={ lightboxController.toggler }
             type="image"
-            sources={ content.projectScreenshots.map(slide => slide.url) }
+            sources={ screenshots.map(slide => slide.url) }
             slide={ lightboxController.slide }
           />
           ) }
@@ -173,8 +173,8 @@ const PagePortfolioSingleContent = ({
   );
 };
 
-PagePortfolioSingleContent.propTypes = {
-  content: PropTypes.object
+PagePortfolioScreenshots.propTypes = {
+  screenshots: PropTypes.array
 };
 
-export default PagePortfolioSingleContent;
+export default PagePortfolioScreenshots;

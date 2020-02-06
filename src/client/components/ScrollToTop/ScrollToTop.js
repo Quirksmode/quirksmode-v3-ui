@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
-const DynamicScrollToTop = ({
+const ScrollToTop = ({
   history,
   location
 }) => {
@@ -32,9 +32,9 @@ const DynamicScrollToTop = ({
   );
 };
 
-DynamicScrollToTop.propTypes = {
+ScrollToTop.propTypes = {
   history: PropTypes.object,
   location: PropTypes.object
 };
 
-export default withRouter(DynamicScrollToTop);
+export default withRouter(ScrollToTop);

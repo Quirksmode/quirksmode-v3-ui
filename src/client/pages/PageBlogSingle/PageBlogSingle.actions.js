@@ -11,8 +11,7 @@ export const fetchBlogSingleData = (slug, href = null) => async (
 ) => {
   // Set the loading state
   dispatch({
-    type: FETCH_BLOG_SINGLE_REQUEST,
-    payload: slug
+    type: FETCH_BLOG_SINGLE_REQUEST
   });
 
   // If href, dispatch custom Link Loader Functionality
@@ -20,16 +19,22 @@ export const fetchBlogSingleData = (slug, href = null) => async (
     dispatch(setLinkLoading(href));
   }
 
-  const res = await api.get(`quirksmode/v1/pages/blog/${slug}`);
+  try {
+    const res = await api.get(`quirksmode/v1/pages/blog/${slug}`);
 
-  dispatch({
-    type: FETCH_BLOG_SINGLE_SUCCESS,
-    payload: res
-  });
+    dispatch({
+      type: FETCH_BLOG_SINGLE_SUCCESS,
+      payload: res
+    });
 
-  // If href, navigate to it
-  if (href) {
-    dispatch(setLinkLoaded());
-    dispatch(push(href));
+    // If href, navigate to it
+    if (href) {
+      dispatch(setLinkLoaded());
+      dispatch(push(href));
+    }
+  } catch {
+    dispatch({
+      type: FETCH_BLOG_SINGLE_ERROR
+    });
   }
 };

@@ -15,7 +15,9 @@ const initialState = {
     },
     cvSections: []
   },
-  metadata: {}
+  metadata: {},
+  loading: false,
+  error: false
 };
 
 export default (state = initialState, action) => {

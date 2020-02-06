@@ -26,7 +26,7 @@ const PageContactForm = ({
   submitting,
   sendMailAction,
   resetFormAction,
-  sending
+  formSending
 }) => {
   const submit = (data) => {
     sendMailAction(data);
@@ -79,7 +79,7 @@ const PageContactForm = ({
         icon={ IconComment }
       />
 
-      <button type="submit" className={ `btn--submitIcon${sending ? ' btn--submitIcon--loading' : ''} ` } disabled={ submitting }>
+      <button type="submit" className={ `btn--submitIcon${formSending ? ' btn--submitIcon--loading' : ''} ` } disabled={ submitting }>
           Send Message
         <SVGInline className="btn--submitIconSvg" svg={ IconContact } />
         <SVGInline className="btn--submitIconSvg--loading" svg={ IconQuirksmode } />
@@ -93,7 +93,7 @@ PageContactForm.propTypes = {
   submitting: PropTypes.bool,
   sendMailAction: PropTypes.func,
   resetFormAction: PropTypes.func,
-  sending: PropTypes.bool,
+  formSending: PropTypes.bool,
 };
 
 const mapDispatchToProps = dispatch => ({
