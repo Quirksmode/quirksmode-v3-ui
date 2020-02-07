@@ -17,9 +17,12 @@ import LogoNav from './LogoNav/LogoNav';
  * @param  {object}   props.location               []
  */
 const Header = ({
-  heroSlides,
+  pageHomeContent,
   location
 }) => {
+  const {
+    heroSlides
+  } = pageHomeContent;
   /**
    *
    * @name swiper
@@ -162,12 +165,12 @@ const Header = ({
 };
 
 Header.propTypes = {
-  heroSlides: PropTypes.array,
+  pageHomeContent: PropTypes.object,
   location: PropTypes.object,
 };
 
 const mapStateToProps = ({ pageHome }) => ({
-  heroSlides: pageHome.content.heroSlides
+  pageHomeContent: pageHome.content
 });
 
 export default connect(

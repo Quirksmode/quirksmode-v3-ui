@@ -31,7 +31,7 @@ const PageContact = ({
   }, [fetchContactDataAction, title]);
 
   return (
-    <PageWrapper error={ error } loading={ loading }>
+    <PageWrapper error={ error }>
       { title && (
         <div className="Page PageContact">
           <Meta { ...metadata } />
@@ -80,9 +80,9 @@ const mapStateToProps = ({ pageContact, pageContactForm }) => ({
   metadata: pageContact.metadata,
   loading: pageContact.loading,
   error: pageContact.error,
-  formSending: pageContactForm.sending,
-  formSuccess: pageContactForm.success,
-  formError: pageContactForm.error
+  formSending: pageContactForm.formSending,
+  formSuccess: pageContactForm.formSuccess,
+  formError: pageContactForm.formError
 });
 
 const mapDispatchToProps = dispatch => ({

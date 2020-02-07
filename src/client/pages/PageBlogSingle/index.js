@@ -3,14 +3,14 @@ import loadable from '@loadable/component';
 import Loading from 'components/Loading/Loading';
 import ErrorBoundary from 'components/ErrorBoundary/ErrorBoundary';
 
-const PageHome = loadable(() => import(/* webpackPrefetch: true */ './PageHome'), {
+const PageBlogSingle = loadable(() => import(/* webpackPrefetch: true */ './PageBlogSingle'), {
   fallback: <Loading />
 });
 
-const WrappedPageHome = props => (
+const WrappedPageBlogSingle = props => (
   <ErrorBoundary>
-    <PageHome { ...props } />
+    <PageBlogSingle { ...props } />
   </ErrorBoundary>
 );
 
-export default WrappedPageHome;
+export default WrappedPageBlogSingle;

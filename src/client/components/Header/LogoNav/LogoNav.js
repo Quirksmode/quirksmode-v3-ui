@@ -37,7 +37,7 @@ const LogoNav = ({
       </p>
       <ul className="LogoNav__nav__items">
         { navItems
-        && navItems.map((item, index) => (
+        && navItems.map(item => (
           <li className="LogoNav__nav__item" key={ item.id }>
             <NavLink
               className="LogoNav__nav__link"

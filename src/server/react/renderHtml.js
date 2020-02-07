@@ -52,6 +52,7 @@ const render = (req, store, context, extractor, css) => {
         <meta name="twitter:site" content="@quirksmode_uk" />
         <script>let docEl=document.documentElement;docEl.className=docEl.className.replace( /(?:^|s)no-js(?!S)/g , ' js' );let isTouch="ontouchstart"in docEl;isTouch?docEl.classList.add("touch"):docEl.classList.add("no-touch"),function(e){"use strict";function t(t){if(t){var s=e.documentElement;s.classList?s.classList.add("webp"):s.className+=" webp",window.sessionStorage.setItem("webpSupport",!0)}}!function(e){if(window.sessionStorage&&window.sessionStorage.getItem("webpSupport"))t(!0);else{var s=new Image;s.onload=s.onerror=function(){e(2===s.height)},s.src="data:image/webp;base64,UklGRi4AAABXRUJQVlA4TCEAAAAvAUAAEB8wAiMwAgSSNtse/cXjxyCCmrYNWPwmHRH9jwMA"}}(t)}(document);</script>
         ${IS_DEV ? extractor.getStyleTags() : `<style>${css}</style>`}
+        ${extractor.getLinkTags()}
         <link rel="preconnect" href="${process.env.CMS_URL}">
         <link rel="preconnect" href="https://storage.googleapis.com" crossorigin>
         <link rel="preconnect" href="https://www.google-analytics.com" crossorigin>

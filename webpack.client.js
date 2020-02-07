@@ -11,12 +11,12 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const LoadablePlugin = require('@loadable/webpack-plugin');
-const CompressionPlugin = require('compression-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin'); // Gzip
+const BrotliPlugin = require('brotli-webpack-plugin'); // Brotli
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const { ifProduction, ifNotProduction } = getIfUtils(process.env.NODE_ENV);
 const IS_DEV = process.env.NODE_ENV !== 'production';
-const DEBUG = process.env.DEBUG || false;
 
 const config = {
   mode: IS_DEV ? 'development' : 'production',
@@ -31,16 +31,10 @@ const config = {
       hooks: path.resolve(__dirname, 'src/client/hooks'),
       assets: path.resolve(__dirname, 'src/assets'),
       icons: path.resolve(__dirname, 'src/assets/icons'),
-      'react-dom': '@hot-loader/react-dom'
+      'react-dom': IS_DEV ? '@hot-loader/react-dom' : 'react-dom'
     }
   },
   cache: IS_DEV,
-  node: {
-    fs: 'empty',
-    vm: 'empty',
-    net: 'empty',
-    tls: 'empty'
-  },
   entry: IS_DEV ? [
     'webpack-hot-middleware/client?reload=true',
     path.resolve(__dirname, './src/client/index.js')
@@ -56,12 +50,12 @@ const config = {
       new TerserPlugin({
         cache: true,
         parallel: true,
-        sourceMap: IS_DEV || DEBUG,
+        sourceMap: IS_DEV,
         terserOptions: {
-          compress: !IS_DEV && !DEBUG,
-          mangle: !IS_DEV && !DEBUG,
+          compress: !IS_DEV,
+          mangle: !IS_DEV,
           output: {
-            beautify: IS_DEV || DEBUG,
+            beautify: IS_DEV,
             comments: /@license/i
           }
         },
@@ -89,7 +83,8 @@ const config = {
     new webpack.DefinePlugin({
       __CLIENT__: true,
       __SERVER__: false,
-      __DEV__: IS_DEV
+      __DEV__: IS_DEV,
+      'process.env.NODE_ENV': IS_DEV ? JSON.stringify('development') : JSON.stringify('production')
     }),
     new MiniCssExtractPlugin({
       filename: IS_DEV ? '[name].css' : '[name].[contenthash:8].css',
@@ -110,13 +105,22 @@ const config = {
     })),
     ifProduction(new webpack.HashedModuleIdsPlugin()),
     ifProduction(new CompressionPlugin({
-      test: /\.(js|css|html)$/,
-      threshold: 10240
+      filename: '[path].gz[query]',
+      algorithm: 'gzip',
+      test: /\.(js|css|html|svg)$/,
+      threshold: 8192,
+      minRatio: 0.8
+    })),
+    ifProduction(new BrotliPlugin({
+      asset: '[path].br[query]',
+      test: /\.(js|css|html|svg)$/,
+      threshold: 10240,
+      minRatio: 0.8
     })),
     ifProduction(
       // Visualize all of the webpack bundles
       new BundleAnalyzerPlugin({
-        analyzerMode: process.env.NODE_ENV === 'analyze' ? 'server' : 'disabled'
+        analyzerMode: process.env.NODE_ENV === 'analyser' ? 'server' : 'disabled'
       })
     )
   ]),
