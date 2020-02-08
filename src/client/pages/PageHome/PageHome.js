@@ -10,10 +10,16 @@ import PageHomeSkills from './PageHomeSkills/PageHomeSkills';
 import PageHomeBlog from './PageHomeBlog/PageHomeBlog';
 
 /**
- * Description
+ * Home Page
  *
  * @name PageHome
- * @param  {object} props.cv []
+ * @param {function} props.fetchHomeDataAction [Redux action to Fetch the Home Page Data]
+ * @param {object} props.content [The content for this Page]
+ * @param {object} props.metadata [The metadata for this Page]
+ * @param {boolean} props.loading [Flag for while the data is being fetched]
+ * @param {boolean} props.error [Flag for if there is an error fetching the data]
+ * @param {object} props.siteSettings [The Global Site Settings]
+ * @return {JSXElement}
  */
 const PageHome = ({
   fetchHomeDataAction,
@@ -23,6 +29,13 @@ const PageHome = ({
   error,
   siteSettings
 }) => {
+  /**
+   * @type {Object}
+   * @property {array} content.featuredWork [For the featured work Slider]
+   * @property {object} content.intro [Intro content]
+   * @property {array} content.latestBlogPosts [Latest Blog Posts]
+   * @property {array} content.skills [List of skills]
+   */
   const {
     featuredWork,
     intro,
@@ -30,10 +43,17 @@ const PageHome = ({
     skills
   } = content;
 
+  /**
+   * @type {Object}
+   * @property {object} siteSettings.cv [CV data from the Global Site Settings]
+   */
   const {
     cv
   } = siteSettings;
 
+  /**
+   * Fetch the Home Page Data via Redux, but only if the data does not already exist
+   */
   useEffect(() => {
     if (!intro) fetchHomeDataAction();
   }, [fetchHomeDataAction, intro]);

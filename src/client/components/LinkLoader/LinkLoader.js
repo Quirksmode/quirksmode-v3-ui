@@ -63,6 +63,7 @@ const LinkLoader = ({
 
 LinkLoader.propTypes = {
   type: PropTypes.string,
+  title: PropTypes.string,
   slug: PropTypes.string,
   children: PropTypes.any,
   fetchPageDataAction: PropTypes.func,

@@ -29,18 +29,32 @@ const icons = {
 };
 
 /**
- * Description
+ * About Page
  *
  * @name PageAbout
- * @param  {object} props.cv []
+ * @param {function} props.fetchAboutDataAction [Redux action to Fetch the About Page Data]
+ * @param {object} props.content [The content for this Page]
+ * @param {object} props.metadata [The metadata for this Page]
+ * @param {boolean} props.loading [Flag for while the data is being fetched]
+ * @param {boolean} props.error [Flag for if there is an error fetching the data]
+ * @param {object} props.siteSettings [The Global Site Settings]
+ * @return {JSXElement}
  */
 const PageAbout = ({
   fetchAboutDataAction,
   content,
   metadata,
+  loading,
   error,
   siteSettings,
 }) => {
+  /**
+   * @type {Object}
+   * @property {string} content.title [The Page Title]
+   * @property {object} content.intro [Intro content]
+   * @property {array} content.skillsSections [The Skills Sections]
+   * @property {array} content.cvSections [The CV Sections]
+   */
   const {
     title,
     intro,
@@ -48,16 +62,23 @@ const PageAbout = ({
     cvSections
   } = content;
 
+  /**
+   * @type {Object}
+   * @property {object} siteSettings.cv [CV data from the Global Site Settings]
+   */
   const {
     cv
   } = siteSettings;
 
+  /**
+   * Fetch the About Page Data via Redux, but only if the data does not already exist
+   */
   useEffect(() => {
     if (!title) fetchAboutDataAction();
   }, [fetchAboutDataAction, title]);
 
   return title && (
-    <PageWrapper error={ error }>
+    <PageWrapper error={ error } loading={ loading }>
       <div className="Page PageAbout">
         <Meta { ...metadata } />
         <section className="Page__section Page__section--greyFade">
@@ -170,6 +191,7 @@ PageAbout.propTypes = {
   fetchAboutDataAction: PropTypes.func,
   content: PropTypes.object,
   metadata: PropTypes.object,
+  loading: PropTypes.bool,
   error: PropTypes.bool,
   siteSettings: PropTypes.object,
 };
@@ -177,6 +199,7 @@ PageAbout.propTypes = {
 const mapStateToProps = ({ pageAbout, app }) => ({
   content: pageAbout.content,
   metadata: pageAbout.metadata,
+  loading: pageAbout.loading,
   error: pageAbout.error,
   siteSettings: app.siteSettings,
 });

@@ -61,6 +61,17 @@
         }
       }
     }
+
+    .LinkLoader--loading & {
+      &::after {
+        animation: rotate 3s linear infinite;
+        opacity: 1;
+      }
+
+      &::before {
+        opacity: 1;
+      }
+    }
   }
 
   &__new {
@@ -107,17 +118,6 @@
     img {
       display: block;
       width: 100%;
-    }
-  }
-
-  .LinkLoader--loading & {
-    &::after {
-      animation: rotate 3s linear infinite;
-      opacity: 1;
-    }
-
-    &::before {
-      opacity: 1;
     }
   }
 

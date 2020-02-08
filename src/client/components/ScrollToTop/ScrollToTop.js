@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
@@ -6,10 +6,9 @@ const ScrollToTop = ({
   history,
   location
 }) => {
-  const [currentUrl, setCurrentUrl] = useState('');
-
   useEffect(() => {
-    if (history.action === 'POP' || currentUrl === location.pathname) {
+    // Prevent Scroll if navigating back or adjusting query parameters
+    if (history.action === 'POP' || history.location.search) {
       return;
     }
 
@@ -23,9 +22,7 @@ const ScrollToTop = ({
     } else {
       window.scrollTo(0, 0);
     }
-
-    setCurrentUrl(location.pathname);
-  }, [history, currentUrl, location]);
+  }, [history, location]);
 
   return (
     <div />

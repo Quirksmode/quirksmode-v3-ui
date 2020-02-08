@@ -12,6 +12,20 @@ import PageContactForm from './PageContactForm/PageContactForm';
 import IconTick from '!!raw-loader!icons/tick.svg';
 import IconCross from '!!raw-loader!icons/cross.svg';
 
+/**
+ * Contact Page
+ *
+ * @name PageHome
+ * @param {function} props.fetchContactDataAction [Redux action to Fetch the Contact Page Data]
+ * @param {object} props.content [The content for this Page]
+ * @param {object} props.metadata [The metadata for this Page]
+ * @param {boolean} props.loading [Flag for while the data is being fetched]
+ * @param {boolean} props.error [Flag for if there is an error fetching the data]
+ * @param {boolean} props.formSending [Flag for when the form is sending]
+ * @param {boolean} props.formSuccess [Flag for when the form has successfully sent]
+ * @param {boolean} props.formError [Flag for when the form has not successfully sent]
+ * @return {JSXElement}
+ */
 const PageContact = ({
   fetchContactDataAction,
   content,
@@ -22,19 +36,26 @@ const PageContact = ({
   formSuccess,
   formError
 }) => {
+  /**
+   * @type {Object}
+   * @property {string} content.title [The Page Title]
+   */
   const {
     title
   } = content;
 
+  /**
+   * Fetch the Contact Page Data via Redux, but only if the data does not already exist
+   */
   useEffect(() => {
     if (!title) fetchContactDataAction();
   }, [fetchContactDataAction, title]);
 
   return (
-    <PageWrapper error={ error }>
+    <PageWrapper error={ error } loading={ loading }>
       { title && (
         <div className="Page PageContact">
-          <Meta { ...metadata } />
+          { metadata && <Meta { ...metadata } /> }
           <section className="Page__section">
             <div className="Page__sectionInner grid">
               <h1>{ title }</h1>
