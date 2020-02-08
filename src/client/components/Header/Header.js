@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Swiper from 'react-id-swiper';
 import { useInView } from 'react-intersection-observer';
+import LazyLoad from 'components/LazyLoad/LazyLoad';
 import LogoNav from './LogoNav/LogoNav';
 
 /**
@@ -92,45 +93,47 @@ const Header = ({
               >
                 { heroSlides.map(slide => (
                   <div className="aspectWrap aspectWrap--ratio-16-10" key={ slide.id }>
-                    <picture>
-                      <source
-                        type="image/webp"
-                        srcSet={
-                          `${slide.image.sizes.heroSlider768up}.webp 1x,
-                          ${slide.image.sizes.heroSlider768up2x}.webp 1.5x,
-                          ${slide.image.sizes.heroSlider768up2x}.webp 2x`
-                        }
-                        media="(min-width: 768px)"
-                      />
-                      <source
-                        type="image/jpeg"
-                        srcSet={
-                          `${slide.image.sizes.heroSlider768up} 1x,
-                          ${slide.image.sizes.heroSlider768up2x} 1.5x,
-                          ${slide.image.sizes.heroSlider768up2x} 2x`
-                        }
-                        media="(min-width: 768px)"
-                      />
-                      <source
-                        type="image/webp"
-                        srcSet={
-                          `${slide.image.sizes.heroSlider481up}.webp 1x,
-                          ${slide.image.sizes.heroSlider481up2x}.webp 1.5x,
-                          ${slide.image.sizes.heroSlider481up2x}.webp 2x`
-                        }
-                      />
-                      <img
-                        srcSet={
-                          `${slide.image.sizes.heroSlider481up} 1x,
-                          ${slide.image.sizes.heroSlider481up2x} 1.5x,
-                          ${slide.image.sizes.heroSlider481up2x} 2x`
-                        }
-                        src={ slide.image.sizes.heroSlider481up }
-                        alt={ slide.image.alt }
-                        width={ slide.image.width }
-                        height={ slide.image.height }
-                      />
-                    </picture>
+                    <LazyLoad>
+                      <picture>
+                        <source
+                          type="image/webp"
+                          srcSet={
+                            `${slide.image.sizes.heroSlider768up}.webp 1x,
+                            ${slide.image.sizes.heroSlider768up2x}.webp 1.5x,
+                            ${slide.image.sizes.heroSlider768up2x}.webp 2x`
+                          }
+                          media="(min-width: 768px)"
+                        />
+                        <source
+                          type="image/jpeg"
+                          srcSet={
+                            `${slide.image.sizes.heroSlider768up} 1x,
+                            ${slide.image.sizes.heroSlider768up2x} 1.5x,
+                            ${slide.image.sizes.heroSlider768up2x} 2x`
+                          }
+                          media="(min-width: 768px)"
+                        />
+                        <source
+                          type="image/webp"
+                          srcSet={
+                            `${slide.image.sizes.heroSlider481up}.webp 1x,
+                            ${slide.image.sizes.heroSlider481up2x}.webp 1.5x,
+                            ${slide.image.sizes.heroSlider481up2x}.webp 2x`
+                          }
+                        />
+                        <img
+                          srcSet={
+                            `${slide.image.sizes.heroSlider481up} 1x,
+                            ${slide.image.sizes.heroSlider481up2x} 1.5x,
+                            ${slide.image.sizes.heroSlider481up2x} 2x`
+                          }
+                          src={ slide.image.sizes.heroSlider481up }
+                          alt={ slide.image.alt }
+                          width={ slide.image.width }
+                          height={ slide.image.height }
+                        />
+                      </picture>
+                    </LazyLoad>
                   </div>
                 ))}
               </Swiper>

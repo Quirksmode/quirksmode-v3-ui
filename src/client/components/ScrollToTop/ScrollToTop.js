@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
@@ -6,15 +6,13 @@ const ScrollToTop = ({
   history,
   location
 }) => {
+  const [currentUrl, setCurrentUrl] = useState('');
+
   useEffect(() => {
-    // Keep default behavior of restoring scroll position when user:
-    // - clicked back button
-    // - clicked on a link that programmatically calls `history.goBack()`
-    // - manually changed the URL in the address bar (here we might want
-    // to scroll to top, but we can't differentiate it from the others)
-    if (history.action === 'POP') {
+    if (history.action === 'POP' || currentUrl === location.pathname) {
       return;
     }
+
     // In all other cases, check fragment/scroll to top
     const { hash } = location;
     if (hash) {
@@ -25,7 +23,9 @@ const ScrollToTop = ({
     } else {
       window.scrollTo(0, 0);
     }
-  });
+
+    setCurrentUrl(location.pathname);
+  }, [history, currentUrl, location]);
 
   return (
     <div />

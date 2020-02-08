@@ -31,6 +31,7 @@ const PostItem = ({
           key={ postName }
           type={ type }
           slug={ postName }
+          title={ postTitle }
         >
           <Frame
             featuredImage={ featuredImage }

@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {
+  useEffect
+} from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Breadcrumbs from 'components/Breadcrumbs/Breadcrumbs';
@@ -21,12 +23,17 @@ const PageBlog = ({
   metadata,
   blogCategories,
   blogTags,
-  error
+  error,
+  history
 }) => {
   const {
     title,
     blogPosts
   } = content;
+
+  useEffect(() => {
+    fetchBlogDataAction(history.location.search);
+  }, [fetchBlogDataAction, history.location.search]);
 
   return (
     <PageWrapper error={ error }>
@@ -39,7 +46,7 @@ const PageBlog = ({
               <span className="Breadcrumbs__divider">&gt;</span>
               <span className="Breadcrumbs__active">{ title }</span>
             </Breadcrumbs>
-            <Filter categories={ blogCategories } tags={ blogTags } fetchDataAction={ fetchBlogDataAction } type="blog" />
+            <Filter history={ history } categories={ blogCategories } tags={ blogTags } fetchDataAction={ fetchBlogDataAction } type="blog" />
           </div>
         </section>
         <section className="Page__section Page__section--greyFade project-row-wrap clearfix">
@@ -69,7 +76,8 @@ PageBlog.propTypes = {
   metadata: PropTypes.object,
   error: PropTypes.bool,
   blogCategories: PropTypes.array,
-  blogTags: PropTypes.array
+  blogTags: PropTypes.array,
+  history: PropTypes.object
 };
 
 const mapStateToProps = ({ app, pageBlog }) => ({

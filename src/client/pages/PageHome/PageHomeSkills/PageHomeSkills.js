@@ -34,19 +34,15 @@ const PageHomeSkills = ({
             key={ termId }
             className="PageHomeSkills__skill"
           >
-            <SVGInline
-              svg={ IconQuirksmode }
-              className="PageHomeSkills__skillIcon"
-              aria-hidden="true"
-            />
-            <NavLink
-              to={ `/${skill.taxonomy}/${skill.slug}/` }
-              className="PageHomeSkills__skillLink"
-              title={ `Link to all Projects featuring tag: ${skill.name}` }
-              rel="tag"
-            >
-              { skill.name }
-            </NavLink>
+
+            <span className="PageHomeSkills__skillLink">
+              <SVGInline
+                svg={ IconQuirksmode }
+                className="PageHomeSkills__skillIcon"
+                aria-hidden="true"
+              />
+              <span>{ skill.name }</span>
+            </span>
           </li>
         );
       })}

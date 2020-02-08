@@ -89,18 +89,18 @@
   }
 
   a {
-    color: var(--color-qm-blue);
+    color: var(--color-blue-lighter);
     text-decoration: none;
 
     &:hover {
       .no-touch & {
-        color: var(--color-qm-blue);
+        color: var(--color-blue-lighter);
         text-decoration: underline;
       }
     }
 
     &:active {
-      color: var(--color-qm-blue);
+      color: var(--color-blue-lighter);
       text-decoration: underline;
     }
   }
@@ -119,7 +119,7 @@
     }
 
     span {
-      color: var(--color-qm-blue);
+      color: var(--color-blue-lighter);
     }
 
     &:hover {

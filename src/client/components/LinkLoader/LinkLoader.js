@@ -14,6 +14,7 @@ import { connect } from 'react-redux';
  */
 const LinkLoader = ({
   type = null,
+  title = '',
   slug,
   children,
   fetchPageDataAction,
@@ -54,6 +55,7 @@ const LinkLoader = ({
       onClick={ e => handleClick(e) }
       className={ `LinkLoader${loadingSlug === href ? ' LinkLoader--loading' : ''}` }
     >
+      { title && <span className="visuallyHidden">{ title }</span> }
       { children }
     </NavLink>
   );

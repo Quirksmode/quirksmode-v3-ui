@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Breadcrumbs from 'components/Breadcrumbs/Breadcrumbs';
@@ -7,7 +7,6 @@ import Frame from 'components/Frame/Frame';
 import LinkLoader from 'components/LinkLoader/LinkLoader';
 import Meta from 'components/Meta/Meta';
 import PageWrapper from 'components/PageWrapper/PageWrapper';
-import { fetchPortfolioSingleData } from 'pages/PagePortfolioSingle/PagePortfolioSingle.actions';
 import { fetchPortfolioData } from './PagePortfolio.actions';
 
 /**
@@ -23,29 +22,33 @@ const PagePortfolio = ({
   error,
   projectCategories,
   projectTags,
+  history
 }) => {
   const {
     title,
     projects
   } = content;
 
+  useEffect(() => {
+    fetchPortfolioDataAction(history.location.search);
+  }, [fetchPortfolioDataAction, history.location.search]);
+
   return (
     <PageWrapper error={ error }>
       <div className="page PagePortfolio">
         { metadata && <Meta { ...metadata } /> }
-        <div id="content">
-          <section className="Page__section Page__section--greyFade Page__section--withFilter clearfix">
-            <div className="Page__sectionInner PagePortfolio__sketch grid">
-              <h1>{ title }</h1>
-              <Breadcrumbs>
-                <span className="Breadcrumbs__divider">&gt;</span>
-                <span className="Breadcrumbs__active">{ title }</span>
-              </Breadcrumbs>
-              <Filter categories={ projectCategories } tags={ projectTags } fetchDataAction={ fetchPortfolioDataAction } type="portfolio" />
-            </div>
-          </section>
-
-          { projects.length > 0 ? projects.map(projectCategory => (
+        <section className="Page__section Page__section--greyFade Page__section--withFilter clearfix">
+          <div className="Page__sectionInner PagePortfolio__sketch grid">
+            <h1>{ title }</h1>
+            <Breadcrumbs>
+              <span className="Breadcrumbs__divider">&gt;</span>
+              <span className="Breadcrumbs__active">{ title }</span>
+            </Breadcrumbs>
+            <Filter history={ history } categories={ projectCategories } tags={ projectTags } type="portfolio" />
+          </div>
+        </section>
+        { projects.length > 0
+          ? projects.map(projectCategory => projectCategory.projects.length > 0 && (
             <section
               className="PagePortfolio__categoryWrap Page__section Page__section--greyFade"
               key={ projectCategory.term_id }
@@ -53,8 +56,8 @@ const PagePortfolio = ({
               <div className="grid">
                 <h2>{projectCategory.name}</h2>
                 <div className="grid--frames">
-                  {
-                    projectCategory.projects.map((project) => {
+                  { projectCategory.projects.length > 0
+                    && projectCategory.projects.map((project) => {
                       const {
                         featuredImage,
                         post_title: postTitle,
@@ -89,7 +92,6 @@ const PagePortfolio = ({
               </div>
             </section>
           )}
-        </div>
       </div>
     </PageWrapper>
   );
@@ -102,6 +104,7 @@ PagePortfolio.propTypes = {
   error: PropTypes.bool,
   projectCategories: PropTypes.array,
   projectTags: PropTypes.array,
+  history: PropTypes.object
 };
 
 const mapStateToProps = ({ pagePortfolio, app }) => ({
@@ -109,12 +112,11 @@ const mapStateToProps = ({ pagePortfolio, app }) => ({
   metadata: pagePortfolio.metadata,
   error: pagePortfolio.error,
   projectCategories: app.projectCategories,
-  projectTags: app.projectTags,
+  projectTags: app.projectTags
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchPortfolioDataAction: (...args) => dispatch(fetchPortfolioData(...args)),
-  fetchPortfolioSingleDataAction: (...args) => dispatch(fetchPortfolioSingleData(...args))
+  fetchPortfolioDataAction: (...args) => dispatch(fetchPortfolioData(...args))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PagePortfolio);

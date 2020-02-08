@@ -12,7 +12,7 @@
     display: flex;
     flex-wrap: wrap;
     margin-top: -10px;
-    padding: 12px 15px;
+    padding: 10px 15px;
     position: relative;
     width: 100%;
 
@@ -46,7 +46,6 @@
   &__skill {
     align-items: center;
     display: flex;
-    margin-bottom: 7px;
     width: calc(100% / 2);
 
     @media (--mobile-landscape) {
@@ -71,9 +70,13 @@
   }
 
   &__skillLink {
+    align-items: center;
     color: var(--color-qm-body);
+    display: flex;
+    padding: 4px;
     text-decoration: none;
     transition: color .2s ease-out;
+    width: 100%;
   }
 
   &__skillIcon {
@@ -81,6 +84,8 @@
     fill: var(--color-qm-blue);
     height: 14px;
     margin-right: 5px;
+    position: relative;
+    top: -2px;
     transition: transform .2s ease-out;
     width: 14px;
   }

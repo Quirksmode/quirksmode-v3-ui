@@ -1,4 +1,5 @@
 .Page {
+  background: var(--color-white);
   border-bottom: 3px solid var(--color-grey-bg);
   overflow: hidden;
 

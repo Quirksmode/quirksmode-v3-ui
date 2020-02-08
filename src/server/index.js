@@ -1,3 +1,4 @@
+const expressStaticGzip = require('express-static-gzip');
 const http = require('http');
 const helmet = require('helmet');
 const hpp = require('hpp');
@@ -58,26 +59,16 @@ if (process.env.NODE_ENV !== 'production') {
     log: false // Turn it off for friendly-errors-webpack-plugin
   }));
 } else {
-  // Configuring HTTP caching behavior (https://web.dev/codelab-http-cache/)
-  app.use(express.static('build/public', {
-    etag: true, // Being explicit about the default.
-    lastModified: true, // Being explicit about the default.
-    setHeaders: (res, thePath) => {
-      const hashRegExp = new RegExp('\\.[0-9a-f]{8}\\.');
-
-      if (thePath.endsWith('.html')) {
-        // All of the project's HTML files end in .html
-        res.setHeader('Cache-Control', 'no-cache');
-      } else if (hashRegExp.test(thePath)) {
-        // If the RegExp matched, then we have a versioned URL.
-        res.setHeader('Cache-Control', 'max-age=31536000');
-      }
-    },
-  }));
-
   // eslint-disable-next-line global-require
   const serverRenderer = require('./react/renderHtml').default;
-  app.use(serverRenderer());
+  app.use('/', expressStaticGzip('build/public', {
+    index: false,
+    enableBrotli: true,
+    orderPreference: ['br', 'gz'],
+    setHeaders (res) {
+      res.setHeader('Cache-Control', 'public, max-age=31536000');
+    }
+  })).use(serverRenderer());
 }
 
 // Start HTTP Server

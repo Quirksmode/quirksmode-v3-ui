@@ -34,9 +34,9 @@ const PageHome = ({
     cv
   } = siteSettings;
 
-  // useEffect(() => {
-  //   if (!intro) fetchHomeDataAction();
-  // }, [fetchHomeDataAction, intro]);
+  useEffect(() => {
+    if (!intro) fetchHomeDataAction();
+  }, [fetchHomeDataAction, intro]);
 
   return (
     <PageWrapper error={ error } loading={ loading }>

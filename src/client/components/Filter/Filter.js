@@ -19,7 +19,8 @@ const Filter = ({
   fetchDataAction,
   categories,
   tags,
-  type
+  type,
+  history
 }) => {
   const isMounting = useIsMounting();
 
@@ -109,6 +110,39 @@ const Filter = ({
   }, [tagButtons]);
 
   useEffect(() => {
+    if (isMounting && history.location.search) {
+      // eslint-disable-next-line compat/compat
+      const getSearchParams = new URLSearchParams(history.location.search);
+      const catSearchParams = getSearchParams.has('cat') ? getSearchParams.get('cat').split(',') : null;
+      const tagSearchParams = getSearchParams.has('tag') ? getSearchParams.get('tag').split(',') : null;
+
+      // Get the cat params and convert to an object
+      if (catSearchParams) {
+        let getCatObj = {};
+        catSearchParams.forEach((cat) => {
+          getCatObj = {
+            ...getCatObj,
+            [cat]: true
+          };
+        });
+        setCatButtons(getCatObj);
+      }
+
+      // Get the cat params and convert to an object
+      if (tagSearchParams) {
+        let getTagObj = {};
+        tagSearchParams.forEach((tag) => {
+          getTagObj = {
+            ...getTagObj,
+            [tag]: true
+          };
+        });
+        setTagButtons(getTagObj);
+      }
+    }
+  }, [history.location.search, isMounting]);
+
+  useEffect(() => {
     if (!isMounting) {
       // Category Buttons
       const trueCatButtons = {};
@@ -127,12 +161,12 @@ const Filter = ({
       const tagQueryString = trueTagButtonsArr.length > 0 ? `tag=${trueTagButtonsArr.join(',')}` : '';
 
       // Define the query string
-      const queryString = `?${catQueryString}&${tagQueryString}`;
+      const queryString = `${catQueryString || tagQueryString ? '?' : ''}${catQueryString}${catQueryString && tagQueryString ? '&' : ''}${tagQueryString}`;
 
-      // Fetch the Portfolio Data passing the Cat and Tag Query Vars
-      fetchDataAction(queryString);
+      // Update the URL to trigger the fetch data action
+      history.push(`/${type}/${queryString}`);
     }
-  }, [catButtons, fetchDataAction, isMounting, tagButtons]);
+  }, [catButtons, fetchDataAction, history, isMounting, tagButtons, type]);
 
   return (
     <div className={ `Filter${isTagsToggled ? ' Filter Filter--toggled' : ''}` }>
@@ -219,7 +253,8 @@ Filter.propTypes = {
   fetchDataAction: PropTypes.func,
   tags: PropTypes.array,
   categories: PropTypes.array,
-  type: PropTypes.string
+  type: PropTypes.string,
+  history: PropTypes.object
 };
 
 export default connect(null, null)(Filter);
