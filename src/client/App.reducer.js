@@ -1,4 +1,6 @@
-import { FETCH_APP_DATA, SET_LINK_LOADING, SET_LINK_LOADED } from './App.actions';
+import {
+  FETCH_APP_DATA, SET_LINK_LOADING, SET_LINK_LOADED, SET_UTILITY
+} from './App.actions';
 
 const initialState = {
   siteSettings: {
@@ -29,7 +31,12 @@ const initialState = {
       link: ''
     }
   },
-  loadingSlug: ''
+  loadingSlug: '',
+  utility: {
+    isNavToggled: false,
+    isSearchToggled: false,
+    isMenuBtnToggled: false
+  }
 };
 
 export default (state = initialState, action) => {
@@ -55,6 +62,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         loadingSlug: ''
+      };
+    case SET_UTILITY:
+      return {
+        ...state,
+        utility: action.payload
       };
     default:
       return state;

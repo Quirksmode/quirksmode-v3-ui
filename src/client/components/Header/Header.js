@@ -37,6 +37,14 @@ const Header = ({
    * @type {object}
    */
   const params = {
+    autoplay: {
+      delay: 7000
+    },
+    speed: 1000,
+    fadeEffect: {
+      crossFade: true
+    },
+    effect: 'fade',
     autoHeight: true,
     preloadImages: false,
     loop: false,
@@ -55,7 +63,12 @@ const Header = ({
    */
   const goNext = () => {
     if (swiper !== null) {
-      swiper.slideNext();
+      if (swiper.activeIndex === (swiper.slides.length - 1)) {
+        // Fake Loop due to React issue with Loop mode
+        swiper.slideTo(0);
+      } else {
+        swiper.slideNext();
+      }
     }
   };
 
@@ -66,7 +79,12 @@ const Header = ({
    */
   const goPrev = () => {
     if (swiper !== null) {
-      swiper.slidePrev();
+      if (swiper.activeIndex === 0) {
+        // Fake Loop due to React issue with Loop mode
+        swiper.slideTo(swiper.slides.length - 1);
+      } else {
+        swiper.slidePrev();
+      }
     }
   };
 
@@ -98,7 +116,7 @@ const Header = ({
                         <source
                           type="image/webp"
                           srcSet={
-                            `${slide.image.sizes.heroSlider768up}.webp 1x,
+                            `${slide.image.sizes.heroSlider768up2x}.webp 1x,
                             ${slide.image.sizes.heroSlider768up2x}.webp 1.5x,
                             ${slide.image.sizes.heroSlider768up2x}.webp 2x`
                           }
@@ -107,7 +125,7 @@ const Header = ({
                         <source
                           type="image/jpeg"
                           srcSet={
-                            `${slide.image.sizes.heroSlider768up} 1x,
+                            `${slide.image.sizes.heroSlider768up2x} 1x,
                             ${slide.image.sizes.heroSlider768up2x} 1.5x,
                             ${slide.image.sizes.heroSlider768up2x} 2x`
                           }

@@ -26,9 +26,11 @@ const config = {
     modules: ['src', 'node_modules'],
     descriptionFiles: ['package.json'],
     alias: {
+      client: path.resolve(__dirname, 'src/client'),
       components: path.resolve(__dirname, 'src/client/components'),
       pages: path.resolve(__dirname, 'src/client/pages'),
       hooks: path.resolve(__dirname, 'src/client/hooks'),
+      utils: path.resolve(__dirname, 'src/client/utils'),
       assets: path.resolve(__dirname, 'src/assets'),
       icons: path.resolve(__dirname, 'src/assets/icons'),
       'react-dom': IS_DEV ? '@hot-loader/react-dom' : 'react-dom'

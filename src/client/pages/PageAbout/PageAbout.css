@@ -7,21 +7,14 @@
 
   &__title {
     align-items: center;
-    color: var(--color-qm-middlebody);
+    color: var(--color-qm-heading);
     display: flex;
     margin-bottom: 30px;
-
-    svg {
-      fill: var(--color-sb-grey);
-      height: 28px;
-      margin-right: 10px;
-      width: 28px;
-    }
   }
 
   &__introText {
     color: var(--color-qm-heading);
-    font-size: 1.8rem;
+    font-size: 1.9rem;
     font-weight: 200;
     line-height: 3.3rem;
     margin-bottom: 20px;
@@ -92,17 +85,18 @@
     }
 
     h3 {
-      color: var(--color-lightbody);
+      color: var(--color-emperor);
       font-family: var(--font-body-main);
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       font-weight: 300;
-      line-height: 1.5rem;
-      margin-bottom: 20px;
+      line-height: 1.6rem;
+      margin-bottom: 10px;
     }
   }
 
   &__skillBox {
-    margin-bottom: 6px;
+    border-radius: 3px;
+    margin-bottom: 1px;
 
     &.grey {
       background-color: var(--color-sb-grey);
@@ -110,6 +104,10 @@
 
     &.blue {
       background-color: var(--color-sb-blue);
+    }
+
+    &.red {
+      background-color: var(--color-primary-red-washed);
     }
 
     &.w20 {
@@ -134,12 +132,10 @@
 
     p {
       color: var(--color-white);
-      font-size: 1.3rem;
-      font-weight: 400;
-      line-height: 1.3rem;
+      font-size: 1.4rem;
+      line-height: 1.4rem;
       margin: 0;
-      padding: 10px 0 10px 10px;
-      text-transform: uppercase;
+      padding: 9px 0 9px 9px;
 
       span {
         color: var(--color-qm-middlebody);
@@ -155,21 +151,24 @@
     }
 
     li {
+      font-size: 1.5rem;
       margin-bottom: 40px;
 
       h3 {
+        color: var(--color-qm-heading);
         font-family: var(--font-body-main);
-        font-size: 1.4rem;
-        font-weight: normal;
+        font-size: 1.7rem;
+        font-weight: 500;
         line-height: 2.2rem;
+        margin-bottom: 10px;
       }
 
       ul {
-        list-style-type: disc;
+        list-style-type: square;
         margin: 10px 0 10px 25px;
 
         li {
-          margin-bottom: 0;
+          margin-bottom: 3px;
 
           ul {
             list-style-type: square;
@@ -183,11 +182,18 @@
     }
 
     span {
-      color: var(--color-lightbody);
+      color: var(--color-qm-middlebody);
+      display: block;
+      font-size: 1.5rem;
       font-weight: 300;
     }
 
     &--education {
+      span {
+        color: var(--color-qm-middlebody);
+        display: inline-block;
+      }
+
       li {
         margin-bottom: 20px;
 
@@ -198,8 +204,18 @@
     }
 
     &--training {
+      ul {
+        ul {
+          @media (--mobile-landscape) {
+            column-gap: 60px;
+            columns: 2;
+          }
+        }
+      }
+
       li {
-        margin-bottom: 0;
+        break-inside: avoid;
+        page-break-inside: avoid;
       }
 
       span {
@@ -208,6 +224,12 @@
         @media (--tablet-portrait) {
           display: inline;
         }
+      }
+    }
+
+    &--interests {
+      p {
+        font-size: 1.5rem;
       }
     }
   }

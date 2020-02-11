@@ -2,13 +2,25 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
+import { setUtility } from 'client/App.actions';
 
 const LogoNav = ({
+  setUtilityAction = null,
   mainLogo,
-  navItems
-}) => (
-  <div className="LogoNav">
-    { mainLogo.sizes.image && (
+  navItems,
+}) => {
+  const handleClick = () => {
+    if (setUtilityAction) {
+      setUtilityAction({
+        isNavToggled: false,
+        isSearchToggled: false
+      });
+    }
+  };
+
+  return (
+    <div className="LogoNav">
+      { mainLogo.sizes.image && (
       <NavLink
         className="LogoNav__logo"
         exact
@@ -30,16 +42,17 @@ const LogoNav = ({
           />
         </picture>
       </NavLink>
-    )}
-    <nav className="LogoNav__nav">
-      <p className="visuallyHidden">
-        <strong>Main Navigation</strong>
-      </p>
-      <ul className="LogoNav__nav__items">
-        { navItems
+      )}
+      <nav className="LogoNav__nav">
+        <p className="visuallyHidden">
+          <strong>Main Navigation</strong>
+        </p>
+        <ul className="LogoNav__nav__items">
+          { navItems
         && navItems.map(item => (
           <li className="LogoNav__nav__item" key={ item.id }>
             <NavLink
+              onClick={ () => handleClick() }
               className="LogoNav__nav__link"
               exact={ item.slug === '/' }
               activeClassName="selected"
@@ -50,12 +63,14 @@ const LogoNav = ({
           </li>
         ))
       }
-      </ul>
-    </nav>
-  </div>
-);
+        </ul>
+      </nav>
+    </div>
+  );
+};
 
 LogoNav.propTypes = {
+  setUtilityAction: PropTypes.func,
   mainLogo: PropTypes.object,
   navItems: PropTypes.array
 };
@@ -63,6 +78,10 @@ LogoNav.propTypes = {
 const mapStateToProps = ({ app }) => ({
   mainLogo: app.siteSettings.mainLogo,
   navItems: app.navItems
+});
+
+const mapDispatchToProps = dispatch => ({
+  setUtilityAction: (...args) => dispatch(setUtility(...args))
 });
 
 export default connect(mapStateToProps, null)(LogoNav);

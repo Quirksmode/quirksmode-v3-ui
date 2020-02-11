@@ -58,6 +58,8 @@ const PageHomeIntro = ({
             className="btn--submitIcon"
             title={ cv.title }
             href={ cv.url }
+            target="_blank"
+            rel="noopener noreferrer"
           >
             DOWNLOAD MY CV
             <SVGInline svg={ IconArrowDown } />

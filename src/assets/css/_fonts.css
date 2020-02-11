@@ -70,6 +70,8 @@ a {
   transition: color .2s ease-out;
 
   &:hover {
-    color: var(--link-hover);
+    .no-touch & {
+      color: var(--link-hover);
+    }
   }
 }

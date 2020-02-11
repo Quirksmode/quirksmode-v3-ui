@@ -18,6 +18,10 @@ const PagePortfolioScreenshots = ({
   const [swiper, updateSwiper] = useState(null);
 
   const params = {
+    fadeEffect: {
+      crossFade: true
+    },
+    effect: 'fade',
     lazyLoading: true,
     preloadImages: true,
     shouldSwiperUpdate: true,
@@ -36,7 +40,12 @@ const PagePortfolioScreenshots = ({
    */
   const goNext = () => {
     if (swiper !== null) {
-      swiper.slideNext();
+      if (swiper.activeIndex === (swiper.slides.length - 1)) {
+        // Fake Loop due to React issue with Loop mode
+        swiper.slideTo(0);
+      } else {
+        swiper.slideNext();
+      }
     }
   };
 
@@ -47,7 +56,12 @@ const PagePortfolioScreenshots = ({
    */
   const goPrev = () => {
     if (swiper !== null) {
-      swiper.slidePrev();
+      if (swiper.activeIndex === 0) {
+        // Fake Loop due to React issue with Loop mode
+        swiper.slideTo(swiper.slides.length - 1);
+      } else {
+        swiper.slidePrev();
+      }
     }
   };
 

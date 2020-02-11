@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import { loadableReady } from '@loadable/component';
 import { createBrowserHistory } from 'history';
+import { Workbox } from 'workbox-window';
 import configureStore from './redux/store';
 import Container from './Container';
 
@@ -51,12 +52,11 @@ if (module.hot) {
  * Register service worker
  */
 if ('serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
-  window.addEventListener('load', () => {
-    // eslint-disable-next-line compat/compat
-    navigator.serviceWorker.register('/sw.js').then((registration) => {
-      console.log('SW registered: ', registration);
-    }).catch((registrationError) => {
-      console.log('SW registration failed: ', registrationError);
-    });
+  const wb = new Workbox('/sw.js');
+  wb.addEventListener('installed', (event) => {
+    if (event.isUpdate) {
+      window.location.reload();
+    }
   });
+  wb.register();
 }

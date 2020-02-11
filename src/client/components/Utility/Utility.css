@@ -103,26 +103,28 @@
         margin-left: -1px;
         width: 1px;
 
-        .Utility__navBtn--show & {
+        &--open,
+        &--show {
+          display: block;
           width: 42px;
         }
       }
 
-      button {
-        transition: background .5s ease-out;
-
-        .Utility__nav--open & {
+      &--open {
+        button {
           background: var(--color-black);
           color: var(--color-white);
         }
       }
+
+      button {
+        transition: background .5s ease-out;
+      }
     }
 
     &--search {
-      button {
-        transition: background .5s ease-out;
-
-        .Utility__search--open & {
+      &--open {
+        button {
           background: var(--color-black);
           color: var(--color-white);
 
@@ -134,6 +136,10 @@
             display: block;
           }
         }
+      }
+
+      button {
+        transition: background .5s ease-out;
       }
     }
   }
@@ -163,22 +169,17 @@
   /* Override the Logo Nav styles */
   &__nav {
     @media (--mobile-landscape) {
-      padding-bottom: 15px;
-      padding-top: 15px;
+      padding-bottom: 10px;
+      padding-top: 20px;
     }
 
-    .Utility__nav--open & {
+    @media (--tablet-portrait) {
+      padding-bottom: 5px;
+      padding-top: 5px;
+    }
+
+    &--open {
       transform: translate3d(0, 0, 0);
-
-      @media (--mobile-landscape) {
-        display: none;
-      }
-    }
-
-    .Utility__navBtn--show & {
-      @media (--mobile-landscape) {
-        display: block;
-      }
     }
 
     .LogoNav {
@@ -191,8 +192,10 @@
 
         @media (--mobile-landscape) {
           display: block;
-          margin-bottom: 10px;
+          height: auto;
+          height: 27px;
           max-width: 150px;
+          width: 150px;
         }
 
         @media (--tablet-portrait) {
@@ -214,6 +217,10 @@
 
         &__link {
           font-size: 2rem;
+
+          @media (--mobile-landscape) {
+            font-size: 1.6rem;
+          }
         }
       }
     }
@@ -224,7 +231,7 @@
       padding: 20px 4%;
     }
 
-    .Utility__search--open & {
+    &--open {
       transform: translate3d(0, 0, 0);
     }
 

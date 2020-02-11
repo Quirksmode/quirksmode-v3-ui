@@ -1,9 +1,12 @@
 import React, {
   useEffect,
-  useState,
   useCallback
 } from 'react';
+import { connect } from 'react-redux';
 import SVGInline from 'react-svg-inline';
+import LogoNav from 'components/Header/LogoNav/LogoNav';
+import { setUtility } from 'client/App.actions';
+import throttle from 'utils/throttle';
 import IconSoundcloud from '!!raw-loader!icons/soundcloud.svg';
 import IconTwitter from '!!raw-loader!icons/twitter.svg';
 import IconLinkedin from '!!raw-loader!icons/linkedin-circle.svg';
@@ -11,86 +14,53 @@ import IconGithub from '!!raw-loader!icons/github.svg';
 import IconSearch from '!!raw-loader!icons/search.svg';
 import IconMenu from '!!raw-loader!icons/menu.svg';
 import IconClose from '!!raw-loader!icons/close.svg';
-import LogoNav from '../Header/LogoNav/LogoNav';
 
 /**
  * Description
  *
  * @name Utility
  */
-const Utility = () => {
-  /**
-   * react state mutator for setting the isNavToggled boolean
-   *
-   * @name useState
-   * @type {function}
-   */
-  const [
+const Utility = ({
+  setUtilityAction,
+  utility
+}) => {
+  const {
     isNavToggled,
-    setIsNavToggled
-  ] = useState(false);
-
-  /**
-   * react state mutator for setting the isSearchToggled boolean
-   *
-   * @name useState
-   * @type {function}
-   */
-  const [
     isSearchToggled,
-    setIsSearchToggled
-  ] = useState(false);
+    isMenuBtnToggled
+  } = utility;
 
-  /**
-   *
-   * @name closeSearch
-   * @type {function}
-   */
-  const closeSearch = () => {
-    document.body.classList.remove('Utility__search--open');
-    setIsSearchToggled(false);
-  };
-
-  const closeNav = () => {
-    document.body.classList.remove('Utility__nav--open');
-    setIsNavToggled(false);
-  };
-
-  const onScroll = useCallback((e) => {
+  const onScroll = useCallback(throttle(() => {
     if (window.innerWidth > 480) {
-      if (e.srcElement.body.scrollTop > 200) {
-        document.body.classList.add('Utility__navBtn--show');
+      if (window.pageYOffset > 200) {
+        setUtilityAction({
+          ...utility,
+          isMenuBtnToggled: true
+        });
       } else {
-        document.body.classList.remove('Utility__navBtn--show');
-        closeNav();
+        setUtilityAction({
+          ...utility,
+          isNavToggled: false,
+          isMenuBtnToggled: false
+        });
       }
     }
-  }, []);
+  }, [setUtilityAction, utility], 100));
 
   const toggleNav = () => {
-    if (isNavToggled) {
-      document.body.classList.remove('Utility__nav--open');
-    } else {
-      document.body.classList.add('Utility__nav--open');
-
-      // Close Search
-      closeSearch();
-    }
-
-    setIsNavToggled(!isNavToggled);
+    setUtilityAction({
+      ...utility,
+      isNavToggled: !isNavToggled,
+      isSearchToggled: false
+    });
   };
 
   const toggleSearch = () => {
-    if (isSearchToggled) {
-      document.body.classList.remove('Utility__search--open');
-    } else {
-      document.body.classList.add('Utility__search--open');
-
-      // Close Nav
-      closeNav();
-    }
-
-    setIsSearchToggled(!isSearchToggled);
+    setUtilityAction({
+      ...utility,
+      isNavToggled: false,
+      isSearchToggled: !isSearchToggled
+    });
   };
 
   useEffect(() => {
@@ -101,11 +71,11 @@ const Utility = () => {
   }, [onScroll]);
 
   return (
-    <div className="utility">
-      <div className="Utility__nav">
-        <LogoNav />
+    <div className="Utility">
+      <div className={ `Utility__nav${isNavToggled ? ' Utility__nav--open' : ''}` }>
+        <LogoNav setUtilityAction={ setUtilityAction } />
       </div>
-      <div className="Utility__search">
+      <div className={ `Utility__search${isSearchToggled ? ' Utility__search--open' : ''}` }>
         <p className="visuallyHidden" id="int_search">
           <strong>Search Quirksmode</strong>
         </p>
@@ -180,7 +150,7 @@ const Utility = () => {
             </div>
           </div>
           <div className="Utility__iconsWrap">
-            <div className="Utility__icon Utility__icon--search">
+            <div className={ `Utility__icon Utility__icon--search${isSearchToggled ? ' Utility__icon--search--open' : ''}` }>
               <button
                 type="button"
                 onClick={ toggleSearch }
@@ -190,7 +160,7 @@ const Utility = () => {
                 <SVGInline className="Utility__iconSvgClose" svg={ IconClose } />
               </button>
             </div>
-            <div className="Utility__icon Utility__icon--menu">
+            <div className={ `Utility__icon Utility__icon--menu${isNavToggled ? ' Utility__icon--menu--open' : ''}${isMenuBtnToggled ? ' Utility__icon--menu--show' : ''}` }>
               <button
                 type="button"
                 onClick={ toggleNav }
@@ -206,4 +176,12 @@ const Utility = () => {
   );
 };
 
-export default Utility;
+const mapStateToProps = ({ app }) => ({
+  utility: app.utility
+});
+
+const mapDispatchToProps = dispatch => ({
+  setUtilityAction: (...args) => dispatch(setUtility(...args))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Utility);

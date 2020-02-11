@@ -6,27 +6,7 @@ import Breadcrumbs from 'components/Breadcrumbs/Breadcrumbs';
 import Meta from 'components/Meta/Meta';
 import PageWrapper from 'components/PageWrapper/PageWrapper';
 import IconArrowDown from '!!raw-loader!icons/arrowdown.svg';
-import IconBook from '!!raw-loader!icons/book.svg';
-import IconChart from '!!raw-loader!icons/chart.svg';
-import IconMusic from '!!raw-loader!icons/music.svg';
-import IconSettings from '!!raw-loader!icons/settings.svg';
-import IconWorld from '!!raw-loader!icons/world.svg';
 import { fetchAboutData } from './PageAbout.actions';
-
-/**
- * Icons that are called dynamically need to be declared
- * this way
- *
- * @name icons
- * @type {object}
- */
-const icons = {
-  book: IconBook,
-  chart: IconChart,
-  music: IconMusic,
-  settings: IconSettings,
-  world: IconWorld
-};
 
 /**
  * About Page
@@ -107,9 +87,6 @@ const PageAbout = ({
           <div className="Page__sectionInner PageAbout__sketch grid">
             <div className="PageAbout__col">
               <h2 className="PageAbout__title">
-                { skillsSections.skillsIcon
-                  && <SVGInline svg={ icons[skillsSections.skillsIcon] } />
-                }
                 { skillsSections.skillsTitle }
               </h2>
               <div className="PageAbout__skillsWrap">
@@ -159,7 +136,6 @@ const PageAbout = ({
                 const {
                   add_class: addClass,
                   add_content: addContent,
-                  add_icon: addIcon,
                   add_title: addTitle
                 } = cvSection;
 
@@ -169,7 +145,6 @@ const PageAbout = ({
                     className={ `PageAbout__cvSection PageAbout__cvSection--${addClass}` }
                   >
                     <h2 className="PageAbout__title">
-                      <SVGInline svg={ icons[addIcon] } />
                       { addTitle }
                     </h2>
                     <div

@@ -52,7 +52,7 @@ const PageBlog = ({
         <section className="Page__section Page__section--greyFade project-row-wrap clearfix">
           <div className="Page__section project-row clearfix">
             <div className="Page__sectionInner grid">
-              <div className="PageBlog__posts grid__content grid__content--center">
+              <div className="PageBlog__posts grid__content">
                 { blogPosts.length > 0 && blogPosts.map(post => (
                   <PostItem
                     key={ post.postID }

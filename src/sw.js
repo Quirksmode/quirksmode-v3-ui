@@ -1,9 +1,15 @@
 /* global workbox, self */
 /* eslint no-restricted-globals: "error" */
 
+// Path prefix to load modules locally
+workbox.setConfig({ debug: false });
+
+// Updating SW lifecycle to update the app after user triggered refresh
 workbox.core.skipWaiting();
 workbox.core.clientsClaim();
-workbox.precaching.precacheAndRoute(self.__precacheManifest);
+
+// Inject the generated manifest from webpack
+// workbox.precaching.precacheAndRoute(self.__precacheManifest);
 workbox.routing.registerRoute(
   /\.(?:js|css)$/,
   new workbox.strategies.StaleWhileRevalidate(),
@@ -12,7 +18,7 @@ workbox.routing.registerRoute(
 workbox.routing.registerRoute(
   // Cache API Request
   new RegExp('/wp-json/(.*)'),
-  workbox.strategies.staleWhileRevalidate({
+  new workbox.strategies.NetworkFirst({
     cacheName: 'apiCache',
     plugins: [
       new workbox.expiration.Plugin({
@@ -24,10 +30,9 @@ workbox.routing.registerRoute(
 );
 
 workbox.routing.registerRoute(
-  // Cache Image File
   /.*\.(?:png|jpg|jpeg|svg|gif)/,
-  workbox.strategies.cacheFirst({
-    cacheName: 'images',
+  new workbox.strategies.NetworkFirst({
+    cacheName: 'images-cache',
     plugins: [
       new workbox.expiration.Plugin({
         maxEntries: 60,
@@ -37,8 +42,39 @@ workbox.routing.registerRoute(
   })
 );
 
-workbox.routing.registerRoute('/', workbox.strategies.cacheFirst({
-  cacheName: 'home',
-}));
+workbox.routing.registerRoute(
+  '/',
+  new workbox.strategies.NetworkFirst({
+    cacheName: 'page-home-cache',
+  })
+);
+
+workbox.routing.registerRoute(
+  '/about-me/',
+  new workbox.strategies.NetworkFirst({
+    cacheName: 'page-about-cache',
+  })
+);
+
+workbox.routing.registerRoute(
+  '/portfolio/',
+  new workbox.strategies.NetworkFirst({
+    cacheName: 'page-portfolio-cache',
+  })
+);
+
+workbox.routing.registerRoute(
+  '/blog/',
+  new workbox.strategies.NetworkFirst({
+    cacheName: 'page-blog-cache',
+  })
+);
+
+workbox.routing.registerRoute(
+  '/contact/',
+  new workbox.strategies.NetworkFirst({
+    cacheName: 'page-contact-cache',
+  })
+);
 
 workbox.googleAnalytics.initialize();

@@ -16,7 +16,6 @@ import { fetchContactData } from 'pages/PageContact/PageContact.actions';
 import { fetchPortfolioData } from 'pages/PagePortfolio/PagePortfolio.actions';
 import { fetchBlogData } from 'pages/PageBlog/PageBlog.actions';
 import ScrollToTop from 'components/ScrollToTop/ScrollToTop';
-import { fetchAppData } from './App.actions';
 
 /**
  * Description
