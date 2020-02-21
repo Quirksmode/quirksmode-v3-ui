@@ -3,12 +3,14 @@ import PropTypes from 'prop-types';
 import SVGInline from 'react-svg-inline';
 import { NavLink } from 'react-router-dom';
 import IconArrowDown from '!!raw-loader!icons/arrowdown.svg';
+
 /**
- * Description
+ * Home Page Intro Component
  *
- * @name PageHomeIntro
- * @param  {object} props.intro []
- * @param  {string} props.cv []
+ * @name PageHomeSkills
+ * @param {object} props.intro - The intro content
+ * @param {object} props.cv - The cv content
+ * @return {JSXElement}
  */
 const PageHomeIntro = ({
   intro,

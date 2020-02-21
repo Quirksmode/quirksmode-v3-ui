@@ -12,12 +12,12 @@ import { fetchAboutData } from './PageAbout.actions';
  * About Page
  *
  * @name PageAbout
- * @param {function} props.fetchAboutDataAction [Redux action to Fetch the About Page Data]
- * @param {object} props.content [The content for this Page]
- * @param {object} props.metadata [The metadata for this Page]
- * @param {boolean} props.loading [Flag for while the data is being fetched]
- * @param {boolean} props.error [Flag for if there is an error fetching the data]
- * @param {object} props.siteSettings [The Global Site Settings]
+ * @param {function} props.fetchAboutDataAction - Redux action to Fetch the About Page Data
+ * @param {object} props.content - The content for this Page
+ * @param {object} props.metadata - The metadata for this Page
+ * @param {boolean} props.loading - Flag for while the data is being fetched
+ * @param {boolean} props.error - Flag for if there is an error fetching the data
+ * @param {object} props.siteSettings - The Global Site Settings
  * @return {JSXElement}
  */
 const PageAbout = ({
@@ -30,10 +30,10 @@ const PageAbout = ({
 }) => {
   /**
    * @type {Object}
-   * @property {string} content.title [The Page Title]
-   * @property {object} content.intro [Intro content]
-   * @property {array} content.skillsSections [The Skills Sections]
-   * @property {array} content.cvSections [The CV Sections]
+   * @property {string} content.title - The Page Title
+   * @property {object} content.intro - Intro content
+   * @property {array} content.skillsSections - The Skills Sections
+   * @property {array} content.cvSections - The CV Sections
    */
   const {
     title,
@@ -44,7 +44,7 @@ const PageAbout = ({
 
   /**
    * @type {Object}
-   * @property {object} siteSettings.cv [CV data from the Global Site Settings]
+   * @property {object} siteSettings.cv - CV data from the Global Site Settings
    */
   const {
     cv

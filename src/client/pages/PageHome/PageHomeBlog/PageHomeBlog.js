@@ -4,10 +4,11 @@ import { NavLink } from 'react-router-dom';
 import PostItem from 'components/PostItem/PostItem';
 
 /**
- * Description
+ * Home Page Latest Posts
  *
  * @name PageHomeBlog
- * @param  {object} props.latestBlogPosts []
+ * @param {array} props.latestBlogPosts - Latest Blog Posts
+ * @return {JSXElement}
  */
 const PageHomeBlog = ({
   latestBlogPosts

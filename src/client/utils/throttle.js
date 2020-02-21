@@ -1,10 +1,10 @@
 /**
  * @name throttle
  * @description throttle utility
- * @param  {function} func    - function to throttle
- * @param  {integer}  ms      - throttle timer
- * @param  {object}   context - optional contexct to bind
- * @return {function} the throttled function
+ * @param  {function} func    [function to throttle]
+ * @param  {integer}  ms      [throttle timer]
+ * @param  {object}   context [optional contexct to bind]
+ * @return {function} [the throttled function]
  * @example
  *
  *  window.addEventListener('resize', throttle(() => {

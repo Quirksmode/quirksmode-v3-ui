@@ -84,4 +84,4 @@ const mapDispatchToProps = dispatch => ({
   setUtilityAction: (...args) => dispatch(setUtility(...args))
 });
 
-export default connect(mapStateToProps, null)(LogoNav);
+export default connect(mapStateToProps, mapDispatchToProps)(LogoNav);

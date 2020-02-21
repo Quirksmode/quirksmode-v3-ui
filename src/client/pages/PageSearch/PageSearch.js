@@ -15,22 +15,35 @@ import { fetchSearchData } from './PageSearch.actions';
 import IconSearch from '!!raw-loader!icons/search.svg';
 
 /**
- * Description
+ * Search Page
  *
  * @name PageSearch
- * @param  {object} props []
+ * @param {function} props.fetchSearchDataAction - Redux action to Fetch the Search Page Data
+ * @param {object} props.content - The content for this Page
+ * @param {object} props.metadata - The metadata for this Page
+ * @param {boolean} props.loading - Flag for while the data is being fetched
+ * @param {boolean} props.error - Flag for if there is an error fetching the data
+ * @param {object} props.location - The location used to parse the URL's Query String
+ * @return {JSXElement}
  */
 const PageSearch = ({
   fetchSearchDataAction,
   content,
   metadata,
+  loading,
   error,
   location,
 }) => {
+  /**
+   * @type {Object}
+   * @property {string} content.title - The Page Title
+   * @property {array} content.searchPosts - The Search Posts
+   */
   const {
     title,
     searchPosts
   } = content;
+
   /**
    * react state mutator for setting the values
    *
@@ -42,24 +55,39 @@ const PageSearch = ({
     setValue
   ] = useState('');
 
+  /**
+   * Fetch the Search Page Data via Redux using the URL's Query String
+   */
   useEffect(() => {
     const queryVars = queryString.parse(location.search);
     const searchQuery = queryVars.s;
     setValue(searchQuery);
   }, [fetchSearchDataAction, location.search]);
 
+  /**
+   * Event Handler to Fetch the Search data when the Search Input changes
+   *
+   * @name handleChange
+   * @param {event} e - onChange Event for the Search Input
+   */
   const handleChange = (e) => {
     setValue(e.target.value);
     fetchSearchDataAction(e.target.value);
   };
 
+  /**
+   * Event Handler to Fetch the Search data when the Search Form is submitted
+   *
+   * @name handleSubmit
+   * @param {event} e - onClick Event for the Submit Button
+   */
   const handleSubmit = (e) => {
     e.preventDefault();
     fetchSearchDataAction(value);
   };
 
   return (
-    <PageWrapper error={ error }>
+    <PageWrapper error={ error } loading={ loading }>
       <div className="Page PageSearch">
         { metadata && <Meta { ...metadata } /> }
         <section className="Page__section Page__section--greyFade Page__section--withFilter">
@@ -129,12 +157,14 @@ PageSearch.propTypes = {
   fetchSearchDataAction: PropTypes.func,
   content: PropTypes.object,
   metadata: PropTypes.object,
+  loading: PropTypes.bool,
   error: PropTypes.bool,
   location: PropTypes.object
 };
 
 const mapStateToProps = ({ pageSearch }) => ({
   content: pageSearch.content,
+  loading: pageSearch.loading,
   error: pageSearch.error
 });
 

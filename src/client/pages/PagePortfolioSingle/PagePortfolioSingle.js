@@ -9,27 +9,43 @@ import PageWrapper from 'components/PageWrapper/PageWrapper';
 import PagePortfolioScreenshots from './PagePortfolioScreenshots/PagePortfolioScreenshots';
 
 /**
- * Description
+ * Portfolio Single Page
  *
  * @name PagePortfolioSingle
- * @param  {object} props []
+ * @param {object} props.content - The content for this Page
+ * @param {object} props.metadata - The metadata for this Page
+ * @param {boolean} props.error - Flag for if there is an error fetching the data
+ * @return {JSXElement}
  */
 const PagePortfolioSingle = ({
   content,
   metadata,
   error
 }) => {
+  /**
+   * @type {Object}
+   * @property {string} content.title - The Page Title
+   * @property {string} content.url - The Project's full URL, used for the Social Sharing Component
+   * @property {object} content.hero - The Projects Hero
+   * @property {array} content.contentBlocks - The flexible content blocks passed from the CMS
+   * @property {array} content.projectTags - The Project Tags that are passed to the content blocks
+   * @property {string} content.projectRole - My Role on this project
+   * @property {string} content.projectURL - The Projects live URL
+   * @property {array} content.screenshots - The Projects screenshots
+   * @property {array} content.related - Related Projects
+   * @property {boolean} content.noRelated - Flag to indicate if there was no related Projects
+   */
   const {
     title,
     url,
     hero,
+    contentBlocks,
     projectTags,
     projectRole,
     projectURL,
     screenshots,
     related,
-    noRelated,
-    contentBlocks
+    noRelated
   } = content;
 
   return (
@@ -54,7 +70,6 @@ const PagePortfolioSingle = ({
 
 PagePortfolioSingle.propTypes = {
   fetchPortfolioSingleDataAction: PropTypes.func,
-  match: PropTypes.object,
   content: PropTypes.object,
   metadata: PropTypes.object,
   error: PropTypes.bool

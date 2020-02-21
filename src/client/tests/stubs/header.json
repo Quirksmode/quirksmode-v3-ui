@@ -1,0 +1,60 @@
+{
+  "id":"W-Ld0REAACEAecuU",
+  "type":"header",
+  "tags":[
+
+  ],
+  "slug":"marketing-header",
+  "lang":"en-gb",
+  "data":{
+    "name":"Marketing Header",
+    "header_brand":{
+      "id":"W-1B6xEAACkADHrz",
+      "type":"image",
+      "tags":[
+
+      ],
+      "slug":"header-branding",
+      "lang":"en-gb",
+      "data":{
+        "name":"Header Branding",
+        "url":"/",
+        "image":{
+          "dimensions":{
+            "width":113,
+            "height":150
+          },
+          "alt":null,
+          "copyright":null,
+          "url":"https://trade-nation-marketing-cms.cdn.prismic.io/trade-nation-marketing-cms%2F8ad90079-abf0-492b-a99e-33982b0ec6d8_icon.svg"
+        }
+      },
+      "link_type":"Document",
+      "isBroken":false
+    },
+    "items":[
+      {
+        "display":"Get Started",
+        "url":"/"
+      },
+      {
+        "display":"Learn more",
+        "url":"/"
+      },
+      {
+        "display":"Expert analysis",
+        "url":"/"
+      },
+      {
+        "display":"About us",
+        "url":"/"
+      },
+      {
+        "display":"FAQ",
+        "url":"/"
+      }
+    ]
+  },
+  "link_type":"Document",
+  "isBroken":false
+}

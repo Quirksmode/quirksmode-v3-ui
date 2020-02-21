@@ -17,7 +17,7 @@ import LogoNav from './LogoNav/LogoNav';
  * @param  {array}    props.heroSlides             []
  * @param  {object}   props.location               []
  */
-const Header = ({
+export const Header = ({
   pageHomeContent,
   location
 }) => {

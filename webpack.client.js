@@ -33,6 +33,7 @@ const config = {
       utils: path.resolve(__dirname, 'src/client/utils'),
       assets: path.resolve(__dirname, 'src/assets'),
       icons: path.resolve(__dirname, 'src/assets/icons'),
+      tests: path.resolve(__dirname, 'src/tests'),
       'react-dom': IS_DEV ? '@hot-loader/react-dom' : 'react-dom'
     }
   },

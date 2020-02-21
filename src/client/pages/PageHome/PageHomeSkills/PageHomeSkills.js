@@ -5,17 +5,18 @@ import SVGInline from 'react-svg-inline';
 import IconQuirksmode from '!!raw-loader!icons/quirksmode.svg';
 
 /**
- * Description
+ * Home Page Skills Component
  *
  * @name PageHomeSkills
- * @param  {array} props.skills []
+ * @param {array} props.skills - My skills list
+ * @return {JSXElement}
  */
 const PageHomeSkills = ({
   skills
 }) => (
   <div className="PageHomeSkills">
     <div className="Page__headingWrap">
-      <h2>Erm, so what do i actually do?</h2>
+      <h2>This is some of what I do</h2>
       <NavLink
         to="/about-me"
         className="link--withHeading link--withIcon"
@@ -26,22 +27,21 @@ const PageHomeSkills = ({
     <ul className="PageHomeSkills__skills">
       { skills.map((skill) => {
         const {
-          term_id: termId
+          skill_name: skillName
         } = skill;
 
         return (
           <li
-            key={ termId }
+            key={ skillName }
             className="PageHomeSkills__skill"
           >
-
             <span className="PageHomeSkills__skillLink">
               <SVGInline
                 svg={ IconQuirksmode }
                 className="PageHomeSkills__skillIcon"
                 aria-hidden="true"
               />
-              <span>{ skill.name }</span>
+              <span>{ skillName }</span>
             </span>
           </li>
         );

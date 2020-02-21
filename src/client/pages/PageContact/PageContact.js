@@ -16,14 +16,14 @@ import IconCross from '!!raw-loader!icons/cross.svg';
  * Contact Page
  *
  * @name PageHome
- * @param {function} props.fetchContactDataAction [Redux action to Fetch the Contact Page Data]
- * @param {object} props.content [The content for this Page]
- * @param {object} props.metadata [The metadata for this Page]
- * @param {boolean} props.loading [Flag for while the data is being fetched]
- * @param {boolean} props.error [Flag for if there is an error fetching the data]
- * @param {boolean} props.formSending [Flag for when the form is sending]
- * @param {boolean} props.formSuccess [Flag for when the form has successfully sent]
- * @param {boolean} props.formError [Flag for when the form has not successfully sent]
+ * @param {function} props.fetchContactDataAction - Redux action to Fetch the Contact Page Data
+ * @param {object} props.content - The content for this Page
+ * @param {object} props.metadata - The metadata for this Page
+ * @param {boolean} props.loading - Flag for while the data is being fetched
+ * @param {boolean} props.error - Flag for if there is an error fetching the data
+ * @param {boolean} props.formSending - Flag for when the form is sending
+ * @param {boolean} props.formSuccess - Flag for when the form has successfully sent
+ * @param {boolean} props.formError - Flag for when the form has not successfully sent
  * @return {JSXElement}
  */
 const PageContact = ({
@@ -38,7 +38,7 @@ const PageContact = ({
 }) => {
   /**
    * @type {Object}
-   * @property {string} content.title [The Page Title]
+   * @property {string} content.title - The Page Title
    */
   const {
     title

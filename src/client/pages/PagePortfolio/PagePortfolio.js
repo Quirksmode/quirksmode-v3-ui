@@ -10,31 +10,48 @@ import PageWrapper from 'components/PageWrapper/PageWrapper';
 import { fetchPortfolioData } from './PagePortfolio.actions';
 
 /**
- * Description
+ * Portfolio Page
  *
  * @name PagePortfolio
- * @param  {object} props []
+ * @param {function} props.fetchPortfolioDataAction [Redux action to Fetch the Portfolio Page Data]
+ * @param {object} props.content [The content for this Page]
+ * @param {object} props.metadata [The metadata for this Page]
+ * @param {boolean} props.loading [Flag for while the data is being fetched]
+ * @param {boolean} props.error [Flag for if there is an error fetching the data]
+ * @param {array} props.blogCategories [The Blog Categories, used to populate the Filter]
+ * @param {array} props.blogTags [The Blog Tags, used to populate the Filter]
+ * @param {object} props.history [The history instance that you may use to navigate]
+ * @return {JSXElement}
  */
 const PagePortfolio = ({
   fetchPortfolioDataAction,
   content,
   metadata,
+  loading,
   error,
   projectCategories,
   projectTags,
   history
 }) => {
+  /**
+   * @type {Object}
+   * @property {string} content.title [The Page Title]
+   * @property {array} content.blogPosts [The Projects]
+   */
   const {
     title,
     projects
   } = content;
 
+  /**
+   * Fetch the Portfolio Page Data via Redux, this will trigger each time the filter updates the URL
+   */
   useEffect(() => {
     fetchPortfolioDataAction(history.location.search);
   }, [fetchPortfolioDataAction, history.location.search]);
 
   return (
-    <PageWrapper error={ error }>
+    <PageWrapper error={ error } loading={ loading }>
       <div className="page PagePortfolio">
         { metadata && <Meta { ...metadata } /> }
         <section className="Page__section Page__section--greyFade Page__section--withFilter clearfix">
@@ -101,6 +118,7 @@ PagePortfolio.propTypes = {
   fetchPortfolioDataAction: PropTypes.func,
   content: PropTypes.object,
   metadata: PropTypes.object,
+  loading: PropTypes.bool,
   error: PropTypes.bool,
   projectCategories: PropTypes.array,
   projectTags: PropTypes.array,
@@ -110,6 +128,7 @@ PagePortfolio.propTypes = {
 const mapStateToProps = ({ pagePortfolio, app }) => ({
   content: pagePortfolio.content,
   metadata: pagePortfolio.metadata,
+  loading: pagePortfolio.loading,
   error: pagePortfolio.error,
   projectCategories: app.projectCategories,
   projectTags: app.projectTags

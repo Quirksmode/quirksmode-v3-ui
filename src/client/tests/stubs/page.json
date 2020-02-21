@@ -1,0 +1,227 @@
+{
+  "id":"W-LcfBEAACEAecWD",
+  "uid":"home-page",
+  "type":"page",
+  "href":"https://trade-nation-marketing-cms.cdn.prismic.io/api/v2/documents/search?ref=W_PeRREAACsAGOgX\u0026q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22W-LcfBEAACEAecWD%22%29+%5D%5D",
+  "tags":[
+
+  ],
+  "first_publication_date":"2018-11-15T12:25:14+0000",
+  "last_publication_date":"2018-11-15T17:17:23+0000",
+  "slugs":[
+    "home-page"
+  ],
+  "linked_documents":[
+
+  ],
+  "lang":"en-gb",
+  "alternate_languages":[
+
+  ],
+  "data":{
+    "name":"Home page",
+    "header":{
+      "id":"W-Ld0REAACEAecuU",
+      "type":"header",
+      "tags":[
+
+      ],
+      "slug":"marketing-header",
+      "lang":"en-gb",
+      "data":{
+        "name":"Marketing Header",
+        "header_brand":{
+          "id":"W-1B6xEAACkADHrz",
+          "type":"image",
+          "tags":[
+
+          ],
+          "slug":"header-branding",
+          "lang":"en-gb",
+          "data":{
+            "name":"Header Branding",
+            "url":"/",
+            "image":{
+              "dimensions":{
+                "width":113,
+                "height":150
+              },
+              "alt":null,
+              "copyright":null,
+              "url":"https://trade-nation-marketing-cms.cdn.prismic.io/trade-nation-marketing-cms%2F8ad90079-abf0-492b-a99e-33982b0ec6d8_icon.svg"
+            }
+          },
+          "link_type":"Document",
+          "isBroken":false
+        },
+        "items":[
+          {
+            "display":"Get Started",
+            "url":"/"
+          },
+          {
+            "display":"Learn more",
+            "url":"/"
+          },
+          {
+            "display":"Expert analysis",
+            "url":"/"
+          },
+          {
+            "display":"About us",
+            "url":"/"
+          },
+          {
+            "display":"FAQ",
+            "url":"/"
+          }
+        ]
+      },
+      "link_type":"Document",
+      "isBroken":false
+    },
+    "footer":{
+      "id":"W-LdBhEAACEAecfp",
+      "type":"footer",
+      "tags":[
+
+      ],
+      "slug":"marketing-footer",
+      "lang":"en-gb",
+      "uid":"marketing-footer",
+      "data":{
+        "uid":"marketing-footer",
+        "name":"Marketing Footer",
+        "footer_logo":{
+          "dimensions":{
+            "width":113,
+            "height":150
+          },
+          "alt":null,
+          "copyright":null,
+          "url":"https://trade-nation-marketing-cms.cdn.prismic.io/trade-nation-marketing-cms%2F8ad90079-abf0-492b-a99e-33982b0ec6d8_icon.svg"
+        },
+        "footer_social":[
+          {
+            "type":"instagram",
+            "url":"http://instagram.com"
+          },
+          {
+            "type":"facebook",
+            "url":"http://facebook.com"
+          },
+          {
+            "type":"twitter",
+            "url":"http://twitter.com"
+          },
+          {
+            "type":"linkedin",
+            "url":"http://linkedin.com"
+          }
+        ],
+        "navigation":[
+          {
+            "display_value":"Get Started",
+            "url":"/"
+          },
+          {
+            "display_value":"Learn More",
+            "url":"/"
+          },
+          {
+            "display_value":"Expert Analysis",
+            "url":"/"
+          },
+          {
+            "display_value":"About us",
+            "url":"/"
+          }
+        ],
+        "faqs":[
+          {
+            "display_value":"How do I make my first trade?",
+            "url":"/"
+          },
+          {
+            "display_value":"How do I deposit money into my account?",
+            "url":"/"
+          },
+          {
+            "display_value":"How do I place a stop loss order?",
+            "url":"/"
+          }
+        ],
+        "copyright":"2018 TradeNation. All Rights Reserved.",
+        "contact":[
+          {
+            "flag_name":"gb",
+            "tel_number":"0044 01134960018",
+            "opens":"2018-11-20T09:00:00+0000",
+            "closes":"2018-11-19T22:00:00+0000"
+          },
+          {
+            "flag_name":"au",
+            "tel_number":"0011 5551 5678",
+            "opens":"2018-11-20T10:00:00+0000",
+            "closes":"2018-11-19T23:00:00+0000"
+          }
+        ],
+        "legal":[
+          {
+            "body":[
+              {
+                "type":"paragraph",
+                "text":"Financial spread bets and CFDs are complex instruments and come with a high risk of losing money rapidly due to leverage. 75% of retail investor accounts lose money when trading CFDs with this provider. You should consider whether you understand how CFDs work and whether you can afford to take the high risk of losing your money.",
+                "spans":[
+                  {
+                    "start":122,
+                    "end":201,
+                    "type":"strong"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "body":[
+              {
+                "type":"paragraph",
+                "text":"The information on this site is not directed at residents of the United States or any particular country outside the UK and is not intended for distribution to, or use by, any person in any country or jurisdiction where such distribution or use would be contrary to local law or regulation. Full Legal notices.",
+                "spans":[
+
+                ]
+              }
+            ]
+          },
+          {
+            "body":[
+              {
+                "type":"paragraph",
+                "text":"Core Spreads is a trading name of Finsa Europe Ltd (a company registered in England and Wales under number 07073413) which isauthorised and regulated by the Financial Conduct Authority (under firm reference number 525164). Registered Office: 9th Floor 30 Crown Place, London, EC2A 4ES, United Kingdom. www.corespreads.com is owned and operated by Finsa Europe Ltd, UK.",
+                "spans":[
+
+                ]
+              }
+            ]
+          }
+        ],
+        "meta_links":[
+          {
+            "display_value":"Privacy",
+            "url":"/"
+          },
+          {
+            "display_value":"Accessibility",
+            "url":"/"
+          },
+          {
+            "display_value":"Terms",
+            "url":"/"
+          }
+        ]
+      },
+      "link_type":"Document",
+      "isBroken":false
+    }
+  }
+}
