@@ -4,7 +4,7 @@ import {
   FETCH_PAGE_ERROR
 } from './Page.actions';
 
-const initialState = {
+export const initialState = {
   content: {
     title: '',
     pageContent: '',

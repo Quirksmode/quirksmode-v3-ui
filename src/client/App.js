@@ -4,7 +4,10 @@ import React, {
 } from 'react';
 import { renderRoutes } from 'react-router-config';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import {
+  useSelector,
+  useDispatch
+} from 'react-redux';
 import Header from 'components/Header/Header';
 import Utility from 'components/Utility/Utility';
 import Subfooter from 'components/Subfooter/Subfooter';
@@ -21,31 +24,31 @@ import ScrollToTop from 'components/ScrollToTop/ScrollToTop';
  * Description
  *
  * @name App
- * @param  {func} props.fetchAppDataAction []
- * @param  {object} props.location []
- * @param  {object} props.route []
+ * @param  {object} props.location
+ * @param  {object} props.route
  */
 const App = ({
-  fetchHomeDataAction,
-  fetchAboutDataAction,
-  fetchPortfolioDataAction,
-  fetchContactDataAction,
-  fetchBlogDataAction,
-  pageHomeContent,
-  pageAboutContent,
-  pagePortfolioContent,
-  pageContactContent,
-  pageBlogContent,
   location,
   route
 }) => {
-  // Load all of the top page data on load
+  /**
+   * Load all of the top page data on load. Note, I would not normally do this,
+   * but it provides a fast/simple way to preload all the top level pages
+   */
+  const pageHomeTitle = useSelector(state => state.pageHome.content.title);
+  const pageAboutTitle = useSelector(state => state.pageAbout.content.title);
+  const pagePortfolioTitle = useSelector(state => state.pagePortfolio.content.title);
+  const pageContactTitle = useSelector(state => state.pageContact.content.title);
+  const pageBlogTitle = useSelector(state => state.pageBlog.content.title);
+
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    if (!pageHomeContent.title) fetchHomeDataAction();
-    if (!pageAboutContent.title) fetchAboutDataAction();
-    if (!pagePortfolioContent.title) fetchPortfolioDataAction();
-    if (!pageContactContent.title) fetchContactDataAction();
-    if (!pageBlogContent.title) fetchBlogDataAction();
+    if (!pageHomeTitle) dispatch(fetchHomeData());
+    if (!pageAboutTitle) dispatch(fetchAboutData());
+    if (!pagePortfolioTitle) dispatch(fetchPortfolioData());
+    if (!pageContactTitle) dispatch(fetchContactData());
+    if (!pageBlogTitle) dispatch(fetchBlogData());
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -66,40 +69,8 @@ const App = ({
 };
 
 App.propTypes = {
-  fetchHomeDataAction: PropTypes.func,
-  fetchAboutDataAction: PropTypes.func,
-  fetchPortfolioDataAction: PropTypes.func,
-  fetchContactDataAction: PropTypes.func,
-  fetchBlogDataAction: PropTypes.func,
-  pageHomeContent: PropTypes.object,
-  pageAboutContent: PropTypes.object,
-  pagePortfolioContent: PropTypes.object,
-  pageContactContent: PropTypes.object,
-  pageBlogContent: PropTypes.object,
   location: PropTypes.object,
   route: PropTypes.object
 };
 
-const mapStateToProps = ({
-  pageHome,
-  pageAbout,
-  pagePortfolio,
-  pageContact,
-  pageBlog
-}) => ({
-  pageHomeContent: pageHome.content,
-  pageAboutContent: pageAbout.content,
-  pagePortfolioContent: pagePortfolio.content,
-  pageContactContent: pageContact.content,
-  pageBlogContent: pageBlog.content,
-});
-
-const mapDispatchToProps = dispatch => ({
-  fetchHomeDataAction: (...args) => dispatch(fetchHomeData(...args)),
-  fetchAboutDataAction: (...args) => dispatch(fetchAboutData(...args)),
-  fetchPortfolioDataAction: (...args) => dispatch(fetchPortfolioData(...args)),
-  fetchContactDataAction: (...args) => dispatch(fetchContactData(...args)),
-  fetchBlogDataAction: (...args) => dispatch(fetchBlogData(...args))
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

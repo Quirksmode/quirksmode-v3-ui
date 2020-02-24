@@ -2,6 +2,7 @@ export const FETCH_HOME_REQUEST = 'fetch_home_request';
 export const FETCH_HOME_SUCCESS = 'fetch_home_success';
 export const FETCH_HOME_ERROR = 'fetch_home_error';
 export const fetchHomeData = () => async (dispatch, getState, api) => {
+  console.log('dispatched action');
   dispatch({
     type: FETCH_HOME_REQUEST
   });

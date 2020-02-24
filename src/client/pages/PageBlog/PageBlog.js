@@ -53,7 +53,7 @@ const PageBlog = ({
   }, [fetchBlogDataAction, history.location.search]);
 
   return (
-    <PageWrapper error={ error } loading={ loading }>
+    <PageWrapper error={ error }>
       <div className="Page PageBlog">
         { metadata && <Meta { ...metadata } /> }
         <section className="Page__section Page__section--greyFade Page__section--withFilter clearfix">

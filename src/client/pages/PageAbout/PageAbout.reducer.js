@@ -4,7 +4,7 @@ import {
   FETCH_ABOUT_ERROR
 } from './PageAbout.actions';
 
-const initialState = {
+export const initialState = {
   content: {
     title: '',
     intro: '',

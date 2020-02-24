@@ -4,7 +4,7 @@ import {
   FETCH_SEARCH_ERROR
 } from './PageSearch.actions';
 
-const initialState = {
+export const initialState = {
   content: {
     title: '',
     searchPosts: []

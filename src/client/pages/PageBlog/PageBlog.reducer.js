@@ -4,7 +4,7 @@ import {
   FETCH_BLOG_ERROR
 } from './PageBlog.actions';
 
-const initialState = {
+export const initialState = {
   content: {
     title: '',
     blogPosts: []

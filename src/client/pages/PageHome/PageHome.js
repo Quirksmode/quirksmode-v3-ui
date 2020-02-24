@@ -1,6 +1,8 @@
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import React, { useEffect, useMemo } from 'react';
+import {
+  useSelector,
+  useDispatch
+} from 'react-redux';
 import Meta from 'components/Meta/Meta';
 import PageWrapper from 'components/PageWrapper/PageWrapper';
 import { fetchHomeData } from './PageHome.actions';
@@ -21,14 +23,25 @@ import PageHomeBlog from './PageHomeBlog/PageHomeBlog';
  * @param {object} props.siteSettings - The Global Site Settings
  * @return {JSXElement}
  */
-const PageHome = ({
-  fetchHomeDataAction,
-  content,
-  metadata,
-  loading,
-  error,
-  siteSettings
-}) => {
+const PageHome = () => {
+  const pageHome = useSelector(state => state.pageHome);
+  const app = useSelector(state => state.app);
+
+  const dispatch = useDispatch();
+
+  console.log('rendered', pageHome);
+
+  const {
+    content,
+    metadata,
+    loading,
+    error
+  } = pageHome;
+
+  const {
+    siteSettings
+  } = app;
+
   /**
    * @type {Object}
    * @property {array} content.featuredWork - For the featured work Slider
@@ -55,10 +68,12 @@ const PageHome = ({
    * Fetch the Home Page Data via Redux, but only if the data does not already exist
    */
   useEffect(() => {
-    if (!intro) fetchHomeDataAction();
-  }, [fetchHomeDataAction, intro]);
+    if (!intro) {
+      dispatch(fetchHomeData());
+    }
+  }, [dispatch, intro]);
 
-  return (
+  return useMemo(() => (
     <PageWrapper error={ error } loading={ loading }>
       <div className="page PageHome">
         <Meta { ...metadata } />
@@ -82,31 +97,7 @@ const PageHome = ({
         </section>
       </div>
     </PageWrapper>
-  );
+  ), [cv, error, featuredWork, intro, latestBlogPosts, loading, metadata, skills]);
 };
 
-PageHome.propTypes = {
-  fetchHomeDataAction: PropTypes.func,
-  content: PropTypes.object,
-  metadata: PropTypes.object,
-  loading: PropTypes.bool,
-  error: PropTypes.bool,
-  siteSettings: PropTypes.object
-};
-
-const mapStateToProps = ({
-  pageHome,
-  app
-}) => ({
-  content: pageHome.content,
-  metadata: pageHome.metadata,
-  loading: pageHome.loading,
-  error: pageHome.error,
-  siteSettings: app.siteSettings
-});
-
-const mapDispatchToProps = dispatch => ({
-  fetchHomeDataAction: (...args) => dispatch(fetchHomeData(...args))
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(PageHome);
+export default PageHome;

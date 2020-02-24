@@ -4,7 +4,7 @@ import {
   FETCH_CONTACT_ERROR
 } from './PageContact.actions';
 
-const initialState = {
+export const initialState = {
   content: {
     title: ''
   },

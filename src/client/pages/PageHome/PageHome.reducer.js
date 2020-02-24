@@ -4,7 +4,7 @@ import {
   FETCH_HOME_ERROR
 } from './PageHome.actions';
 
-const initialState = {
+export const initialState = {
   content: {
     title: '',
     heroSlides: [],

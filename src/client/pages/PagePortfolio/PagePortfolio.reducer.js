@@ -4,7 +4,7 @@ import {
   FETCH_PORTFOLIO_ERROR
 } from './PagePortfolio.actions';
 
-const initialState = {
+export const initialState = {
   content: {
     title: '',
     projects: []

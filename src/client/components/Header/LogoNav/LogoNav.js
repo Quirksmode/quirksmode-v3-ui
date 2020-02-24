@@ -1,27 +1,25 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { setUtility } from 'client/App.actions';
 
-const LogoNav = ({
-  setUtilityAction = null,
-  mainLogo,
-  navItems,
-}) => {
+const LogoNav = () => {
+  const mainLogo = useSelector(state => state.app.siteSettings.mainLogo);
+  const navItems = useSelector(state => state.app.navItems);
+  const dispatch = useDispatch();
+
   const handleClick = () => {
-    if (setUtilityAction) {
-      setUtilityAction({
-        isNavToggled: false,
-        isSearchToggled: false
-      });
-    }
+    dispatch(setUtility({
+      isNavToggled: false,
+      isSearchToggled: false
+    }));
   };
 
   return (
     <div className="LogoNav">
       { mainLogo.sizes.image && (
       <NavLink
+        data-test="logo"
         className="LogoNav__logo"
         exact
         to="/"
@@ -69,19 +67,4 @@ const LogoNav = ({
   );
 };
 
-LogoNav.propTypes = {
-  setUtilityAction: PropTypes.func,
-  mainLogo: PropTypes.object,
-  navItems: PropTypes.array
-};
-
-const mapStateToProps = ({ app }) => ({
-  mainLogo: app.siteSettings.mainLogo,
-  navItems: app.navItems
-});
-
-const mapDispatchToProps = dispatch => ({
-  setUtilityAction: (...args) => dispatch(setUtility(...args))
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(LogoNav);
+export default LogoNav;

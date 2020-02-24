@@ -4,7 +4,7 @@ import {
   FETCH_PORTFOLIO_SINGLE_ERROR
 } from './PagePortfolioSingle.actions';
 
-const initialState = {
+export const initialState = {
   content: {
     id: null,
     title: '',

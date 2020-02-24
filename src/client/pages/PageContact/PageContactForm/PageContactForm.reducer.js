@@ -2,7 +2,7 @@ import {
   SEND_MAIL_REQUEST, SEND_MAIL_SUCCESS, SEND_MAIL_ERROR, RESET_FORM
 } from './PageContactForm.actions';
 
-const initialState = {
+export const initialState = {
   formSending: false,
   formError: false,
   formSuccess: false,

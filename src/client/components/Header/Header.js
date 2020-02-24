@@ -1,7 +1,9 @@
 import React, {
   useState
 } from 'react';
-import { connect } from 'react-redux';
+import {
+  useSelector
+} from 'react-redux';
 import PropTypes from 'prop-types';
 import Swiper from 'react-id-swiper';
 import { useInView } from 'react-intersection-observer';
@@ -18,12 +20,10 @@ import LogoNav from './LogoNav/LogoNav';
  * @param  {object}   props.location               []
  */
 export const Header = ({
-  pageHomeContent,
   location
 }) => {
-  const {
-    heroSlides
-  } = pageHomeContent;
+  const heroSlides = useSelector(state => state.pageHome.content.heroSlides);
+
   /**
    *
    * @name swiper
@@ -186,15 +186,7 @@ export const Header = ({
 };
 
 Header.propTypes = {
-  pageHomeContent: PropTypes.object,
-  location: PropTypes.object,
+  location: PropTypes.object
 };
 
-const mapStateToProps = ({ pageHome }) => ({
-  pageHomeContent: pageHome.content
-});
-
-export default connect(
-  mapStateToProps,
-  null
-)(Header);
+export default (Header);

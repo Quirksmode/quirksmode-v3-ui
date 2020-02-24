@@ -2,7 +2,7 @@ import {
   FETCH_APP_DATA, SET_LINK_LOADING, SET_LINK_LOADED, SET_UTILITY
 } from './App.actions';
 
-const initialState = {
+export const initialState = {
   siteSettings: {
     cv: {},
     defaultImage: {},
