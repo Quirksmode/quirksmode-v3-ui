@@ -1,0 +1,262 @@
+{
+  "content": {
+    "title": "Home",
+    "heroSlides": [
+      {
+        "id": 1080,
+        "image": {
+          "alt": "Intro Slide - I'm a London based Technologist specialising in JavaScript, Web, Mobile & Voice Applications",
+          "width": 585,
+          "height": 365,
+          "sizes": {
+            "heroSlider481up": "https:\/\/cms.quirksmode.co.uk\/wp-content\/uploads\/2020\/02\/slide_introduction_v7_alt-585x365.png",
+            "heroSlider481up2x": "https:\/\/cms.quirksmode.co.uk\/wp-content\/uploads\/2020\/02\/slide_introduction_v7_alt-1170x730.png",
+            "heroSlider768up": "https:\/\/cms.quirksmode.co.uk\/wp-content\/uploads\/2020\/02\/slide_introduction_v7_alt-760x474.png",
+            "heroSlider768up2x": "https:\/\/cms.quirksmode.co.uk\/wp-content\/uploads\/2020\/02\/slide_introduction_v7_alt-1520x948.png"
+          }
+        }
+      },
+      {
+        "id": 1093,
+        "image": {
+          "alt": "Intro Slide - Clients I have worked with",
+          "width": 585,
+          "height": 365,
+          "sizes": {
+            "heroSlider481up": "https:\/\/cms.quirksmode.co.uk\/wp-content\/uploads\/2020\/02\/slide_logos_3-585x365.jpg",
+            "heroSlider481up2x": "https:\/\/cms.quirksmode.co.uk\/wp-content\/uploads\/2020\/02\/slide_logos_3-1170x730.jpg",
+            "heroSlider768up": "https:\/\/cms.quirksmode.co.uk\/wp-content\/uploads\/2020\/02\/slide_logos_3-760x474.jpg",
+            "heroSlider768up2x": "https:\/\/cms.quirksmode.co.uk\/wp-content\/uploads\/2020\/02\/slide_logos_3-1520x948.jpg"
+          }
+        }
+      }
+    ],
+    "featuredWork": [
+      {
+        "id": 572,
+        "slug": "virgin-com",
+        "title": "Virgin.com",
+        "date": "2013-09-16 09:51:09",
+        "isNew": false,
+        "featuredImage": {
+          "alt": "Virgin Featured",
+          "width": 288,
+          "height": 260,
+          "sizes": {
+            "quirksmodeMedium": "https:\/\/cms.quirksmode.co.uk\/wp-content\/uploads\/2013\/09\/virgin-featured-288x260.jpg",
+            "quirksmodeMedium2x": "https:\/\/cms.quirksmode.co.uk\/wp-content\/uploads\/2013\/09\/virgin-featured-576x520.jpg"
+          }
+        }
+      },
+      {
+        "id": 576,
+        "slug": "google-learn-digital",
+        "title": "Google Learn Digital",
+        "date": "2018-01-16 09:54:28",
+        "isNew": false,
+        "featuredImage": {
+          "alt": "Google Learn Digital Hero 1",
+          "width": 288,
+          "height": 260,
+          "sizes": {
+            "quirksmodeMedium": "https:\/\/cms.quirksmode.co.uk\/wp-content\/uploads\/2018\/01\/glg-hero-1-288x260.jpg",
+            "quirksmodeMedium2x": "https:\/\/cms.quirksmode.co.uk\/wp-content\/uploads\/2018\/01\/glg-hero-1-576x520.jpg"
+          }
+        }
+      },
+      {
+        "id": 582,
+        "slug": "nspcc-little-stars",
+        "title": "NSPCC - Little Stars",
+        "date": "2016-12-16 10:14:01",
+        "isNew": false,
+        "featuredImage": {
+          "alt": "NSPCC Little Stars",
+          "width": 288,
+          "height": 260,
+          "sizes": {
+            "quirksmodeMedium": "https:\/\/cms.quirksmode.co.uk\/wp-content\/uploads\/2016\/12\/littlestars-288x260.jpg",
+            "quirksmodeMedium2x": "https:\/\/cms.quirksmode.co.uk\/wp-content\/uploads\/2016\/12\/littlestars-576x520.jpg"
+          }
+        }
+      },
+      {
+        "id": 584,
+        "slug": "novartis-community-together-in-heart-failure",
+        "title": "Novartis Community - Together in Heart Failure",
+        "date": "2017-01-16 10:14:20",
+        "isNew": false,
+        "featuredImage": {
+          "alt": "",
+          "width": 288,
+          "height": 260,
+          "sizes": {
+            "quirksmodeMedium": "https:\/\/cms.quirksmode.co.uk\/wp-content\/uploads\/2017\/01\/Propect_image-288x260.jpg",
+            "quirksmodeMedium2x": "https:\/\/cms.quirksmode.co.uk\/wp-content\/uploads\/2017\/01\/Propect_image-576x520.jpg"
+          }
+        }
+      },
+      {
+        "id": 773,
+        "slug": "destiny-arts",
+        "title": "Destiny Arts",
+        "date": "2020-01-10 23:14:24",
+        "isNew": true,
+        "featuredImage": {
+          "alt": "Destiny Arts Hero",
+          "width": 288,
+          "height": 260,
+          "sizes": {
+            "quirksmodeMedium": "https:\/\/cms.quirksmode.co.uk\/wp-content\/uploads\/2020\/01\/destiny-arts-hero-288x260.jpg",
+            "quirksmodeMedium2x": "https:\/\/cms.quirksmode.co.uk\/wp-content\/uploads\/2020\/01\/destiny-arts-hero-576x520.jpg"
+          }
+        }
+      },
+      {
+        "id": 769,
+        "slug": "secondhand-dangers",
+        "title": "Secondhand Dangers",
+        "date": "2019-09-10 22:50:18",
+        "isNew": false,
+        "featuredImage": {
+          "alt": "Secondhand Dangers Hero",
+          "width": 288,
+          "height": 260,
+          "sizes": {
+            "quirksmodeMedium": "https:\/\/cms.quirksmode.co.uk\/wp-content\/uploads\/2020\/01\/shs-hero-288x260.jpg",
+            "quirksmodeMedium2x": "https:\/\/cms.quirksmode.co.uk\/wp-content\/uploads\/2020\/01\/shs-hero-576x520.jpg"
+          }
+        }
+      },
+      {
+        "id": 32,
+        "slug": "the-national-lottery",
+        "title": "The National Lottery",
+        "date": "2011-07-11 23:24:04",
+        "isNew": false,
+        "featuredImage": {
+          "alt": "National Lottery Featured Image",
+          "width": 288,
+          "height": 260,
+          "sizes": {
+            "quirksmodeMedium": "https:\/\/cms.quirksmode.co.uk\/wp-content\/uploads\/2013\/01\/nationalLottery_alt2-288x260.jpg",
+            "quirksmodeMedium2x": "https:\/\/cms.quirksmode.co.uk\/wp-content\/uploads\/2013\/01\/nationalLottery_alt2-576x520.jpg"
+          }
+        }
+      }
+    ],
+    "intro": {
+      "image": {
+        "url": "https:\/\/cms.quirksmode.co.uk\/wp-content\/uploads\/2018\/06\/97443dd3-sketch_home_dave@2x.jpg",
+        "alt": ""
+      },
+      "text": "<p>So here we are, version 3 of my personal website. Building your own website is always a great opportunity to learn new things so I decided to tear the old site down and start again from fresh. It was a surprising amount of work to get it looking right across the different devices, though ultimately really rewarding.<\/p>\n<p>If you are taking time to read this, I really appreciate the support and hope you are enjoying the new design and build. Would love to hear your thoughts so please feel free to get in touch&#8230;<\/p>\n"
+    },
+    "latestBlogPosts": [
+      {
+        "postID": 1104,
+        "postName": "quick-tip-accessibility-add-full-stops-to-alt-text",
+        "postTitle": "Quick Tip: Accessibility - Add full stops to Alt text",
+        "postExcerpt": "A really quick tip from me today and something I wanted to share as it's so obvious and yet I often forget to do it, hopefully this might help someone else.",
+        "type": "blog",
+        "date": "11th February 2020",
+        "featuredImage": {
+          "alt": "Braille Display",
+          "width": 172,
+          "height": 155,
+          "sizes": {
+            "quirksmodeSmall": "https:\/\/cms.quirksmode.co.uk\/wp-content\/uploads\/2020\/02\/accessibility-172x155.jpg",
+            "quirksmodeSmall2x": "https:\/\/cms.quirksmode.co.uk\/wp-content\/uploads\/2020\/02\/accessibility-344x310.jpg",
+            "quirksmodeMedium": "https:\/\/cms.quirksmode.co.uk\/wp-content\/uploads\/2020\/02\/accessibility-288x260.jpg",
+            "quirksmodeMedium2x": "https:\/\/cms.quirksmode.co.uk\/wp-content\/uploads\/2020\/02\/accessibility-576x520.jpg"
+          }
+        }
+      },
+      {
+        "postID": 1102,
+        "postName": "article-roundup",
+        "postTitle": "Article Roundup - Jan 2020",
+        "postExcerpt": "A round up of some of the more interesting articles\/resources I have found this month, you can find loads more on my Twitter feed.\u00a0",
+        "type": "blog",
+        "date": "9th January 2020",
+        "featuredImage": {
+          "alt": "Article Roundup",
+          "width": 172,
+          "height": 155,
+          "sizes": {
+            "quirksmodeSmall": "https:\/\/cms.quirksmode.co.uk\/wp-content\/uploads\/2020\/02\/five-bulb-lights-1036936-172x155.jpg",
+            "quirksmodeSmall2x": "https:\/\/cms.quirksmode.co.uk\/wp-content\/uploads\/2020\/02\/five-bulb-lights-1036936-344x310.jpg",
+            "quirksmodeMedium": "https:\/\/cms.quirksmode.co.uk\/wp-content\/uploads\/2020\/02\/five-bulb-lights-1036936-288x260.jpg",
+            "quirksmodeMedium2x": "https:\/\/cms.quirksmode.co.uk\/wp-content\/uploads\/2020\/02\/five-bulb-lights-1036936-576x520.jpg"
+          }
+        }
+      },
+      {
+        "postID": 1099,
+        "postName": "quick-tip-image-optimisation-with-imageoptim",
+        "postTitle": "Quick Tip: Image Optimisation with ImageOptim",
+        "postExcerpt": "Highly optimised images are essential for a fast performant website and decent Lighthouse scores. There are so many different options to achieve this, but wanted to share one of my favourites, Image Optim.",
+        "type": "blog",
+        "date": "16th June 2018",
+        "featuredImage": {
+          "alt": "computer-laptop-beside-hour-glass-on-brown-wooden-surface-733758",
+          "width": 172,
+          "height": 155,
+          "sizes": {
+            "quirksmodeSmall": "https:\/\/cms.quirksmode.co.uk\/wp-content\/uploads\/2020\/02\/computer-laptop-beside-hour-glass-on-brown-wooden-surface-733758-172x155.jpg",
+            "quirksmodeSmall2x": "https:\/\/cms.quirksmode.co.uk\/wp-content\/uploads\/2020\/02\/computer-laptop-beside-hour-glass-on-brown-wooden-surface-733758-344x310.jpg",
+            "quirksmodeMedium": "https:\/\/cms.quirksmode.co.uk\/wp-content\/uploads\/2020\/02\/computer-laptop-beside-hour-glass-on-brown-wooden-surface-733758-288x260.jpg",
+            "quirksmodeMedium2x": "https:\/\/cms.quirksmode.co.uk\/wp-content\/uploads\/2020\/02\/computer-laptop-beside-hour-glass-on-brown-wooden-surface-733758-576x520.jpg"
+          }
+        }
+      }
+    ],
+    "skills": [
+      {
+        "skill_name": "HTML\/SSR"
+      },
+      {
+        "skill_name": "CSS\/BEM"
+      },
+      {
+        "skill_name": "JS\/TS"
+      },
+      {
+        "skill_name": "React\/Redux"
+      },
+      {
+        "skill_name": "React Native"
+      },
+      {
+        "skill_name": "Jest\/Enzyme"
+      },
+      {
+        "skill_name": "Node\/PHP"
+      },
+      {
+        "skill_name": "GraphQL"
+      },
+      {
+        "skill_name": "MySQL\/NoSQL"
+      },
+      {
+        "skill_name": "CI\/CD"
+      },
+      {
+        "skill_name": "BDD\/TDD"
+      },
+      {
+        "skill_name": "Product\/Design"
+      }
+    ]
+  },
+  "metadata": {
+    "metaTitle": "Quirksmode | Home of David Plunkett, Web Designer \/ Developer Extraordinaire",
+    "metaDesc": "Quirksmode is a fully responsive Universal React Application connected to a Headless CMS designed and developed by myself, web enthusiast and all round nice guy Dave. It was created to be my Portfolio and voice to the world",
+    "metaUrl": "\/",
+    "metaSiteName": "Quirksmode",
+    "metaImage": "https:\/\/cms.quirksmode.co.uk\/wp-content\/uploads\/2013\/03\/default_featured-576x520.jpg",
+    "metaImageWidth": 576,
+    "metaImageHeight": 520
+  }
+}

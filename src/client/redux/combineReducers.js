@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import { reducer as form } from 'redux-form';
 import { connectRouter } from 'connected-react-router';
+import { createBrowserHistory } from 'history';
 import pageHome, { initialState as pageHomeState } from '../pages/PageHome/PageHome.reducer';
 import pageAbout, { initialState as pageAboutState } from '../pages/PageAbout/PageAbout.reducer';
 import pageContact, { initialState as pageContactState } from '../pages/PageContact/PageContact.reducer';
@@ -13,7 +14,10 @@ import pageContactForm, { initialState as pageContactFormState } from '../pages/
 import page, { initialState as pageState } from '../pages/Page/Page.reducer';
 import app, { initialState as appState } from '../App.reducer';
 
+const history2 = createBrowserHistory();
+
 export const initialState = {
+  router: connectRouter(history2),
   pageHome: pageHomeState,
   pageAbout: pageAboutState,
   pageContact: pageContactState,

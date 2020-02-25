@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header matches snapshot 1`] = `"<header class=\\"Header\\"><div class=\\"Header__innerWrap grid\\"><div class=\\"LogoNav\\"><nav class=\\"LogoNav__nav\\"><p class=\\"visuallyHidden\\"><strong>Main Navigation</strong></p><ul class=\\"LogoNav__nav__items\\"></ul></nav></div></div><div class=\\"Slider__directionNav\\"><button type=\\"button\\" class=\\"Slider__prev\\">Previous</button><button type=\\"button\\" class=\\"Slider__next\\">Next</button></div></header>"`;

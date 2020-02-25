@@ -22,6 +22,9 @@ import LogoNav from './LogoNav/LogoNav';
 export const Header = ({
   location
 }) => {
+  // location = {
+  //   pathname: 'test'
+  // };
   const heroSlides = useSelector(state => state.pageHome.content.heroSlides);
 
   /**

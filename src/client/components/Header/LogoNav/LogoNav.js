@@ -19,12 +19,11 @@ const LogoNav = () => {
     <div className="LogoNav">
       { mainLogo.sizes.image && (
       <NavLink
-        data-test="logo"
         className="LogoNav__logo"
         exact
         to="/"
       >
-        <picture>
+        <picture data-test="logo">
           <source
             type="image/webp"
             srcSet={ `${mainLogo.sizes.image}.webp 1x, ${mainLogo.sizes.image2x}.webp 2x` }

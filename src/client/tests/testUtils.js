@@ -1,20 +1,16 @@
 import checkPropTypes from 'check-prop-types';
-// import { createStore, applyMiddleware } from 'redux';
+import { ConnectedRouter } from 'connected-react-router';
+import { mount } from 'enzyme';
+import React from 'react';
+import { Provider } from 'react-redux';
+import { createBrowserHistory } from 'history';
+import configureStore from 'redux/store';
+import createRootReducer from 'redux/combineReducers';
 
-// import rootReducer from '../src/reducers';
-// import { middlewares } from '../src/configureStore';
-
-// /**
-//  * Create a testing store with imported reducers, middleware, and initial state.
-//  *  globals: rootReducer, middlewares.
-//  * @param {object} initialState - Initial state for store.
-//  * @function storeFactory
-//  * @returns {Store} - Redux store.
-//  */
-// export const storeFactory = (initialState) => {
-//   const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);
-//   return createStoreWithMiddleware(rootReducer, initialState);
-// };
+/**
+ * Create history API
+ */
+const history = createBrowserHistory();
 
 /**
  * Return node(s) with the given data-test attribute.
@@ -33,3 +29,32 @@ export const checkProps = (component, conformingProps) => {
   );
   expect(propError).toBeUndefined();
 };
+
+export const makeMountRender = (Component, defaultProps = {}) => (customProps = {}) => {
+  const props = {
+    ...defaultProps,
+    ...customProps
+  };
+  return mount(<Component { ...props } />);
+};
+
+export const makeStore = (customState = {}) => {
+  const initialState = createRootReducer(history)({}, { type: '@@INIT' });
+  const state = {
+    ...initialState,
+    ...customState
+  };
+  return configureStore(state, {}, history);
+};
+
+export const reduxify = (Component, props = {}, state = {}) => function reduxWrap() {
+  return (
+    <Provider store={ makeStore(state) }>
+      <ConnectedRouter history={ history }>
+        <Component { ...props } />
+      </ConnectedRouter>
+    </Provider>
+  );
+};
+
+export const snapshotify = reactWrapper => reactWrapper.html();

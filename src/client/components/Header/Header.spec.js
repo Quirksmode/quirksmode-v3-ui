@@ -1,54 +1,41 @@
-import React from 'react';
-import { shallow, mount } from 'enzyme';
-import getMockProvider from 'tests/mocks/store';
-import { findByTestAttr } from 'tests/testUtils';
+import {
+  findByTestAttr,
+  makeMountRender,
+  reduxify,
+  snapshotify
+} from 'tests/testUtils';
+import appStub from 'client/App.stub.json';
+import pageHomeStub from 'pages/PageHome/PageHome.stub.json';
 import { Header } from './Header';
+import 'tests/mocks/intersectionObserver';
+
+const props = {
+  location: {
+    pathname: '/'
+  }
+};
 
 describe('Header', () => {
-  let wrapper;
-  let component;
-
-  jest.mock('react-redux', () => ({
-    connect: () => jest.fn(),
-    useSelector: jest.fn(fn => fn()),
-    useDispatch: () => jest.fn()
-  }));
-
-  const setup = (partialState) => {
-    const { MockProvider } = getMockProvider(partialState);
-    return { MockProvider };
-  };
+  it('matches snapshot', () => {
+    const wrapper = makeMountRender(reduxify(Header, props))();
+    expect(snapshotify(wrapper)).toMatchSnapshot();
+  });
 
   describe('Render with initial props', () => {
-    beforeAll(() => {
-      const { MockProvider } = setup();
-      wrapper = mount(
-        <MockProvider>
-          <Header location={ {} } />
-        </MockProvider>
-      );
-      component = wrapper;
-    });
-
     it('logo should not display', () => {
-      const logo = findByTestAttr(component, 'logo');
+      const wrapper = makeMountRender(reduxify(Header, props))();
+      const logo = findByTestAttr(wrapper, 'logo');
       expect(logo.length).toBe(0);
     });
   });
 
   describe('Render with fetched props', () => {
-    beforeAll(() => {
-      const { MockProvider } = setup();
-      wrapper = mount(
-        <MockProvider>
-          <Header location={ {} } />
-        </MockProvider>
-      );
-      component = wrapper;
-    });
-
     it('logo should display', () => {
-      const logo = findByTestAttr(component, 'logo');
+      const wrapper = makeMountRender(reduxify(Header, props, {
+        app: appStub,
+        pageHome: pageHomeStub
+      }))();
+      const logo = findByTestAttr(wrapper, 'logo');
       expect(logo.length).toBe(1);
     });
   });
