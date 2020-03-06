@@ -4,15 +4,14 @@ import React, {
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import SVGInline from 'react-svg-inline';
 import { required, email } from 'components/Form/validation';
 import { renderInput, renderTextarea } from 'components/Form/fieldTypes';
-import IconUser from '!!raw-loader!icons/user.svg';
-import IconEmail from '!!raw-loader!icons/email.svg';
-import IconWrite from '!!raw-loader!icons/write.svg';
-import IconComment from '!!raw-loader!icons/comment.svg';
-import IconContact from '!!raw-loader!icons/contact.svg';
-import IconQuirksmode from '!!raw-loader!icons/quirksmode.svg';
+import IconUser from 'icons/user.svg';
+import IconEmail from 'icons/email.svg';
+import IconWrite from 'icons/write.svg';
+import IconComment from 'icons/comment.svg';
+import IconContact from 'icons/contact.svg';
+import IconQuirksmode from 'icons/quirksmode.svg';
 import { sendMail, resetForm } from './PageContactForm.actions';
 
 /**
@@ -46,7 +45,7 @@ const PageContactForm = ({
         label="Enter your name"
         validate={ required }
         message="This is wrong."
-        icon={ IconUser }
+        Icon={ IconUser }
       />
 
       <Field
@@ -57,7 +56,7 @@ const PageContactForm = ({
         label="Enter your email"
         validate={ [required, email] }
         message="This is wrong."
-        icon={ IconEmail }
+        Icon={ IconEmail }
       />
 
       <Field
@@ -68,7 +67,7 @@ const PageContactForm = ({
         label="Enter your subject"
         validate={ required }
         message="This is wrong."
-        icon={ IconWrite }
+        Icon={ IconWrite }
       />
 
       <Field
@@ -76,13 +75,13 @@ const PageContactForm = ({
         id="message"
         component={ renderTextarea }
         label="Enter your message"
-        icon={ IconComment }
+        Icon={ IconComment }
       />
 
       <button type="submit" className={ `btn--submitIcon${formSending ? ' btn--submitIcon--loading' : ''} ` } disabled={ submitting }>
           Send Message
-        <SVGInline className="btn--submitIconSvg" svg={ IconContact } />
-        <SVGInline className="btn--submitIconSvg--loading" svg={ IconQuirksmode } />
+        <IconContact className="btn--submitIconSvg" />
+        <IconQuirksmode className="btn--submitIconSvg--loading" />
       </button>
     </form>
   );

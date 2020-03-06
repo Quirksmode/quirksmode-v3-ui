@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import SVGInline from 'react-svg-inline';
+
 import { NavLink } from 'react-router-dom';
-import IconArrowDown from '!!raw-loader!icons/arrowdown.svg';
+import IconArrowDown from 'icons/arrowdown.svg';
 
 /**
  * Home Page Intro Component
@@ -64,7 +64,7 @@ const PageHomeIntro = ({
             rel="noopener noreferrer"
           >
             DOWNLOAD MY CV
-            <SVGInline svg={ IconArrowDown } />
+            <IconArrowDown />
           </a>
         </div>
       )}

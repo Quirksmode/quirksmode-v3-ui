@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
-import SVGInline from 'react-svg-inline';
-import IconHome from '!!raw-loader!icons/home.svg';
+import IconHome from 'icons/home.svg';
 
 /**
  * Description
@@ -12,13 +11,13 @@ import IconHome from '!!raw-loader!icons/home.svg';
 const Breadcrumbs = ({
   children
 }) => (
-  <div className="Breadcrumbs">
+  <div className="Breadcrumbs" data-test="Breadcrumbs">
     <NavLink
       to="/"
       className="Breadcrumbs__crumb Breadcrumbs__crumb--home"
     >
       <span className="visuallyHidden">Home</span>
-      <SVGInline svg={ IconHome } />
+      <IconHome />
     </NavLink>
     { children }
   </div>

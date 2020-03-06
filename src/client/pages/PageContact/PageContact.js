@@ -5,12 +5,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Breadcrumbs from 'components/Breadcrumbs/Breadcrumbs';
 import Meta from 'components/Meta/Meta';
-import SVGInline from 'react-svg-inline';
 import PageWrapper from 'components/PageWrapper/PageWrapper';
+import IconTick from 'icons/tick.svg';
+import IconCross from 'icons/cross.svg';
 import { fetchContactData } from './PageContact.actions';
 import PageContactForm from './PageContactForm/PageContactForm';
-import IconTick from '!!raw-loader!icons/tick.svg';
-import IconCross from '!!raw-loader!icons/cross.svg';
 
 /**
  * Contact Page
@@ -66,13 +65,13 @@ const PageContact = ({
               <p>Please feel free to contact me using the form below.</p>
               { formSuccess && (
               <p className="PageContact__message PageContact__message--success form__messageInlineWrap">
-                <SVGInline svg={ IconTick } />
+                <IconTick />
                 <span>Success, your message has been sent.</span>
               </p>
               )}
               { formError && (
               <p className="PageContact__message PageContact__message--error form__messageInlineWrap">
-                <SVGInline svg={ IconCross } />
+                <IconCross />
                 <span>Error, form failed to send.</span>
               </p>
               )}

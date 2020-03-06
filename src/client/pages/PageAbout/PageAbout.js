@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import SVGInline from 'react-svg-inline';
 import Breadcrumbs from 'components/Breadcrumbs/Breadcrumbs';
 import Meta from 'components/Meta/Meta';
 import PageWrapper from 'components/PageWrapper/PageWrapper';
-import IconArrowDown from '!!raw-loader!icons/arrowdown.svg';
+import IconArrowDown from 'icons/arrowdown.svg';
 import { fetchAboutData } from './PageAbout.actions';
 
 /**
@@ -78,7 +77,7 @@ const PageAbout = ({
                 href={ cv.url }
               >
                 DOWNLOAD MY CV
-                <SVGInline svg={ IconArrowDown } />
+                <IconArrowDown />
               </a>
             </div>
           </div>

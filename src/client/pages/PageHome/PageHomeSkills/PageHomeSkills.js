@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
-import SVGInline from 'react-svg-inline';
-import IconQuirksmode from '!!raw-loader!icons/quirksmode.svg';
+
+import IconQuirksmode from 'icons/quirksmode.svg';
 
 /**
  * Home Page Skills Component
@@ -36,8 +36,7 @@ const PageHomeSkills = ({
             className="PageHomeSkills__skill"
           >
             <span className="PageHomeSkills__skillLink">
-              <SVGInline
-                svg={ IconQuirksmode }
+              <IconQuirksmode
                 className="PageHomeSkills__skillIcon"
                 aria-hidden="true"
               />

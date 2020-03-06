@@ -127,14 +127,6 @@
         button {
           background: var(--color-black);
           color: var(--color-white);
-
-          .Utility__iconSvgSearch {
-            display: none;
-          }
-
-          .Utility__iconSvgClose {
-            display: block;
-          }
         }
       }
 
@@ -142,10 +134,6 @@
         transition: background .5s ease-out;
       }
     }
-  }
-
-  &__iconSvgClose {
-    display: none;
   }
 
   &__nav,

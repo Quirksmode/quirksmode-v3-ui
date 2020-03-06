@@ -29,8 +29,6 @@ const PageHome = () => {
 
   const dispatch = useDispatch();
 
-  console.log('rendered', pageHome);
-
   const {
     content,
     metadata,

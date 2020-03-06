@@ -89,12 +89,13 @@ const Hero = ({
               }
         src={ hero.image.sizes.fullWidth481 }
         alt={ hero.image.alt }
+        data-test="Hero__img"
       />
     </picture>
     <div className="Hero__inner grid">
-      <div className={ `Hero__textWrap grid__content${hero.alignCenter ? ' grid__content--center' : ''}` }>
-        <h1 className="Hero__textWrapTitle">{ title }</h1>
-        <h3>
+      <div className={ `Hero__textWrap grid__content${hero.alignCenter ? ' grid__content--center' : ''}` } data-test="Hero__textWrap">
+        <h1 data-test="Hero__textWrapTitle" className="Hero__textWrapTitle">{ title }</h1>
+        <h3 data-test="Hero__subtitle">
           { subtitle }
         </h3>
       </div>
@@ -113,7 +114,8 @@ Hero.propTypes = {
   hero: PropTypes.object,
   title: PropTypes.string,
   subtitle: PropTypes.string,
-  url: PropTypes.string
+  url: PropTypes.string,
+  type: PropTypes.string
 };
 
 export default Hero;

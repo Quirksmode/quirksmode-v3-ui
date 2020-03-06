@@ -1,12 +1,11 @@
 import React from 'react';
-import SVGInline from 'react-svg-inline';
-import IconQuirksmode from '!!raw-loader!icons/quirksmode.svg';
+import IconQuirksmode from 'icons/quirksmode.svg';
 
 const Loading = () => (
   <div className="Loading">
     <div className="grid">
       <div className="Loading__spinnerWrap">
-        <SVGInline svg={ IconQuirksmode } />
+        <IconQuirksmode />
       </div>
     </div>
   </div>

@@ -5,9 +5,8 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import SVGInline from 'react-svg-inline';
 import useIsMounting from 'hooks/isMounting';
-import IconTags from '!!raw-loader!icons/tags.svg';
+import IconTags from 'icons/tags.svg';
 
 /**
  * Description
@@ -179,7 +178,7 @@ const Filter = ({
         title="Toggle Tag List"
       >
         <span className="visuallyHidden">Toggle Tag List</span>
-        <SVGInline svg={ IconTags } />
+        <IconTags />
       </button>
       <div className="Filter__lists">
         { categories && (

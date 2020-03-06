@@ -176,7 +176,7 @@ const config = {
         ]
       },
       {
-        test: /\.(png|jp(e*)g|gif|svg|webp)$/,
+        test: /\.(png|jp(e*)g|gif|webp)$/,
         loaders: [
           {
             loader: 'file-loader',
@@ -186,6 +186,20 @@ const config = {
           },
           'img-loader'
         ]
+      },
+      {
+        test: /\.svg$/,
+        use: ['@svgr/webpack']
+      },
+      {
+        test: /\.svg$/,
+        issuer: {
+          test: /\.(sa|sc|c)ss$/
+        },
+        loader: 'file-loader',
+        options: {
+          name: 'img/[name].[hash].[ext]'
+        }
       }
     ]
   },

@@ -1,6 +1,5 @@
 import React from 'react';
-import SVGInline from 'react-svg-inline';
-import IconCross from '!!raw-loader!icons/cross.svg';
+import IconCross from 'icons/cross.svg';
 
 // Textfield
 export const renderInput = ({
@@ -9,22 +8,20 @@ export const renderInput = ({
   id,
   placeholder,
   type,
-  icon,
+  Icon,
   message,
   meta: { touched, error, warning }
 }) => (
   <div className="form__item">
     <label htmlFor={ id }>
-      { icon
-        && <SVGInline svg={ icon } />
-      }
+      { Icon && <Icon /> }
       <span className="visuallyHidden">{ label }</span>
     </label>
     <input { ...input } placeholder={ label } type={ type } id={ id } />
     {touched && error
       && (
       <span role="alert" className="form__messageInlineWrap">
-        <SVGInline svg={ IconCross } />
+        <IconCross />
         <span className="form__messageInline">{message}</span>
       </span>
       )
@@ -39,22 +36,20 @@ export const renderTextarea = ({
   id,
   placeholder,
   type,
-  icon,
+  Icon,
   message,
   meta: { touched, error, warning }
 }) => (
   <div className="form__item">
     <label htmlFor={ id }>
-      { icon
-        && <SVGInline svg={ icon } />
-      }
+      { Icon && <Icon /> }
       <span className="visuallyHidden">{ label }</span>
     </label>
     <textarea { ...input } placeholder={ label } type={ type } id={ id } />
     {touched && error
       && (
       <span role="alert" className="form__messageInlineWrap">
-        <SVGInline svg={ IconCross } />
+        <IconCross />
         <span className="form__messageInline">{message}</span>
       </span>
       )

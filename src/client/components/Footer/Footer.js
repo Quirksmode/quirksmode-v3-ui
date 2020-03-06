@@ -4,12 +4,11 @@ import React, {
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
-import SVGInline from 'react-svg-inline';
-import IconSoundcloud from '!!raw-loader!icons/soundcloud.svg';
-import IconTwitter from '!!raw-loader!icons/twitter.svg';
-import IconLinkedin from '!!raw-loader!icons/linkedin-circle.svg';
-import IconGithub from '!!raw-loader!icons/github.svg';
-import IconMenu from '!!raw-loader!icons/menu.svg';
+import IconSoundcloud from 'icons/soundcloud.svg';
+import IconTwitter from 'icons/twitter.svg';
+import IconLinkedin from 'icons/linkedin-circle.svg';
+import IconGithub from 'icons/github.svg';
+import IconMenu from 'icons/menu.svg';
 
 /**
  * Description
@@ -77,39 +76,47 @@ const Footer = ({
         <div className="Footer__iconsWrap">
           <div className="Utility__icon Utility__icon--github">
             <a
-              href="#"
-              rel="bookmark"
+              href="https://github.com/Quirksmode"
+              rel="noopener noreferrer"
               title="Quirksmode's Github Page"
+              target="_blank"
             >
               <span className="visuallyHidden">Quirksmode&apos;s Github Page</span>
-              <SVGInline svg={ IconGithub } />
+              <IconGithub />
             </a>
           </div>
 
           <div className="Utility__icon Utility__icon--twitter">
             <a
               href="http://www.twitter.com/quirksmode_uk"
-              rel="external"
+              rel="noopener noreferrer"
               title="Quirksmode's Twitter Page"
+              target="_blank"
             >
               <span className="visuallyHidden">Quirksmode&apos;s Twitter Page</span>
-              <SVGInline svg={ IconTwitter } />
+              <IconTwitter />
             </a>
           </div>
           <div className="Utility__icon Utility__icon--soundcloud">
-            <a href="https://soundcloud.com/quirksmode" rel="bookmark" title="Quirksmode's Soundcloud Profile">
+            <a
+              href="https://soundcloud.com/quirksmode"
+              rel="noopener noreferrer"
+              title="Quirksmode's Soundcloud Profile"
+              target="_blank"
+            >
               <span className="visuallyHidden">Quirksmode&apos;s Soundcloud Profile</span>
-              <SVGInline svg={ IconSoundcloud } />
+              <IconSoundcloud />
             </a>
           </div>
           <div className="Utility__icon Utility__icon--linkedin">
             <a
               href="https://www.linkedin.com/in/david-plunkett-4552365/"
-              rel="bookmark"
+              rel="noopener noreferrer"
               title="Quirksmode's LinkedIn Page"
+              target="_blank"
             >
               <span className="visuallyHidden">Quirksmode&apos;s LinkedIn Page</span>
-              <SVGInline svg={ IconLinkedin } />
+              <IconLinkedin />
             </a>
           </div>
           <div className="Footer__icon Footer__icon--menu">
@@ -118,7 +125,7 @@ const Footer = ({
               onClick={ toggleNav }
             >
               <span className="visuallyHidden">Toggle Footer Navigation Menu</span>
-              <SVGInline svg={ IconMenu } />
+              <IconMenu />
             </button>
           </div>
         </div>

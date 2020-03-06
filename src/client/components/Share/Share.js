@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import SVGInline from 'react-svg-inline';
-import IconTwitter from '!!raw-loader!icons/twitter.svg';
-import IconFacebook from '!!raw-loader!icons/facebook.svg';
-import IconLinkedIn from '!!raw-loader!icons/linkedin.svg';
-import IconContact from '!!raw-loader!icons/contact.svg';
+import IconTwitter from 'icons/twitter.svg';
+import IconFacebook from 'icons/facebook.svg';
+import IconLinkedIn from 'icons/linkedin.svg';
+import IconContact from 'icons/contact.svg';
 
 /**
  * Share Component
@@ -44,7 +43,7 @@ const Share = ({
   };
 
   return (
-    <div className="Share">
+    <div className="Share" data-test="Share">
       <a
         onClick={ e => handleClick(e) }
         className="Share__icon"
@@ -54,7 +53,7 @@ const Share = ({
         title="Share this on Facebook"
       >
         <span className="visuallyHidden">Share this on Facebook</span>
-        <SVGInline svg={ IconFacebook } />
+        <IconFacebook />
       </a>
       <a
         onClick={ e => handleClick(e) }
@@ -65,7 +64,7 @@ const Share = ({
         title="Share this on Twitter"
       >
         <span className="visuallyHidden">Share this on Twitter</span>
-        <SVGInline svg={ IconTwitter } />
+        <IconTwitter />
       </a>
       <a
         onClick={ e => handleClick(e) }
@@ -76,7 +75,7 @@ const Share = ({
         title="Share this on Linked In"
       >
         <span className="visuallyHidden">Share this on Linked In</span>
-        <SVGInline svg={ IconLinkedIn } />
+        <IconLinkedIn />
       </a>
       <a
         className="Share__icon"
@@ -86,7 +85,7 @@ const Share = ({
         title="Share this by Email"
       >
         <span className="visuallyHidden">Share this by Email</span>
-        <SVGInline svg={ IconContact } />
+        <IconContact />
       </a>
     </div>
   );

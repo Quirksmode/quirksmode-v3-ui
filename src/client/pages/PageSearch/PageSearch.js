@@ -6,13 +6,13 @@ import React, {
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import queryString from 'query-string';
-import SVGInline from 'react-svg-inline';
+
 import Breadcrumbs from 'components/Breadcrumbs/Breadcrumbs';
 import Meta from 'components/Meta/Meta';
 import PageWrapper from 'components/PageWrapper/PageWrapper';
 import PostItem from 'components/PostItem/PostItem';
+import IconSearch from 'icons/search.svg';
 import { fetchSearchData } from './PageSearch.actions';
-import IconSearch from '!!raw-loader!icons/search.svg';
 
 /**
  * Search Page
@@ -120,7 +120,7 @@ const PageSearch = ({
                 </div>
                 <button type="submit" className="PageSearch__submit visuallyHidden">
                   <span className="visuallyHidden">Search</span>
-                  <SVGInline svg={ IconSearch } />
+                  <IconSearch />
                 </button>
               </form>
             </div>

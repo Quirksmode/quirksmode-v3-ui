@@ -19,12 +19,9 @@ import LogoNav from './LogoNav/LogoNav';
  * @param  {array}    props.heroSlides             []
  * @param  {object}   props.location               []
  */
-export const Header = ({
+const Header = ({
   location
 }) => {
-  // location = {
-  //   pathname: 'test'
-  // };
   const heroSlides = useSelector(state => state.pageHome.content.heroSlides);
 
   /**
@@ -109,6 +106,7 @@ export const Header = ({
           <div className="Header__sliderOuterWrap">
             <div className="Header__sliderWrap">
               <Swiper
+                data-test="Header__slider"
                 getSwiper={ updateSwiper }
                 { ...params }
               >
@@ -192,4 +190,4 @@ Header.propTypes = {
   location: PropTypes.object
 };
 
-export default (Header);
+export default Header;

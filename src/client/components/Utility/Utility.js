@@ -3,17 +3,16 @@ import React, {
   useCallback
 } from 'react';
 import { connect } from 'react-redux';
-import SVGInline from 'react-svg-inline';
 import LogoNav from 'components/Header/LogoNav/LogoNav';
 import { setUtility } from 'client/App.actions';
 import throttle from 'utils/throttle';
-import IconSoundcloud from '!!raw-loader!icons/soundcloud.svg';
-import IconTwitter from '!!raw-loader!icons/twitter.svg';
-import IconLinkedin from '!!raw-loader!icons/linkedin-circle.svg';
-import IconGithub from '!!raw-loader!icons/github.svg';
-import IconSearch from '!!raw-loader!icons/search.svg';
-import IconMenu from '!!raw-loader!icons/menu.svg';
-import IconClose from '!!raw-loader!icons/close.svg';
+import IconSoundcloud from 'icons/soundcloud.svg';
+import IconTwitter from 'icons/twitter.svg';
+import IconLinkedin from 'icons/linkedin-circle.svg';
+import IconGithub from 'icons/github.svg';
+import IconSearch from 'icons/search.svg';
+import IconMenu from 'icons/menu.svg';
+import IconClose from 'icons/close.svg';
 
 /**
  * Description
@@ -101,7 +100,7 @@ const Utility = ({
           </div>
           <button type="submit" id="Utility__search__submit" className="Utility__search__submit">
             <span className="visuallyHidden">Submit</span>
-            <SVGInline svg={ IconSearch } />
+            <IconSearch />
           </button>
         </form>
       </div>
@@ -113,9 +112,10 @@ const Utility = ({
                 href="https://github.com/Quirksmode"
                 rel="noopener noreferrer"
                 title="Quirksmode's Github Page"
+                target="_blank"
               >
                 <span className="visuallyHidden">Quirksmode&apos;s Github Page</span>
-                <SVGInline svg={ IconGithub } />
+                <IconGithub />
               </a>
             </div>
             <div className="Utility__icon Utility__icon--twitter">
@@ -123,9 +123,10 @@ const Utility = ({
                 href="http://www.twitter.com/quirksmode_uk"
                 rel="noopener noreferrer"
                 title="Quirksmode's Twitter Page"
+                target="_blank"
               >
                 <span className="visuallyHidden">Quirksmode&apos;s Twitter Page</span>
-                <SVGInline svg={ IconTwitter } />
+                <IconTwitter />
               </a>
             </div>
             <div className="Utility__icon Utility__icon--linkedin">
@@ -133,9 +134,10 @@ const Utility = ({
                 href="https://www.linkedin.com/in/david-plunkett-4552365/"
                 rel="noopener noreferrer"
                 title="Quirksmode's LinkedIn Page"
+                target="_blank"
               >
                 <span className="visuallyHidden">Quirksmode&apos;s LinkedIn Page</span>
-                <SVGInline svg={ IconLinkedin } />
+                <IconLinkedin />
               </a>
             </div>
             <div className="Utility__icon Utility__icon--soundcloud">
@@ -143,9 +145,10 @@ const Utility = ({
                 href="https://soundcloud.com/quirksmode"
                 rel="noopener noreferrer"
                 title="Quirksmode's Soundcloud Profile"
+                target="_blank"
               >
                 <span className="visuallyHidden">Quirksmode&apos;s Soundcloud Profile</span>
-                <SVGInline svg={ IconSoundcloud } />
+                <IconSoundcloud />
               </a>
             </div>
           </div>
@@ -156,8 +159,7 @@ const Utility = ({
                 onClick={ toggleSearch }
               >
                 <span className="visuallyHidden">Toggle Search</span>
-                <SVGInline className="Utility__iconSvgSearch" svg={ IconSearch } />
-                <SVGInline className="Utility__iconSvgClose" svg={ IconClose } />
+                { isSearchToggled ? <IconClose className="Utility__iconSvgClose" /> : <IconSearch className="Utility__iconSvgSearch" /> }
               </button>
             </div>
             <div className={ `Utility__icon Utility__icon--menu${isNavToggled ? ' Utility__icon--menu--open' : ''}${isMenuBtnToggled ? ' Utility__icon--menu--show' : ''}` }>
@@ -166,7 +168,7 @@ const Utility = ({
                 onClick={ toggleNav }
               >
                 <span className="visuallyHidden">Toggle Navigation Menu</span>
-                <SVGInline svg={ IconMenu } />
+                <IconMenu />
               </button>
             </div>
           </div>

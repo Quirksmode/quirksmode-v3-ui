@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
-import SVGInline from 'react-svg-inline';
-import IconTwitter from '!!raw-loader!icons/twitter.svg';
+import IconTwitter from 'icons/twitter.svg';
 
 const SubfooterLatestTweets = ({
   latestTweets
@@ -23,10 +21,7 @@ const SubfooterLatestTweets = ({
             key={ tweet.id }
             className="SubfooterLatestTweets__tweet"
           >
-            <SVGInline
-              className="SubfooterLatestTweets__tweetIcon"
-              svg={ IconTwitter }
-            />
+            <IconTwitter className="SubfooterLatestTweets__tweetIcon" />
             <p
               className="SubfooterLatestTweets__tweetText"
               dangerouslySetInnerHTML={ { __html: tweet.text } }
