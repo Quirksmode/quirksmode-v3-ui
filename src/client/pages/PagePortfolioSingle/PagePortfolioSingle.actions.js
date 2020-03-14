@@ -1,13 +1,12 @@
 import { push } from 'connected-react-router';
+import axios from 'axios';
 import { setLinkLoading, setLinkLoaded } from '../../App.actions';
 
 export const FETCH_PORTFOLIO_SINGLE_REQUEST = 'fetch_portfolio_single_request';
 export const FETCH_PORTFOLIO_SINGLE_SUCCESS = 'fetch_portfolio_single_success';
 export const FETCH_PORTFOLIO_SINGLE_ERROR = 'fetch_portfolio_single_error';
 export const fetchPortfolioSingleData = (slug, href = null) => async (
-  dispatch,
-  getState,
-  api
+  dispatch
 ) => {
   // Set the loading state
   dispatch({
@@ -20,7 +19,7 @@ export const fetchPortfolioSingleData = (slug, href = null) => async (
   }
 
   try {
-    const res = await api.get(`quirksmode/v1/pages/portfolio/${slug}`);
+    const res = await axios.get(`https://cms.quirksmode.co.uk/wp-json/quirksmode/v1/pages/portfolio/${slug}`);
 
     dispatch({
       type: FETCH_PORTFOLIO_SINGLE_SUCCESS,

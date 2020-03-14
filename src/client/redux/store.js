@@ -1,7 +1,6 @@
 import { compose, createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import { connectRouter, routerMiddleware } from 'connected-react-router';
-import axios from 'axios';
+import { routerMiddleware } from 'connected-react-router';
 import reducers from './combineReducers';
 
 // Redux store instance
@@ -22,11 +21,9 @@ export const getStore = () => store;
  * @param  {object} history      [react router history]
  * @return {function}            [function to create and configure redux store]
  */
-export default function configureStore(initialState, axiosConfig, history = null) {
-  const axiosInstance = axios.create(axiosConfig);
-
+export default function configureStore(initialState = {}, history = null) {
   // Setup middlewares for history tracking and thunks
-  const middleware = [thunk.withExtraArgument(axiosInstance)];
+  const middleware = [thunk];
   if (history) {
     middleware.push(routerMiddleware(history));
   }

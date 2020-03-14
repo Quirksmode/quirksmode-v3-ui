@@ -1,9 +1,11 @@
-import { ConnectedRouter } from 'connected-react-router';
+import { ConnectedRouter, routerMiddleware } from 'connected-react-router';
 import { mount } from 'enzyme';
 import React from 'react';
 import { Provider } from 'react-redux';
 import { createBrowserHistory } from 'history';
-import configureStore from 'redux/store';
+import thunk from 'redux-thunk';
+import axios from 'axios';
+import configureMockStore from 'redux-mock-store';
 import createRootReducer from 'redux/combineReducers';
 
 /**
@@ -27,6 +29,14 @@ export const mountRender = (Component, defaultProps = {}, customProps = {}) => {
 // Create history API
 const history = createBrowserHistory();
 
+// Setup middlewares for history tracking and thunks
+const middleware = [thunk];
+if (history) {
+  middleware.push(routerMiddleware(history));
+}
+const mockStore = configureMockStore(middleware);
+
+
 /**
  * Create Redux store using actual reducers
  *
@@ -34,19 +44,21 @@ const history = createBrowserHistory();
  * @param {object} customState - Custom State for Store
  * @returns {Store} - Redux Store.
  */
-export const store = (customState = {}) => {
+export const makeMockStore = (customState = {}) => {
   const initialState = createRootReducer(history)({}, { type: '@@INIT' });
-  const state = {
+  return mockStore({
     ...initialState,
     ...customState
-  };
-  return configureStore(state, {}, history);
+  });
 };
 
 export const reduxWrap = (Component, props = {}, state = {}) => () => (
-  <Provider store={ store(state) }>
+  <Provider store={ makeMockStore(state) }>
     <ConnectedRouter history={ history }>
       <Component { ...props } />
     </ConnectedRouter>
   </Provider>
 );
+
+export const mockSuccess = data => ({ status: 200, response: { data } });
+export const mockError = error => ({ status: 500, response: error });

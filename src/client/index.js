@@ -1,5 +1,3 @@
-// import 'core-js/stable';
-// import 'regenerator-runtime/runtime';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
@@ -19,9 +17,7 @@ const history = createBrowserHistory();
  */
 const initialState = window.INITIAL_STATE;
 delete window.INITIAL_STATE;
-const store = configureStore(initialState, {
-  baseURL: `${process.env.CMS_URL}/wp-json`
-}, history);
+const store = configureStore(initialState, history);
 
 const render = (Component) => {
   ReactDOM.hydrate(

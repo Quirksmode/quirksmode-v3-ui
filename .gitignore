@@ -5,6 +5,8 @@ build
 _nogit
 aria_log*
 ib_logfile*
+test-coverage
+report.*
 
 # Wordpress specific
 wp-config.php

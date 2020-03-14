@@ -74,7 +74,7 @@ const PageHome = () => {
   return useMemo(() => (
     <PageWrapper error={ error } loading={ loading }>
       <div className="page PageHome">
-        <Meta { ...metadata } />
+        { metadata && <Meta { ...metadata } /> }
         <h1 className="visuallyHidden">Welcome to Quirksmode</h1>
         { featuredWork.length > 0 && <PageHomeFeatured featuredWork={ featuredWork } /> }
         <section className="Page__section">

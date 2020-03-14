@@ -92,10 +92,7 @@ const render = (req, store, context, extractor, css) => {
 
 // Get all (fetchData) API data from components
 export default () => (req, res, next) => {
-  const store = configureStore({}, {
-    baseURL: `${process.env.CMS_URL}/wp-json`,
-    headers: { cookie: req.get('cookie') || '' }
-  });
+  const store = configureStore();
 
   // Loop through the routes array and get the data for each route (page)
   const loadRouteData = () => {

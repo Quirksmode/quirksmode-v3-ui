@@ -29,8 +29,8 @@ export default (state = initialState, action) => {
     case FETCH_HOME_SUCCESS:
       return {
         ...state,
-        content: action.payload.data.content,
-        metadata: action.payload.data.metadata,
+        content: action.payload.content,
+        metadata: action.payload.metadata,
         loading: false,
         error: false
       };
