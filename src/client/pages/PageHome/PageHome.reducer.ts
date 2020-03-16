@@ -1,10 +1,10 @@
 import {
-  FETCH_HOME_REQUEST,
-  FETCH_HOME_SUCCESS,
-  FETCH_HOME_ERROR
-} from './PageHome.actions';
+  PageHomeState,
+  Action,
+  ActionTypes
+} from './PageHome.types';
 
-export const initialState = {
+export const initialState: PageHomeState = {
   content: {
     title: '',
     heroSlides: [],
@@ -18,15 +18,15 @@ export const initialState = {
   error: false
 };
 
-export default (state = initialState, action) => {
+export default (state = initialState, action: Action) => {
   switch (action.type) {
-    case FETCH_HOME_REQUEST:
+    case ActionTypes.FETCH_HOME_REQUEST:
       return {
         ...state,
         loading: true,
         error: false
       };
-    case FETCH_HOME_SUCCESS:
+    case ActionTypes.FETCH_HOME_SUCCESS:
       return {
         ...state,
         content: action.payload.content,
@@ -34,7 +34,7 @@ export default (state = initialState, action) => {
         loading: false,
         error: false
       };
-    case FETCH_HOME_ERROR:
+    case ActionTypes.FETCH_HOME_ERROR:
       return {
         ...state,
         loading: false,

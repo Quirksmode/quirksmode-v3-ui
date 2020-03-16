@@ -25,6 +25,7 @@ const config = {
   resolve: {
     modules: ['src', 'node_modules'],
     descriptionFiles: ['package.json'],
+    extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
     alias: {
       client: path.resolve(__dirname, 'src/client'),
       components: path.resolve(__dirname, 'src/client/components'),
@@ -33,6 +34,7 @@ const config = {
       utils: path.resolve(__dirname, 'src/client/utils'),
       assets: path.resolve(__dirname, 'src/assets'),
       icons: path.resolve(__dirname, 'src/assets/icons'),
+      types: path.resolve(__dirname, 'src/types'),
       tests: path.resolve(__dirname, 'src/tests'),
       'react-dom': IS_DEV ? '@hot-loader/react-dom' : 'react-dom'
     }
@@ -40,8 +42,8 @@ const config = {
   cache: IS_DEV,
   entry: IS_DEV ? [
     'webpack-hot-middleware/client?reload=true',
-    path.resolve(__dirname, './src/client/index.js')
-  ] : path.resolve(__dirname, './src/client/index.js'),
+    path.resolve(__dirname, './src/client/index.tsx')
+  ] : path.resolve(__dirname, './src/client/index.tsx'),
   output: {
     filename: IS_DEV ? '[name].js' : '[name].[chunkhash:8].js',
     chunkFilename: IS_DEV ? '[id].js' : '[id].[chunkhash:8].js',
@@ -74,7 +76,7 @@ const config = {
   plugins: removeEmpty([
     new ManifestPlugin({
       fileName: path.resolve(process.cwd(), 'build/public/webpack-assets.json'),
-      filter: file => file.isInitial
+      filter: (file) => file.isInitial
     }),
     new LoadablePlugin({
       writeToDisk: true,
@@ -131,9 +133,9 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.js(x)?$/,
+        test: /\.(t|j)sx?$/,
         loader: 'babel-loader',
-        exclude: [/node_modules\/(?!(swiper|dom7)\/).*/, /\.test\.js(x)?$/],
+        exclude: [/node_modules\/(?!(swiper|dom7)\/).*/, /\.test\.(t|j)sx?$/],
         options: {
           cacheDirectory: IS_DEV,
           presets: [

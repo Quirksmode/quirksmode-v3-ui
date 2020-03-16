@@ -1,27 +1,25 @@
 {
-  "ignore": [
-    "node_modules/**/*"
-  ],
+  "ignore": ["node_modules/**/*"],
   "presets": [
     [
       "@babel/preset-env",
       {
         "useBuiltIns": "usage",
-        "corejs": 3
+        "corejs": "3.0.0"
       }
     ],
+    "@babel/preset-typescript",
     "@babel/preset-react"
   ],
   "plugins": [
     "@babel/transform-runtime",
     "react-hot-loader/babel",
-    "@loadable/babel-plugin"
-  ]
-  // "env": {
-  //   "production": {
-  //     "plugins": [
-  //       "transform-remove-console"
-  //     ]
-  //   }
-  // }
+    "@loadable/babel-plugin",
+    "@babel/plugin-proposal-class-properties"
+  ],
+  "env": {
+    "production": {
+      "plugins": ["transform-remove-console"]
+    }
+  }
 }

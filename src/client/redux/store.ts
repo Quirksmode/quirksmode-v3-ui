@@ -1,10 +1,11 @@
-import { compose, createStore, applyMiddleware } from 'redux';
+import { compose, createStore, applyMiddleware, Store } from 'redux';
 import thunk from 'redux-thunk';
+import { History } from 'history';
 import { routerMiddleware } from 'connected-react-router';
 import reducers from './combineReducers';
 
 // Redux store instance
-let store;
+let store: Store;
 
 /**
  * @name getStore
@@ -21,7 +22,10 @@ export const getStore = () => store;
  * @param  {object} history      [react router history]
  * @return {function}            [function to create and configure redux store]
  */
-export default function configureStore(initialState = {}, history = null) {
+export default function configureStore(
+  initialState = {},
+  history: History | null = null
+) {
   // Setup middlewares for history tracking and thunks
   const middleware = [thunk];
   if (history) {
@@ -29,18 +33,19 @@ export default function configureStore(initialState = {}, history = null) {
   }
 
   // When in development include redux dev tools
-  const composer = process.env.NODE_ENV === 'development' && __CLIENT__ ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose : compose;
+  const composer =
+    process.env.NODE_ENV === 'development' && __CLIENT__
+      ? (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+      : compose;
 
   store = createStore(
     reducers(history),
     initialState,
-    composer(
-      applyMiddleware(...middleware)
-    )
+    composer(applyMiddleware(...middleware))
   );
 
-  if (module.hot) {
-    module.hot.accept(reducers, () => {
+  if ((module as any).hot) {
+    (module as any).hot.accept(reducers, () => {
       store.replaceReducer(reducers);
     });
   }

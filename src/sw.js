@@ -9,7 +9,7 @@ workbox.core.skipWaiting();
 workbox.core.clientsClaim();
 
 // Inject the generated manifest from webpack
-// workbox.precaching.precacheAndRoute(self.__precacheManifest);
+workbox.precaching.precacheAndRoute(self.__WB_MANIFEST);
 workbox.routing.registerRoute(
   /\.(?:js|css)$/,
   new workbox.strategies.StaleWhileRevalidate(),

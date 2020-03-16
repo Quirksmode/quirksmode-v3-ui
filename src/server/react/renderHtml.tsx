@@ -2,6 +2,7 @@
 import path from 'path';
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import { Request, Response, NextFunction } from 'express';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
@@ -9,19 +10,27 @@ import { matchRoutes, renderRoutes } from 'react-router-config';
 import serialize from 'serialize-javascript';
 import { minify } from 'html-minifier';
 import { ChunkExtractor, ChunkExtractorManager } from '@loadable/server';
-import routes from '../../client/routes';
-import configureStore from '../../client/redux/store';
+import routes from 'client/routes';
+import configureStore from 'client/redux/store';
 
 const IS_DEV = process.env.NODE_ENV !== 'production';
 const UI_URL = process.env.UI_URL ? process.env.UI_URL : '';
 
-const getCssString = extractor => extractor.getCssString();
+const getCssString = (extractor: any): Promise<string> => {
+  return extractor.getCssString();
+};
 
-const render = (req, store, context, extractor, css) => {
+const render = (
+  req: Request,
+  store: any,
+  context: object,
+  extractor: any,
+  css: string
+): string => {
   const content = renderToString(
-    <ChunkExtractorManager extractor={ extractor }>
-      <Provider store={ store }>
-        <StaticRouter location={ req.path } context={ context }>
+    <ChunkExtractorManager extractor={extractor}>
+      <Provider store={store}>
+        <StaticRouter location={req.path} context={context}>
           {renderRoutes(routes)}
         </StaticRouter>
       </Provider>
@@ -69,7 +78,7 @@ const render = (req, store, context, extractor, css) => {
       <body>
         <div id="root">${content}</div>
         <script>
-          window.INITIAL_STATE = ${serialize(store.getState())}
+          window.__INITIAL_STATE__ = ${serialize(store.getState())}
         </script>
         ${extractor.getScriptTags()}
         ${helmet.script.toString()}
@@ -91,15 +100,20 @@ const render = (req, store, context, extractor, css) => {
 };
 
 // Get all (fetchData) API data from components
-export default () => (req, res, next) => {
+export default () => (req: Request, res: Response, next: NextFunction) => {
   const store = configureStore();
 
   // Loop through the routes array and get the data for each route (page)
   const loadRouteData = () => {
     const promises = matchRoutes(routes, req.path)
-      .map(({ route, match }) => (route.loadData ? route.loadData(store, match, req.query) : null))
-      .map(promise => (
-        promise ? new Promise(resolve => promise.then(resolve).catch(resolve)) : null));
+      .map(({ route, match }) =>
+        route.loadData ? route.loadData(store, match, req.query) : null
+      )
+      .map(promise =>
+        promise
+          ? new Promise(resolve => promise.then(resolve).catch(resolve))
+          : null
+      );
     return Promise.all(promises);
   };
 
@@ -115,16 +129,19 @@ export default () => (req, res, next) => {
       }
     } finally {
       // Get the stats file which contains references to all the generated assets
-      const statsFile = path.resolve(process.cwd(), 'build/public/loadable-stats.json');
+      const statsFile = path.resolve(
+        process.cwd(),
+        'build/public/loadable-stats.json'
+      );
 
       // Get the Chunk Extractor
       const extractor = new ChunkExtractor({ statsFile });
 
       // Get the CSS chunks as a string
-      let cssString = await getCssString(extractor);
+      let cssString: string = await getCssString(extractor);
       cssString = `<style>${cssString}</style>`;
 
-      const context = {};
+      const context: any = {};
 
       /**
        * Render the Server Side code and return as a string
@@ -132,7 +149,7 @@ export default () => (req, res, next) => {
        * @name content
        * @type {string}
        */
-      const content = render(req, store, context, extractor, cssString);
+      const content: string = render(req, store, context, extractor, cssString);
 
       if (context.url) {
         return res.redirect(301, context.url);

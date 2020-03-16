@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import { reducer as form } from 'redux-form';
 import { connectRouter } from 'connected-react-router';
+import { History } from 'history';
 import pageHome from '../pages/PageHome/PageHome.reducer';
 import pageAbout from '../pages/PageAbout/PageAbout.reducer';
 import pageContact from '../pages/PageContact/PageContact.reducer';
@@ -13,20 +14,21 @@ import pageContactForm from '../pages/PageContact/PageContactForm/PageContactFor
 import page from '../pages/Page/Page.reducer';
 import app from '../App.reducer';
 
-const createRootReducer = history => combineReducers({
-  router: history ? connectRouter(history) : {},
-  pageHome,
-  pageAbout,
-  pageContact,
-  pagePortfolio,
-  pagePortfolioSingle,
-  pageBlog,
-  pageBlogSingle,
-  pageSearch,
-  pageContactForm,
-  page,
-  form,
-  app
-});
+const createRootReducer = (history: History | null) =>
+  combineReducers({
+    router: history ? connectRouter(history) : {},
+    pageHome,
+    pageAbout,
+    pageContact,
+    pagePortfolio,
+    pagePortfolioSingle,
+    pageBlog,
+    pageBlogSingle,
+    pageSearch,
+    pageContactForm,
+    page,
+    form,
+    app
+  });
 
 export default createRootReducer;
