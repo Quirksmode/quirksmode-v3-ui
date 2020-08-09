@@ -61,7 +61,7 @@ if ((module as any).hot) {
  */
 if ('serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
   const wb = new Workbox('/sw.js');
-  wb.addEventListener('installed', event => {
+  wb.addEventListener('installed', (event) => {
     if (event.isUpdate) {
       window.location.reload();
     }

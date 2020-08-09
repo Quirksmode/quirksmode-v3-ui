@@ -21,7 +21,7 @@ const IS_DEV = process.env.NODE_ENV !== 'production';
 const config = {
   mode: IS_DEV ? 'development' : 'production',
   name: 'client',
-  devtool: IS_DEV ? 'eval-source-map' : false,
+  devtool: IS_DEV ? 'source-map' : false,
   resolve: {
     modules: ['src', 'node_modules'],
     descriptionFiles: ['package.json'],
@@ -100,9 +100,13 @@ const config = {
       swSrc: './src/sw.js',
       swDest: 'sw.js'
     }),
-    new CopyWebpackPlugin([
-      { from: path.resolve(__dirname, 'src/assets/img/favicon'), to: path.resolve(__dirname, 'build/public/img/favicon') }
-    ]),
+    new CopyWebpackPlugin(
+      {
+        patterns: [
+          { from: path.resolve(__dirname, 'src/assets/img/favicon'), to: path.resolve(__dirname, 'build/public/img/favicon') }
+        ]
+      }
+    ),
     ifNotProduction(new webpack.HotModuleReplacementPlugin()),
     ifNotProduction(new FriendlyErrorsWebpackPlugin()),
     ifProduction(new CleanWebpackPlugin({

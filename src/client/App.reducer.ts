@@ -38,7 +38,6 @@ export default (state = initialState, action: Action) => {
         error: false,
       };
     case AppActionTypes.FETCH_APP_SUCCESS:
-      console.log('FETCH_APP_SUCCESS action.payload', action.payload);
       return {
         ...state,
         siteSettings: action.payload.siteSettings,

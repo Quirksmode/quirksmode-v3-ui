@@ -28,7 +28,7 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 
 // Use helmet to secure Express with various HTTP headers
-app.use(helmet());
+//app.use(helmet());
 // Prevent HTTP parameter pollution
 app.use(hpp());
 

@@ -19,8 +19,8 @@ export const fetchAppData = () => async (dispatch: Dispatch) => {
     const res = await axios.get<AppData>(
       `${process.env.CMS_URL}/wp-json/quirksmode/v1/app`
     );
-    dispatch<any>({
-      type: 'TEST',
+    dispatch<FetchAppDataAction>({
+      type: AppActionTypes.FETCH_APP_SUCCESS,
       payload: res.data,
     });
     console.log('FETCH_APP_SUCCESS res.data', res.data);

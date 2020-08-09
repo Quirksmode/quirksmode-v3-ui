@@ -92,7 +92,7 @@ const render = (
     trimCustomFragments: true,
     minifyCSS: true,
     minifyJS: true,
-    minifyURLs: true
+    minifyURLs: true,
   };
 
   // Minify html in production
@@ -109,9 +109,9 @@ export default () => (req: Request, res: Response, next: NextFunction) => {
       .map(({ route, match }) =>
         route.loadData ? route.loadData(store, match, req.query) : null
       )
-      .map(promise =>
+      .map((promise) =>
         promise
-          ? new Promise(resolve => promise.then(resolve).catch(resolve))
+          ? new Promise((resolve) => promise.then(resolve).catch(resolve))
           : null
       );
     return Promise.all(promises);

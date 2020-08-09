@@ -1,9 +1,9 @@
 import { FetchHomeDataAction } from './PageHome.actions';
 
 export enum ActionTypes {
-  FETCH_HOME_REQUEST,
-  FETCH_HOME_SUCCESS,
-  FETCH_HOME_ERROR
+  FETCH_HOME_REQUEST = 'FETCH_HOME_REQUEST',
+  FETCH_HOME_SUCCESS = 'FETCH_HOME_SUCCES',
+  FETCH_HOME_ERROR = 'FETCH_HOME_ERROR',
 }
 
 export type Action = FetchHomeDataAction;

@@ -23,13 +23,13 @@ import { fetchPageData } from './pages/Page/Page.actions';
 export default [
   {
     component: App,
-    //loadData: (store) => store.dispatch(fetchAppData()),
+    loadData: (store) => store.dispatch(fetchAppData()),
     routes: [
       {
         component: PageHome,
         path: '/',
         exact: true,
-        //loadData: (store) => store.dispatch(fetchHomeData()),
+        loadData: (store) => store.dispatch(fetchHomeData()),
       },
       {
         component: PageAbout,

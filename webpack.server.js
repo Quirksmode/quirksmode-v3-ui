@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
-const CopyPlugin = require('copy-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const webpackNodeExternals = require('webpack-node-externals');
 
 const IS_DEV = process.env.NODE_ENV !== 'production';
@@ -41,9 +41,13 @@ const config = {
     ]
   },
   plugins: [
-    new CopyPlugin([
-      { from: path.resolve(__dirname, 'robots.txt'), to: path.resolve(__dirname, 'build/public') }
-    ]),
+    new CopyWebpackPlugin(
+      {
+        patterns: [
+          { from: path.resolve(__dirname, 'robots.txt'), to: path.resolve(__dirname, 'build/public') }
+        ]
+      }
+    ),
     new webpack.DefinePlugin({
       __CLIENT__: false,
       __SERVER__: true,
