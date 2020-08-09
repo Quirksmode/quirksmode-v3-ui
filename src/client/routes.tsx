@@ -23,47 +23,49 @@ import { fetchPageData } from './pages/Page/Page.actions';
 export default [
   {
     component: App,
-    loadData: store => store.dispatch(fetchAppData()),
+    //loadData: (store) => store.dispatch(fetchAppData()),
     routes: [
       {
         component: PageHome,
         path: '/',
         exact: true,
-        loadData: store => store.dispatch(fetchHomeData())
+        //loadData: (store) => store.dispatch(fetchHomeData()),
       },
       {
         component: PageAbout,
         path: '/about-me',
         exact: true,
-        loadData: store => store.dispatch(fetchAboutData())
+        loadData: (store) => store.dispatch(fetchAboutData()),
       },
       {
         component: PagePortfolio,
         path: '/portfolio',
         exact: true,
-        loadData: store => store.dispatch(fetchPortfolioData())
+        loadData: (store) => store.dispatch(fetchPortfolioData()),
       },
       {
         component: PagePortfolioSingle,
         path: '/portfolio/:slug',
-        loadData: (store, match) => store.dispatch(fetchPortfolioSingleData(match.params.slug))
+        loadData: (store, match) =>
+          store.dispatch(fetchPortfolioSingleData(match.params.slug)),
       },
       {
         component: PageContact,
         path: '/contact',
         exact: true,
-        loadData: store => store.dispatch(fetchContactData())
+        loadData: (store) => store.dispatch(fetchContactData()),
       },
       {
         component: PageBlog,
         path: '/blog',
         exact: true,
-        loadData: store => store.dispatch(fetchBlogData())
+        loadData: (store) => store.dispatch(fetchBlogData()),
       },
       {
         component: PageBlogSingle,
         path: '/blog/:slug',
-        loadData: (store, match) => store.dispatch(fetchBlogSingleData(match.params.slug))
+        loadData: (store, match) =>
+          store.dispatch(fetchBlogSingleData(match.params.slug)),
       },
       {
         component: PageSearch,
@@ -71,16 +73,16 @@ export default [
         loadData: (store, match, queryVars) => {
           const searchQuery = queryVars.s ? queryVars.s : '';
           return store.dispatch(fetchSearchData(searchQuery));
-        }
+        },
       },
       {
         component: Page,
         path: '/:slug',
-        loadData: store => store.dispatch(fetchPageData())
+        loadData: (store) => store.dispatch(fetchPageData()),
       },
       {
-        component: Page404
-      }
-    ]
-  }
+        component: Page404,
+      },
+    ],
+  },
 ];

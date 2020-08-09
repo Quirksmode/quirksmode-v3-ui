@@ -6,7 +6,7 @@ import { createBrowserHistory } from 'history';
 import thunk from 'redux-thunk';
 import axios from 'axios';
 import configureMockStore from 'redux-mock-store';
-import createRootReducer from 'redux/combineReducers';
+import createRootReducer from 'reduxStore/combineReducers';
 
 /**
  * Return node(s) with the given data-test attribute.

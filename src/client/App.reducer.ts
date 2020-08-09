@@ -1,14 +1,11 @@
-import {
-  FETCH_APP_DATA, SET_LINK_LOADING, SET_LINK_LOADED, SET_UTILITY
-} from './App.actions';
+import { AppState, Action, AppActionTypes } from './App.types';
 
-export const initialState = {
+export const initialState: AppState = {
   siteSettings: {
     cv: {},
-    defaultImage: {},
     mainLogo: {
-      sizes: {}
-    }
+      sizes: {},
+    },
   },
   navItems: [],
   footerNavItems: [],
@@ -17,56 +14,64 @@ export const initialState = {
   blogTags: [],
   blogCategories: [],
   subfooter: {
-    about: {
-      link: ''
-    },
-    latestTweets: {
-      tweets: [],
-      link: ''
-    },
-    instagram: {
-      link: ''
-    },
-    contact: {
-      link: ''
-    }
+    about: {},
+    latestTweets: {},
+    instagram: {},
+    contact: {},
   },
   loadingSlug: '',
   utility: {
     isNavToggled: false,
     isSearchToggled: false,
-    isMenuBtnToggled: false
-  }
+    isMenuBtnToggled: false,
+  },
+  loading: false,
+  error: false,
 };
 
-export default (state = initialState, action) => {
+export default (state = initialState, action: Action) => {
   switch (action.type) {
-    case FETCH_APP_DATA:
+    case AppActionTypes.FETCH_APP_REQUEST:
       return {
         ...state,
-        siteSettings: action.payload.data.siteSettings,
-        navItems: action.payload.data.navItems,
-        footerNavItems: action.payload.data.footerNavItems,
-        projectTags: action.payload.data.projectTags,
-        projectCategories: action.payload.data.projectCategories,
-        blogTags: action.payload.data.blogTags,
-        blogCategories: action.payload.data.blogCategories,
-        subfooter: action.payload.data.subfooter
+        loading: true,
+        error: false,
       };
-    case SET_LINK_LOADING:
+    case AppActionTypes.FETCH_APP_SUCCESS:
+      console.log('FETCH_APP_SUCCESS action.payload', action.payload);
       return {
         ...state,
-        loadingSlug: action.payload
+        siteSettings: action.payload.siteSettings,
+        navItems: action.payload.navItems,
+        footerNavItems: action.payload.footerNavItems,
+        projectTags: action.payload.projectTags,
+        projectCategories: action.payload.projectCategories,
+        blogTags: action.payload.blogTags,
+        blogCategories: action.payload.blogCategories,
+        subfooter: action.payload.subfooter,
+        loading: false,
+        error: false,
       };
-    case SET_LINK_LOADED:
+    case AppActionTypes.FETCH_APP_ERROR:
       return {
         ...state,
-        loadingSlug: ''
+        loading: false,
+        error: true,
       };
-    case SET_UTILITY:
+    case AppActionTypes.SET_LINK_LOADING:
       return {
         ...state,
-        utility: action.payload
+        loadingSlug: action.payload,
+      };
+    case AppActionTypes.SET_LINK_LOADED:
+      return {
+        ...state,
+        loadingSlug: '',
+      };
+    case AppActionTypes.SET_UTILITY:
+      return {
+        ...state,
+        utility: action.payload,
       };
     default:
       return state;

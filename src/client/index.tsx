@@ -4,7 +4,7 @@ import { AppContainer } from 'react-hot-loader';
 import { loadableReady } from '@loadable/component';
 import { createBrowserHistory } from 'history';
 import { Workbox } from 'workbox-window';
-import configureStore from './redux/store';
+import configureStore from 'client/redux/store';
 import { ConnectedRouter } from 'connected-react-router';
 import { Provider } from 'react-redux';
 import { renderRoutes } from 'react-router-config';

@@ -28,7 +28,7 @@ const createRootReducer = (history: History | null) =>
     pageContactForm,
     page,
     form,
-    app
+    app,
   });
 
 export default createRootReducer;

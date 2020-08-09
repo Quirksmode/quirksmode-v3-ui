@@ -1,10 +1,10 @@
 // Enable ES6 Syntax
 require('@babel/register')({
-  plugins: ['dynamic-import-node']
+  plugins: ['dynamic-import-node'],
 });
 
 import express, { Request, Response } from 'express';
-import expressStaticGzip = require('express-static-gzip');
+import expressStaticGzip from 'express-static-gzip';
 import http from 'http';
 import helmet from 'helmet';
 import hpp from 'hpp';
@@ -56,7 +56,7 @@ if (process.env.NODE_ENV === 'development') {
     quiet: false,
     noInfo: false,
     writeToDisk: true,
-    serverSideRender: true
+    serverSideRender: true,
   };
   const instance = webpackDevMiddleware(compiler, options);
 
@@ -82,8 +82,8 @@ if (process.env.NODE_ENV === 'development') {
         serveStatic: {
           setHeaders(res: Response) {
             res.setHeader('Cache-Control', 'public, max-age=31536000');
-          }
-        }
+          },
+        },
       })
     )
     .use(serverRenderer());
@@ -92,7 +92,7 @@ if (process.env.NODE_ENV === 'development') {
 // Start HTTP Server
 const server = http.createServer(app);
 // @ts-ignore
-server.listen(PORT, err => {
+server.listen(PORT, (err) => {
   if (err) throw err;
   const { port } = server.address() as AddressInfo;
   console.log(`Listening on ${port}`);

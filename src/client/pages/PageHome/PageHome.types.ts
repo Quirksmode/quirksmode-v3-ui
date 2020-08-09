@@ -8,11 +8,14 @@ export enum ActionTypes {
 
 export type Action = FetchHomeDataAction;
 
-export interface PageHomeState {
-  content: Content;
-  metadata: Metadata | Object;
+export interface PageHomeState extends PageHomeData {
   loading: boolean;
   error: boolean;
+}
+
+export interface PageHomeData {
+  content: Content;
+  metadata: Metadata | Object;
 }
 
 export interface Content {
