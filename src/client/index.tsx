@@ -4,7 +4,7 @@ import { AppContainer } from 'react-hot-loader';
 import { loadableReady } from '@loadable/component';
 import { createBrowserHistory } from 'history';
 import { Workbox } from 'workbox-window';
-import configureStore from 'client/redux/store';
+import createStore from 'client/redux/store';
 import { ConnectedRouter } from 'connected-react-router';
 import { Provider } from 'react-redux';
 import { renderRoutes } from 'react-router-config';
@@ -12,16 +12,11 @@ import routes from './routes';
 import '../assets/css/styles.css';
 
 /**
- * Setup history API
- */
-const history = createBrowserHistory();
-
-/**
  * Hydrate redux store from back-end data
  */
 const initialState = window.__INITIAL_STATE__;
 delete window.__INITIAL_STATE__;
-const store = configureStore(initialState, history);
+const { store, history } = createStore({ initialState });
 
 const render = (Routes: Array<object>) => {
   const renderMethod = (module as any).hot ? ReactDOM.render : ReactDOM.hydrate;

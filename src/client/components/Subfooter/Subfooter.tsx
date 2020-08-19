@@ -13,6 +13,7 @@ const Subfooter = ({ about, latestTweets, instagram, contact }) => (
     </p>
     <div className="Subfooter__innerWrap grid">
       <div className="Subfooter__sectionsWrap">
+        {about && <SubfooterAbout about={about} />}
         {latestTweets && <SubfooterLatestTweets latestTweets={latestTweets} />}
       </div>
       <div className="Subfooter__sectionsWrap Subfooter__sectionsWrap--last">

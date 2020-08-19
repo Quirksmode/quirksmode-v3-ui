@@ -1,17 +1,28 @@
 {
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint", "prettier"],
   "extends": [
     "airbnb",
     "airbnb/hooks",
     "plugin:@typescript-eslint/recommended",
+    "plugin:jest/recommended",
+    "plugin:jest/style",
+    "plugin:jest-dom/recommended",
     "plugin:prettier/recommended",
     "prettier/@typescript-eslint",
     "prettier/react"
   ],
+  "plugins": [
+    "@typescript-eslint",
+    "jest",
+    "jest-dom",
+    "prettier"
+  ],
   "settings": {
     "import/parsers": {
-      "@typescript-eslint/parser": [".ts", ".tsx"]
+      "@typescript-eslint/parser": [
+        ".ts",
+        ".tsx"
+      ]
     },
     "import/resolver": {
       "typescript": {},
@@ -36,7 +47,12 @@
     "react/jsx-filename-extension": [
       "error",
       {
-        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".ts",
+          ".tsx"
+        ]
       }
     ],
     "import/extensions": "off",
@@ -56,7 +72,7 @@
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-use-before-define": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
-    "@typescript-eslint/no-var-requires": "off"
+    "@typescript-eslint/no-var-requires": "off",
   },
   "globals": {
     "__CLIENT__": true,

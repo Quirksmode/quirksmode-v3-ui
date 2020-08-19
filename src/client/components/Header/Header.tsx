@@ -1,42 +1,23 @@
 import React, {
-  useState
+  useRef
 } from 'react';
-import {
-  useSelector
-} from 'react-redux';
-import PropTypes from 'prop-types';
+import { useTypedSelector } from 'client/redux/types';
 import Swiper from 'react-id-swiper';
 import { useInView } from 'react-intersection-observer';
 import LazyLoad from 'components/LazyLoad/LazyLoad';
 import LogoNav from './LogoNav/LogoNav';
+import { HeaderProps } from './Header.types';
 
 /**
- * Description
- *
- * @name Header
- * @param  {object}   props.app                    []
- * @param  {object}   props.mainLogo               []
- * @param  {array}    props.heroSlides             []
- * @param  {object}   props.location               []
+ * Header Component
  */
-const Header = ({
+const Header: React.FC<HeaderProps> = ({
   location
 }) => {
-  const heroSlides = useSelector(state => state.pageHome.content.heroSlides);
+  const heroSlides = useTypedSelector(state => state.pageHome.content.heroSlides);
 
-  /**
-   *
-   * @name swiper
-   * @type {object}
-   */
-  const [swiper, updateSwiper] = useState(null);
-
-  /**
-   *
-   * @name params
-   * @type {object}
-   */
-  const params = {
+  const swiperRef = useRef(null);
+  const swiperConfig = {
     autoplay: {
       delay: 7000
     },
@@ -44,7 +25,7 @@ const Header = ({
     fadeEffect: {
       crossFade: true
     },
-    effect: 'fade',
+    effect: 'fade' as 'fade',
     autoHeight: true,
     preloadImages: false,
     loop: false,
@@ -62,7 +43,8 @@ const Header = ({
    * @type {function}
    */
   const goNext = () => {
-    if (swiper !== null) {
+    if (swiperRef.current?.swiper) {
+      const { swiper } = swiperRef.current;
       if (swiper.activeIndex === (swiper.slides.length - 1)) {
         // Fake Loop due to React issue with Loop mode
         swiper.slideTo(0);
@@ -78,7 +60,8 @@ const Header = ({
    * @type {function}
    */
   const goPrev = () => {
-    if (swiper !== null) {
+    if (swiperRef.current?.swiper) {
+      const { swiper } = swiperRef.current;
       if (swiper.activeIndex === 0) {
         // Fake Loop due to React issue with Loop mode
         swiper.slideTo(swiper.slides.length - 1);
@@ -102,16 +85,16 @@ const Header = ({
     <header className="Header">
       <div className="Header__innerWrap grid">
         <LogoNav />
-        { location.pathname === '/' && heroSlides && heroSlides.length > 0 && (
+        {location.pathname === '/' && heroSlides && heroSlides.length > 0 && (
           <div className="Header__sliderOuterWrap">
             <div className="Header__sliderWrap">
               <Swiper
                 data-test="Header__slider"
-                getSwiper={ updateSwiper }
-                { ...params }
+                ref={swiperRef}
+                {...swiperConfig}
               >
-                { heroSlides.map(slide => (
-                  <div className="aspectWrap aspectWrap--ratio-16-10" key={ slide.id }>
+                {heroSlides.map(slide => (
+                  <div className="aspectWrap aspectWrap--ratio-16-10" key={slide.id}>
                     <LazyLoad>
                       <picture>
                         <source
@@ -146,10 +129,10 @@ const Header = ({
                             ${slide.image.sizes.heroSlider481up2x} 1.5x,
                             ${slide.image.sizes.heroSlider481up2x} 2x`
                           }
-                          src={ slide.image.sizes.heroSlider481up }
-                          alt={ slide.image.alt }
-                          width={ slide.image.width }
-                          height={ slide.image.height }
+                          src={slide.image.sizes.heroSlider481up}
+                          alt={slide.image.alt}
+                          width={slide.image.width}
+                          height={slide.image.height}
                         />
                       </picture>
                     </LazyLoad>
@@ -161,21 +144,21 @@ const Header = ({
         )}
       </div>
 
-      { location.pathname === '/' && (
+      {location.pathname === '/' && (
         <div
-          ref={ sliderNavRef }
-          className={ `Slider__directionNav${inView ? ' Slider__directionNav--active' : ''}` }
+          ref={sliderNavRef}
+          className={`Slider__directionNav${inView ? ' Slider__directionNav--active' : ''}`}
         >
           <button
             type="button"
-            onClick={ goPrev }
+            onClick={goPrev}
             className="Slider__prev"
           >
             Previous
           </button>
           <button
             type="button"
-            onClick={ goNext }
+            onClick={goNext}
             className="Slider__next"
           >
             Next
@@ -184,10 +167,6 @@ const Header = ({
       )}
     </header>
   );
-};
-
-Header.propTypes = {
-  location: PropTypes.object
 };
 
 export default Header;

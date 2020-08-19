@@ -11,7 +11,7 @@ import serialize from 'serialize-javascript';
 import { minify } from 'html-minifier';
 import { ChunkExtractor, ChunkExtractorManager } from '@loadable/server';
 import routes from 'client/routes';
-import configureStore from 'client/redux/store';
+import createStore from 'client/redux/store';
 
 const IS_DEV = process.env.NODE_ENV !== 'production';
 const UI_URL = process.env.UI_URL ? process.env.UI_URL : '';
@@ -101,7 +101,7 @@ const render = (
 
 // Get all (fetchData) API data from components
 export default () => (req: Request, res: Response, next: NextFunction) => {
-  const store = configureStore();
+  const { store } = createStore({ url: req.url });
 
   // Loop through the routes array and get the data for each route (page)
   const loadRouteData = () => {

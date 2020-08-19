@@ -4,9 +4,9 @@ import { Dispatch } from 'redux';
 
 export interface FetchAppDataAction {
   type:
-    | AppActionTypes.FETCH_APP_REQUEST
-    | AppActionTypes.FETCH_APP_SUCCESS
-    | AppActionTypes.FETCH_APP_ERROR;
+  | AppActionTypes.FETCH_APP_REQUEST
+  | AppActionTypes.FETCH_APP_SUCCESS
+  | AppActionTypes.FETCH_APP_ERROR;
   payload?: AppData;
 }
 
@@ -23,7 +23,6 @@ export const fetchAppData = () => async (dispatch: Dispatch) => {
       type: AppActionTypes.FETCH_APP_SUCCESS,
       payload: res.data,
     });
-    console.log('FETCH_APP_SUCCESS res.data', res.data);
   } catch (err) {
     dispatch<FetchAppDataAction>({
       type: AppActionTypes.FETCH_APP_ERROR,

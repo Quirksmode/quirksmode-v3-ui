@@ -1,43 +1,39 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import PostItem from 'components/PostItem/PostItem';
+import { LatestBlogPostsEntity } from 'pages/PageHome/PageHome.types';
+
+interface PageHomeBlogProps {
+  latestBlogPosts: LatestBlogPostsEntity[];
+}
 
 /**
- * Home Page Latest Posts
- *
- * @name PageHomeBlog
- * @param {array} props.latestBlogPosts - Latest Blog Posts
- * @return {JSXElement}
+ * Home Page Latest Blog Posts
  */
-const PageHomeBlog = ({
+const PageHomeBlog: React.FC<PageHomeBlogProps> = ({
   latestBlogPosts
 }) => (
-  <div className="PageHomeBlog">
-    <div className="Page__headingWrap">
-      <h2>General Shoutings</h2>
-      <NavLink
-        to="/blog"
-        className="link--withHeading link--withIcon"
-      >
-        View My Blog
+    <div className="PageHomeBlog">
+      <div className="Page__headingWrap">
+        <h2>General Shoutings</h2>
+        <NavLink
+          to="/blog"
+          className="link--withHeading link--withIcon"
+        >
+          View My Blog
       </NavLink>
+      </div>
+      <div className="PageHomeBlog__posts">
+        {latestBlogPosts.map(post => (
+          <PostItem
+            key={post.postID}
+            post={post}
+            size="Small"
+            lineClamp="3"
+          />
+        ))}
+      </div>
     </div>
-    <div className="PageHomeBlog__posts">
-      { latestBlogPosts.map(post => (
-        <PostItem
-          key={ post.postID }
-          post={ post }
-          size="Small"
-          lineClamp="3"
-        />
-      ))}
-    </div>
-  </div>
-);
-
-PageHomeBlog.propTypes = {
-  latestBlogPosts: PropTypes.array
-};
+  );
 
 export default PageHomeBlog;

@@ -1,65 +1,49 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
 import { NavLink } from 'react-router-dom';
 import IconArrowDown from 'icons/arrowdown.svg';
+import { PageHomeIntroProps } from './PageHomeIntro.types';
 
 /**
  * Home Page Intro Component
- *
- * @name PageHomeSkills
- * @param {object} props.intro - The intro content
- * @param {object} props.cv - The cv content
- * @return {JSXElement}
  */
-const PageHomeIntro = ({
-  intro,
-  cv
-}) => (
+const PageHomeIntro: React.FC<PageHomeIntroProps> = ({ intro, cv }) => (
   <div className="PageHomeIntro">
     <div className="Page__headingWrap">
       <h2>HELLO, my name is dave</h2>
-      <NavLink
-        to="/about-me"
-        className="link--withHeading link--withIcon"
-      >
+      <NavLink to="/about-me" className="link--withHeading link--withIcon">
         More About Me
       </NavLink>
     </div>
     <div className="PageHomeIntro__intro">
-      { intro && (
+      {intro && (
         <div className="PageHomeIntro__imgWrap">
           <picture>
             <source
               type="image/webp"
-              srcSet={
-                `${intro.image.url}.webp 1x,
+              srcSet={`${intro.image.url}.webp 1x,
                   ${intro.image.url}.webp 1.5x,
-                  ${intro.image.url}.webp 2x`
-              }
+                  ${intro.image.url}.webp 2x`}
             />
             <img
-              srcSet={
-                `${intro.image.url} 1x,
+              srcSet={`${intro.image.url} 1x,
                   ${intro.image.url} 1.5x,
-                  ${intro.image.url} 2x`
-              }
-              src={ intro.image.url }
-              alt={ intro.image.alt }
-              width={ intro.image.width }
-              height={ intro.image.width }
+                  ${intro.image.url} 2x`}
+              src={intro.image.url}
+              alt={intro.image.alt}
+              width={intro.image.width}
+              height={intro.image.width}
               loading="lazy"
             />
           </picture>
         </div>
       )}
-      { intro && (
+      {intro && (
         <div className="PageHomeIntro__textWrap">
-          <div dangerouslySetInnerHTML={ { __html: intro.text } } />
+          <div dangerouslySetInnerHTML={{ __html: intro.text }} />
           <a
             className="btn--submitIcon"
-            title={ cv.title }
-            href={ cv.url }
+            title={cv.title}
+            href={cv.url}
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -71,10 +55,5 @@ const PageHomeIntro = ({
     </div>
   </div>
 );
-
-PageHomeIntro.propTypes = {
-  intro: PropTypes.object,
-  cv: PropTypes.object
-};
 
 export default PageHomeIntro;

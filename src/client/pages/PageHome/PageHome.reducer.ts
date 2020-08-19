@@ -1,8 +1,5 @@
-import {
-  PageHomeState,
-  Action,
-  ActionTypes
-} from './PageHome.types';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { PageHomeState, PageHomeData } from './PageHome.types';
 
 export const initialState: PageHomeState = {
   content: {
@@ -15,32 +12,33 @@ export const initialState: PageHomeState = {
   },
   metadata: {},
   loading: false,
-  error: false
+  error: false,
 };
 
-export default (state = initialState, action: Action) => {
-  switch (action.type) {
-    case ActionTypes.FETCH_HOME_REQUEST:
-      return {
-        ...state,
-        loading: true,
-        error: false
-      };
-    case ActionTypes.FETCH_HOME_SUCCESS:
-      return {
-        ...state,
-        content: action.payload.content,
-        metadata: action.payload.metadata,
-        loading: false,
-        error: false
-      };
-    case ActionTypes.FETCH_HOME_ERROR:
-      return {
-        ...state,
-        loading: false,
-        error: true
-      };
-    default:
-      return state;
-  }
-};
+const pageHome = createSlice({
+  name: 'pageHome',
+  initialState,
+  reducers: {
+    fetchHomeRequest: (state) => {
+      state.loading = true;
+      state.error = false;
+    },
+    fetchHomeSuccess: (state, { payload }: PayloadAction<PageHomeData>) => {
+      state.content = payload.content;
+      state.metadata = payload.metadata;
+      state.loading = false;
+      state.error = false;
+    },
+    fetchHomeError: (state) => {
+      state.loading = false;
+      state.error = true;
+    },
+  },
+});
+
+export default pageHome.reducer;
+export const {
+  fetchHomeRequest,
+  fetchHomeSuccess,
+  fetchHomeError,
+} = pageHome.actions;

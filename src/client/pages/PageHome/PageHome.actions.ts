@@ -1,32 +1,21 @@
 import axios from 'axios';
-import { ActionTypes, PageHomeData } from './PageHome.types';
-import { Dispatch } from 'redux';
+import { PageHomeData } from './PageHome.types';
+import {
+  fetchHomeRequest,
+  fetchHomeSuccess,
+  fetchHomeError,
+} from './PageHome.reducer';
+import { AppThunk } from 'client/redux/types';
 
-export interface FetchHomeDataAction {
-  type:
-    | ActionTypes.FETCH_HOME_REQUEST
-    | ActionTypes.FETCH_HOME_SUCCESS
-    | ActionTypes.FETCH_HOME_ERROR;
-  payload?: PageHomeData;
-}
-
-export const fetchHomeData = () => async (dispatch: Dispatch) => {
-  dispatch<FetchHomeDataAction>({
-    type: ActionTypes.FETCH_HOME_REQUEST,
-  });
+export const fetchHomeData = (): AppThunk => async (dispatch) => {
+  dispatch(fetchHomeRequest());
 
   try {
     const res = await axios.get<PageHomeData>(
       `${process.env.CMS_URL}/wp-json/quirksmode/v1/pages/home`
     );
-    dispatch<FetchHomeDataAction>({
-      type: ActionTypes.FETCH_HOME_SUCCESS,
-      payload: res.data,
-    });
-    console.log('fetchHomeData', res.data);
+    dispatch(fetchHomeSuccess(res.data));
   } catch (err) {
-    dispatch<FetchHomeDataAction>({
-      type: ActionTypes.FETCH_HOME_ERROR,
-    });
+    dispatch(fetchHomeError());
   }
 };

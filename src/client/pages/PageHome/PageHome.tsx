@@ -1,9 +1,6 @@
 import React, { useEffect, useMemo } from 'react';
-import {
-  useSelector as useSelectorGeneric,
-  useDispatch,
-  TypedUseSelectorHook,
-} from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { useTypedSelector } from 'client/redux/types';
 import Meta from 'components/Meta/Meta';
 import PageWrapper from 'components/PageWrapper/PageWrapper';
 import { fetchHomeData } from './PageHome.actions';
@@ -11,24 +8,15 @@ import PageHomeFeatured from './PageHomeFeatured/PageHomeFeatured';
 import PageHomeIntro from './PageHomeIntro/PageHomeIntro';
 import PageHomeSkills from './PageHomeSkills/PageHomeSkills';
 import PageHomeBlog from './PageHomeBlog/PageHomeBlog';
-import { StoreState } from 'src/types';
-
-// Assign Types to the Redux Hooks
-export const useSelector: TypedUseSelectorHook<StoreState> = useSelectorGeneric;
 
 /**
  * Home Page Component
  */
-const PageHome = () => {
+const PageHome: React.FC = () => {
   // Redux Hooks
   const dispatch = useDispatch();
-  const state = useSelector((state) => state);
-  const pageHome = useSelector((state) => state.pageHome);
-  const app = useSelector((state) => state.app);
-
-  console.log('app', app);
-  console.log('state', state);
-  console.log('pageHome', pageHome);
+  const pageHome = useTypedSelector((state) => state.pageHome);
+  const app = useTypedSelector((state) => state.app);
 
   const { content, metadata, loading, error } = pageHome;
   if (!content) return null;
@@ -44,7 +32,7 @@ const PageHome = () => {
     if (!intro) {
       dispatch(fetchHomeData());
     }
-  }, [dispatch, intro]);
+  }, [intro]);
 
   return useMemo(
     () => (
@@ -63,10 +51,7 @@ const PageHome = () => {
                   {skills.length > 0 && <PageHomeSkills skills={skills} />}
                 </div>
                 <div className="PageHome__col">
-                  <PageHomeBlog
-                    latestBlogPosts={latestBlogPosts}
-                    loading={loading}
-                  />
+                  <PageHomeBlog latestBlogPosts={latestBlogPosts} />
                 </div>
               </div>
             </div>

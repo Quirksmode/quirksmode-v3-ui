@@ -1,13 +1,3 @@
-import { FetchHomeDataAction } from './PageHome.actions';
-
-export enum ActionTypes {
-  FETCH_HOME_REQUEST = 'FETCH_HOME_REQUEST',
-  FETCH_HOME_SUCCESS = 'FETCH_HOME_SUCCES',
-  FETCH_HOME_ERROR = 'FETCH_HOME_ERROR',
-}
-
-export type Action = FetchHomeDataAction;
-
 export interface PageHomeState extends PageHomeData {
   loading: boolean;
   error: boolean;
@@ -75,6 +65,8 @@ export interface Intro {
 export interface Image1 {
   url: string;
   alt: string;
+  width: number;
+  height: number;
 }
 
 export interface LatestBlogPostsEntity {
