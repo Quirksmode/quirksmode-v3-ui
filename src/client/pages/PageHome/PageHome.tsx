@@ -48,7 +48,7 @@ const PageHome: React.FC = () => {
               <div className="PageHome__colWrap">
                 <div className="PageHome__col">
                   {intro && <PageHomeIntro intro={intro} cv={cv} />}
-                  {skills.length > 0 && <PageHomeSkills skills={skills} />}
+                  {skills?.length > 0 && <PageHomeSkills skills={skills} />}
                 </div>
                 <div className="PageHome__col">
                   <PageHomeBlog latestBlogPosts={latestBlogPosts} />

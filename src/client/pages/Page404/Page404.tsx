@@ -1,9 +1,8 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
+
 /**
  * 404 Page Component
- *
- * @name Page404
  */
 const Page404 = () => (
   <div className="Page Page404">

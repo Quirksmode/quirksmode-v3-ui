@@ -1,0 +1,276 @@
+{
+  "content": {
+    "id": 963,
+    "title": "Toontastic with Google",
+    "slug": "toontastic-with-google",
+    "url": "https://cms.quirksmode.co.uk/portfolio/toontastic-with-google/",
+    "hero": {
+      "image": {
+        "alt": "Toontastic Hero",
+        "sizes": {
+          "fullWidth481": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/01/toontastic-hero-1-e1581382312921-481x267.png",
+          "fullWidth481_2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/01/toontastic-hero-1-e1581382312921-962x534.png",
+          "fullWidth768": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/01/toontastic-hero-1-e1581382312921-768x427.png",
+          "fullWidth768_2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/01/toontastic-hero-1-e1581382312921-1536x853.png",
+          "fullWidth1024": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/01/toontastic-hero-1-e1581382312921-1024x569.png",
+          "fullWidth1024_2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/01/toontastic-hero-1-e1581382312921-2048x1138.png",
+          "fullWidth1800": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/01/toontastic-hero-1-e1581382312921-1800x1000.png",
+          "fullWidth1800_2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/01/toontastic-hero-1-e1581382425311.png"
+        }
+      },
+      "alignCenter": false
+    },
+    "projectTags": [
+      {
+        "term_id": 50,
+        "name": "JS",
+        "slug": "js",
+        "term_group": 0,
+        "term_taxonomy_id": 50,
+        "taxonomy": "project_tag",
+        "description": "",
+        "parent": 0,
+        "count": 17,
+        "filter": "raw",
+        "term_order": "0"
+      },
+      {
+        "term_id": 63,
+        "name": "Gulp",
+        "slug": "gulp",
+        "term_group": 0,
+        "term_taxonomy_id": 63,
+        "taxonomy": "project_tag",
+        "description": "",
+        "parent": 0,
+        "count": 13,
+        "filter": "raw",
+        "term_order": "0"
+      },
+      {
+        "term_id": 64,
+        "name": "SCSS",
+        "slug": "scss",
+        "term_group": 0,
+        "term_taxonomy_id": 64,
+        "taxonomy": "project_tag",
+        "description": "",
+        "parent": 0,
+        "count": 17,
+        "filter": "raw",
+        "term_order": "0"
+      },
+      {
+        "term_id": 69,
+        "name": "App Engine",
+        "slug": "app-engine",
+        "term_group": 0,
+        "term_taxonomy_id": 69,
+        "taxonomy": "project_tag",
+        "description": "",
+        "parent": 0,
+        "count": 1,
+        "filter": "raw",
+        "term_order": "0"
+      },
+      {
+        "term_id": 78,
+        "name": "Twig",
+        "slug": "twig",
+        "term_group": 0,
+        "term_taxonomy_id": 78,
+        "taxonomy": "project_tag",
+        "description": "",
+        "parent": 0,
+        "count": 5,
+        "filter": "raw",
+        "term_order": "0"
+      }
+    ],
+    "projectRole": "Technical Lead/Full Stack Developer",
+    "projectURL": "https://toontastic.withgoogle.com/",
+    "screenshots": [
+      {
+        "id": 1054,
+        "url": "https://cms.quirksmode.co.uk/wp-content/uploads/2017/02/toontastic-screen-1.jpg",
+        "alt": "Toontastic Screenshot 1",
+        "width": 96,
+        "height": 365,
+        "sizes": {
+          "heroSlider481up": "https://cms.quirksmode.co.uk/wp-content/uploads/2017/02/toontastic-screen-1.jpg",
+          "heroSlider481up2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2017/02/toontastic-screen-1.jpg",
+          "heroSlider768up": "https://cms.quirksmode.co.uk/wp-content/uploads/2017/02/toontastic-screen-1.jpg",
+          "heroSlider768up2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2017/02/toontastic-screen-1.jpg"
+        }
+      },
+      {
+        "id": 1055,
+        "url": "https://cms.quirksmode.co.uk/wp-content/uploads/2017/02/toontastic-screen-2.jpg",
+        "alt": "Toontastic Screenshot 2",
+        "width": 96,
+        "height": 365,
+        "sizes": {
+          "heroSlider481up": "https://cms.quirksmode.co.uk/wp-content/uploads/2017/02/toontastic-screen-2.jpg",
+          "heroSlider481up2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2017/02/toontastic-screen-2.jpg",
+          "heroSlider768up": "https://cms.quirksmode.co.uk/wp-content/uploads/2017/02/toontastic-screen-2.jpg",
+          "heroSlider768up2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2017/02/toontastic-screen-2.jpg"
+        }
+      },
+      {
+        "id": 1056,
+        "url": "https://cms.quirksmode.co.uk/wp-content/uploads/2017/02/toontastic-screen-3.jpg",
+        "alt": "Toontastic Screenshot 3",
+        "width": 585,
+        "height": 365,
+        "sizes": {
+          "heroSlider481up": "https://cms.quirksmode.co.uk/wp-content/uploads/2017/02/toontastic-screen-3-585x365.jpg",
+          "heroSlider481up2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2017/02/toontastic-screen-3-800x730.jpg",
+          "heroSlider768up": "https://cms.quirksmode.co.uk/wp-content/uploads/2017/02/toontastic-screen-3-760x474.jpg",
+          "heroSlider768up2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2017/02/toontastic-screen-3-800x948.jpg"
+        }
+      },
+      {
+        "id": 1057,
+        "url": "https://cms.quirksmode.co.uk/wp-content/uploads/2017/02/toontastic-screen-4.jpg",
+        "alt": "Toontastic Screenshot 4",
+        "width": 585,
+        "height": 365,
+        "sizes": {
+          "heroSlider481up": "https://cms.quirksmode.co.uk/wp-content/uploads/2017/02/toontastic-screen-4-585x365.jpg",
+          "heroSlider481up2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2017/02/toontastic-screen-4-1170x730.jpg",
+          "heroSlider768up": "https://cms.quirksmode.co.uk/wp-content/uploads/2017/02/toontastic-screen-4-760x474.jpg",
+          "heroSlider768up2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2017/02/toontastic-screen-4-1520x948.jpg"
+        }
+      }
+    ],
+    "contentBlocks": [
+      {
+        "id": 0,
+        "type": "contentSidebar",
+        "content": "<p><span>Toontastic with Google is a creative storytelling app that empowers kids to draw, animate, narrate, and record their own cartoons on their tablet, phone or Chromebook. We were asked by Google to Design and Develop a microsite to promote the launch of the app, which was less than a month away.</span></p>\n<h3>The Build</h3>\n<p>This fully responsive site was developed mobile first, following Google&#8217;s strict coding standards, using a combination of Twig templating, JS and SCSS (BEM), in less than two weeks. <span>With such a tight deadline, it was always going to be big ask, but I am pleased to say we were able to deliver on time and within budget.</span></p>\n<h3>My Role</h3>\n<ul>\n<li>Technical Lead and Full Stack Developer</li>\n<li>Liaised with key stakeholders and the UX/Design teams over in San Francisco, ensuring we had everything we needed to begin development.</li>\n<li>Developed the site, ensuring all code perfectly matched the UX/UI requirements and adhered to Google&#8217;s strict guidelines and coding standards.</li>\n<li>Deployment</li>\n</ul>\n",
+        "showTags": true,
+        "showLink": false
+      }
+    ],
+    "related": [
+      {
+        "ID": 773,
+        "post_author": "1",
+        "post_date": "2020-01-10 23:14:24",
+        "post_date_gmt": "2020-01-10 23:14:24",
+        "post_content": "",
+        "post_title": "Destiny Arts",
+        "post_excerpt": "",
+        "post_status": "publish",
+        "comment_status": "open",
+        "ping_status": "closed",
+        "post_password": "",
+        "post_name": "destiny-arts",
+        "to_ping": "",
+        "pinged": "",
+        "post_modified": "2020-02-10 22:54:18",
+        "post_modified_gmt": "2020-02-10 22:54:18",
+        "post_content_filtered": "",
+        "post_parent": 0,
+        "guid": "https://cms.quirksmode.co.uk/?post_type=project&#038;p=773",
+        "menu_order": 0,
+        "post_type": "project",
+        "post_mime_type": "",
+        "comment_count": "0",
+        "filter": "raw",
+        "isNew": false,
+        "featuredImage": {
+          "alt": "Destiny Arts Hero",
+          "width": 288,
+          "height": 260,
+          "sizes": {
+            "quirksmodeMedium": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/01/destiny-arts-hero-288x260.jpg",
+            "quirksmodeMedium2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/01/destiny-arts-hero-576x520.jpg"
+          }
+        }
+      },
+      {
+        "ID": 767,
+        "post_author": "1",
+        "post_date": "2020-01-10 22:48:50",
+        "post_date_gmt": "2020-01-10 22:48:50",
+        "post_content": "",
+        "post_title": "Flavors Hook Kids",
+        "post_excerpt": "",
+        "post_status": "publish",
+        "comment_status": "open",
+        "ping_status": "closed",
+        "post_password": "",
+        "post_name": "flavors-hook-kids",
+        "to_ping": "",
+        "pinged": "",
+        "post_modified": "2020-02-10 23:07:19",
+        "post_modified_gmt": "2020-02-10 23:07:19",
+        "post_content_filtered": "",
+        "post_parent": 0,
+        "guid": "https://cms.quirksmode.co.uk/?post_type=project&#038;p=767",
+        "menu_order": 0,
+        "post_type": "project",
+        "post_mime_type": "",
+        "comment_count": "0",
+        "filter": "raw",
+        "isNew": false,
+        "featuredImage": {
+          "alt": "",
+          "width": 288,
+          "height": 260,
+          "sizes": {
+            "quirksmodeMedium": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/01/flavors-288x260.jpg",
+            "quirksmodeMedium2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/01/flavors-576x520.jpg"
+          }
+        }
+      },
+      {
+        "ID": 765,
+        "post_author": "1",
+        "post_date": "2020-01-10 22:45:09",
+        "post_date_gmt": "2020-01-10 22:45:09",
+        "post_content": "",
+        "post_title": "Tobacco Free California",
+        "post_excerpt": "",
+        "post_status": "publish",
+        "comment_status": "open",
+        "ping_status": "closed",
+        "post_password": "",
+        "post_name": "tobacco-free-california",
+        "to_ping": "",
+        "pinged": "",
+        "post_modified": "2020-02-11 00:10:06",
+        "post_modified_gmt": "2020-02-11 00:10:06",
+        "post_content_filtered": "",
+        "post_parent": 0,
+        "guid": "https://cms.quirksmode.co.uk/?post_type=project&#038;p=765",
+        "menu_order": 0,
+        "post_type": "project",
+        "post_mime_type": "",
+        "comment_count": "0",
+        "filter": "raw",
+        "isNew": false,
+        "featuredImage": {
+          "alt": "Tobacco Free California Featured",
+          "width": 288,
+          "height": 260,
+          "sizes": {
+            "quirksmodeMedium": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/01/tfca-288x260.jpg",
+            "quirksmodeMedium2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/01/tfca-576x520.jpg"
+          }
+        }
+      }
+    ],
+    "noRelated": false
+  },
+  "metadata": {
+    "metaTitle": "Toontastic with Google",
+    "metaDesc": "Quirksmode is a fully responsive Universal React Application connected to a Headless CMS designed and developed by myself, web enthusiast and all round nice guy Dave. It was created to be my Portfolio and voice to the world",
+    "metaUrl": "/portfolio/toontastic-with-google/",
+    "metaSiteName": "Quirksmode",
+    "metaImage": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/01/toontastic-featured-576x520.png",
+    "metaImageWidth": 576,
+    "metaImageHeight": 520
+  }
+}

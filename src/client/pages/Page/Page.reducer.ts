@@ -1,43 +1,41 @@
-import {
-  FETCH_PAGE_REQUEST,
-  FETCH_PAGE_SUCCESS,
-  FETCH_PAGE_ERROR
-} from './Page.actions';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { PageState, PageData } from './Page.types';
 
-export const initialState = {
+export const initialState: PageState = {
   content: {
     title: '',
     pageContent: '',
-    contentBlocks: []
+    contentBlocks: [],
   },
   metadata: {},
   loading: false,
-  error: false
+  error: false,
 };
 
-export default (state = initialState, action) => {
-  switch (action.type) {
-    case FETCH_PAGE_REQUEST:
-      return {
-        ...state,
-        loading: true,
-        error: false
-      };
-    case FETCH_PAGE_SUCCESS:
-      return {
-        ...state,
-        content: action.payload.data.content,
-        metadata: action.payload.data.metadata,
-        loading: false,
-        error: false
-      };
-    case FETCH_PAGE_ERROR:
-      return {
-        ...initialState,
-        loading: false,
-        error: true
-      };
-    default:
-      return state;
-  }
-};
+const page = createSlice({
+  name: 'page',
+  initialState,
+  reducers: {
+    fetchPageRequest: (state) => {
+      state.loading = true;
+      state.error = false;
+    },
+    fetchPageSuccess: (state, { payload }: PayloadAction<PageData>) => {
+      state.content = payload.content;
+      state.metadata = payload.metadata;
+      state.loading = false;
+      state.error = false;
+    },
+    fetchPageError: (state) => {
+      state.loading = false;
+      state.error = true;
+    },
+  },
+});
+
+export default page.reducer;
+export const {
+  fetchPageRequest,
+  fetchPageSuccess,
+  fetchPageError,
+} = page.actions;

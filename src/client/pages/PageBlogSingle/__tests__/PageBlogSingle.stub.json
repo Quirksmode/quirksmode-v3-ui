@@ -1,0 +1,153 @@
+{
+  "content": {
+    "id": 1104,
+    "title": "Quick Tip: Accessibility - Add full stops to Alt text",
+    "url": "https://cms.quirksmode.co.uk/blog/quick-tip-accessibility-add-full-stops-to-alt-text/",
+    "date": "11th February 2020",
+    "hero": {
+      "image": {
+        "alt": "Braille Display",
+        "sizes": {
+          "fullWidth481": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/02/accessibility-481x321.jpg",
+          "fullWidth481_2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/02/accessibility-962x641.jpg",
+          "fullWidth768": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/02/accessibility-768x512.jpg",
+          "fullWidth768_2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/02/accessibility.jpg",
+          "fullWidth1024": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/02/accessibility-1024x683.jpg",
+          "fullWidth1024_2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/02/accessibility.jpg",
+          "fullWidth1800": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/02/accessibility.jpg",
+          "fullWidth1800_2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/02/accessibility.jpg"
+        }
+      },
+      "alignCenter": true
+    },
+    "contentBlocks": [
+      {
+        "id": 0,
+        "type": "content",
+        "fullWidth": false,
+        "centerAlign": true,
+        "content": "<p>A really quick tip from me today and something I wanted to share as it&#8217;s so obvious and yet I often forget to do it, hopefully this might help someone else.</p>\n<p><strong>Always</strong> add a full stop to your alt text, it will tell the screenreader to pause when describing your images and provides a much better and more accessible experience.</p>\n"
+      }
+    ],
+    "related": [
+      {
+        "ID": 1102,
+        "post_author": "1",
+        "post_date": "2020-01-09 16:08:00",
+        "post_date_gmt": "2020-01-09 16:08:00",
+        "post_content": "",
+        "post_title": "Article Roundup - Jan 2020",
+        "post_excerpt": "A round up of some of the more interesting articles/resources I have found this month, you can find loads more on my Twitter feed.\u00a0",
+        "post_status": "publish",
+        "comment_status": "open",
+        "ping_status": "closed",
+        "post_password": "",
+        "post_name": "article-roundup",
+        "to_ping": "",
+        "pinged": "",
+        "post_modified": "2020-02-11 16:10:25",
+        "post_modified_gmt": "2020-02-11 16:10:25",
+        "post_content_filtered": "",
+        "post_parent": 0,
+        "guid": "https://cms.quirksmode.co.uk/?post_type=blog_post&#038;p=1102",
+        "menu_order": 0,
+        "post_type": "blog_post",
+        "post_mime_type": "",
+        "comment_count": "0",
+        "filter": "raw",
+        "isNew": false,
+        "featuredImage": {
+          "alt": "Article Roundup",
+          "width": 288,
+          "height": 260,
+          "sizes": {
+            "quirksmodeMedium": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/02/five-bulb-lights-1036936-288x260.jpg",
+            "quirksmodeMedium2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/02/five-bulb-lights-1036936-576x520.jpg"
+          }
+        }
+      },
+      {
+        "ID": 1099,
+        "post_author": "1",
+        "post_date": "2018-06-16 11:12:00",
+        "post_date_gmt": "2018-06-16 11:12:00",
+        "post_content": "",
+        "post_title": "Quick Tip: Image Optimisation with ImageOptim",
+        "post_excerpt": "Highly optimised images are essential for a fast performant website and decent Lighthouse scores. There are so many different options to achieve this, but wanted to share one of my favourites, Image Optim.",
+        "post_status": "publish",
+        "comment_status": "open",
+        "ping_status": "closed",
+        "post_password": "",
+        "post_name": "quick-tip-image-optimisation-with-imageoptim",
+        "to_ping": "",
+        "pinged": "",
+        "post_modified": "2020-02-11 15:48:45",
+        "post_modified_gmt": "2020-02-11 15:48:45",
+        "post_content_filtered": "",
+        "post_parent": 0,
+        "guid": "https://cms.quirksmode.co.uk/?post_type=blog_post&#038;p=1099",
+        "menu_order": 0,
+        "post_type": "blog_post",
+        "post_mime_type": "",
+        "comment_count": "0",
+        "filter": "raw",
+        "isNew": false,
+        "featuredImage": {
+          "alt": "computer-laptop-beside-hour-glass-on-brown-wooden-surface-733758",
+          "width": 288,
+          "height": 260,
+          "sizes": {
+            "quirksmodeMedium": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/02/computer-laptop-beside-hour-glass-on-brown-wooden-surface-733758-288x260.jpg",
+            "quirksmodeMedium2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/02/computer-laptop-beside-hour-glass-on-brown-wooden-surface-733758-576x520.jpg"
+          }
+        }
+      },
+      {
+        "ID": 1096,
+        "post_author": "1",
+        "post_date": "2017-02-11 10:34:00",
+        "post_date_gmt": "2017-02-11 10:34:00",
+        "post_content": "",
+        "post_title": "NSPCC Little Stars featured in .NET Magazine",
+        "post_excerpt": "NSPCC Little Stars, a project I was Technical Lead and Developer for, has been featured in .Net Magazine as one of their inspirational sites of the month.",
+        "post_status": "publish",
+        "comment_status": "open",
+        "ping_status": "closed",
+        "post_password": "",
+        "post_name": "nspcc-little-stars-featured-in-net-magazine",
+        "to_ping": "",
+        "pinged": "",
+        "post_modified": "2020-02-11 12:04:46",
+        "post_modified_gmt": "2020-02-11 12:04:46",
+        "post_content_filtered": "",
+        "post_parent": 0,
+        "guid": "https://cms.quirksmode.co.uk/?post_type=blog_post&#038;p=1096",
+        "menu_order": 0,
+        "post_type": "blog_post",
+        "post_mime_type": "",
+        "comment_count": "0",
+        "filter": "raw",
+        "isNew": false,
+        "featuredImage": {
+          "alt": "NSPCC Little Stars",
+          "width": 288,
+          "height": 260,
+          "sizes": {
+            "quirksmodeMedium": "https://cms.quirksmode.co.uk/wp-content/uploads/2016/12/littlestars-288x260.jpg",
+            "quirksmodeMedium2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2016/12/littlestars-576x520.jpg"
+          }
+        }
+      }
+    ],
+    "noRelated": false
+  },
+  "metadata": {
+    "metaTitle": "Quick Tip: Accessibility - Add full stops to Alt text",
+    "metaDesc": "Quirksmode is a fully responsive Universal React Application connected to a Headless CMS designed and developed by myself, web enthusiast and all round nice guy Dave. It was created to be my Portfolio and voice to the world",
+    "metaUrl": "/blog/quick-tip-accessibility-add-full-stops-to-alt-text/",
+    "metaSiteName": "Quirksmode",
+    "metaImage": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/02/accessibility-576x520.jpg",
+    "metaImageWidth": 576,
+    "metaImageHeight": 520
+  }
+}

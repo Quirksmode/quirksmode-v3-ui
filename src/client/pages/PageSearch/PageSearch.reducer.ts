@@ -1,40 +1,40 @@
-import {
-  FETCH_SEARCH_REQUEST,
-  FETCH_SEARCH_SUCCESS,
-  FETCH_SEARCH_ERROR
-} from './PageSearch.actions';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { PageSearchState, PageSearchData } from './PageSearch.types';
 
-export const initialState = {
+export const initialState: PageSearchState = {
   content: {
     title: '',
-    searchPosts: []
+    searchPosts: [],
   },
-  metadata: {}
+  metadata: null,
+  loading: false,
+  error: false,
 };
 
-export default (state = initialState, action) => {
-  switch (action.type) {
-    case FETCH_SEARCH_REQUEST:
-      return {
-        ...state,
-        loading: true,
-        error: false
-      };
-    case FETCH_SEARCH_SUCCESS:
-      return {
-        ...state,
-        content: action.payload.data.content,
-        metadata: action.payload.data.metadata,
-        loading: false,
-        error: false
-      };
-    case FETCH_SEARCH_ERROR:
-      return {
-        ...initialState,
-        loading: false,
-        error: true
-      };
-    default:
-      return state;
-  }
-};
+const pageSearch = createSlice({
+  name: 'pageSearch',
+  initialState,
+  reducers: {
+    fetchSearchRequest: (state) => {
+      state.loading = true;
+      state.error = false;
+    },
+    fetchSearchSuccess: (state, { payload }: PayloadAction<PageSearchData>) => {
+      state.content = payload.content;
+      state.metadata = payload.metadata;
+      state.loading = false;
+      state.error = false;
+    },
+    fetchSearchError: (state) => {
+      state.loading = false;
+      state.error = true;
+    },
+  },
+});
+
+export default pageSearch.reducer;
+export const {
+  fetchSearchRequest,
+  fetchSearchSuccess,
+  fetchSearchError,
+} = pageSearch.actions;

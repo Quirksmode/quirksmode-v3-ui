@@ -1,19 +1,18 @@
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {
-  FETCH_PORTFOLIO_SINGLE_REQUEST,
-  FETCH_PORTFOLIO_SINGLE_SUCCESS,
-  FETCH_PORTFOLIO_SINGLE_ERROR
-} from './PagePortfolioSingle.actions';
+  PagePortfolioSingleState,
+  PagePortfolioSingleData,
+} from './PagePortfolioSingle.types';
 
-export const initialState = {
+export const initialState: PagePortfolioSingleState = {
   content: {
     id: null,
     title: '',
     slug: '',
     url: '',
-    hero: {
-      url: ''
-    },
+    hero: null,
     projectTags: [],
+    projectRole: '',
     screenshots: [],
     projectURL: '',
     contentBlocks: [],
@@ -22,32 +21,36 @@ export const initialState = {
   },
   loading: false,
   error: false,
-  metadata: {}
+  metadata: null,
 };
 
-export default (state = initialState, action) => {
-  switch (action.type) {
-    case FETCH_PORTFOLIO_SINGLE_REQUEST:
-      return {
-        ...state,
-        loading: true,
-        error: false
-      };
-    case FETCH_PORTFOLIO_SINGLE_SUCCESS:
-      return {
-        ...state,
-        content: action.payload.data.content,
-        metadata: action.payload.data.metadata,
-        loading: false,
-        error: false
-      };
-    case FETCH_PORTFOLIO_SINGLE_ERROR:
-      return {
-        ...state,
-        loading: false,
-        error: true
-      };
-    default:
-      return state;
-  }
-};
+const pagePortfolioSingle = createSlice({
+  name: 'pagePortfolioSingle',
+  initialState,
+  reducers: {
+    fetchPortfolioSingleRequest: (state) => {
+      state.loading = true;
+      state.error = false;
+    },
+    fetchPortfolioSingleSuccess: (
+      state,
+      { payload }: PayloadAction<PagePortfolioSingleData>
+    ) => {
+      state.content = payload.content;
+      state.metadata = payload.metadata;
+      state.loading = false;
+      state.error = false;
+    },
+    fetchPortfolioSingleError: (state) => {
+      state.loading = false;
+      state.error = true;
+    },
+  },
+});
+
+export default pagePortfolioSingle.reducer;
+export const {
+  fetchPortfolioSingleRequest,
+  fetchPortfolioSingleSuccess,
+  fetchPortfolioSingleError,
+} = pagePortfolioSingle.actions;

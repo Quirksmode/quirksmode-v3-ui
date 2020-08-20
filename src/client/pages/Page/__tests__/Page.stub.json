@@ -1,0 +1,24 @@
+{
+  "content": {
+    "title": "Accessibility",
+    "pageContent": "",
+    "contentBlocks": [
+      {
+        "id": 0,
+        "type": "content",
+        "fullWidth": false,
+        "centerAlign": false,
+        "content": "<h3>Introduction</h3>\n<p>Quirksmode has been developed in accordance with the <a href=\"https://www.w3.org/TR/2008/REC-WCAG20-20081211/\" rel=\"external\">Web Content Accessibility Guidelines 2.0</a>. These guidelines have been published by the <a href=\"https://www.w3.org/\" rel=\"external\">World Wide Web Consortium</a> to promote accessibility.</p>\n<h3>Browser compatibility</h3>\n<p>Quirksmode strives to meet all browser requirements, but if you are having problems viewing our site you should upgrade to the latest version of one of the following links:</p>\n<ul class=\"list\">\n<li><a href=\"https://www.microsoft.com/windows/downloads/ie/getitnow.mspx\" rel=\"external\">Microsoft Internet Explorer</a></li>\n<li><a href=\"https://https://www.google.com/chrome/\" rel=\"external\">Chrome</a></li>\n<li><a href=\"https://www.mozilla.com/en-US/firefox/\" rel=\"external\">Mozilla Firefox</a></li>\n<li><a href=\"https://www.apple.com/safari/\" rel=\"external\">Safari</a></li>\n<li><a href=\"https://www.opera.com/\" rel=\"external\">Opera</a></li>\n</ul>\n"
+      }
+    ]
+  },
+  "metadata": {
+    "metaTitle": "Accessibility",
+    "metaDesc": "Quirksmode is a fully responsive Universal React Application connected to a Headless CMS designed and developed by myself, web enthusiast and all round nice guy Dave. It was created to be my Portfolio and voice to the world",
+    "metaUrl": "/accessibility/",
+    "metaSiteName": "Quirksmode",
+    "metaImage": "https://cms.quirksmode.co.uk/wp-content/uploads/2013/03/default_featured-576x520.jpg",
+    "metaImageWidth": 576,
+    "metaImageHeight": 520
+  }
+}

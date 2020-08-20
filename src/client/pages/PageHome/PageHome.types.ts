@@ -5,7 +5,7 @@ export interface PageHomeState extends PageHomeData {
 
 export interface PageHomeData {
   content: Content;
-  metadata: Metadata | Object;
+  metadata: Metadata | {};
 }
 
 export interface Content {

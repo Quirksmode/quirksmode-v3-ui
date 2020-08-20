@@ -1,42 +1,40 @@
-import {
-  FETCH_BLOG_REQUEST,
-  FETCH_BLOG_SUCCESS,
-  FETCH_BLOG_ERROR
-} from './PageBlog.actions';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { PageBlogState, PageBlogData } from './PageBlog.types';
 
-export const initialState = {
+export const initialState: PageBlogState = {
   content: {
     title: '',
-    blogPosts: []
+    blogPosts: [],
   },
   metadata: {},
   loading: false,
-  error: false
+  error: false,
 };
 
-export default (state = initialState, action) => {
-  switch (action.type) {
-    case FETCH_BLOG_REQUEST:
-      return {
-        ...state,
-        loading: true,
-        error: false
-      };
-    case FETCH_BLOG_SUCCESS:
-      return {
-        ...state,
-        content: action.payload.data.content,
-        metadata: action.payload.data.metadata,
-        loading: false,
-        error: false
-      };
-    case FETCH_BLOG_ERROR:
-      return {
-        ...state,
-        loading: false,
-        error: true
-      };
-    default:
-      return state;
-  }
-};
+const pageBlog = createSlice({
+  name: 'pageBlog',
+  initialState,
+  reducers: {
+    fetchBlogRequest: (state) => {
+      state.loading = true;
+      state.error = false;
+    },
+    fetchBlogSuccess: (state, { payload }: PayloadAction<PageBlogData>) => {
+      state.content = payload.content;
+      state.metadata = payload.metadata;
+      state.loading = false;
+      state.error = false;
+    },
+    fetchBlogError: (state) => {
+      state.loading = false;
+      state.error = true;
+    },
+  },
+});
+
+export default pageBlog.reducer;
+export const {
+  fetchBlogRequest,
+  fetchBlogSuccess,
+  fetchBlogError,
+} = pageBlog.actions;

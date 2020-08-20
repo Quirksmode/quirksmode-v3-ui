@@ -1,0 +1,12 @@
+{
+  "content": { "title": "Contact" },
+  "metadata": {
+    "metaTitle": "Contact",
+    "metaDesc": "Quirksmode is a fully responsive Universal React Application connected to a Headless CMS designed and developed by myself, web enthusiast and all round nice guy Dave. It was created to be my Portfolio and voice to the world",
+    "metaUrl": "/contact/",
+    "metaSiteName": "Quirksmode",
+    "metaImage": "https://cms.quirksmode.co.uk/wp-content/uploads/2013/03/default_featured-576x520.jpg",
+    "metaImageWidth": 576,
+    "metaImageHeight": 520
+  }
+}

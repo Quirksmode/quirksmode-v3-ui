@@ -1,48 +1,46 @@
-import {
-  FETCH_ABOUT_REQUEST,
-  FETCH_ABOUT_SUCCESS,
-  FETCH_ABOUT_ERROR
-} from './PageAbout.actions';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { PageAboutState, PageAboutData } from './PageAbout.types';
 
-export const initialState = {
+export const initialState: PageAboutState = {
   content: {
     title: '',
     intro: '',
     skillsSections: {
       skillsIcon: '',
       skillsTitle: '',
-      skills: []
+      skills: [],
     },
-    cvSections: []
+    cvSections: [],
   },
   metadata: {},
   loading: false,
-  error: false
+  error: false,
 };
 
-export default (state = initialState, action) => {
-  switch (action.type) {
-    case FETCH_ABOUT_REQUEST:
-      return {
-        ...state,
-        loading: true,
-        error: false
-      };
-    case FETCH_ABOUT_SUCCESS:
-      return {
-        ...state,
-        content: action.payload.data.content,
-        metadata: action.payload.data.metadata,
-        loading: false,
-        error: false
-      };
-    case FETCH_ABOUT_ERROR:
-      return {
-        ...state,
-        loading: false,
-        error: true
-      };
-    default:
-      return state;
-  }
-};
+const pageAbout = createSlice({
+  name: 'pageAbout',
+  initialState,
+  reducers: {
+    fetchAboutRequest: (state) => {
+      state.loading = true;
+      state.error = false;
+    },
+    fetchAboutSuccess: (state, { payload }: PayloadAction<PageAboutData>) => {
+      state.content = payload.content;
+      state.metadata = payload.metadata;
+      state.loading = false;
+      state.error = false;
+    },
+    fetchAboutError: (state) => {
+      state.loading = false;
+      state.error = true;
+    },
+  },
+});
+
+export default pageAbout.reducer;
+export const {
+  fetchAboutRequest,
+  fetchAboutSuccess,
+  fetchAboutError,
+} = pageAbout.actions;

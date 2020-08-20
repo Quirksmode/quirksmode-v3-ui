@@ -1,0 +1,377 @@
+{
+  "content": {
+    "title": "Blog",
+    "blogPosts": [
+      {
+        "postID": 1104,
+        "postName": "quick-tip-accessibility-add-full-stops-to-alt-text",
+        "postTitle": "Quick Tip: Accessibility - Add full stops to Alt text",
+        "postExcerpt": "A really quick tip from me today and something I wanted to share as it's so obvious and yet I often forget to do it, hopefully this might help someone else.",
+        "type": "blog",
+        "date": "11th February 2020",
+        "featuredImage": {
+          "alt": "Braille Display",
+          "width": 288,
+          "height": 260,
+          "sizes": {
+            "quirksmodeSmall": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/02/accessibility-172x155.jpg",
+            "quirksmodeSmall2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/02/accessibility-344x310.jpg",
+            "quirksmodeMedium": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/02/accessibility-288x260.jpg",
+            "quirksmodeMedium2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/02/accessibility-576x520.jpg"
+          }
+        }
+      },
+      {
+        "postID": 1102,
+        "postName": "article-roundup",
+        "postTitle": "Article Roundup - Jan 2020",
+        "postExcerpt": "A round up of some of the more interesting articles/resources I have found this month, you can find loads more on my Twitter feed.\u00a0",
+        "type": "blog",
+        "date": "9th January 2020",
+        "featuredImage": {
+          "alt": "Article Roundup",
+          "width": 288,
+          "height": 260,
+          "sizes": {
+            "quirksmodeSmall": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/02/five-bulb-lights-1036936-172x155.jpg",
+            "quirksmodeSmall2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/02/five-bulb-lights-1036936-344x310.jpg",
+            "quirksmodeMedium": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/02/five-bulb-lights-1036936-288x260.jpg",
+            "quirksmodeMedium2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/02/five-bulb-lights-1036936-576x520.jpg"
+          }
+        }
+      },
+      {
+        "postID": 1099,
+        "postName": "quick-tip-image-optimisation-with-imageoptim",
+        "postTitle": "Quick Tip: Image Optimisation with ImageOptim",
+        "postExcerpt": "Highly optimised images are essential for a fast performant website and decent Lighthouse scores. There are so many different options to achieve this, but wanted to share one of my favourites, Image Optim.",
+        "type": "blog",
+        "date": "16th June 2018",
+        "featuredImage": {
+          "alt": "computer-laptop-beside-hour-glass-on-brown-wooden-surface-733758",
+          "width": 288,
+          "height": 260,
+          "sizes": {
+            "quirksmodeSmall": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/02/computer-laptop-beside-hour-glass-on-brown-wooden-surface-733758-172x155.jpg",
+            "quirksmodeSmall2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/02/computer-laptop-beside-hour-glass-on-brown-wooden-surface-733758-344x310.jpg",
+            "quirksmodeMedium": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/02/computer-laptop-beside-hour-glass-on-brown-wooden-surface-733758-288x260.jpg",
+            "quirksmodeMedium2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/02/computer-laptop-beside-hour-glass-on-brown-wooden-surface-733758-576x520.jpg"
+          }
+        }
+      },
+      {
+        "postID": 1096,
+        "postName": "nspcc-little-stars-featured-in-net-magazine",
+        "postTitle": "NSPCC Little Stars featured in .NET Magazine",
+        "postExcerpt": "NSPCC Little Stars, a project I was Technical Lead and Developer for, has been featured in .Net Magazine as one of their inspirational sites of the month.",
+        "type": "blog",
+        "date": "11th February 2017",
+        "featuredImage": {
+          "alt": "NSPCC Little Stars",
+          "width": 288,
+          "height": 260,
+          "sizes": {
+            "quirksmodeSmall": "https://cms.quirksmode.co.uk/wp-content/uploads/2016/12/littlestars-172x155.jpg",
+            "quirksmodeSmall2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2016/12/littlestars-344x310.jpg",
+            "quirksmodeMedium": "https://cms.quirksmode.co.uk/wp-content/uploads/2016/12/littlestars-288x260.jpg",
+            "quirksmodeMedium2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2016/12/littlestars-576x520.jpg"
+          }
+        }
+      },
+      {
+        "postID": 806,
+        "postName": "responsive-grids-my-very-own-grid-system",
+        "postTitle": "Responsive Grids - My very own Grid System",
+        "postExcerpt": "I know, I know another Grid system, but bear with me, this one is pretty cool and we have been using it on all our large scale projects at Beyond for the last few years and thought it was time to share.",
+        "type": "blog",
+        "date": "2nd January 2016",
+        "featuredImage": {
+          "alt": "",
+          "width": 288,
+          "height": 260,
+          "sizes": {
+            "quirksmodeSmall": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/01/code-coder-coding-computer-270404_export-172x155.jpg",
+            "quirksmodeSmall2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/01/code-coder-coding-computer-270404_export-344x310.jpg",
+            "quirksmodeMedium": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/01/code-coder-coding-computer-270404_export-288x260.jpg",
+            "quirksmodeMedium2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/01/code-coder-coding-computer-270404_export-576x520.jpg"
+          }
+        }
+      },
+      {
+        "postID": 780,
+        "postName": "smashing-conference-2015-barcelona",
+        "postTitle": "Smashing Conference 2015 - Barcelona",
+        "postExcerpt": "\u201cThere is where it all began\u2026 There is where I understood how far I could go\u201d, Pablo Picasso said of his modern art awakening in Barcelona. So, where better to attend Smashing Magazine\u2019s web design conference than this beautiful and inspirational city.",
+        "type": "blog",
+        "date": "15th November 2015",
+        "featuredImage": {
+          "alt": "Smashing Conference Neck Info",
+          "width": 288,
+          "height": 260,
+          "sizes": {
+            "quirksmodeSmall": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/01/smashingconf-barcelona-neckinfo-e1579175950759-172x155.jpg",
+            "quirksmodeSmall2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/01/smashingconf-barcelona-neckinfo-e1579175950759-344x310.jpg",
+            "quirksmodeMedium": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/01/smashingconf-barcelona-neckinfo-e1579175950759-288x260.jpg",
+            "quirksmodeMedium2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/01/smashingconf-barcelona-neckinfo-e1579175950759-576x520.jpg"
+          }
+        }
+      },
+      {
+        "postID": 557,
+        "postName": "jquery-plugin-to-fix-floating-div-gap-problem",
+        "postTitle": "jQuery: Fix Gaps Plugin",
+        "postExcerpt": "I have created a plugin to fix a strange problem I recently came across where gaps would appear when floating divs left and right. ",
+        "type": "blog",
+        "date": "27th June 2013",
+        "featuredImage": {
+          "alt": "",
+          "width": 288,
+          "height": 260,
+          "sizes": {
+            "quirksmodeSmall": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/01/code-coder-coding-computer-270404_export-172x155.jpg",
+            "quirksmodeSmall2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/01/code-coder-coding-computer-270404_export-344x310.jpg",
+            "quirksmodeMedium": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/01/code-coder-coding-computer-270404_export-288x260.jpg",
+            "quirksmodeMedium2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/01/code-coder-coding-computer-270404_export-576x520.jpg"
+          }
+        }
+      },
+      {
+        "postID": 530,
+        "postName": "wordpress-remove-the-admin-bar",
+        "postTitle": "Wordpress: Remove the admin bar",
+        "postExcerpt": "A really quick and simple code snippet to remove the (in my opinion) incredibly annoying admin bar.",
+        "type": "blog",
+        "date": "25th March 2013",
+        "featuredImage": {
+          "alt": "",
+          "width": 288,
+          "height": 260,
+          "sizes": {
+            "quirksmodeSmall": "https://cms.quirksmode.co.uk/wp-content/uploads/2013/03/blogging-blur-business-communication-261662-6-172x155.jpg",
+            "quirksmodeSmall2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2013/03/blogging-blur-business-communication-261662-6-344x310.jpg",
+            "quirksmodeMedium": "https://cms.quirksmode.co.uk/wp-content/uploads/2013/03/blogging-blur-business-communication-261662-6-288x260.jpg",
+            "quirksmodeMedium2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2013/03/blogging-blur-business-communication-261662-6-576x520.jpg"
+          }
+        }
+      },
+      {
+        "postID": 528,
+        "postName": "top-8-firefox-developer-add-ons",
+        "postTitle": "Top 8 Firefox Developer Add-ons",
+        "postExcerpt": "An update on my previous list, surprisingly not too much has changed so credit is definitely due to the hard working developers...",
+        "type": "blog",
+        "date": "25th March 2013",
+        "featuredImage": {
+          "alt": "Firefox Featured Image",
+          "width": 288,
+          "height": 260,
+          "sizes": {
+            "quirksmodeSmall": "https://cms.quirksmode.co.uk/wp-content/uploads/2008/05/blog_firefox_featured-172x155.jpg",
+            "quirksmodeSmall2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2008/05/blog_firefox_featured-344x310.jpg",
+            "quirksmodeMedium": "https://cms.quirksmode.co.uk/wp-content/uploads/2008/05/blog_firefox_featured-288x260.jpg",
+            "quirksmodeMedium2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2008/05/blog_firefox_featured-576x520.jpg"
+          }
+        }
+      },
+      {
+        "postID": 503,
+        "postName": "how-i-setup-my-font-sizes",
+        "postTitle": "How I setup my font sizes",
+        "postExcerpt": "I have seen so many different ways to setup font sizes within a stylesheet, but this is my preferred method...",
+        "type": "blog",
+        "date": "24th March 2013",
+        "featuredImage": {
+          "alt": "CSS Tutorial Featured Image",
+          "width": 288,
+          "height": 260,
+          "sizes": {
+            "quirksmodeSmall": "https://cms.quirksmode.co.uk/wp-content/uploads/2013/03/blog_css_featured-172x155.jpg",
+            "quirksmodeSmall2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2013/03/blog_css_featured-344x310.jpg",
+            "quirksmodeMedium": "https://cms.quirksmode.co.uk/wp-content/uploads/2013/03/blog_css_featured-288x260.jpg",
+            "quirksmodeMedium2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2013/03/blog_css_featured-576x520.jpg"
+          }
+        }
+      },
+      {
+        "postID": 501,
+        "postName": "quirksmode-v2-is-finally-live",
+        "postTitle": "Quirksmode v2 is finally live",
+        "postExcerpt": "So here we are, version 2 of my personal website. It was a surprising amount of work to get it looking right across the different devices, though ultimately really rewarding.",
+        "type": "blog",
+        "date": "24th March 2013",
+        "featuredImage": {
+          "alt": "Quirksmode Default",
+          "width": 288,
+          "height": 260,
+          "sizes": {
+            "quirksmodeSmall": "https://cms.quirksmode.co.uk/wp-content/uploads/2013/03/default_featured-1-172x155.jpg",
+            "quirksmodeSmall2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2013/03/default_featured-1-344x310.jpg",
+            "quirksmodeMedium": "https://cms.quirksmode.co.uk/wp-content/uploads/2013/03/default_featured-1-288x260.jpg",
+            "quirksmodeMedium2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2013/03/default_featured-1-576x520.jpg"
+          }
+        }
+      },
+      {
+        "postID": 554,
+        "postName": "my-new-dj-website-has-finally-landed",
+        "postTitle": "My new DJ website has finally landed",
+        "postExcerpt": "My new DJ site is finally live! Spurred on by the fact I desperately needed to find somewhere to host my new APC-40 midi template, I have finally created my DJ website...",
+        "type": "blog",
+        "date": "23rd March 2013",
+        "featuredImage": {
+          "alt": "Quirksmode DJ v2 Featured Image",
+          "width": 288,
+          "height": 260,
+          "sizes": {
+            "quirksmodeSmall": "https://cms.quirksmode.co.uk/wp-content/uploads/2013/03/default_featured1-172x155.jpg",
+            "quirksmodeSmall2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2013/03/default_featured1-344x310.jpg",
+            "quirksmodeMedium": "https://cms.quirksmode.co.uk/wp-content/uploads/2013/03/default_featured1-288x260.jpg",
+            "quirksmodeMedium2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2013/03/default_featured1-576x520.jpg"
+          }
+        }
+      },
+      {
+        "postID": 522,
+        "postName": "thanks-to-rossart-for-the-sketches",
+        "postTitle": "Thanks to Rossart for the sketches",
+        "postExcerpt": "I want to say a massive thanks to the very talented and all round top bloke Ross Smith for the fantastic sketches that you may have seen dotted around my site.",
+        "type": "blog",
+        "date": "20th March 2013",
+        "featuredImage": {
+          "alt": "Sketch of Quirksmode | David Plunkett",
+          "width": 288,
+          "height": 260,
+          "sizes": {
+            "quirksmodeSmall": "https://cms.quirksmode.co.uk/wp-content/uploads/2013/03/blog_sketch_featured-172x155.jpg",
+            "quirksmodeSmall2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2013/03/blog_sketch_featured-344x310.jpg",
+            "quirksmodeMedium": "https://cms.quirksmode.co.uk/wp-content/uploads/2013/03/blog_sketch_featured-288x260.jpg",
+            "quirksmodeMedium2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2013/03/blog_sketch_featured-576x520.jpg"
+          }
+        }
+      },
+      {
+        "postID": 507,
+        "postName": "moving-into-the-old-highbury-stadium",
+        "postTitle": "Moving into the old Highbury Stadium",
+        "postExcerpt": "After moving down from Birmingham to London I have managed to find a lovely new flat in the old Highbury Stadium right next to Arsenal tube. There's a lot of history in this place...",
+        "type": "blog",
+        "date": "25th September 2011",
+        "featuredImage": {
+          "alt": "Highbury Stadium Square Featured Image",
+          "width": 288,
+          "height": 260,
+          "sizes": {
+            "quirksmodeSmall": "https://cms.quirksmode.co.uk/wp-content/uploads/2011/09/blog_highbury_featured-172x155.jpg",
+            "quirksmodeSmall2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2011/09/blog_highbury_featured-344x310.jpg",
+            "quirksmodeMedium": "https://cms.quirksmode.co.uk/wp-content/uploads/2011/09/blog_highbury_featured-288x260.jpg",
+            "quirksmodeMedium2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2011/09/blog_highbury_featured-576x520.jpg"
+          }
+        }
+      },
+      {
+        "postID": 525,
+        "postName": "top-6-firefox-developer-add-ons",
+        "postTitle": "Top 7 Firefox Developer Add-ons",
+        "postExcerpt": "Here\u2019s my list of the top 6 developer add-ons for firefox. They make life so much easier when it comes to developing websites and I heartily recommend you check them out...",
+        "type": "blog",
+        "date": "5th May 2008",
+        "featuredImage": {
+          "alt": "Firefox Featured Image",
+          "width": 288,
+          "height": 260,
+          "sizes": {
+            "quirksmodeSmall": "https://cms.quirksmode.co.uk/wp-content/uploads/2008/05/blog_firefox_featured-172x155.jpg",
+            "quirksmodeSmall2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2008/05/blog_firefox_featured-344x310.jpg",
+            "quirksmodeMedium": "https://cms.quirksmode.co.uk/wp-content/uploads/2008/05/blog_firefox_featured-288x260.jpg",
+            "quirksmodeMedium2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2008/05/blog_firefox_featured-576x520.jpg"
+          }
+        }
+      },
+      {
+        "postID": 65,
+        "postName": "i-finally-have-a-new-flat",
+        "postTitle": "I finally have a new flat",
+        "postExcerpt": "I have finally made the big move and left my seaside hometown of Ramsgate. It wasn\u2019t the best, but I will definitely miss it. Birmingham is now my latest place of residence and I am definitely so much happier here.",
+        "type": "blog",
+        "date": "28th April 2008",
+        "featuredImage": {
+          "alt": "",
+          "width": 288,
+          "height": 260,
+          "sizes": {
+            "quirksmodeSmall": "https://cms.quirksmode.co.uk/wp-content/uploads/2013/01/newFlat@2x-172x155.jpg",
+            "quirksmodeSmall2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2013/01/newFlat@2x-344x310.jpg",
+            "quirksmodeMedium": "https://cms.quirksmode.co.uk/wp-content/uploads/2013/01/newFlat@2x-288x260.jpg",
+            "quirksmodeMedium2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2013/01/newFlat@2x-576x520.jpg"
+          }
+        }
+      },
+      {
+        "postID": 73,
+        "postName": "pastures-new",
+        "postTitle": "Pastures New",
+        "postExcerpt": "All good things must come to an end and after 2 long years it is finally time to leave P&O Ferries and move on to pastures new. The experience I acquired as lead creative...",
+        "type": "blog",
+        "date": "25th April 2008",
+        "featuredImage": {
+          "alt": "",
+          "width": 288,
+          "height": 260,
+          "sizes": {
+            "quirksmodeSmall": "https://cms.quirksmode.co.uk/wp-content/uploads/2013/01/nationalLottery1-172x155.jpg",
+            "quirksmodeSmall2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2013/01/nationalLottery1.jpg",
+            "quirksmodeMedium": "https://cms.quirksmode.co.uk/wp-content/uploads/2013/01/nationalLottery1.jpg",
+            "quirksmodeMedium2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2013/01/nationalLottery1.jpg"
+          }
+        }
+      },
+      {
+        "postID": 67,
+        "postName": "i-have-finally-bought-a-new-car",
+        "postTitle": "I have finally bought a new car",
+        "postExcerpt": "Following the tragic demise of my Peugeot 306 (RIP) and some lengthy trips to work by train I jumped at the opportunity to buy my brothers car off him.",
+        "type": "blog",
+        "date": "14th March 2008",
+        "featuredImage": {
+          "alt": "",
+          "width": 288,
+          "height": 260,
+          "sizes": {
+            "quirksmodeSmall": "https://cms.quirksmode.co.uk/wp-content/uploads/2013/01/newCar-172x155.jpg",
+            "quirksmodeSmall2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2013/01/newCar.jpg",
+            "quirksmodeMedium": "https://cms.quirksmode.co.uk/wp-content/uploads/2013/01/newCar.jpg",
+            "quirksmodeMedium2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2013/01/newCar.jpg"
+          }
+        }
+      },
+      {
+        "postID": 70,
+        "postName": "sifr-3-flash-text",
+        "postTitle": "sIFR 3 Flash Text",
+        "postExcerpt": "This is the first post of hopefully many that describes the technology I have used on this website. It will provide a great reference for me to come back to...",
+        "type": "blog",
+        "date": "10th March 2008",
+        "featuredImage": {
+          "alt": "",
+          "width": 288,
+          "height": 260,
+          "sizes": {
+            "quirksmodeSmall": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/01/seb-lester-1500x583_4-172x155.jpg",
+            "quirksmodeSmall2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/01/seb-lester-1500x583_4-344x310.jpg",
+            "quirksmodeMedium": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/01/seb-lester-1500x583_4-288x260.jpg",
+            "quirksmodeMedium2x": "https://cms.quirksmode.co.uk/wp-content/uploads/2020/01/seb-lester-1500x583_4-576x520.jpg"
+          }
+        }
+      }
+    ]
+  },
+  "metadata": {
+    "metaTitle": "Blog",
+    "metaDesc": "Quirksmode is a fully responsive Universal React Application connected to a Headless CMS designed and developed by myself, web enthusiast and all round nice guy Dave. It was created to be my Portfolio and voice to the world",
+    "metaUrl": "/blog/",
+    "metaSiteName": "Quirksmode",
+    "metaImage": "https://cms.quirksmode.co.uk/wp-content/uploads/2013/03/default_featured-576x520.jpg",
+    "metaImageWidth": 576,
+    "metaImageHeight": 520
+  }
+}

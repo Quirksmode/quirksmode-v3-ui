@@ -1,0 +1,144 @@
+{
+  "content": {
+    "title": "About Me",
+    "intro": "\"I am a Technical Lead, Front End Specialist and Creative Technologist with over 16 years of commercial experience developing award-winning , highly scalable and secure applications for <a href=\"https://www.quirksmode.co.uk/portfolio/\">Web, Mobile &amp; Voice</a>. Have worked with some of the best creative agencies and largest brands in the industry including <a href=\"https://www.quirksmode.co.uk/portfolio/google-learn-digital/\" target=\"_blank\" rel=\"noopener noreferrer\">Google</a>, <a href=\"https://www.quirksmode.co.uk/portfolio/virgin-com/\" target=\"_blank\" rel=\"noopener noreferrer\">Virgin</a>, Facebook and <a href=\"https://www.quirksmode.co.uk/portfolio/sainsburys-living-archive/\" target=\"_blank\" rel=\"noopener noreferrer\">Sainsbury\u2019s</a>. Experienced leading and mentoring technical teams, liaising with clients and key stakeholders to deliver small, medium and large-scale projects under strict deadlines within an Agile development environment.",
+    "skillsSections": {
+      "skillsIcon": "settings",
+      "skillsTitle": "Skills",
+      "skills": [
+        {
+          "skills_category_name": "JS",
+          "skills_colour": "grey",
+          "add_skill": [
+            { "skill_name": "React (SSR), Redux", "skill_percentage": "100" },
+            { "skill_name": "TypeScript, Angular", "skill_percentage": "100" },
+            { "skill_name": "WebAssembly", "skill_percentage": "100" },
+            {
+              "skill_name": "Jest, Enzyme, Mocha, Chai",
+              "skill_percentage": "100"
+            },
+            { "skill_name": "D3, NextJS, Gatsby", "skill_percentage": "100" }
+          ]
+        },
+        {
+          "skills_category_name": "HTML/CSS",
+          "skills_colour": "grey",
+          "add_skill": [
+            { "skill_name": "Twig, Jinja2, Django", "skill_percentage": "100" },
+            { "skill_name": "SCSS, SASS", "skill_percentage": "100" },
+            { "skill_name": "LESS", "skill_percentage": "100" },
+            { "skill_name": "PostCSS", "skill_percentage": "100" },
+            { "skill_name": "BEM Methodology", "skill_percentage": "100" }
+          ]
+        },
+        {
+          "skills_category_name": "Tooling",
+          "skills_colour": "blue",
+          "add_skill": [
+            { "skill_name": "Webpack, Gulp", "skill_percentage": "100" },
+            { "skill_name": "Bracket, Glue", "skill_percentage": "100" },
+            { "skill_name": "Google Grow/G6", "skill_percentage": "100" },
+            { "skill_name": "ESLint, Stylelint", "skill_percentage": "100" },
+            { "skill_name": "StoryBook", "skill_percentage": "100" }
+          ]
+        },
+        {
+          "skills_category_name": "Back End",
+          "skills_colour": "blue",
+          "add_skill": [
+            { "skill_name": "Node, PHP, Python", "skill_percentage": "100" },
+            { "skill_name": "MySQL, NoSQL", "skill_percentage": "100" },
+            {
+              "skill_name": "gRPC, Protobuf, GraphQL, REST",
+              "skill_percentage": "100"
+            },
+            { "skill_name": "Wordpress, Drupal", "skill_percentage": "100" },
+            { "skill_name": "Kintaro, Django", "skill_percentage": "100" }
+          ]
+        },
+        {
+          "skills_category_name": "CI/CD",
+          "skills_colour": "grey",
+          "add_skill": [
+            { "skill_name": "GIT, Docker", "skill_percentage": "100" },
+            { "skill_name": "AWS, Google Cloud", "skill_percentage": "100" },
+            { "skill_name": "WP Engine, Firebase", "skill_percentage": "100" },
+            { "skill_name": "Bitbucket, GitLab", "skill_percentage": "100" },
+            { "skill_name": "Gerrit, CircleCI", "skill_percentage": "100" }
+          ]
+        },
+        {
+          "skills_category_name": "Mobile/Voice",
+          "skills_colour": "grey",
+          "add_skill": [
+            { "skill_name": "PWA, ReactNative", "skill_percentage": "100" },
+            { "skill_name": "Swift, Ionic", "skill_percentage": "100" },
+            { "skill_name": "Google Actions", "skill_percentage": "100" },
+            { "skill_name": "Amazon Skills", "skill_percentage": "100" },
+            { "skill_name": "Capito", "skill_percentage": "100" }
+          ]
+        },
+        {
+          "skills_category_name": "Software",
+          "skills_colour": "blue",
+          "add_skill": [
+            { "skill_name": "JIRA", "skill_percentage": "100" },
+            { "skill_name": "Adobe Suite", "skill_percentage": "100" },
+            { "skill_name": "G Suite", "skill_percentage": "100" },
+            { "skill_name": "Sketch, Zeplin", "skill_percentage": "100" },
+            { "skill_name": "Figma, Invision", "skill_percentage": "100" }
+          ]
+        },
+        {
+          "skills_category_name": "Knowledge",
+          "skills_colour": "blue",
+          "add_skill": [
+            { "skill_name": "Agile Methodologies", "skill_percentage": "100" },
+            { "skill_name": "Accessibility", "skill_percentage": "100" },
+            { "skill_name": "Security", "skill_percentage": "100" },
+            { "skill_name": "TDD, BDD", "skill_percentage": "100" },
+            {
+              "skill_name": "Product/Design Thinking",
+              "skill_percentage": "100"
+            }
+          ]
+        }
+      ]
+    },
+    "cvSections": [
+      {
+        "add_icon": "world",
+        "add_class": "experience",
+        "add_title": "Experience",
+        "add_content": "<ul>\n<li>\n<h3>BEYOND &#8211; Design &amp; Technology Agency &#8211; London<span>Technical Lead/Creative Technologist (Permanent/Contractor) September 2017 &#8211; November 2019</span></h3>\n<p>Part of the Global Technical Leadership Team, work included:</p>\n<ul>\n<li><a href=\"https://www.quirksmode.co.uk/portfolio/google-learn-digital/\" target=\"_blank\" rel=\"noopener\"><strong>Google Digital Workshop</strong></a>Managed a multidisciplinary team of 10+ engineers, running Agile Ceremonies, liaising with Google\u2019s stakeholders and technical teams, defining requirements, hiring, providing scoping/estimations and creating all relevant process and technical documentation. Results include 14 million new users in 2018, reaching 53 countries and helping secure Beyond onto Google\u2019s agency roster leading to further work opportunities.</li>\n<li>Set up and led the Creativity Chapter, a platform to encourage, foster and develop new ideas within Beyond, the most successful being a voice app developed for Google, which picked up a Silver Davey Award following release.</li>\n<li>Validated technical feasibility through POC Prototypes, supporting projects and pitch work. One of these led to Beyond being awarded a year long engagement with a key client and the opportunity to lead a team, developing a 3D streaming platform with a fully customisable UI using a combination of React, WebAssembly, gRPC, Protobuf and Unity.</li>\n<li>Other key projects include a Native iOS Voice App for Qantas, an internal Native iOS Running App and various CMS builds for Tobacco Free CA including Flavors Hook Kids which won a Hermes Creative Platinum Award for Social Good.</li>\n</ul>\n</li>\n<li>\n<h3>Beyond &#8211; London<span>Head of Front End Development (Permanent) September 2013 &#8211; September 2017</span></h3>\n<p>Part of London\u2019s Senior Leadership Team, managing a team of engineers inc. contractors and leading development of key projects for clients inc. Google, Facebook, Sainsbury\u2019s, NSPCC, Novartis, Lebara. Work included:</p>\n<ul>\n<li><a href=\"https://www.quirksmode.co.uk/portfolio/nspcc-little-stars/\" target=\"_blank\" rel=\"noopener\"><strong>NSPCC Little Stars</strong></a>Fully responsive web application developed with React/Redux, SCSS/BEM and Node. Was awarded .Net Magazine\u2019s inspirational site of the month.</li>\n<li><a href=\"https://www.quirksmode.co.uk/portfolio/novartis-community-together-in-heart-failure/\" target=\"_blank\" rel=\"noopener\"><strong>Novartis Community</strong></a>Digital platform developed with Angular, SCSS/BEM and DjangoCMS. Resulted in 5+ minutes user engagement, 2000+ posts from members and 150+ new members each month.</li>\n<li><a href=\"https://www.quirksmode.co.uk/portfolio/maggi-youtube/\" target=\"_blank\" rel=\"noopener\"><strong>Maggi YouTube</strong></a>Developed with Angular, SCSS and DjangoCMS. Results saw 10x increase in YouTube Channel subs, 4 million impressions, 39% view through rate and featured as one of Google\u2019s key case studies.</li>\n<li>Mentored and developed the team, with regular clear, constructive feedback and tailored progression plans, providing structure, training and opportunities for their continued learning and growth.</li>\n<li>Other responsibilities included scoping/estimating, solution architecture, defining/documenting engineering standards, investigating/sharing new technologies, resourcing, recruitment, supporting pitches, facilitating workshops, knowledge sharing sessions, giving lightning talks and presenting regularly at company meetings.</li>\n<li>Received the Above &amp; Beyond award 3 times for outstanding achievement in the workplace (company record), playing a pivotal role in helping grow Beyond\u2019s reputation and client roster as the company quadrupled in size, expanding globally.</li>\n</ul>\n</li>\n</ul>\n<ul>\n<li>\n<h3>Dare &#8211; Design &amp; Technology Agency &#8211; London<span>Front End Developer (Contractor) July 2013 &#8211; September 2013</span></h3>\n<p>Contracted to work on Tu &#8211; Sainsbury\u2019s, developing key pages including the Homepage using JS, HTML and Less.</li>\n<li>\n<h3>Beyond &#8211; Design &amp; Technology Agency &#8211; London<span>Front End Developer (Contractor) April 2013 &#8211; July 2013</span></h3>\n<p>Contracted to work on several key projects including:</p>\n<ul>\n<li><a href=\"https://www.quirksmode.co.uk/portfolio/virgin-com/\" target=\"_blank\" rel=\"noopener\"><strong>Virgin.com</strong></a>Front End Lead responsible for all UI development across their new website. Created a custom responsive grid that fluidly resizes across breakpoints. Paired structured SCSS with Twig templates for a modular, scalable and maintainable codebase. Developed custom CKEditor and JS plugins to enhance functionality within the CMS. \u0003Following the launch, saw 90,000+visits in the first month, 32% page view increase and 107.27% uplift in time-on-site.</li>\n<li><strong>Moda</strong><br />\nDeveloped a mobile version of their YouTube Channel using JS, HTML and CSS.</li>\n<li><strong>Viacom Global</strong><br />\nInvolved in the development of Viacom Global\u2019s intranet site</li>\n</ul>\n</li>\n</ul>\n<ul>\n<li>\n<h3>Camelot (The National Lottery)<span>Front End Developer: Apr 08 \u2013 Apr 13</span></h3>\n<p>Contracted as a Front End Developer for two years, before becoming permanent. Work included:</p>\n<ul>\n<li><a href=\"https://www.quirksmode.co.uk/portfolio/the-national-lottery/\" target=\"_blank\" rel=\"noopener\"><strong>National Lottery</strong></a>Delivered the Front End for this large-scale website using a bespoke PHP framework to provide valid, accessible, cross browser HTML, CSS and JS. Involved in the full project life cycle, liaising with JSP, CMS, Test and Content teams, ensuring all code was compliant and matching requirements</li>\n<li><a href=\"https://www.quirksmode.co.uk/portfolio/playing-our-part/\" target=\"_blank\" rel=\"noopener\"><strong>Playing Our Par</strong>t</a>Developed both the Front and Back End of this highly configurable, responsive, CMS driven website. Customised WordPress to meet the clients content requirements and performance expectations.</li>\n<li>Streamlined HTML production/delivery of external Email campaigns with the creation of a custom built PHP framework whilst adhering to the standards and limitations of the various Email Clients/Browsers.</li>\n<li>Rebuilt the AS3 Flash Framework to decrease production time for Design/Production Teams.</li>\n<li>Coded AS2/AS3 for internal assets and external Flash Campaigns including their online Video Player and various Particle effects.</li>\n<li>Awarded Gold, Silver and Bronze Stars for outstanding achievements including going above and beyond to ensure projects met their deadlines</li>\n</ul>\n</li>\n<li>\n<h3>P&amp;O Ferries<span>Lead Creative and Front End Developer: Jan 06 \u2013 Mar 08</span></h3>\n<p>Started as a Designer before being promoted to Lead Creative</p>\n<ul>\n<li><a href=\"https://www.quirksmode.co.uk/portfolio/po-ferries/\" target=\"_blank\" rel=\"noopener\"><strong>P&amp;O Ferries.com</strong></a>Responsible for a customer centred redesign of an accessible online travel booking service. Ensured XHTML/CSS was W3C compliant, adhering to strict accessibility and web guidelines. The site achieved a 70 % increase in sales conversion following launch.</li>\n<li><a href=\"https://www.quirksmode.co.uk/portfolio/po-ferries-freight/\" target=\"_blank\" rel=\"noopener\"><strong>P&amp;O Ferries Freight</strong></a>Applied a similar redesign to their online B2B freight booking application with a strong emphasis on maintaining consistent brand identity, delivering a project that resulted in a 40% increase in sales.</li>\n<li>Assisted P&amp;O Marketing with the planning and development of its Online Campaigns, Microsites and White-labelled services.</li>\n<li>Created and maintained a wide range of documentation including the creative brief and web guidelines, used by P&amp;O as a constant reference to ensure all work reached consistent standards.</li>\n</ul>\n</li>\n<li>\n<h3>Syzygy &#8211; Design Agency &#8211; London<span>Web Designer and Production Developer: January 2007 &#8211; February 2007</span></h3>\n<ul>\n<li>Worked for this well-established London agency as part of P&amp;O&#8217;s agency/client programme.</li>\n<li>Involved in a variety of digital media projects for a number of their top clients, including Mazda.</li>\n</ul>\n</li>\n<li>\n<h3>Quirksmode Limited<span>Director: August 2005 \u2013 Present</span></h3>\n<p>Developed projects for various clients including:</p>\n<ul>\n<li><strong><a href=\"https://www.quirksmode.co.uk/portfolio/destiny-arts/\" target=\"_blank\" rel=\"noopener\">Destiny Arts</a></strong>Redevelopment of Destiny Arts\u2019s content platform, a Non Profit based in San Francisco.</li>\n<li><a href=\"https://www.quirksmode.co.uk/portfolio/world-famous-football-predictor/\" target=\"_blank\" rel=\"noopener\"><strong>The World Famous PP</strong></a>Database driven Football Prediction Website built using Codeigniter PHP framework.</li>\n<li><strong><a href=\"https://www.quirksmode.co.uk/portfolio/sell-a-bike/\" target=\"_blank\" rel=\"noopener\">Sellabike</a></strong>Responsive CMS driven website built using WordPress to promote mobile app.</li>\n<li><a href=\"https://www.paintballgames.co.uk/online-paintball-game\"><strong>Delta Force Paintball</strong></a>Flash game created using AS/PHP/MySQL for Europe\u2019s largest Paintball Company.</li>\n</ul>\n</li>\n<li>\n<h3>Millennium Desktop Services (Cape Town)<span>Webmaster/Engineer: September 2002 \u2013 September 2003 &amp; February 2005 \u2013 June 2005</span></h3>\n<ul>\n<li>Worked as web master designing and developing websites for key clients.</li>\n<li>Trained as a field engineer, carrying out hardware/software repairs, upgrades and installs.</li>\n</ul>\n</li>\n</ul>\n"
+      },
+      {
+        "add_icon": "chart",
+        "add_class": "training",
+        "add_title": "Training",
+        "add_content": "<ul>\n<li style=\"list-style-type: none;\">\n<ul>\n<li>NodeJS Advanced Concepts</li>\n<li>ServerSide Rendering with React and Redux</li>\n<li>Advanced React and Redux</li>\n<li>GraphQL with React</li>\n<li>Own the Room &#8211; Presentation Training</li>\n<li>Building Apps with React Native</li>\n<li>ReactNative: Advaned Concepts</li>\n<li>ReactNative + Hooks</li>\n<li>Node with React</li>\n<li>NodeJS Training</li>\n<li>Vue JS with Router &amp; Vuex</li>\n<li>Angular Training</li>\n<li>Angular Fundamentals with TypeScript</li>\n<li>Ionic 4 Training</li>\n<li>Complete iOS 10 &amp; Swift 3 Development</li>\n<li>Complete iOS 9 Development</li>\n<li>Mastering ARKit for iOS</li>\n<li>Agile Development Training</li>\n<li>Object Oriented Programming</li>\n<li>Object Oriented Analysis &amp; Design with UML</li>\n<li>Percussion Rhythmyx CMS Developer</li>\n<li>Advanced Flash Training</li>\n<li>Advanced Photoshop Training</li>\n</ul>\n</li>\n</ul>\n"
+      },
+      {
+        "add_icon": "book",
+        "add_class": "education",
+        "add_title": "Education",
+        "add_content": "<ul>\n<li><strong>De Montfort University</strong> &#8211; Leicester: <span>September 2000 \u2013 June 2004</span>\n<ul>\n<li>Awarded 2:1 Bsc (Hons) Multimedia Computing</li>\n<li>Acquired a 1st for the Final Year Project, designing and developing an e-commerce website for an overseas client based in South Africa using a combination of Flash, PHP and MYSQL.</li>\n</ul>\n</li>\n<li><strong>St. Lawrence College</strong> &#8211; Ramsgate: <span>September 1991 \u2013 June 1999</span>\n<ul>\n<li>2 A-Levels B-C inc. Information Technology</li>\n<li>10 GCSEs A-C inc. English, Maths and Sciences</li>\n</ul>\n</li>\n</ul>\n"
+      },
+      {
+        "add_icon": "music",
+        "add_class": "interests",
+        "add_title": "Interests",
+        "add_content": "<p>Outside of tech, my other great passion is music production/performance and in a previous life, I have DJ\u2019d at many of the top festivals and venues both around the UK and internationally. I am a self confessed vinyl junkie, who also loves playing and watching sport including football, cricket, rugby and squash.</p>\n"
+      }
+    ]
+  },
+  "metadata": {
+    "metaTitle": "About Me",
+    "metaDesc": "Quirksmode is a fully responsive Universal React Application connected to a Headless CMS designed and developed by myself, web enthusiast and all round nice guy Dave. It was created to be my Portfolio and voice to the world",
+    "metaUrl": "/about-me/",
+    "metaSiteName": "Quirksmode",
+    "metaImage": "https://cms.quirksmode.co.uk/wp-content/uploads/2013/03/default_featured-576x520.jpg",
+    "metaImageWidth": 576,
+    "metaImageHeight": 520
+  }
+}

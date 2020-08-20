@@ -1,17 +1,20 @@
 import { push } from 'connected-react-router';
 import axios from 'axios';
+import { PageData } from './Page.types';
+import {
+  fetchPageRequest,
+  fetchPageSuccess,
+  fetchPageError,
+} from './Page.reducer';
 import { setLinkLoading, setLinkLoaded } from '../../App.actions';
+import { AppThunk } from 'client/redux/types';
 
-export const FETCH_PAGE_REQUEST = 'fetch_page_request';
-export const FETCH_PAGE_SUCCESS = 'fetch_page_success';
-export const FETCH_PAGE_ERROR = 'fetch_page_error';
-export const fetchPageData = (slug, href = null) => async (
-  dispatch
-) => {
+export const fetchPageData = (
+  slug: string,
+  href: string = null
+): AppThunk => async (dispatch) => {
   // Set the loading state
-  dispatch({
-    type: FETCH_PAGE_REQUEST
-  });
+  dispatch(fetchPageRequest());
 
   // If href, dispatch custom Link Loader Functionality
   if (href) {
@@ -19,12 +22,11 @@ export const fetchPageData = (slug, href = null) => async (
   }
 
   try {
-    const res = await axios.get(`https://cms.quirksmode.co.uk/wp-json/quirksmode/v1/pages/${slug}`);
+    const res = await axios.get<PageData>(
+      `https://cms.quirksmode.co.uk/wp-json/quirksmode/v1/pages/${slug}`
+    );
 
-    dispatch({
-      type: FETCH_PAGE_SUCCESS,
-      payload: res
-    });
+    dispatch(fetchPageSuccess(res.data));
 
     // If href, navigate to it
     if (href) {
@@ -32,8 +34,6 @@ export const fetchPageData = (slug, href = null) => async (
       dispatch(push(href));
     }
   } catch {
-    dispatch({
-      type: FETCH_PAGE_ERROR
-    });
+    dispatch(fetchPageError());
   }
 };

@@ -1,22 +1,21 @@
 import axios from 'axios';
+import { PageAboutData } from './PageAbout.types';
+import {
+  fetchAboutRequest,
+  fetchAboutSuccess,
+  fetchAboutError,
+} from './PageAbout.reducer';
+import { AppThunk } from 'client/redux/types';
 
-export const FETCH_ABOUT_REQUEST = 'fetch_about_request';
-export const FETCH_ABOUT_SUCCESS = 'fetch_about_success';
-export const FETCH_ABOUT_ERROR = 'fetch_about_error';
-export const fetchAboutData = () => async (dispatch) => {
-  dispatch({
-    type: FETCH_ABOUT_REQUEST
-  });
+export const fetchAboutData = (): AppThunk => async (dispatch) => {
+  dispatch(fetchAboutRequest());
 
   try {
-    const res = await axios.get('https://cms.quirksmode.co.uk/wp-json/quirksmode/v1/pages/about-me');
-    dispatch({
-      type: FETCH_ABOUT_SUCCESS,
-      payload: res
-    });
-  } catch {
-    dispatch({
-      type: FETCH_ABOUT_ERROR
-    });
+    const res = await axios.get<PageAboutData>(
+      `${process.env.CMS_URL}/wp-json/quirksmode/v1/pages/about-me`
+    );
+    dispatch(fetchAboutSuccess(res.data));
+  } catch (err) {
+    dispatch(fetchAboutError());
   }
 };

@@ -48,7 +48,7 @@ export interface AppData {
 
 export interface SiteSettings {
   mainLogo: MainLogoOrImagesEntityOrImage | {};
-  cv: Cv | {};
+  cv: Cv;
 }
 
 export interface MainLogoOrImagesEntityOrImage {
