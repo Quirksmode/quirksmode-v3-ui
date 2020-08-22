@@ -1,41 +1,42 @@
-import {
-  FETCH_CONTACT_REQUEST,
-  FETCH_CONTACT_SUCCESS,
-  FETCH_CONTACT_ERROR
-} from './PageContact.actions';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { PageContactState, PageContactData } from './PageContact.types';
 
-export const initialState = {
+export const initialState: PageContactState = {
   content: {
-    title: ''
+    title: '',
   },
-  metadata: {},
+  metadata: null,
   loading: false,
-  error: false
+  error: false,
 };
 
-export default (state = initialState, action) => {
-  switch (action.type) {
-    case FETCH_CONTACT_REQUEST:
-      return {
-        ...state,
-        loading: true,
-        error: false
-      };
-    case FETCH_CONTACT_SUCCESS:
-      return {
-        ...state,
-        content: action.payload.data.content,
-        metadata: action.payload.data.metadata,
-        loading: false,
-        error: false
-      };
-    case FETCH_CONTACT_ERROR:
-      return {
-        ...state,
-        loading: false,
-        error: true
-      };
-    default:
-      return state;
-  }
-};
+const pageContact = createSlice({
+  name: 'pageContact',
+  initialState,
+  reducers: {
+    fetchContactRequest: (state) => {
+      state.loading = true;
+      state.error = false;
+    },
+    fetchContactSuccess: (
+      state,
+      { payload }: PayloadAction<PageContactData>
+    ) => {
+      state.content = payload.content;
+      state.metadata = payload.metadata;
+      state.loading = false;
+      state.error = false;
+    },
+    fetchContactError: (state) => {
+      state.loading = false;
+      state.error = true;
+    },
+  },
+});
+
+export default pageContact.reducer;
+export const {
+  fetchContactRequest,
+  fetchContactSuccess,
+  fetchContactError,
+} = pageContact.actions;

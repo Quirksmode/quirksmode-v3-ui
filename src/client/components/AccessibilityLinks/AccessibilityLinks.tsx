@@ -1,5 +1,8 @@
 import React from 'react';
 
+/**
+ * AccessibilityLinks Component
+ */
 const AccessibilityLinks = () => (
   <div className="AccessibilityLinks visuallyHidden">
     <p id="intTop">
@@ -10,7 +13,7 @@ const AccessibilityLinks = () => (
         <a href="#intContent">Skip to Main Content</a>
       </li>
       <li>
-        <a href="#intFooterr">Skip to Footer Content</a>
+        <a href="#intFooter">Skip to Footer Content</a>
       </li>
     </ul>
   </div>

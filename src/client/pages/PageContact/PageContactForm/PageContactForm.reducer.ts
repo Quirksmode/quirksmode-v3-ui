@@ -1,36 +1,38 @@
-import {
-  SEND_MAIL_REQUEST, SEND_MAIL_SUCCESS, SEND_MAIL_ERROR, RESET_FORM
-} from './PageContactForm.actions';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { PageContactFormState } from './PageContactForm.types';
 
-export const initialState = {
+export const initialState: PageContactFormState = {
   formSending: false,
   formError: false,
   formSuccess: false,
-  formResponse: null
+  formResponse: null,
 };
 
-export default (state = initialState, action) => {
-  switch (action.type) {
-    case SEND_MAIL_REQUEST:
-      return {
-        ...state,
-        formSending: true
-      };
-    case SEND_MAIL_SUCCESS:
-      return {
-        ...state,
-        formSending: false,
-        formSuccess: true
-      };
-    case SEND_MAIL_ERROR:
-      return {
-        ...state,
-        formSending: false,
-        formError: true
-      };
-    case RESET_FORM:
-      return initialState;
-    default:
-      return state;
-  }
-};
+const pageContactForm = createSlice({
+  name: 'pageContact',
+  initialState,
+  reducers: {
+    sendMailRequest: (state) => {
+      state.formSending = true;
+    },
+    sendMailSuccess: (state) => {
+      state.formSending = false;
+      state.formSuccess = true;
+    },
+    sendMailError: (state) => {
+      state.formSending = false;
+      state.formError = true;
+    },
+    resetTheForm: (state) => {
+      state = initialState;
+    },
+  },
+});
+
+export default pageContactForm.reducer;
+export const {
+  sendMailRequest,
+  sendMailSuccess,
+  sendMailError,
+  resetTheForm,
+} = pageContactForm.actions;

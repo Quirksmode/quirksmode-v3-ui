@@ -1,26 +1,41 @@
-export const RESET_FORM = 'reset_form';
-export const SEND_MAIL_REQUEST = 'send_mail_request';
-export const SEND_MAIL_SUCCESS = 'send_mail_success';
-export const SEND_MAIL_ERROR = 'send_mail_error';
+import axios from 'axios';
+import {
+  sendMailRequest,
+  sendMailSuccess,
+  sendMailError,
+  resetTheForm,
+} from './PageContactForm.reducer';
+import { AppThunk, AppDispatch } from 'client/redux/types';
 
-export const sendMail = data => async (dispatch, getState, api) => {
+export interface PageContactFormSendMailData {
+  email: string;
+  message?: string;
+  name: string;
+  subject: string;
+}
+
+export const sendMail = (data: PageContactFormSendMailData): AppThunk => async (
+  dispatch
+) => {
   // Begin the sending state
-  dispatch({ type: SEND_MAIL_REQUEST });
+  dispatch(sendMailRequest());
+
+  console.log('data', data);
 
   try {
     // Call the endpoint to send the mail
-    const res = await api.post('quirksmode/v1/sendmail', data);
+    const res = await axios.post<PageContactFormSendMailData>(
+      `${process.env.CMS_URL}/wp-json/quirksmode/v1/sendmail`,
+      data
+    );
 
     // Check if successful
-    const type = (res.status === 200) ? SEND_MAIL_SUCCESS : SEND_MAIL_ERROR;
-    dispatch({ type });
+    dispatch(res.status === 200 ? sendMailSuccess() : sendMailError());
   } catch {
-    dispatch({
-      type: SEND_MAIL_ERROR
-    });
+    dispatch(sendMailError());
   }
 };
 
-export const resetForm = () => (dispatch) => {
-  dispatch({ type: RESET_FORM });
+export const resetForm = () => (dispatch: AppDispatch) => {
+  dispatch(resetTheForm());
 };

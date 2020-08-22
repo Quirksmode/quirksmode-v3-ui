@@ -1,11 +1,15 @@
-import { AppState, Action, AppActionTypes } from './App.types';
+import {
+  AppState,
+  AppData,
+  SetLinkLoadingPayload,
+  SetUtilityPayload,
+} from './App.types';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export const initialState: AppState = {
   siteSettings: {
-    cv: {},
-    mainLogo: {
-      sizes: {},
-    },
+    cv: null,
+    mainLogo: null,
   },
   navItems: [],
   footerNavItems: [],
@@ -13,12 +17,7 @@ export const initialState: AppState = {
   projectCategories: [],
   blogTags: [],
   blogCategories: [],
-  subfooter: {
-    about: {},
-    latestTweets: {},
-    instagram: {},
-    contact: {},
-  },
+  subfooter: null,
   loadingSlug: '',
   utility: {
     isNavToggled: false,
@@ -29,50 +28,51 @@ export const initialState: AppState = {
   error: false,
 };
 
-export default (state = initialState, action: Action) => {
-  switch (action.type) {
-    case AppActionTypes.FETCH_APP_REQUEST:
-      return {
-        ...state,
-        loading: true,
-        error: false,
-      };
-    case AppActionTypes.FETCH_APP_SUCCESS:
-      return {
-        ...state,
-        siteSettings: action.payload.siteSettings,
-        navItems: action.payload.navItems,
-        footerNavItems: action.payload.footerNavItems,
-        projectTags: action.payload.projectTags,
-        projectCategories: action.payload.projectCategories,
-        blogTags: action.payload.blogTags,
-        blogCategories: action.payload.blogCategories,
-        subfooter: action.payload.subfooter,
-        loading: false,
-        error: false,
-      };
-    case AppActionTypes.FETCH_APP_ERROR:
-      return {
-        ...state,
-        loading: false,
-        error: true,
-      };
-    case AppActionTypes.SET_LINK_LOADING:
-      return {
-        ...state,
-        loadingSlug: action.payload,
-      };
-    case AppActionTypes.SET_LINK_LOADED:
-      return {
-        ...state,
-        loadingSlug: '',
-      };
-    case AppActionTypes.SET_UTILITY:
-      return {
-        ...state,
-        utility: action.payload,
-      };
-    default:
-      return state;
-  }
-};
+const app = createSlice({
+  name: 'app',
+  initialState,
+  reducers: {
+    fetchAppRequest: (state) => {
+      state.loading = true;
+      state.error = false;
+    },
+    fetchAppSuccess: (state, { payload }: PayloadAction<AppData>) => {
+      state.siteSettings = payload.siteSettings;
+      state.navItems = payload.navItems;
+      state.footerNavItems = payload.footerNavItems;
+      state.projectTags = payload.projectTags;
+      (state.projectCategories = payload.projectCategories),
+        (state.blogTags = payload.blogTags);
+      state.blogCategories = payload.blogCategories;
+      state.subfooter = payload.subfooter;
+      state.loading = false;
+      state.error = false;
+    },
+    fetchAppError: (state) => {
+      state.loading = false;
+      state.error = true;
+    },
+    setLinkLoading: (
+      state,
+      { payload }: PayloadAction<SetLinkLoadingPayload>
+    ) => {
+      state.loadingSlug = payload.loadingSlug;
+    },
+    setLinkLoaded: (state) => {
+      state.loadingSlug = '';
+    },
+    setUtility: (state, { payload }: PayloadAction<SetUtilityPayload>) => {
+      state.utility = payload.utility;
+    },
+  },
+});
+
+export default app.reducer;
+export const {
+  fetchAppRequest,
+  fetchAppSuccess,
+  fetchAppError,
+  setLinkLoading,
+  setLinkLoaded,
+  setUtility,
+} = app.actions;

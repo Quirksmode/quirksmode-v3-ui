@@ -1,7 +1,6 @@
 import React, { useEffect, Fragment } from 'react';
 import { renderRoutes } from 'react-router-config';
-import PropTypes from 'prop-types';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import Header from 'components/Header/Header';
 import Utility from 'components/Utility/Utility';
 import Subfooter from 'components/Subfooter/Subfooter';
@@ -13,28 +12,32 @@ import { fetchContactData } from 'pages/PageContact/PageContact.actions';
 import { fetchPortfolioData } from 'pages/PagePortfolio/PagePortfolio.actions';
 import { fetchBlogData } from 'pages/PageBlog/PageBlog.actions';
 import ScrollToTop from 'components/ScrollToTop/ScrollToTop';
+import { useTypedSelector } from './redux/types';
+import { AppProps } from './App.types';
 
 /**
- * Description
- *
- * @name App
- * @param  {object} props.location
- * @param  {object} props.route
+ * App Component
  */
-const App = ({ location, route }) => {
+const App: React.FC<AppProps> = ({ route }) => {
   /**
-   * Load all of the top page data on load. Note, I would not normally do this,
-   * but it provides a fast/simple way to preload all the top level pages
+   * Load all of the top page data on load. Note, for a larger site I would not take this approach,
+   * but for this site it provides a fast/simple way to preload all the top level page data
    */
-  const pageHomeTitle = useSelector((state) => state.pageHome.content.title);
-  const pageAboutTitle = useSelector((state) => state.pageAbout.content.title);
-  const pagePortfolioTitle = useSelector(
+  const pageHomeTitle = useTypedSelector(
+    (state) => state.pageHome.content.title
+  );
+  const pageAboutTitle = useTypedSelector(
+    (state) => state.pageAbout.content.title
+  );
+  const pagePortfolioTitle = useTypedSelector(
     (state) => state.pagePortfolio.content.title
   );
-  const pageContactTitle = useSelector(
+  const pageContactTitle = useTypedSelector(
     (state) => state.pageContact.content.title
   );
-  const pageBlogTitle = useSelector((state) => state.pageBlog.content.title);
+  const pageBlogTitle = useTypedSelector(
+    (state) => state.pageBlog.content.title
+  );
 
   const dispatch = useDispatch();
 
@@ -44,7 +47,6 @@ const App = ({ location, route }) => {
     if (!pagePortfolioTitle) dispatch(fetchPortfolioData());
     if (!pageContactTitle) dispatch(fetchContactData());
     if (!pageBlogTitle) dispatch(fetchBlogData());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -52,7 +54,7 @@ const App = ({ location, route }) => {
       <ScrollToTop />
       <AccessibilityLinks />
       <Utility />
-      <Header location={location} />
+      <Header />
       <p className="visuallyHidden" id="intContent">
         <strong>Main Content</strong>
       </p>
@@ -61,11 +63,6 @@ const App = ({ location, route }) => {
       <Footer />
     </Fragment>
   );
-};
-
-App.propTypes = {
-  location: PropTypes.object,
-  route: PropTypes.object,
 };
 
 export default App;

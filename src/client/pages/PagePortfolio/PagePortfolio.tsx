@@ -17,7 +17,7 @@ interface RouteHistory {
 /**
  * Portfolio Page
  */
-const PagePortfolio = ({}) => {
+const PagePortfolio: React.FC = () => {
   // Redux Hooks
   const dispatch = useDispatch();
   const history: RouteHistory = useHistory();

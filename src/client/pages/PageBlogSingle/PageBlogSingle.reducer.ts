@@ -1,50 +1,52 @@
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {
-  FETCH_BLOG_SINGLE_REQUEST,
-  FETCH_BLOG_SINGLE_SUCCESS,
-  FETCH_BLOG_SINGLE_ERROR
-} from './PageBlogSingle.actions';
+  PageBlogSingleState,
+  PageBlogSingleData,
+} from './PageBlogSingle.types';
 
-export const initialState = {
+export const initialState: PageBlogSingleState = {
   content: {
     id: null,
     title: '',
     url: '',
     date: '',
-    hero: {
-      url: ''
-    },
+    hero: null,
     contentBlocks: [],
     related: [],
-    noRelated: false
+    noRelated: false,
   },
-  metadata: {},
+  metadata: null,
   loading: false,
-  error: false
+  error: false,
 };
 
-export default (state = initialState, action) => {
-  switch (action.type) {
-    case FETCH_BLOG_SINGLE_REQUEST:
-      return {
-        ...state,
-        loading: true,
-        error: false
-      };
-    case FETCH_BLOG_SINGLE_SUCCESS:
-      return {
-        ...state,
-        content: action.payload.data.content,
-        metadata: action.payload.data.metadata,
-        loading: false,
-        error: false
-      };
-    case FETCH_BLOG_SINGLE_ERROR:
-      return {
-        ...state,
-        loading: false,
-        error: true
-      };
-    default:
-      return state;
-  }
-};
+const pageBlogSingle = createSlice({
+  name: 'pageBlogSingle',
+  initialState,
+  reducers: {
+    fetchBlogSingleRequest: (state) => {
+      state.loading = true;
+      state.error = false;
+    },
+    fetchBlogSingleSuccess: (
+      state,
+      { payload }: PayloadAction<PageBlogSingleData>
+    ) => {
+      state.content = payload.content;
+      state.metadata = payload.metadata;
+      state.loading = false;
+      state.error = false;
+    },
+    fetchBlogSingleError: (state) => {
+      state.loading = false;
+      state.error = true;
+    },
+  },
+});
+
+export default pageBlogSingle.reducer;
+export const {
+  fetchBlogSingleRequest,
+  fetchBlogSingleSuccess,
+  fetchBlogSingleError,
+} = pageBlogSingle.actions;

@@ -12,10 +12,7 @@ import IconContact from 'icons/contact.svg';
  * @param {string} title [The title]
  * @param {string} url [The url]
  */
-const Share = ({
-  title,
-  url
-}) => {
+const Share = ({ title, url }) => {
   /**
    * Open a window for the Share Component
    *
@@ -45,9 +42,9 @@ const Share = ({
   return (
     <div className="Share" data-test="Share">
       <a
-        onClick={ e => handleClick(e) }
+        onClick={(e) => handleClick(e)}
         className="Share__icon"
-        href={ `https://www.facebook.com/sharer/sharer.php?u=${url}` }
+        href={`https://www.facebook.com/sharer/sharer.php?u=${url}`}
         target="_blank"
         rel="noopener noreferrer"
         title="Share this on Facebook"
@@ -56,9 +53,9 @@ const Share = ({
         <IconFacebook />
       </a>
       <a
-        onClick={ e => handleClick(e) }
+        onClick={(e) => handleClick(e)}
         className="Share__icon"
-        href={ `https://twitter.com/intent/tweet?text=${title}&url=${url}"` }
+        href={`https://twitter.com/intent/tweet?text=${title}&url=${url}"`}
         target="_blank"
         rel="noopener noreferrer"
         title="Share this on Twitter"
@@ -67,9 +64,9 @@ const Share = ({
         <IconTwitter />
       </a>
       <a
-        onClick={ e => handleClick(e) }
+        onClick={(e) => handleClick(e)}
         className="Share__icon"
-        href={ `https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${title}` }
+        href={`https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${title}`}
         target="_blank"
         rel="noopener noreferrer"
         title="Share this on Linked In"
@@ -79,7 +76,7 @@ const Share = ({
       </a>
       <a
         className="Share__icon"
-        href={ `mailto:?subject=${title}&body=Hey, check this out!: ${url}` }
+        href={`mailto:?subject=${title}&body=Hey, check this out!: ${url}`}
         target="_blank"
         rel="noopener noreferrer"
         title="Share this by Email"

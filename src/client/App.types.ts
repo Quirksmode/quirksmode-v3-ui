@@ -1,24 +1,18 @@
-import {
-  FetchAppDataAction,
-  SetLinkLoadingAction,
-  SetLinkLoadedAction,
-  SetUtilityAction,
-} from './App.actions';
+import { RouteProps } from 'react-router-dom';
 
-export enum AppActionTypes {
-  FETCH_APP_REQUEST = 'FETCH_APP_REQUEST',
-  FETCH_APP_SUCCESS = 'FETCH_APP_SUCCESS',
-  FETCH_APP_ERROR = 'FETCH_APP_ERROR',
-  SET_LINK_LOADING = 'SET_LINK_LOADING',
-  SET_LINK_LOADED = 'SET_LINK_LOADED',
-  SET_UTILITY = 'SET_UTILITY',
+export interface AppProps extends Route {}
+
+export interface Route {
+  route: { routes: RouteProps[] };
 }
 
-export type Action =
-  | FetchAppDataAction
-  | SetLinkLoadingAction
-  | SetLinkLoadedAction
-  | SetUtilityAction;
+export interface SetLinkLoadingPayload {
+  loadingSlug: string;
+}
+
+export interface SetUtilityPayload {
+  utility: Utility;
+}
 
 export interface AppState extends AppData {
   loadingSlug: string;
@@ -29,25 +23,17 @@ export interface AppState extends AppData {
 
 export interface AppData {
   siteSettings: SiteSettings;
-  navItems?: NavItemsEntityOrFooterNavItemsEntity[] | [];
-  footerNavItems?: NavItemsEntityOrFooterNavItemsEntity[] | [];
-  projectTags?:
-    | ProjectTagsEntityOrProjectCategoriesEntityOrBlogTagsEntityOrBlogCategoriesEntity[]
-    | [];
-  projectCategories?:
-    | ProjectTagsEntityOrProjectCategoriesEntityOrBlogTagsEntityOrBlogCategoriesEntity[]
-    | [];
-  blogTags?:
-    | ProjectTagsEntityOrProjectCategoriesEntityOrBlogTagsEntityOrBlogCategoriesEntity[]
-    | [];
-  blogCategories?:
-    | ProjectTagsEntityOrProjectCategoriesEntityOrBlogTagsEntityOrBlogCategoriesEntity[]
-    | [];
-  subfooter: Subfooter | {};
+  navItems?: NavItemsEntityOrFooterNavItemsEntity[];
+  footerNavItems?: NavItemsEntityOrFooterNavItemsEntity[];
+  projectTags?: ProjectTagsEntityOrProjectCategoriesEntityOrBlogTagsEntityOrBlogCategoriesEntity[];
+  projectCategories?: ProjectTagsEntityOrProjectCategoriesEntityOrBlogTagsEntityOrBlogCategoriesEntity[];
+  blogTags?: ProjectTagsEntityOrProjectCategoriesEntityOrBlogTagsEntityOrBlogCategoriesEntity[];
+  blogCategories?: ProjectTagsEntityOrProjectCategoriesEntityOrBlogTagsEntityOrBlogCategoriesEntity[];
+  subfooter: Subfooter;
 }
 
 export interface SiteSettings {
-  mainLogo: MainLogoOrImagesEntityOrImage | {};
+  mainLogo: MainLogoOrImagesEntityOrImage;
   cv: Cv;
 }
 
@@ -56,7 +42,7 @@ export interface MainLogoOrImagesEntityOrImage {
   title: string;
   width: number;
   height: number;
-  sizes: Sizes | {};
+  sizes: Sizes;
 }
 
 export interface Sizes {
@@ -132,7 +118,7 @@ export interface LatestTweets {
   title: string;
   link_text: string;
   link: Link;
-  tweets?: TweetsEntity[] | [];
+  tweets?: TweetsEntity[];
 }
 
 export interface TweetsEntity {
@@ -144,7 +130,7 @@ export interface TweetsEntity {
 
 export interface Instagram {
   title: string;
-  images?: MainLogoOrImagesEntityOrImage[] | [];
+  images?: MainLogoOrImagesEntityOrImage[];
 }
 
 export interface Contact {

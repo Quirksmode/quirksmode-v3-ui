@@ -5,7 +5,7 @@
   "background_color": "#cc2d32",
   "display": "standalone",
   "Scope": "/",
-  "start_url": "https://www.quirksmode.co.uk",
+  "start_url": "http://local.quirksmode.co.uk:3000",
   "icons": [
     {
       "src": "./icon-72x72.png",

@@ -1,29 +1,28 @@
-import React, {
-  useRef
-} from 'react';
+import React, { useRef } from 'react';
 import { useTypedSelector } from 'client/redux/types';
 import Swiper from 'react-id-swiper';
 import { useInView } from 'react-intersection-observer';
 import LazyLoad from 'components/LazyLoad/LazyLoad';
 import LogoNav from './LogoNav/LogoNav';
-import { HeaderProps } from './Header.types';
+import { useLocation } from 'react-router-dom';
 
 /**
  * Header Component
  */
-const Header: React.FC<HeaderProps> = ({
-  location
-}) => {
-  const heroSlides = useTypedSelector(state => state.pageHome.content.heroSlides);
+const Header: React.FC = () => {
+  const location = useLocation();
+  const heroSlides = useTypedSelector(
+    (state) => state.pageHome.content.heroSlides
+  );
 
   const swiperRef = useRef(null);
   const swiperConfig = {
     autoplay: {
-      delay: 7000
+      delay: 7000,
     },
     speed: 1000,
     fadeEffect: {
-      crossFade: true
+      crossFade: true,
     },
     effect: 'fade' as 'fade',
     autoHeight: true,
@@ -33,8 +32,8 @@ const Header: React.FC<HeaderProps> = ({
     updateOnImagesReady: true,
     pagination: {
       el: '.swiper-pagination',
-      clickable: true
-    }
+      clickable: true,
+    },
   };
 
   /**
@@ -45,7 +44,7 @@ const Header: React.FC<HeaderProps> = ({
   const goNext = () => {
     if (swiperRef.current?.swiper) {
       const { swiper } = swiperRef.current;
-      if (swiper.activeIndex === (swiper.slides.length - 1)) {
+      if (swiper.activeIndex === swiper.slides.length - 1) {
         // Fake Loop due to React issue with Loop mode
         swiper.slideTo(0);
       } else {
@@ -78,7 +77,7 @@ const Header: React.FC<HeaderProps> = ({
    */
   const [sliderNavRef, inView] = useInView({
     threshold: 1,
-    rootMargin: '-150px'
+    rootMargin: '-150px',
   });
 
   return (
@@ -93,42 +92,37 @@ const Header: React.FC<HeaderProps> = ({
                 ref={swiperRef}
                 {...swiperConfig}
               >
-                {heroSlides.map(slide => (
-                  <div className="aspectWrap aspectWrap--ratio-16-10" key={slide.id}>
+                {heroSlides.map((slide) => (
+                  <div
+                    className="aspectWrap aspectWrap--ratio-16-10"
+                    key={slide.id}
+                  >
                     <LazyLoad>
                       <picture>
                         <source
                           type="image/webp"
-                          srcSet={
-                            `${slide.image.sizes.heroSlider768up2x}.webp 1x,
+                          srcSet={`${slide.image.sizes.heroSlider768up2x}.webp 1x,
                             ${slide.image.sizes.heroSlider768up2x}.webp 1.5x,
-                            ${slide.image.sizes.heroSlider768up2x}.webp 2x`
-                          }
+                            ${slide.image.sizes.heroSlider768up2x}.webp 2x`}
                           media="(min-width: 768px)"
                         />
                         <source
                           type="image/jpeg"
-                          srcSet={
-                            `${slide.image.sizes.heroSlider768up2x} 1x,
+                          srcSet={`${slide.image.sizes.heroSlider768up2x} 1x,
                             ${slide.image.sizes.heroSlider768up2x} 1.5x,
-                            ${slide.image.sizes.heroSlider768up2x} 2x`
-                          }
+                            ${slide.image.sizes.heroSlider768up2x} 2x`}
                           media="(min-width: 768px)"
                         />
                         <source
                           type="image/webp"
-                          srcSet={
-                            `${slide.image.sizes.heroSlider481up}.webp 1x,
+                          srcSet={`${slide.image.sizes.heroSlider481up}.webp 1x,
                             ${slide.image.sizes.heroSlider481up2x}.webp 1.5x,
-                            ${slide.image.sizes.heroSlider481up2x}.webp 2x`
-                          }
+                            ${slide.image.sizes.heroSlider481up2x}.webp 2x`}
                         />
                         <img
-                          srcSet={
-                            `${slide.image.sizes.heroSlider481up} 1x,
+                          srcSet={`${slide.image.sizes.heroSlider481up} 1x,
                             ${slide.image.sizes.heroSlider481up2x} 1.5x,
-                            ${slide.image.sizes.heroSlider481up2x} 2x`
-                          }
+                            ${slide.image.sizes.heroSlider481up2x} 2x`}
                           src={slide.image.sizes.heroSlider481up}
                           alt={slide.image.alt}
                           width={slide.image.width}
@@ -147,20 +141,14 @@ const Header: React.FC<HeaderProps> = ({
       {location.pathname === '/' && (
         <div
           ref={sliderNavRef}
-          className={`Slider__directionNav${inView ? ' Slider__directionNav--active' : ''}`}
+          className={`Slider__directionNav${
+            inView ? ' Slider__directionNav--active' : ''
+          }`}
         >
-          <button
-            type="button"
-            onClick={goPrev}
-            className="Slider__prev"
-          >
+          <button type="button" onClick={goPrev} className="Slider__prev">
             Previous
           </button>
-          <button
-            type="button"
-            onClick={goNext}
-            className="Slider__next"
-          >
+          <button type="button" onClick={goNext} className="Slider__next">
             Next
           </button>
         </div>

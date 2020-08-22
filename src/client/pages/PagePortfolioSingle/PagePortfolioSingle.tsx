@@ -10,7 +10,7 @@ import { useTypedSelector } from 'client/redux/types';
 /**
  * Portfolio Single Page
  */
-const PagePortfolioSingle = ({}) => {
+const PagePortfolioSingle = () => {
   // Redux Hooks
   const pagePortfolioSingle = useTypedSelector(
     (state) => state.pagePortfolioSingle

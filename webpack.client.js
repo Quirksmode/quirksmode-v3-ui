@@ -21,7 +21,7 @@ const IS_DEV = process.env.NODE_ENV !== 'production';
 const config = {
   mode: IS_DEV ? 'development' : 'production',
   name: 'client',
-  devtool: IS_DEV ? 'source-map' : false,
+  devtool: IS_DEV ? "eval-source-map" : false,
   resolve: {
     modules: ['src', 'node_modules'],
     descriptionFiles: ['package.json'],
@@ -36,7 +36,8 @@ const config = {
       icons: path.resolve(__dirname, 'src/assets/icons'),
       types: path.resolve(__dirname, 'src/types'),
       tests: path.resolve(__dirname, 'src/tests'),
-      'react-dom': IS_DEV ? '@hot-loader/react-dom' : 'react-dom'
+      'react-dom': IS_DEV ? '@hot-loader/react-dom' : 'react-dom', // https://stackoverflow.com/questions/60563405/redux-form-warning-cannot-update-a-component-from-inside-the-function-body-of-a
+      //'react-dom': 'react-dom'
     }
   },
   cache: IS_DEV,

@@ -1,27 +1,31 @@
-/* global workbox, self */
-/* eslint no-restricted-globals: "error" */
+import { setConfig, skipWaiting, clientsClaim } from 'workbox-core';
+import { precacheAndRoute } from 'workbox-precaching';
+import { registerRoute } from 'workbox-routing';
+import { NetworkFirst, StaleWhileRevalidate } from 'workbox-strategies';
+import { ExpirationPlugin } from 'workbox-expiration';
+import * as googleAnalytics from 'workbox-google-analytics';
 
 // Path prefix to load modules locally
-workbox.setConfig({ debug: false });
+//setConfig({ debug: false });
 
 // Updating SW lifecycle to update the app after user triggered refresh
-workbox.core.skipWaiting();
-workbox.core.clientsClaim();
+skipWaiting();
+clientsClaim();
 
 // Inject the generated manifest from webpack
-workbox.precaching.precacheAndRoute(self.__WB_MANIFEST);
-workbox.routing.registerRoute(
+precacheAndRoute(self.__WB_MANIFEST);
+registerRoute(
   /\.(?:js|css)$/,
-  new workbox.strategies.StaleWhileRevalidate(),
+  new StaleWhileRevalidate(),
 );
 
-workbox.routing.registerRoute(
+registerRoute(
   // Cache API Request
   new RegExp('/wp-json/(.*)'),
-  new workbox.strategies.NetworkFirst({
+  new NetworkFirst({
     cacheName: 'apiCache',
     plugins: [
-      new workbox.expiration.Plugin({
+      new ExpirationPlugin({
         maxEntries: 100,
         maxAgeSeconds: 30 * 60 // 30 Minutes
       })
@@ -29,12 +33,12 @@ workbox.routing.registerRoute(
   })
 );
 
-workbox.routing.registerRoute(
+registerRoute(
   /.*\.(?:png|jpg|jpeg|svg|gif)/,
-  new workbox.strategies.NetworkFirst({
+  new NetworkFirst({
     cacheName: 'images-cache',
     plugins: [
-      new workbox.expiration.Plugin({
+      new ExpirationPlugin({
         maxEntries: 60,
         maxAgeSeconds: 30 * 24 * 60 * 60, // 30 Days
       })
@@ -42,39 +46,39 @@ workbox.routing.registerRoute(
   })
 );
 
-workbox.routing.registerRoute(
+registerRoute(
   '/',
-  new workbox.strategies.NetworkFirst({
+  new NetworkFirst({
     cacheName: 'page-home-cache',
   })
 );
 
-workbox.routing.registerRoute(
+registerRoute(
   '/about-me/',
-  new workbox.strategies.NetworkFirst({
+  new NetworkFirst({
     cacheName: 'page-about-cache',
   })
 );
 
-workbox.routing.registerRoute(
+registerRoute(
   '/portfolio/',
-  new workbox.strategies.NetworkFirst({
+  new NetworkFirst({
     cacheName: 'page-portfolio-cache',
   })
 );
 
-workbox.routing.registerRoute(
+registerRoute(
   '/blog/',
-  new workbox.strategies.NetworkFirst({
+  new NetworkFirst({
     cacheName: 'page-blog-cache',
   })
 );
 
-workbox.routing.registerRoute(
+registerRoute(
   '/contact/',
-  new workbox.strategies.NetworkFirst({
+  new NetworkFirst({
     cacheName: 'page-contact-cache',
   })
 );
 
-workbox.googleAnalytics.initialize();
+googleAnalytics.initialize();

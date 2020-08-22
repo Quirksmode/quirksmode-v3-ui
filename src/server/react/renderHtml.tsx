@@ -12,6 +12,8 @@ import { minify } from 'html-minifier';
 import { ChunkExtractor, ChunkExtractorManager } from '@loadable/server';
 import routes from 'client/routes';
 import createStore from 'client/redux/store';
+import { Action, EnhancedStore } from '@reduxjs/toolkit';
+import { Context } from './renderHtml.types';
 
 const IS_DEV = process.env.NODE_ENV !== 'production';
 const UI_URL = process.env.UI_URL ? process.env.UI_URL : '';
@@ -22,8 +24,8 @@ const getCssString = (extractor: any): Promise<string> => {
 
 const render = (
   req: Request,
-  store: any,
-  context: object,
+  store: EnhancedStore,
+  context: Context,
   extractor: any,
   css: string
 ): string => {
@@ -37,6 +39,10 @@ const render = (
     </ChunkExtractorManager>
   );
   const helmet = Helmet.renderStatic();
+  let linkTags = extractor.getLinkTags();
+
+  // No need to prefetch the styles as these are inlined for production
+  linkTags = linkTags.split('\n').slice(1).join('\n');
 
   const html = `
     <!DOCTYPE html>
@@ -61,7 +67,7 @@ const render = (
         <meta name="twitter:site" content="@quirksmode_uk" />
         <script>let docEl=document.documentElement;docEl.className=docEl.className.replace( /(?:^|s)no-js(?!S)/g , ' js' );let isTouch="ontouchstart"in docEl;isTouch?docEl.classList.add("touch"):docEl.classList.add("no-touch"),function(e){"use strict";function t(t){if(t){var s=e.documentElement;s.classList?s.classList.add("webp"):s.className+=" webp",window.sessionStorage.setItem("webpSupport",!0)}}!function(e){if(window.sessionStorage&&window.sessionStorage.getItem("webpSupport"))t(!0);else{var s=new Image;s.onload=s.onerror=function(){e(2===s.height)},s.src="data:image/webp;base64,UklGRi4AAABXRUJQVlA4TCEAAAAvAUAAEB8wAiMwAgSSNtse/cXjxyCCmrYNWPwmHRH9jwMA"}}(t)}(document);</script>
         ${IS_DEV ? extractor.getStyleTags() : `<style>${css}</style>`}
-        ${extractor.getLinkTags()}
+        ${linkTags}
         <link rel="preconnect" href="${process.env.CMS_URL}">
         <link rel="preconnect" href="https://storage.googleapis.com" crossorigin>
         <link rel="preconnect" href="https://www.google-analytics.com" crossorigin>
@@ -104,16 +110,25 @@ export default () => (req: Request, res: Response, next: NextFunction) => {
   const { store } = createStore({ url: req.url });
 
   // Loop through the routes array and get the data for each route (page)
-  const loadRouteData = () => {
-    const promises = matchRoutes(routes, req.path)
-      .map(({ route, match }) =>
-        route.loadData ? route.loadData(store, match, req.query) : null
-      )
-      .map((promise) =>
-        promise
-          ? new Promise((resolve) => promise.then(resolve).catch(resolve))
-          : null
-      );
+  const loadRouteData = (): Promise<any> => {
+    // @ts-ignore
+    const branch = matchRoutes(routes, req.path);
+    const promises = branch.map(({ route, match }) => {
+      if (route.loadData)
+        return Promise.all(
+          route
+            .loadData({
+              params: match.params,
+              getState: store.getState,
+              req,
+              res,
+            })
+            .map((item: Action) => store.dispatch(item))
+        );
+
+      return Promise.resolve(null);
+    });
+
     return Promise.all(promises);
   };
 
@@ -141,7 +156,7 @@ export default () => (req: Request, res: Response, next: NextFunction) => {
       let cssString: string = await getCssString(extractor);
       cssString = `<style>${cssString}</style>`;
 
-      const context: any = {};
+      const context: Context = {};
 
       /**
        * Render the Server Side code and return as a string

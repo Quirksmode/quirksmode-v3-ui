@@ -1,30 +1,19 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import IconHome from 'icons/home.svg';
+import { BreadcrumbsProps } from './Breadcrumbs.types';
 
 /**
- * Description
- *
- * @name Breadcrumbs
+ * Breadcrumbs Component
  */
-const Breadcrumbs = ({
-  children
-}) => (
+const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ children }) => (
   <div className="Breadcrumbs" data-test="Breadcrumbs">
-    <NavLink
-      to="/"
-      className="Breadcrumbs__crumb Breadcrumbs__crumb--home"
-    >
+    <NavLink to="/" className="Breadcrumbs__crumb Breadcrumbs__crumb--home">
       <span className="visuallyHidden">Home</span>
       <IconHome />
     </NavLink>
-    { children }
+    {children}
   </div>
 );
-
-Breadcrumbs.propTypes = {
-  children: PropTypes.any
-};
 
 export default Breadcrumbs;

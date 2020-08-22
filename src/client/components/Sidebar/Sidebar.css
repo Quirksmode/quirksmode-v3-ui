@@ -41,6 +41,7 @@
       &:hover {
         .no-touch & {
           background: var(--color-qm-blue);
+          color: var(--color-white);
         }
       }
     }

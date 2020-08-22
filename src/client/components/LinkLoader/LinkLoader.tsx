@@ -20,7 +20,7 @@ const LinkLoader = ({
   fetchPageDataAction,
   fetchPortfolioSingleDataAction,
   fetchBlogSingleDataAction,
-  loadingSlug
+  loadingSlug,
 }) => {
   /**
    * Create the href based on the type e.g. Page, Portfolio or Blog
@@ -39,7 +39,7 @@ const LinkLoader = ({
   const actionObj = {
     portfolio: fetchPortfolioSingleDataAction,
     blog: fetchBlogSingleDataAction,
-    page: fetchPageDataAction
+    page: fetchPageDataAction,
   };
 
   const handleClick = (e) => {
@@ -51,12 +51,14 @@ const LinkLoader = ({
 
   return (
     <NavLink
-      to={ href }
-      onClick={ e => handleClick(e) }
-      className={ `LinkLoader${loadingSlug === href ? ' LinkLoader--loading' : ''}` }
+      to={href}
+      onClick={(e) => handleClick(e)}
+      className={`LinkLoader${
+        loadingSlug === href ? ' LinkLoader--loading' : ''
+      }`}
     >
-      { title && <span className="visuallyHidden">{ title }</span> }
-      { children }
+      {title && <span className="visuallyHidden">{title}</span>}
+      {children}
     </NavLink>
   );
 };
@@ -69,17 +71,19 @@ LinkLoader.propTypes = {
   fetchPageDataAction: PropTypes.func,
   fetchPortfolioSingleDataAction: PropTypes.func,
   fetchBlogSingleDataAction: PropTypes.func,
-  loadingSlug: PropTypes.string
+  loadingSlug: PropTypes.string,
 };
 
 const mapStateToProps = ({ app }) => ({
-  loadingSlug: app.loadingSlug
+  loadingSlug: app.loadingSlug,
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   fetchPageDataAction: (...args) => dispatch(fetchPageData(...args)),
-  fetchPortfolioSingleDataAction: (...args) => dispatch(fetchPortfolioSingleData(...args)),
-  fetchBlogSingleDataAction: (...args) => dispatch(fetchBlogSingleData(...args))
+  fetchPortfolioSingleDataAction: (...args) =>
+    dispatch(fetchPortfolioSingleData(...args)),
+  fetchBlogSingleDataAction: (...args) =>
+    dispatch(fetchBlogSingleData(...args)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LinkLoader);

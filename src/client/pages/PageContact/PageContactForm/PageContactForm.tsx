@@ -1,8 +1,5 @@
-import React, {
-  useEffect
-} from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { required, email } from 'components/Form/validation';
 import { renderInput, renderTextarea } from 'components/Form/fieldTypes';
@@ -14,72 +11,83 @@ import IconContact from 'icons/contact.svg';
 import IconQuirksmode from 'icons/quirksmode.svg';
 import { sendMail, resetForm } from './PageContactForm.actions';
 
+interface PageContactFormProps {
+  formSending: boolean;
+  submitting: boolean;
+  handleSubmit: any;
+}
+
 /**
- * Description
- *
- * @name PageContactForm
- * @param  {object} props.cv []
+ * PageContactForm Component
  */
-const PageContactForm = ({
+const PageContactForm: React.FC<PageContactFormProps> = ({
   handleSubmit,
   submitting,
-  sendMailAction,
-  resetFormAction,
-  formSending
+  formSending,
 }) => {
-  const submit = (data) => {
-    sendMailAction(data);
+  const dispatch = useDispatch();
+  const submit = (data: any) => {
+    dispatch(sendMail(data));
   };
 
-  useEffect(() => () => {
-    resetFormAction();
-  }, [resetFormAction]);
+  useEffect(
+    () => () => {
+      dispatch(resetForm());
+    },
+    [resetForm]
+  );
 
   return (
-    <form onSubmit={ handleSubmit(submit) } className="form PageContactForm">
+    <form onSubmit={handleSubmit(submit)} className="form PageContactForm">
       <Field
         type="text"
         name="name"
         id="name"
-        component={ renderInput }
+        component={renderInput}
         label="Enter your name"
-        validate={ required }
+        validate={required}
         message="This is wrong."
-        Icon={ IconUser }
+        Icon={IconUser}
       />
 
       <Field
         type="email"
         name="email"
         id="email"
-        component={ renderInput }
+        component={renderInput}
         label="Enter your email"
-        validate={ [required, email] }
+        validate={[required, email]}
         message="This is wrong."
-        Icon={ IconEmail }
+        Icon={IconEmail}
       />
 
       <Field
         type="text"
         name="subject"
         id="subject"
-        component={ renderInput }
+        component={renderInput}
         label="Enter your subject"
-        validate={ required }
+        validate={required}
         message="This is wrong."
-        Icon={ IconWrite }
+        Icon={IconWrite}
       />
 
       <Field
         name="message"
         id="message"
-        component={ renderTextarea }
+        component={renderTextarea}
         label="Enter your message"
-        Icon={ IconComment }
+        Icon={IconComment}
       />
 
-      <button type="submit" className={ `btn--submitIcon${formSending ? ' btn--submitIcon--loading' : ''} ` } disabled={ submitting }>
-          Send Message
+      <button
+        type="submit"
+        className={`btn--submitIcon${
+          formSending ? ' btn--submitIcon--loading' : ''
+        } `}
+        disabled={submitting}
+      >
+        Send Message
         <IconContact className="btn--submitIconSvg" />
         <IconQuirksmode className="btn--submitIconSvg--loading" />
       </button>
@@ -87,21 +95,8 @@ const PageContactForm = ({
   );
 };
 
-PageContactForm.propTypes = {
-  handleSubmit: PropTypes.func,
-  submitting: PropTypes.bool,
-  sendMailAction: PropTypes.func,
-  resetFormAction: PropTypes.func,
-  formSending: PropTypes.bool,
-};
-
-const mapDispatchToProps = dispatch => ({
-  sendMailAction: (...args) => dispatch(sendMail(...args)),
-  resetFormAction: (...args) => dispatch(resetForm(...args))
-});
-
-const ContactForm = reduxForm({
-  form: 'contactForm'
+const WrappedPageContactForm = reduxForm({
+  form: 'contactForm',
 })(PageContactForm);
 
-export default connect(null, mapDispatchToProps)(ContactForm);
+export default WrappedPageContactForm;

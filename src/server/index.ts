@@ -28,7 +28,12 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 
 // Use helmet to secure Express with various HTTP headers
-//app.use(helmet());
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+  })
+);
+
 // Prevent HTTP parameter pollution
 app.use(hpp());
 
@@ -70,7 +75,6 @@ if (process.env.NODE_ENV === 'development') {
   app.use(webpackHotMiddleware(clientCompiler));
   app.use(webpackHotServerMiddleware(compiler));
 } else {
-  // eslint-disable-next-line global-require
   const serverRenderer = require('./react/renderHtml').default;
   app
     .use(

@@ -1,17 +1,20 @@
 import { push } from 'connected-react-router';
 import axios from 'axios';
-import { setLinkLoading, setLinkLoaded } from '../../App.actions';
+import { setLinkLoading, setLinkLoaded } from 'client/App.actions';
+import { PageBlogSingleData } from './PageBlogSingle.types';
+import {
+  fetchBlogSingleRequest,
+  fetchBlogSingleSuccess,
+  fetchBlogSingleError,
+} from './PageBlogSingle.reducer';
+import { AppThunk } from 'client/redux/types';
 
-export const FETCH_BLOG_SINGLE_REQUEST = 'fetch_blog_single_request';
-export const FETCH_BLOG_SINGLE_SUCCESS = 'fetch_blog_single_success';
-export const FETCH_BLOG_SINGLE_ERROR = 'fetch_blog_single_error';
-export const fetchBlogSingleData = (slug, href = null) => async (
-  dispatch
-) => {
+export const fetchBlogSingleData = (
+  slug: string,
+  href: string = null
+): AppThunk => async (dispatch) => {
   // Set the loading state
-  dispatch({
-    type: FETCH_BLOG_SINGLE_REQUEST
-  });
+  dispatch(fetchBlogSingleRequest());
 
   // If href, dispatch custom Link Loader Functionality
   if (href) {
@@ -19,12 +22,11 @@ export const fetchBlogSingleData = (slug, href = null) => async (
   }
 
   try {
-    const res = await axios.get(`https://cms.quirksmode.co.uk/wp-json/quirksmode/v1/pages/blog/${slug}`);
+    const res = await axios.get<PageBlogSingleData>(
+      `${process.env.CMS_URL}/wp-json/quirksmode/v1/pages/blog/${slug}`
+    );
 
-    dispatch({
-      type: FETCH_BLOG_SINGLE_SUCCESS,
-      payload: res
-    });
+    dispatch(fetchBlogSingleSuccess(res.data));
 
     // If href, navigate to it
     if (href) {
@@ -32,8 +34,6 @@ export const fetchBlogSingleData = (slug, href = null) => async (
       dispatch(push(href));
     }
   } catch {
-    dispatch({
-      type: FETCH_BLOG_SINGLE_ERROR
-    });
+    dispatch(fetchBlogSingleError());
   }
 };

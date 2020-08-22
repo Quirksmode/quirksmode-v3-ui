@@ -1,14 +1,25 @@
 import App from './App';
+// @ts-ignore
 import PageHome from './pages/PageHome';
+// @ts-ignore
 import PageAbout from './pages/PageAbout';
+// @ts-ignore
 import PageBlog from './pages/PageBlog/PageBlog';
+// @ts-ignore
 import PageBlogSingle from './pages/PageBlogSingle';
+// @ts-ignore
 import PageContact from './pages/PageContact';
+// @ts-ignore
 import PagePortfolio from './pages/PagePortfolio';
+// @ts-ignore
 import PagePortfolioSingle from './pages/PagePortfolioSingle';
+// @ts-ignore
 import PageSearch from './pages/PageSearch';
+// @ts-ignore
 import Page404 from './pages/Page404';
+// @ts-ignore
 import Page from './pages/Page';
+
 import { fetchAppData } from './App.actions';
 import { fetchHomeData } from './pages/PageHome/PageHome.actions';
 import { fetchAboutData } from './pages/PageAbout/PageAbout.actions';
@@ -19,66 +30,72 @@ import { fetchBlogData } from './pages/PageBlog/PageBlog.actions';
 import { fetchBlogSingleData } from './pages/PageBlogSingle/PageBlogSingle.actions';
 import { fetchSearchData } from './pages/PageSearch/PageSearch.actions';
 import { fetchPageData } from './pages/Page/Page.actions';
+import { AppThunk } from './redux/types';
+import { Request } from 'express';
 
 export default [
   {
     component: App,
-    loadData: (store) => store.dispatch(fetchAppData()),
+    loadData: (): AppThunk[] => [fetchAppData()],
     routes: [
       {
-        component: PageHome,
         path: '/',
+        component: PageHome,
         exact: true,
-        loadData: (store) => store.dispatch(fetchHomeData()),
+        loadData: (): AppThunk[] => [fetchHomeData()],
       },
       {
-        component: PageAbout,
         path: '/about-me',
+        component: PageAbout,
         exact: true,
-        loadData: (store) => store.dispatch(fetchAboutData()),
+        loadData: (): AppThunk[] => [fetchAboutData()],
       },
       {
-        component: PagePortfolio,
         path: '/portfolio',
+        component: PagePortfolio,
         exact: true,
-        loadData: (store) => store.dispatch(fetchPortfolioData()),
+        loadData: (): AppThunk[] => [fetchPortfolioData()],
       },
       {
-        component: PagePortfolioSingle,
         path: '/portfolio/:slug',
-        loadData: (store, match) =>
-          store.dispatch(fetchPortfolioSingleData(match.params.slug)),
+        component: PagePortfolioSingle,
+        loadData: ({ params }: { params: { slug: string } }): AppThunk[] => [
+          fetchPortfolioSingleData(params.slug),
+        ],
       },
       {
-        component: PageContact,
         path: '/contact',
+        component: PageContact,
         exact: true,
-        loadData: (store) => store.dispatch(fetchContactData()),
+        loadData: (): AppThunk[] => [fetchContactData()],
       },
       {
-        component: PageBlog,
         path: '/blog',
+        component: PageBlog,
         exact: true,
-        loadData: (store) => store.dispatch(fetchBlogData()),
+        loadData: (): AppThunk[] => [fetchBlogData()],
       },
       {
-        component: PageBlogSingle,
         path: '/blog/:slug',
-        loadData: (store, match) =>
-          store.dispatch(fetchBlogSingleData(match.params.slug)),
+        component: PageBlogSingle,
+        loadData: ({ params }: { params: { slug: string } }): AppThunk[] => [
+          fetchBlogSingleData(params.slug),
+        ],
       },
       {
-        component: PageSearch,
         path: '/search',
-        loadData: (store, match, queryVars) => {
-          const searchQuery = queryVars.s ? queryVars.s : '';
-          return store.dispatch(fetchSearchData(searchQuery));
+        component: PageSearch,
+        loadData: ({ req }: { req: Request }): AppThunk[] => {
+          const searchQuery = req.query.s ? String(req.query.s) : '';
+          return [fetchSearchData(searchQuery)];
         },
       },
       {
-        component: Page,
         path: '/:slug',
-        loadData: (store) => store.dispatch(fetchPageData()),
+        component: Page,
+        loadData: ({ params }: { params: { slug: string } }): AppThunk[] => [
+          fetchPageData(params.slug),
+        ],
       },
       {
         component: Page404,
