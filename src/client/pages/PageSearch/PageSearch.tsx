@@ -5,8 +5,7 @@ import React, {
   ChangeEvent,
   FormEvent,
 } from 'react';
-import PropTypes from 'prop-types';
-import { connect, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import queryString from 'query-string';
 import Breadcrumbs from 'components/Breadcrumbs/Breadcrumbs';
 import Meta from 'components/Meta/Meta';
@@ -16,15 +15,12 @@ import IconSearch from 'icons/search.svg';
 import { fetchSearchData } from './PageSearch.actions';
 import { useLocation } from 'react-router-dom';
 import { useTypedSelector } from 'client/redux/types';
-
-interface RouteLocation {
-  search: any;
-}
+import { RouteLocation } from './PageSearch.types';
 
 /**
  * Search Page
  */
-const PageSearch = ({}) => {
+const PageSearch = () => {
   // Redux Hooks
   const dispatch = useDispatch();
   const location: RouteLocation = useLocation();
@@ -35,9 +31,6 @@ const PageSearch = ({}) => {
 
   /**
    * react state mutator for setting the values
-   *
-   * @name useState
-   * @type {function}
    */
   const [value, setValue] = useState('');
 

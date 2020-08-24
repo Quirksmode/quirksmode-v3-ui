@@ -1,3 +1,6 @@
+import { Metadata } from '../Page/Page.types';
+import { FeaturedImage } from 'client/components/Frame/Frame.types';
+
 export interface PageHomeState extends PageHomeData {
   loading: boolean;
   error: boolean;
@@ -5,7 +8,7 @@ export interface PageHomeState extends PageHomeData {
 
 export interface PageHomeData {
   content: Content;
-  metadata: Metadata | {};
+  metadata: Metadata;
 }
 
 export interface Content {
@@ -45,18 +48,6 @@ export interface FeaturedWorkEntity {
   featuredImage: FeaturedImage;
 }
 
-export interface FeaturedImage {
-  alt: string;
-  width: number;
-  height: number;
-  sizes: Sizes1;
-}
-
-export interface Sizes1 {
-  quirksmodeMedium: string;
-  quirksmodeMedium2x: string;
-}
-
 export interface Intro {
   image: Image1;
   text: string;
@@ -76,33 +67,9 @@ export interface LatestBlogPostsEntity {
   postExcerpt: string;
   type: string;
   date: string;
-  featuredImage: FeaturedImage1;
-}
-
-export interface FeaturedImage1 {
-  alt: string;
-  width: number;
-  height: number;
-  sizes: Sizes2;
-}
-
-export interface Sizes2 {
-  quirksmodeSmall: string;
-  quirksmodeSmall2x: string;
-  quirksmodeMedium: string;
-  quirksmodeMedium2x: string;
+  featuredImage: FeaturedImage;
 }
 
 export interface SkillsEntity {
   skill_name: string;
-}
-
-export interface Metadata {
-  metaTitle: string;
-  metaDesc: string;
-  metaUrl: string;
-  metaSiteName: string;
-  metaImage: string;
-  metaImageWidth: number;
-  metaImageHeight: number;
 }

@@ -59,7 +59,7 @@
     }
 
     &__link {
-      color: #000;
+      color: var(--color-black);
       display: block;
       font-size: 1.6rem;
       letter-spacing: 3px;

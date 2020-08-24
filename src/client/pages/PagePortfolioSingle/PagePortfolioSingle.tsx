@@ -41,7 +41,7 @@ const PagePortfolioSingle = () => {
             title={title}
             subtitle={projectRole}
             url={url}
-            type="Portfolio"
+            type="portfolio"
           />
         )}
         {contentBlocks.length > 0 && (

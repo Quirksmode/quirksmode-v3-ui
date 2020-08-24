@@ -1,3 +1,6 @@
+import { Metadata } from '../Page/Page.types';
+import { FeaturedImage } from 'client/components/Frame/Frame.types';
+
 export interface PagePortfolioSingleState extends PagePortfolioSingleData {
   loading: boolean;
   error: boolean;
@@ -24,24 +27,8 @@ export interface Content {
 }
 
 export interface Hero {
-  image: Image;
+  image: FeaturedImage;
   alignCenter: boolean;
-}
-
-export interface Image {
-  alt: string;
-  sizes: Sizes;
-}
-
-export interface Sizes {
-  fullWidth481: string;
-  fullWidth481_2x: string;
-  fullWidth768: string;
-  fullWidth768_2x: string;
-  fullWidth1024: string;
-  fullWidth1024_2x: string;
-  fullWidth1800: string;
-  fullWidth1800_2x: string;
 }
 
 export interface ProjectTagsEntity {
@@ -109,26 +96,4 @@ export interface RelatedEntity {
   filter: string;
   isNew: boolean;
   featuredImage: FeaturedImage;
-}
-
-export interface FeaturedImage {
-  alt: string;
-  width: number;
-  height: number;
-  sizes: Sizes2;
-}
-
-export interface Sizes2 {
-  quirksmodeMedium: string;
-  quirksmodeMedium2x: string;
-}
-
-export interface Metadata {
-  metaTitle: string;
-  metaDesc: string;
-  metaUrl: string;
-  metaSiteName: string;
-  metaImage: string;
-  metaImageWidth: number;
-  metaImageHeight: number;
 }

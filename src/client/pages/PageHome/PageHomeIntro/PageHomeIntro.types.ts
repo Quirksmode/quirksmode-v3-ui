@@ -3,5 +3,5 @@ import { Cv } from 'client/App.types';
 
 export interface PageHomeIntroProps {
   intro: Intro;
-  cv: Cv | {};
+  cv: Cv;
 }

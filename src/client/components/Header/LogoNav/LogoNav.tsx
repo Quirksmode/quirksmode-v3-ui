@@ -1,26 +1,23 @@
 import React from 'react';
-import {
-  useSelector as useSelectorGeneric,
-  useDispatch,
-  TypedUseSelectorHook,
-} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { setUtility } from 'client/App.actions';
-import { StoreState } from 'src/types';
+import { useTypedSelector } from 'client/redux/types';
 
-// Assign Types to the Redux Hooks
-export const useSelector: TypedUseSelectorHook<StoreState> = useSelectorGeneric;
-
+/**
+ * LogoNav Component
+ */
 const LogoNav = () => {
-  const mainLogo = useSelector((state) => state.app.siteSettings?.mainLogo);
-  const navItems = useSelector((state) => state.app.navItems);
   const dispatch = useDispatch();
+  const { navItems } = useTypedSelector(({ app }) => app);
+  const { mainLogo } = useTypedSelector(({ app }) => app.siteSettings);
 
   const handleClick = () => {
     dispatch(
       setUtility({
         isNavToggled: false,
         isSearchToggled: false,
+        isMenuBtnToggled: false,
       })
     );
   };
@@ -51,20 +48,19 @@ const LogoNav = () => {
           <strong>Main Navigation</strong>
         </p>
         <ul className="LogoNav__nav__items">
-          {navItems &&
-            navItems.map((item) => (
-              <li className="LogoNav__nav__item" key={item.id}>
-                <NavLink
-                  onClick={() => handleClick()}
-                  className="LogoNav__nav__link"
-                  exact={item.slug === '/'}
-                  activeClassName="selected"
-                  to={item.slug}
-                >
-                  {item.title}
-                </NavLink>
-              </li>
-            ))}
+          {navItems?.map((item) => (
+            <li className="LogoNav__nav__item" key={item.id}>
+              <NavLink
+                onClick={() => handleClick()}
+                className="LogoNav__nav__link"
+                exact={item.slug === '/'}
+                activeClassName="selected"
+                to={item.slug}
+              >
+                {item.title}
+              </NavLink>
+            </li>
+          ))}
         </ul>
       </nav>
     </div>

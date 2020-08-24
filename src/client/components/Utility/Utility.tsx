@@ -1,11 +1,8 @@
-import React, {
-  useEffect,
-  useCallback
-} from 'react';
-import { connect } from 'react-redux';
+import React, { useEffect, useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 import LogoNav from 'components/Header/LogoNav/LogoNav';
 import { setUtility } from 'client/App.actions';
-import throttle from 'utils/throttle';
+import { throttle } from 'lodash';
 import IconSoundcloud from 'icons/soundcloud.svg';
 import IconTwitter from 'icons/twitter.svg';
 import IconLinkedin from 'icons/linkedin-circle.svg';
@@ -13,55 +10,75 @@ import IconGithub from 'icons/github.svg';
 import IconSearch from 'icons/search.svg';
 import IconMenu from 'icons/menu.svg';
 import IconClose from 'icons/close.svg';
+import { useTypedSelector } from 'client/redux/types';
 
 /**
- * Description
- *
- * @name Utility
+ * Utility Component
  */
-const Utility = ({
-  setUtilityAction,
-  utility
-}) => {
-  const {
-    isNavToggled,
-    isSearchToggled,
-    isMenuBtnToggled
-  } = utility;
+const Utility = () => {
+  const dispatch = useDispatch();
+  const app = useTypedSelector((state) => state.app);
+  const { utility } = app;
+  if (!utility) return null;
+  const { isNavToggled, isSearchToggled, isMenuBtnToggled } = utility;
 
-  const onScroll = useCallback(throttle(() => {
-    if (window.innerWidth > 480) {
-      if (window.pageYOffset > 200) {
-        setUtilityAction({
-          ...utility,
-          isMenuBtnToggled: true
-        });
-      } else {
-        setUtilityAction({
-          ...utility,
-          isNavToggled: false,
-          isMenuBtnToggled: false
-        });
+  /**
+   * Throttled Window Scroll Event to show/hide the menu button
+   * when certain window conditions are met.
+   */
+  const onScroll = useCallback(
+    throttle(() => {
+      if (window.innerWidth > 480) {
+        if (window.pageYOffset > 200) {
+          dispatch(
+            setUtility({
+              ...utility,
+              isMenuBtnToggled: true,
+            })
+          );
+        } else {
+          dispatch(
+            setUtility({
+              ...utility,
+              isNavToggled: false,
+              isMenuBtnToggled: false,
+            })
+          );
+        }
       }
-    }
-  }, [setUtilityAction, utility], 100));
+    }, 100),
+    [setUtility, utility]
+  );
 
+  /**
+   * On Click Event to show/hide the Nav Menu
+   */
   const toggleNav = () => {
-    setUtilityAction({
-      ...utility,
-      isNavToggled: !isNavToggled,
-      isSearchToggled: false
-    });
+    dispatch(
+      setUtility({
+        ...utility,
+        isNavToggled: !isNavToggled,
+        isSearchToggled: false,
+      })
+    );
   };
 
+  /**
+   * On Click Event to show/hide the Search Bar
+   */
   const toggleSearch = () => {
-    setUtilityAction({
-      ...utility,
-      isNavToggled: false,
-      isSearchToggled: !isSearchToggled
-    });
+    dispatch(
+      setUtility({
+        ...utility,
+        isNavToggled: false,
+        isSearchToggled: !isSearchToggled,
+      })
+    );
   };
 
+  /**
+   * Add/remove Window Scroll Event listener when component mounts/dismounts
+   */
   useEffect(() => {
     window.addEventListener('scroll', onScroll);
     return () => {
@@ -71,10 +88,16 @@ const Utility = ({
 
   return (
     <div className="Utility">
-      <div className={ `Utility__nav${isNavToggled ? ' Utility__nav--open' : ''}` }>
-        <LogoNav setUtilityAction={ setUtilityAction } />
+      <div
+        className={`Utility__nav${isNavToggled ? ' Utility__nav--open' : ''}`}
+      >
+        <LogoNav />
       </div>
-      <div className={ `Utility__search${isSearchToggled ? ' Utility__search--open' : ''}` }>
+      <div
+        className={`Utility__search${
+          isSearchToggled ? ' Utility__search--open' : ''
+        }`}
+      >
         <p className="visuallyHidden" id="int_search">
           <strong>Search Quirksmode</strong>
         </p>
@@ -85,9 +108,7 @@ const Utility = ({
           action="/search"
         >
           <div className="Utility__search__inputWrap">
-            <label
-              htmlFor="Utility__search__input"
-            >
+            <label htmlFor="Utility__search__input">
               <span className="visuallyHidden">Search for:</span>
               <input
                 type="text"
@@ -98,7 +119,11 @@ const Utility = ({
               />
             </label>
           </div>
-          <button type="submit" id="Utility__search__submit" className="Utility__search__submit">
+          <button
+            type="submit"
+            id="Utility__search__submit"
+            className="Utility__search__submit"
+          >
             <span className="visuallyHidden">Submit</span>
             <IconSearch />
           </button>
@@ -114,7 +139,9 @@ const Utility = ({
                 title="Quirksmode's Github Page"
                 target="_blank"
               >
-                <span className="visuallyHidden">Quirksmode&apos;s Github Page</span>
+                <span className="visuallyHidden">
+                  Quirksmode&apos;s Github Page
+                </span>
                 <IconGithub />
               </a>
             </div>
@@ -125,7 +152,9 @@ const Utility = ({
                 title="Quirksmode's Twitter Page"
                 target="_blank"
               >
-                <span className="visuallyHidden">Quirksmode&apos;s Twitter Page</span>
+                <span className="visuallyHidden">
+                  Quirksmode&apos;s Twitter Page
+                </span>
                 <IconTwitter />
               </a>
             </div>
@@ -136,7 +165,9 @@ const Utility = ({
                 title="Quirksmode's LinkedIn Page"
                 target="_blank"
               >
-                <span className="visuallyHidden">Quirksmode&apos;s LinkedIn Page</span>
+                <span className="visuallyHidden">
+                  Quirksmode&apos;s LinkedIn Page
+                </span>
                 <IconLinkedin />
               </a>
             </div>
@@ -147,26 +178,34 @@ const Utility = ({
                 title="Quirksmode's Soundcloud Profile"
                 target="_blank"
               >
-                <span className="visuallyHidden">Quirksmode&apos;s Soundcloud Profile</span>
+                <span className="visuallyHidden">
+                  Quirksmode&apos;s Soundcloud Profile
+                </span>
                 <IconSoundcloud />
               </a>
             </div>
           </div>
           <div className="Utility__iconsWrap">
-            <div className={ `Utility__icon Utility__icon--search${isSearchToggled ? ' Utility__icon--search--open' : ''}` }>
-              <button
-                type="button"
-                onClick={ toggleSearch }
-              >
+            <div
+              className={`Utility__icon Utility__icon--search${
+                isSearchToggled ? ' Utility__icon--search--open' : ''
+              }`}
+            >
+              <button type="button" onClick={toggleSearch}>
                 <span className="visuallyHidden">Toggle Search</span>
-                { isSearchToggled ? <IconClose className="Utility__iconSvgClose" /> : <IconSearch className="Utility__iconSvgSearch" /> }
+                {isSearchToggled ? (
+                  <IconClose className="Utility__iconSvgClose" />
+                ) : (
+                  <IconSearch className="Utility__iconSvgSearch" />
+                )}
               </button>
             </div>
-            <div className={ `Utility__icon Utility__icon--menu${isNavToggled ? ' Utility__icon--menu--open' : ''}${isMenuBtnToggled ? ' Utility__icon--menu--show' : ''}` }>
-              <button
-                type="button"
-                onClick={ toggleNav }
-              >
+            <div
+              className={`Utility__icon Utility__icon--menu${
+                isNavToggled ? ' Utility__icon--menu--open' : ''
+              }${isMenuBtnToggled ? ' Utility__icon--menu--show' : ''}`}
+            >
+              <button type="button" onClick={toggleNav}>
                 <span className="visuallyHidden">Toggle Navigation Menu</span>
                 <IconMenu />
               </button>
@@ -178,12 +217,4 @@ const Utility = ({
   );
 };
 
-const mapStateToProps = ({ app }) => ({
-  utility: app.utility
-});
-
-const mapDispatchToProps = dispatch => ({
-  setUtilityAction: (...args) => dispatch(setUtility(...args))
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Utility);
+export default Utility;

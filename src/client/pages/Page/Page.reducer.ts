@@ -2,12 +2,8 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { PageState, PageData } from './Page.types';
 
 export const initialState: PageState = {
-  content: {
-    title: '',
-    pageContent: '',
-    contentBlocks: [],
-  },
-  metadata: {},
+  content: null,
+  metadata: null,
   loading: false,
   error: false,
 };

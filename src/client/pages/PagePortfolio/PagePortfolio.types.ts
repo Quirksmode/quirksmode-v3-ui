@@ -1,3 +1,6 @@
+import { Metadata } from '../Page/Page.types';
+import { FeaturedImage } from 'client/components/Frame/Frame.types';
+
 export interface PagePortfolioState extends PagePortfolioData {
   loading: boolean;
   error: boolean;
@@ -40,20 +43,6 @@ export interface ProjectsEntity1 {
   projectTagsList: string;
 }
 
-export interface FeaturedImage {
-  alt: string;
-  width: number;
-  height: number;
-  sizes: Sizes;
-}
-
-export interface Sizes {
-  quirksmodeSmall: string;
-  quirksmodeSmall2x: string;
-  quirksmodeMedium: string;
-  quirksmodeMedium2x: string;
-}
-
 export interface ProjectTagsEntity {
   term_id: number;
   name: string;
@@ -66,14 +55,4 @@ export interface ProjectTagsEntity {
   count: number;
   filter: string;
   term_order: string;
-}
-
-export interface Metadata {
-  metaTitle: string;
-  metaDesc: string;
-  metaUrl: string;
-  metaSiteName: string;
-  metaImage: string;
-  metaImageWidth: number;
-  metaImageHeight: number;
 }

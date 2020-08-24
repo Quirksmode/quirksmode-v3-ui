@@ -1,3 +1,6 @@
+import { Metadata } from '../Page/Page.types';
+import { FeaturedImage } from 'client/components/Frame/Frame.types';
+
 export interface PageBlogState extends PageBlogData {
   loading: boolean;
   error: boolean;
@@ -5,7 +8,7 @@ export interface PageBlogState extends PageBlogData {
 
 export interface PageBlogData {
   content: Content;
-  metadata: Metadata | {};
+  metadata: Metadata;
 }
 
 export interface Content {
@@ -18,31 +21,7 @@ export interface BlogPostsEntity {
   postName: string;
   postTitle: string;
   postExcerpt: string;
-  type: string;
+  type: 'blog';
   date: string;
   featuredImage: FeaturedImage;
-}
-
-export interface FeaturedImage {
-  alt: string;
-  width: number;
-  height: number;
-  sizes: Sizes;
-}
-
-export interface Sizes {
-  quirksmodeSmall: string;
-  quirksmodeSmall2x: string;
-  quirksmodeMedium: string;
-  quirksmodeMedium2x: string;
-}
-
-export interface Metadata {
-  metaTitle: string;
-  metaDesc: string;
-  metaUrl: string;
-  metaSiteName: string;
-  metaImage: string;
-  metaImageWidth: number;
-  metaImageHeight: number;
 }

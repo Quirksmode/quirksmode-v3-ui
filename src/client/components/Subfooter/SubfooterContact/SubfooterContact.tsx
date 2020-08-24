@@ -1,10 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import LazyLoad from 'components/LazyLoad/LazyLoad';
+import { SubfooterContactProps } from '../Subfooter.types';
 
-const SunFooterContact = ({
-  contact
-}) => {
+const SunFooterContact: React.FC<SubfooterContactProps> = ({ contact }) => {
   const {
     title,
     image,
@@ -12,36 +10,32 @@ const SunFooterContact = ({
     number,
     email,
     link_text: linkText,
-    link
+    link,
   } = contact;
 
   return (
     <section className="SubfooterContact Subfooter__section">
-      <h2 className="Subfooter__sectionHeading">{ title }</h2>
+      <h2 className="Subfooter__sectionHeading">{title}</h2>
       <div className="SubfooterContact__contentWrap">
-        { image && (
+        {image && (
           <div className="SubfooterContact__imgWrap">
             <LazyLoad>
               <picture>
                 <source
                   type="image/webp"
-                  srcSet={
-                  `${image.sizes.image}.webp 1x,
+                  srcSet={`${image.sizes.image}.webp 1x,
                    ${image.sizes.image2x}.webp 1.5x,
-                   ${image.sizes.image2x}.webp 2x`
-                }
+                   ${image.sizes.image2x}.webp 2x`}
                 />
                 <img
                   className="img--responsive"
-                  srcSet={
-                  `${image.sizes.image} 1x,
+                  srcSet={`${image.sizes.image} 1x,
                    ${image.sizes.image2x} 1.5x,
-                   ${image.sizes.image2x} 2x`
-                }
-                  src={ image.sizes.image }
-                  alt={ image.alt }
-                  width={ image.width }
-                  height={ image.width }
+                   ${image.sizes.image2x} 2x`}
+                  src={image.sizes.image}
+                  alt={image.alt}
+                  width={image.width}
+                  height={image.width}
                   loading="lazy"
                 />
               </picture>
@@ -50,25 +44,21 @@ const SunFooterContact = ({
         )}
         <div className="SubfooterContact__textWrap">
           <p>
-            <strong>{ name }</strong>
+            <strong>{name}</strong>
           </p>
-          <p>{ number }</p>
-          <p>{ email }</p>
+          <p>{number}</p>
+          <p>{email}</p>
         </div>
       </div>
-      { link && (
+      {link && (
         <a
-          href={ link.url }
+          href={link.url}
           className="Subfooter__link"
-          dangerouslySetInnerHTML={ { __html: linkText } }
+          dangerouslySetInnerHTML={{ __html: linkText }}
         />
       )}
     </section>
   );
-};
-
-SunFooterContact.propTypes = {
-  contact: PropTypes.object
 };
 
 export default SunFooterContact;

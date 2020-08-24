@@ -48,7 +48,6 @@ const PagePortfolio: React.FC = () => {
               <span className="Breadcrumbs__active">{title}</span>
             </Breadcrumbs>
             <Filter
-              history={history}
               categories={projectCategories}
               tags={projectTags}
               type="portfolio"

@@ -7,10 +7,7 @@ import ContentBlocks from 'components/ContentBlocks/ContentBlocks';
 import { fetchPageData } from './Page.actions';
 import { useTypedSelector } from 'client/redux/types';
 import { useParams } from 'react-router-dom';
-
-interface RouteParams {
-  slug: string;
-}
+import { RouteParams } from './Page.types';
 
 /**
  * Default Page Component

@@ -27,7 +27,7 @@ const PageBlogSingle = ({}) => {
             title={title}
             subtitle={date}
             url={url}
-            type="Portfolio"
+            type="blog"
           />
         )}
         {contentBlocks && <ContentBlocks contentBlocks={contentBlocks} />}

@@ -8,11 +8,12 @@
     align-items: flex-start;
     display: flex;
     justify-content: space-between;
-    padding: 8px 0 6px;
+    padding: 10px 0 0;
     position: relative;
 
     @media (--mobile-landscape) {
       align-items: center;
+      padding: 8px 0 6px;
     }
   }
 
@@ -113,6 +114,16 @@
           }
         }
       }
+    }
+
+    a {
+      @media (--to-mobile-landscape) {
+        padding-top: 0;
+      }
+    }
+
+    button {
+      outline: none;
     }
 
     svg {

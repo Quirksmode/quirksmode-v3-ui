@@ -1,11 +1,9 @@
 import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 
-const ScrollToTop = ({
-  history,
-  location
-}) => {
+const ScrollToTop = () => {
+  const history = useHistory();
+  const location = useLocation();
   useEffect(() => {
     // Prevent Scroll if navigating back or adjusting query parameters
     if (history.action === 'POP' || history.location.search) {
@@ -24,14 +22,7 @@ const ScrollToTop = ({
     }
   }, [history, location]);
 
-  return (
-    <div />
-  );
+  return <div />;
 };
 
-ScrollToTop.propTypes = {
-  history: PropTypes.object,
-  location: PropTypes.object
-};
-
-export default withRouter(ScrollToTop);
+export default ScrollToTop;

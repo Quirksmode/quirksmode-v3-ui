@@ -1,3 +1,5 @@
+import { Metadata } from '../Page/Page.types';
+
 export interface PageAboutState extends PageAboutData {
   loading: boolean;
   error: boolean;
@@ -5,7 +7,7 @@ export interface PageAboutState extends PageAboutData {
 
 export interface PageAboutData {
   content: Content;
-  metadata: Metadata | {};
+  metadata: Metadata;
 }
 
 export interface Content {
@@ -37,14 +39,4 @@ export interface CvSectionsEntity {
   add_class: string;
   add_title: string;
   add_content: string;
-}
-
-export interface Metadata {
-  metaTitle: string;
-  metaDesc: string;
-  metaUrl: string;
-  metaSiteName: string;
-  metaImage: string;
-  metaImageWidth: number;
-  metaImageHeight: number;
 }

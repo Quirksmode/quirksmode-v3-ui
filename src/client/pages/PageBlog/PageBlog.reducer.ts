@@ -6,7 +6,7 @@ export const initialState: PageBlogState = {
     title: '',
     blogPosts: [],
   },
-  metadata: {},
+  metadata: null,
   loading: false,
   error: false,
 };

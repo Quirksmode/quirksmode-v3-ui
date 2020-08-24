@@ -25,10 +25,10 @@ export interface AppData {
   siteSettings: SiteSettings;
   navItems?: NavItemsEntityOrFooterNavItemsEntity[];
   footerNavItems?: NavItemsEntityOrFooterNavItemsEntity[];
-  projectTags?: ProjectTagsEntityOrProjectCategoriesEntityOrBlogTagsEntityOrBlogCategoriesEntity[];
-  projectCategories?: ProjectTagsEntityOrProjectCategoriesEntityOrBlogTagsEntityOrBlogCategoriesEntity[];
-  blogTags?: ProjectTagsEntityOrProjectCategoriesEntityOrBlogTagsEntityOrBlogCategoriesEntity[];
-  blogCategories?: ProjectTagsEntityOrProjectCategoriesEntityOrBlogTagsEntityOrBlogCategoriesEntity[];
+  projectTags?: Tags[];
+  projectCategories?: Tags[];
+  blogTags?: Tags[];
+  blogCategories?: Tags[];
   subfooter: Subfooter;
 }
 
@@ -80,7 +80,7 @@ export interface NavItemsEntityOrFooterNavItemsEntity {
   title: string;
 }
 
-export interface ProjectTagsEntityOrProjectCategoriesEntityOrBlogTagsEntityOrBlogCategoriesEntity {
+export interface Tags {
   term_id: number;
   name: string;
   slug: string;
@@ -116,8 +116,8 @@ export interface Link {
 
 export interface LatestTweets {
   title: string;
-  link_text: string;
-  link: Link;
+  link_text?: string;
+  link?: Link;
   tweets?: TweetsEntity[];
 }
 
@@ -130,6 +130,8 @@ export interface TweetsEntity {
 
 export interface Instagram {
   title: string;
+  link_text?: string;
+  link?: Link;
   images?: MainLogoOrImagesEntityOrImage[];
 }
 

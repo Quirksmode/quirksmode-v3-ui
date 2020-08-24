@@ -10,7 +10,7 @@ export const initialState: PageHomeState = {
     latestBlogPosts: [],
     skills: [],
   },
-  metadata: {},
+  metadata: null,
   loading: false,
   error: false,
 };

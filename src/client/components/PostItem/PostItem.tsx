@@ -1,81 +1,58 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import LinkLoader from 'components/LinkLoader/LinkLoader';
 import Frame from 'components/Frame/Frame';
+import { PostItemProps } from './PostItem.types';
 
 /**
  * PostItem Component
- *
- * @name PostItem
- * @param  {boolean} props.isNew [Show/Hide the New indicator]
  */
-const PostItem = ({
+const PostItem: React.FC<PostItemProps> = ({
   post,
   size,
-  lineClamp = null
+  lineClamp = null,
 }) => {
-  const {
-    featuredImage,
-    postTitle,
-    postName,
-    postExcerpt,
-    date,
-    type
-  } = post;
+  const { featuredImage, postTitle, postName, postExcerpt, date, type } = post;
 
   return (
     <article className="PostItem__post">
-      { featuredImage && (
-      <div className={ `PostItem__imgWrap PostItem__imgWrap--${size}` }>
-        <LinkLoader
-          key={ postName }
-          type={ type }
-          slug={ postName }
-          title={ postTitle }
-        >
-          <Frame
-            featuredImage={ featuredImage }
-            size={ size }
-          />
-        </LinkLoader>
-      </div>
+      {featuredImage && (
+        <div className={`PostItem__imgWrap PostItem__imgWrap--${size}`}>
+          <LinkLoader
+            key={postName}
+            type={type}
+            slug={postName}
+            title={postTitle}
+          >
+            <Frame featuredImage={featuredImage} size={size} />
+          </LinkLoader>
+        </div>
       )}
       <div className="PostItem__textWrap">
         <header className="PostItem__textHeader">
           <h3 className="PostItem__postTitle">
-            <LinkLoader
-              key={ postName }
-              type={ type }
-              slug={ postName }
-            >
-              { postTitle }
+            <LinkLoader key={postName} type={type} slug={postName}>
+              {postTitle}
             </LinkLoader>
           </h3>
-          <p className="PostItem__postDate">
-            { date }
-          </p>
+          <p className="PostItem__postDate">{date}</p>
         </header>
         <section>
-          <p className={ `PostItem__postExcerpt${lineClamp ? ` lineClamp lineClamp--${lineClamp}` : ''}` }>
-            { postExcerpt }
-          </p>
-          <LinkLoader
-            key={ postName }
-            type={ type }
-            slug={ postName }
+          <p
+            className={`PostItem__postExcerpt${
+              lineClamp ? ` lineClamp lineClamp--${lineClamp}` : ''
+            }`}
           >
-            <span className="PostItem__postLink link--withHeading link--withIcon">Read More</span>
+            {postExcerpt}
+          </p>
+          <LinkLoader key={postName} type={type} slug={postName}>
+            <span className="PostItem__postLink link--withHeading link--withIcon">
+              Read More
+            </span>
           </LinkLoader>
         </section>
       </div>
     </article>
   );
-};
-
-PostItem.propTypes = {
-  post: PropTypes.object,
-  size: PropTypes.string,
-  lineClamp: PropTypes.string
 };
 
 export default PostItem;

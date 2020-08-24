@@ -1,20 +1,16 @@
-import React, { Fragment, ReactNode } from 'react';
+import React, { Fragment } from 'react';
 import Page404 from 'pages/Page404/Page404';
 import Loading from 'components/Loading/Loading';
-
-interface Args {
-  loading?: boolean;
-  error: boolean;
-  children: ReactNode;
-}
+import { PageWrapperProps } from './PageWrapper.types';
 
 /**
  * PageWrapper Component
- *
- * @name PageWrapper
- * @param  {boolean} props.isNew
  */
-const PageWrapper = ({ loading = false, error, children }: Args) => (
+const PageWrapper = ({
+  loading = false,
+  error,
+  children,
+}: PageWrapperProps) => (
   <Fragment>
     {loading && !error && <Loading />}
     {error && !loading && <Page404 />}

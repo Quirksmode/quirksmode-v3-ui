@@ -5,13 +5,14 @@ export interface PageState extends PageData {
 
 export interface PageData {
   content: Content;
-  metadata: Metadata | {};
+  metadata: Metadata;
 }
 
 export interface Content {
   title: string;
+  slug: string;
   pageContent: string;
-  contentBlocks?: ContentBlocksEntity[] | null;
+  contentBlocks?: ContentBlocksEntity[];
 }
 
 export interface ContentBlocksEntity {
@@ -28,6 +29,10 @@ export interface Metadata {
   metaUrl: string;
   metaSiteName: string;
   metaImage: string;
-  metaImageWidth: number;
-  metaImageHeight: number;
+  metaImageWidth: string;
+  metaImageHeight: string;
+}
+
+export interface RouteParams {
+  slug: string;
 }

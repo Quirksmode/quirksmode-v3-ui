@@ -1,33 +1,19 @@
-import React, {
-  useState
-} from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import IconSoundcloud from 'icons/soundcloud.svg';
 import IconTwitter from 'icons/twitter.svg';
 import IconLinkedin from 'icons/linkedin-circle.svg';
 import IconGithub from 'icons/github.svg';
 import IconMenu from 'icons/menu.svg';
+import { useTypedSelector } from 'client/redux/types';
 
 /**
- * Description
- *
- * @name footer
+ * Footer Component
  */
-const Footer = ({
-  footerNavItems
-}) => {
-  /**
-   * react state mutator for setting the isNavToggled boolean
-   *
-   * @name useState
-   * @type {function}
-   */
-  const [
-    isNavToggled,
-    setIsNavToggled
-  ] = useState(false);
+const Footer = () => {
+  const { footerNavItems } = useTypedSelector(({ app }) => app);
+
+  const [isNavToggled, setIsNavToggled] = useState(false);
 
   const toggleNav = () => {
     if (isNavToggled) {
@@ -58,19 +44,18 @@ const Footer = ({
                 <span>mode</span>
               </NavLink>
             </li>
-            { footerNavItems && footerNavItems.map(item => (
-              <li className="Footer__navItem" key={ item.id }>
+            {footerNavItems?.map((item) => (
+              <li className="Footer__navItem" key={item.id}>
                 <NavLink
                   className="Footer__navLink"
                   exact
                   activeClassName="Footer__navLink--selected"
-                  to={ item.slug }
+                  to={item.slug}
                 >
-                  { item.title }
+                  {item.title}
                 </NavLink>
               </li>
-            ))
-            }
+            ))}
           </ul>
         </nav>
         <div className="Footer__iconsWrap">
@@ -81,7 +66,9 @@ const Footer = ({
               title="Quirksmode's Github Page"
               target="_blank"
             >
-              <span className="visuallyHidden">Quirksmode&apos;s Github Page</span>
+              <span className="visuallyHidden">
+                Quirksmode&apos;s Github Page
+              </span>
               <IconGithub />
             </a>
           </div>
@@ -93,7 +80,9 @@ const Footer = ({
               title="Quirksmode's Twitter Page"
               target="_blank"
             >
-              <span className="visuallyHidden">Quirksmode&apos;s Twitter Page</span>
+              <span className="visuallyHidden">
+                Quirksmode&apos;s Twitter Page
+              </span>
               <IconTwitter />
             </a>
           </div>
@@ -104,7 +93,9 @@ const Footer = ({
               title="Quirksmode's Soundcloud Profile"
               target="_blank"
             >
-              <span className="visuallyHidden">Quirksmode&apos;s Soundcloud Profile</span>
+              <span className="visuallyHidden">
+                Quirksmode&apos;s Soundcloud Profile
+              </span>
               <IconSoundcloud />
             </a>
           </div>
@@ -115,16 +106,17 @@ const Footer = ({
               title="Quirksmode's LinkedIn Page"
               target="_blank"
             >
-              <span className="visuallyHidden">Quirksmode&apos;s LinkedIn Page</span>
+              <span className="visuallyHidden">
+                Quirksmode&apos;s LinkedIn Page
+              </span>
               <IconLinkedin />
             </a>
           </div>
           <div className="Footer__icon Footer__icon--menu">
-            <button
-              type="button"
-              onClick={ toggleNav }
-            >
-              <span className="visuallyHidden">Toggle Footer Navigation Menu</span>
+            <button type="button" onClick={toggleNav}>
+              <span className="visuallyHidden">
+                Toggle Footer Navigation Menu
+              </span>
               <IconMenu />
             </button>
           </div>
@@ -134,12 +126,4 @@ const Footer = ({
   );
 };
 
-Footer.propTypes = {
-  footerNavItems: PropTypes.array
-};
-
-const mapStateToProps = ({ app }) => ({
-  footerNavItems: app.footerNavItems
-});
-
-export default connect(mapStateToProps, null)(Footer);
+export default Footer;

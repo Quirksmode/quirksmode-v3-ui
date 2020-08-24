@@ -1,3 +1,5 @@
+import { Metadata } from '../Page/Page.types';
+
 export interface PageContactState extends PageContactData {
   loading: boolean;
   error: boolean;
@@ -10,14 +12,4 @@ export interface PageContactData {
 
 export interface Content {
   title: string;
-}
-
-export interface Metadata {
-  metaTitle: string;
-  metaDesc: string;
-  metaUrl: string;
-  metaSiteName: string;
-  metaImage: string;
-  metaImageWidth: number;
-  metaImageHeight: number;
 }

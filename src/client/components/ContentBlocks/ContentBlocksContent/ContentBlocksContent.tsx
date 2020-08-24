@@ -1,26 +1,27 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { ContentBlockContentProps } from '../ContentBlocks.types';
 
 /**
- * Description
- *
- * @name ContentBlocksContent
- * @param  {object} props []
+ * ContentBlocksContent Component
  */
-const ContentBlocksContent = ({
-  block
-}) => (
-  <div className="ContentBlocksContent">
-    <div className="Page__sectionInner ContentBlocks__inner grid">
-      <div className={ `Page__content grid__content${block.fullWidth ? ' grid__content--full' : ''}${block.centerAlign ? ' grid__content--center' : ''}` }>
-        <div dangerouslySetInnerHTML={ { __html: block.content } } />
+const ContentBlocksContent: React.FC<ContentBlockContentProps> = ({
+  block,
+}) => {
+  const { fullWidth, centerAlign, content } = block;
+
+  return (
+    <div className="ContentBlocksContent">
+      <div className="Page__sectionInner ContentBlocks__inner grid">
+        <div
+          className={`Page__content grid__content${
+            fullWidth ? ' grid__content--full' : ''
+          }${centerAlign ? ' grid__content--center' : ''}`}
+        >
+          <div dangerouslySetInnerHTML={{ __html: content }} />
+        </div>
       </div>
     </div>
-  </div>
-);
-
-ContentBlocksContent.propTypes = {
-  block: PropTypes.object
+  );
 };
 
 export default ContentBlocksContent;

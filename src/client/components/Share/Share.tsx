@@ -1,25 +1,18 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import IconTwitter from 'icons/twitter.svg';
 import IconFacebook from 'icons/facebook.svg';
 import IconLinkedIn from 'icons/linkedin.svg';
 import IconContact from 'icons/contact.svg';
+import { ShareProps } from './Share.types';
 
 /**
  * Share Component
- *
- * @name Share
- * @param {string} title [The title]
- * @param {string} url [The url]
  */
-const Share = ({ title, url }) => {
+const Share: React.FC<ShareProps> = ({ title, url }) => {
   /**
    * Open a window for the Share Component
-   *
-   * @method openWindow
-   * @param {String} shareUrl
    */
-  const openWindow = (shareUrl) => {
+  const openWindow = (shareUrl: string) => {
     const winWidth = 650;
     const winHeight = 450;
     const winLeft = (window.innerWidth - winWidth) / 2;
@@ -30,13 +23,11 @@ const Share = ({ title, url }) => {
 
   /**
    * Click Event Handler
-   *
-   * @method handleClick
-   * @param {Event} e [Event]
    */
-  const handleClick = (e) => {
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    openWindow(e.target.href);
+    const target = e.target as HTMLAnchorElement;
+    openWindow(target.href);
   };
 
   return (
@@ -86,11 +77,6 @@ const Share = ({ title, url }) => {
       </a>
     </div>
   );
-};
-
-Share.propTypes = {
-  title: PropTypes.string,
-  url: PropTypes.string,
 };
 
 export default Share;

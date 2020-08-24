@@ -12,7 +12,7 @@ export const initialState: PageAboutState = {
     },
     cvSections: [],
   },
-  metadata: {},
+  metadata: null,
   loading: false,
   error: false,
 };

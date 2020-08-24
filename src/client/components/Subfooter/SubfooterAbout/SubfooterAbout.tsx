@@ -1,34 +1,22 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
+import { SubfooterAboutProps } from '../Subfooter.types';
 
-const SubfooterAbout = ({
-  about
-}) => {
-  const {
-    title,
-    content,
-    link_text: linkText,
-    link
-  } = about;
+const SubfooterAbout: React.FC<SubfooterAboutProps> = ({ about }) => {
+  const { title, content, link_text: linkText, link } = about;
 
   return (
     <section className="SubfooterAbout Subfooter__section">
-      <h2 className="Subfooter__sectionHeading">{ title }</h2>
-      <div dangerouslySetInnerHTML={ { __html: content } } />
-      { link && (
+      <h2 className="Subfooter__sectionHeading">{title}</h2>
+      <div dangerouslySetInnerHTML={{ __html: content }} />
+      {link && (
         <a
-          href={ link.url }
+          href={link.url}
           className="Subfooter__link"
-          dangerouslySetInnerHTML={ { __html: linkText } }
+          dangerouslySetInnerHTML={{ __html: linkText }}
         />
       )}
     </section>
   );
-};
-
-SubfooterAbout.propTypes = {
-  about: PropTypes.object
 };
 
 export default SubfooterAbout;

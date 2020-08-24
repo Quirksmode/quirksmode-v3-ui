@@ -1,41 +1,34 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import SubfooterAbout from './SubfooterAbout/SubfooterAbout';
 import SubfooterLatestTweets from './SubfooterLatestTweets/SubfooterLatestTweets';
 import SubfooterInstagram from './SubfooterInstagram/SubfooterInstagram';
 import SubfooterContact from './SubfooterContact/SubfooterContact';
+import { useTypedSelector } from 'client/redux/types';
 
-const Subfooter = ({ about, latestTweets, instagram, contact }) => (
-  <section className="Subfooter">
-    <p className="visuallyHidden" id="int_subfooter">
-      <strong>Sub Footer</strong>
-    </p>
-    <div className="Subfooter__innerWrap grid">
-      <div className="Subfooter__sectionsWrap">
-        {about && <SubfooterAbout about={about} />}
-        {latestTweets && <SubfooterLatestTweets latestTweets={latestTweets} />}
-      </div>
-      <div className="Subfooter__sectionsWrap Subfooter__sectionsWrap--last">
-        {instagram && <SubfooterInstagram instagram={instagram} />}
-        {contact && <SubfooterContact contact={contact} />}
-      </div>
-    </div>
-  </section>
-);
+const Subfooter: React.FC = () => {
+  const { about, latestTweets, instagram, contact } = useTypedSelector(
+    ({ app }) => app.subfooter
+  );
 
-Subfooter.propTypes = {
-  about: PropTypes.object,
-  latestTweets: PropTypes.object,
-  instagram: PropTypes.object,
-  contact: PropTypes.object,
+  return (
+    <section className="Subfooter">
+      <p className="visuallyHidden" id="int_subfooter">
+        <strong>Sub Footer</strong>
+      </p>
+      <div className="Subfooter__innerWrap grid">
+        <div className="Subfooter__sectionsWrap">
+          {about && <SubfooterAbout about={about} />}
+          {latestTweets && (
+            <SubfooterLatestTweets latestTweets={latestTweets} />
+          )}
+        </div>
+        <div className="Subfooter__sectionsWrap Subfooter__sectionsWrap--last">
+          {instagram && <SubfooterInstagram instagram={instagram} />}
+          {contact && <SubfooterContact contact={contact} />}
+        </div>
+      </div>
+    </section>
+  );
 };
 
-const mapStateToProps = ({ app }) => ({
-  about: app.subfooter.about,
-  latestTweets: app.subfooter.latestTweets,
-  instagram: app.subfooter.instagram,
-  contact: app.subfooter.contact,
-});
-
-export default connect(mapStateToProps, null)(Subfooter);
+export default Subfooter;
