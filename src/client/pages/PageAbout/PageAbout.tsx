@@ -11,7 +11,6 @@ import { useTypedSelector } from 'client/redux/types';
  * About Page
  */
 const PageAbout: React.FC = () => {
-  // Redux Hooks
   const dispatch = useDispatch();
   const pageAbout = useTypedSelector((state) => state.pageAbout);
   const app = useTypedSelector((state) => state.app);
