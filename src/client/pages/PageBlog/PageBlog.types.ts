@@ -21,7 +21,11 @@ export interface BlogPostsEntity {
   postName: string;
   postTitle: string;
   postExcerpt: string;
-  type: 'blog';
+  type: 'page' | 'blog' | 'portfolio';
   date: string;
   featuredImage: FeaturedImage;
+}
+
+export interface RouteHistory {
+  location: any;
 }

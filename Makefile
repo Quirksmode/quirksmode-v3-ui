@@ -20,11 +20,6 @@ ui: ## build development version of UI and watch files
 	@echo "+ Build Development UI and watch files"
 	@./bin/watch
 
-.PHONY: cms
-cms: ## start WordPress and Backend services
-	@echo "+ Start WordPress and Backend services"
-	@./bin/cms
-
 .PHONY: up
 up: ## start WordPress, Backend and UI services
 	@echo "+ Start WordPress, Backend and UI services"
@@ -44,31 +39,6 @@ rebuild: ## rebuild Docker images and services
 lint: ## lint UI code
 	@echo "+ Lint UI code"
 	@cd ui && npm run lint
-
-.PHONY: setup-hosts
-setup-hosts: ## set up local development hostnames
-	@echo "+ Set up local development hostnames"
-	@./bin/setup-hosts
-
-.PHONY: activate-plugins
-activate-plugins: up ## activate WordPress plugins
-	@echo "+ Activate WordPress plugins"
-	@./bin/activate-plugins
-
-.PHONY: update-plugins
-update-plugins: up ## update all WordPress plugins
-	@echo "+ Update all WordPress plugins"
-	@./bin/wp plugin update --all
-
-.PHONY: scan
-scan: up ## security scan local WordPress environment
-	@echo "+ Scan local WordPress environment"
-	@./bin/wpscan local
-
-.PHONY: logs
-logs: up ## show WordPress service logs
-	@echo "+ Show WordPress service logs"
-	@docker-compose logs -f wordpress
 
 .PHONY: regenerate
 regenerate: up ## regenerate all CMS thumbnails

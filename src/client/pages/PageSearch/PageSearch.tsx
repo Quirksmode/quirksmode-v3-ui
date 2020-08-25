@@ -21,22 +21,18 @@ import { RouteLocation } from './PageSearch.types';
  * Search Page
  */
 const PageSearch = () => {
-  // Redux Hooks
   const dispatch = useDispatch();
   const location: RouteLocation = useLocation();
   const pageSearch = useTypedSelector((state) => state.pageSearch);
+
   const { content, metadata, loading, error } = pageSearch;
   if (!content) return null;
   const { title, searchPosts } = content;
 
-  /**
-   * react state mutator for setting the values
-   */
+  // React state mutator for setting the values
   const [value, setValue] = useState('');
 
-  /**
-   * Fetch the Search Page Data via Redux using the URL's Query String
-   */
+  // Fetch the Search Page Data via Redux using the URL's Query String
   useEffect(() => {
     const queryVars = queryString.parse(location.search);
     const searchQuery = String(queryVars.s);
@@ -44,7 +40,8 @@ const PageSearch = () => {
   }, [fetchSearchData, location.search]);
 
   /**
-   * Event Handler to Fetch the Search data when the Search Input changes
+   * Event Handler to Fetch the Search data when the Search Input
+   * changes
    */
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
@@ -52,7 +49,8 @@ const PageSearch = () => {
   };
 
   /**
-   * Event Handler to Fetch the Search data when the Search Form is submitted
+   * Event Handler to Fetch the Search data when the Search Form is
+   * submitted
    */
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();

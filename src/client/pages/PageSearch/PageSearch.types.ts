@@ -21,7 +21,7 @@ export interface SearchPostsEntity {
   postName: string;
   postTitle: string;
   postExcerpt: string;
-  type: string;
+  type: 'page' | 'blog' | 'portfolio';
   date: string;
   featuredImage: FeaturedImage;
 }

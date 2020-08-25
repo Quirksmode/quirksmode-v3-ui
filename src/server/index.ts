@@ -14,9 +14,7 @@ import dotenv from 'dotenv';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import webpackHotServerMiddleware from 'webpack-hot-server-middleware';
-// @ts-ignore
 import clientConfig from '../../webpack.client';
-// @ts-ignore
 import serverConfig from '../../webpack.server';
 import { AddressInfo } from 'net';
 
@@ -51,6 +49,7 @@ const shouldCompress = (req: Request, res: Response) => {
 app.use(compression({ filter: shouldCompress }));
 
 if (process.env.NODE_ENV === 'development') {
+  // @ts-ignore
   const compiler = webpack([clientConfig, serverConfig]);
   const clientCompiler = compiler.compilers[0];
   const { publicPath } = clientConfig.output;

@@ -10,10 +10,9 @@ import { useParams } from 'react-router-dom';
 import { RouteParams } from './Page.types';
 
 /**
- * Default Page Component
+ * Default Page
  */
 const Page: React.FC = () => {
-  // Redux Hooks
   const dispatch = useDispatch();
   const params: RouteParams = useParams();
   const page = useTypedSelector((state) => state.page);
@@ -22,9 +21,7 @@ const Page: React.FC = () => {
   if (!content) return null;
   const { title, slug, contentBlocks } = content;
 
-  /**
-   * Fetch the Page Data via Redux using the routes slug param
-   */
+  // Fetch the Page Data via Redux using the routes slug param
   useEffect(() => {
     if (slug !== params.slug) {
       dispatch(fetchPageData(params.slug));

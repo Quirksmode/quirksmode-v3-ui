@@ -10,12 +10,10 @@ import IconComment from 'icons/comment.svg';
 import IconContact from 'icons/contact.svg';
 import IconQuirksmode from 'icons/quirksmode.svg';
 import { sendMail, resetForm } from './PageContactForm.actions';
-
-interface PageContactFormProps {
-  formSending: boolean;
-  submitting: boolean;
-  handleSubmit: any;
-}
+import {
+  PageContactFormSendMailData,
+  PageContactFormProps,
+} from './PageContactForm.types';
 
 /**
  * PageContactForm Component
@@ -26,7 +24,7 @@ const PageContactForm: React.FC<PageContactFormProps> = ({
   formSending,
 }) => {
   const dispatch = useDispatch();
-  const submit = (data: any) => {
+  const submit = (data: PageContactFormSendMailData) => {
     dispatch(sendMail(data));
   };
 
@@ -88,8 +86,11 @@ const PageContactForm: React.FC<PageContactFormProps> = ({
         disabled={submitting}
       >
         Send Message
-        <IconContact className="btn--submitIconSvg" />
-        <IconQuirksmode className="btn--submitIconSvg--loading" />
+        {formSending ? (
+          <IconQuirksmode className="btn--submitIconSvg--loading" />
+        ) : (
+          <IconContact className="btn--submitIconSvg" />
+        )}
       </button>
     </form>
   );

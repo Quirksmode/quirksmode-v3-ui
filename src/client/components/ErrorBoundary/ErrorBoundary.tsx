@@ -1,31 +1,37 @@
 import React, { PureComponent } from 'react';
+import { ErrorBoundaryState, ErrorBoundaryProps } from './ErrorBoundary.types';
 
-export default class ErrorBoundary extends PureComponent {
-  constructor(props) {
+/**
+ * ErrorBoundary Component
+ *
+ * @description
+ * Catch errors in components and display error message.
+ * Note: there is just no functional equivalent for componentDidCatch and
+ * deriveStateFromError yet, which is why this has to be a class component
+ */
+export default class ErrorBoundary extends PureComponent<
+  ErrorBoundaryProps,
+  ErrorBoundaryState
+> {
+  constructor(props: ErrorBoundaryProps) {
     super(props);
-
     this.state = { error: null, errorInfo: null };
   }
 
-  componentDidCatch(error, errorInfo) {
-    // Catch errors in any components below and re-render with error message
+  componentDidCatch(error: Error, errorInfo: { componentStack: string }): void {
     this.setState({ error, errorInfo });
-
-    // You can also log error messages to an error reporting service here
   }
 
   render() {
     const { children } = this.props;
     const { errorInfo, error } = this.state;
 
-    // If there's an error, render error path
     return errorInfo ? (
-      // ".error-view" used by unit testing
       <div className="ErrorBoundary">
         <section className="Page__section Page__section--greyFade">
           <div className="Page__sectionInner grid">
             <h1>Something went wrong.</h1>
-            <details style={ { whiteSpace: 'pre-wrap' } }>
+            <details className="ErrorBoundary__details">
               {error && error.toString()}
               <br />
               {errorInfo.componentStack}

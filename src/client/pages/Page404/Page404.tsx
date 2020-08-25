@@ -2,9 +2,9 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 
 /**
- * 404 Page Component
+ * 404 Page
  */
-const Page404 = () => (
+const Page404: React.FC = () => (
   <div className="Page Page404">
     <Helmet>
       <title>Error - 404</title>

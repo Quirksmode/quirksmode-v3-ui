@@ -10,8 +10,7 @@ import { useTypedSelector } from 'client/redux/types';
 /**
  * Portfolio Single Page
  */
-const PagePortfolioSingle = () => {
-  // Redux Hooks
+const PagePortfolioSingle: React.FC = () => {
   const pagePortfolioSingle = useTypedSelector(
     (state) => state.pagePortfolioSingle
   );

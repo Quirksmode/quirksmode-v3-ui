@@ -4,6 +4,10 @@ import IconTags from 'icons/tags.svg';
 import { useHistory } from 'react-router-dom';
 import { FilterProps } from './Filter.types';
 
+interface Buttons {
+  [key: string]: boolean;
+}
+
 /**
  * Filter Component
  */
@@ -15,10 +19,10 @@ const Filter: React.FC<FilterProps> = ({ categories, tags, type }) => {
   const [isTagsToggled, setIsTagsToggled] = useState(false);
 
   // React state mutator for setting the catButtons Object
-  const [catButtons, setCatButtons] = useState({});
+  const [catButtons, setCatButtons] = useState<Buttons>({});
 
   // React state mutator for setting the tagButtons Object
-  const [tagButtons, setTagButtons] = useState({});
+  const [tagButtons, setTagButtons] = useState<Buttons>({});
 
   const toggleTags = useCallback(() => {
     setIsTagsToggled(!isTagsToggled);
@@ -27,7 +31,7 @@ const Filter: React.FC<FilterProps> = ({ categories, tags, type }) => {
   const toggleCategory = useCallback(
     (e, slug) => {
       e.preventDefault();
-      const tempCatButtons = {
+      const tempCatButtons: Buttons = {
         ...catButtons,
         [slug]: !catButtons[slug],
       };
@@ -49,7 +53,7 @@ const Filter: React.FC<FilterProps> = ({ categories, tags, type }) => {
     (e, slug) => {
       e.preventDefault();
 
-      const tempTagButtons = {
+      const tempTagButtons: Buttons = {
         ...tagButtons,
         [slug]: !tagButtons[slug],
       };
@@ -106,7 +110,7 @@ const Filter: React.FC<FilterProps> = ({ categories, tags, type }) => {
   useEffect(() => {
     if (!isMounting) {
       // Category Buttons
-      const trueCatButtons = {};
+      const trueCatButtons: Buttons = {};
       Object.keys(catButtons).forEach((cat) => {
         if (catButtons[cat]) {
           trueCatButtons[cat] = catButtons[cat];
@@ -119,7 +123,7 @@ const Filter: React.FC<FilterProps> = ({ categories, tags, type }) => {
           : 'cat=all';
 
       // Tag Buttons
-      const trueTagButtons = {};
+      const trueTagButtons: Buttons = {};
       Object.keys(tagButtons).forEach((tag) => {
         if (tagButtons[tag]) {
           trueTagButtons[tag] = tagButtons[tag];

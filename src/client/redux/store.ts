@@ -2,18 +2,13 @@ import { configureStore } from '@reduxjs/toolkit';
 import { createMemoryHistory, createBrowserHistory } from 'history';
 import { routerMiddleware } from 'connected-react-router';
 import rootReducer from './rootReducer';
-
-interface ConfigureStoreArgs {
-  initialState?: Record<string, unknown>;
-  url?: string;
-}
+import { CreateStoreProps } from './types';
 
 /**
- * @name createStore
- * @description instantiate and configure redux store, invoked from both
- *              server and client renders
+ * Instantiate and configure redux store, invoked from both
+ * server and client renderers
  */
-const createStore = ({ initialState, url }: ConfigureStoreArgs = {}) => {
+const createStore = ({ initialState, url }: CreateStoreProps = {}) => {
   const history = __SERVER__
     ? createMemoryHistory({
         initialEntries: [url || '/'],
@@ -23,7 +18,6 @@ const createStore = ({ initialState, url }: ConfigureStoreArgs = {}) => {
     preloadedState: initialState,
     reducer: rootReducer(history),
     middleware: (getDefaultMiddleware) => [
-      // Included default middlewares: https://redux-toolkit.js.org/api/getDefaultMiddleware#included-default-middleware
       ...getDefaultMiddleware(),
       routerMiddleware(history),
     ],

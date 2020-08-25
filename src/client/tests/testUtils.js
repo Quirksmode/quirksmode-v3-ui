@@ -4,7 +4,6 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { createBrowserHistory } from 'history';
 import thunk from 'redux-thunk';
-import axios from 'axios';
 import configureMockStore from 'redux-mock-store';
 import createRootReducer from 'reduxStore/combineReducers';
 
@@ -35,7 +34,6 @@ if (history) {
   middleware.push(routerMiddleware(history));
 }
 const mockStore = configureMockStore(middleware);
-
 
 /**
  * Create Redux store using actual reducers

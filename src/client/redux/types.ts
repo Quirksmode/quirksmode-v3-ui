@@ -1,10 +1,14 @@
 import { useSelector, TypedUseSelectorHook } from 'react-redux';
 import createStore from 'client/redux/store';
 import { ThunkAction } from 'redux-thunk';
-import { Action } from "@reduxjs/toolkit";
+import { Action } from '@reduxjs/toolkit';
 
 const { store } = createStore();
 
+export interface CreateStoreProps {
+  initialState?: Record<string, unknown>;
+  url?: string;
+}
 export type AppState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 export type AppThunk = ThunkAction<void, AppState, unknown, Action<string>>;

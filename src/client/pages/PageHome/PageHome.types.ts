@@ -65,7 +65,7 @@ export interface LatestBlogPostsEntity {
   postName: string;
   postTitle: string;
   postExcerpt: string;
-  type: string;
+  type: 'page' | 'blog' | 'portfolio';
   date: string;
   featuredImage: FeaturedImage;
 }

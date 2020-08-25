@@ -1,25 +1,14 @@
 import App from './App';
-// @ts-ignore
 import PageHome from './pages/PageHome';
-// @ts-ignore
 import PageAbout from './pages/PageAbout';
-// @ts-ignore
 import PageBlog from './pages/PageBlog/PageBlog';
-// @ts-ignore
 import PageBlogSingle from './pages/PageBlogSingle';
-// @ts-ignore
 import PageContact from './pages/PageContact';
-// @ts-ignore
 import PagePortfolio from './pages/PagePortfolio';
-// @ts-ignore
 import PagePortfolioSingle from './pages/PagePortfolioSingle';
-// @ts-ignore
 import PageSearch from './pages/PageSearch';
-// @ts-ignore
 import Page404 from './pages/Page404';
-// @ts-ignore
 import Page from './pages/Page';
-
 import { fetchAppData } from './App.actions';
 import { fetchHomeData } from './pages/PageHome/PageHome.actions';
 import { fetchAboutData } from './pages/PageAbout/PageAbout.actions';

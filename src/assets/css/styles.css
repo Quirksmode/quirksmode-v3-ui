@@ -20,6 +20,7 @@
 /* Components */
 @import '../../client/components/Breadcrumbs/Breadcrumbs';
 @import '../../client/components/ContentBlocks/ContentBlocks';
+@import '../../client/components/ErrorBoundary/ErrorBoundary';
 @import '../../client/components/Filter/Filter';
 @import '../../client/components/Sidebar/Sidebar';
 @import '../../client/components/Slider/Slider';

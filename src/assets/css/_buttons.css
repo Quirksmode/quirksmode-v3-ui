@@ -15,22 +15,24 @@ Button styles:
 */
 .btn {
   &--submitIcon {
+    align-items: center;
     background: var(--color-qm-blue);
+    border: none;
     border-radius: 3px;
     box-shadow: 0 1px 4px var(--color-qm-subfooter);
     color: var(--color-white);
     cursor: pointer;
-    display: inline-block;
+    display: flex;
     font-family: var(--font-heading-main);
     font-size: 2rem;
     line-height: 2.2rem;
     margin-bottom: 20px;
+    outline: none;
     padding: 8px 46px 7px 14px;
     position: relative;
     text-decoration: none;
     text-transform: uppercase;
     transition: background .5s ease-out;
-    vertical-align: middle;
 
     svg {
       fill: var(--color-white);
@@ -57,12 +59,8 @@ Button styles:
       }
 
       .btn--submitIconSvg--loading {
+        animation: rotate 3s linear infinite;
         display: block;
-
-        svg {
-          animation: rotate 2s linear infinite;
-          top: 8px;
-        }
       }
     }
   }

@@ -21,22 +21,22 @@ import { AppProps } from './App.types';
 const App: React.FC<AppProps> = ({ route }) => {
   /**
    * Load all of the top page data on load. Note, for a larger site I would not take this approach,
-   * but for this site it provides a fast/simple way to preload all the top level page data
+   * but for this site it provides a fast/simple way to lazyload all the top level page data
    */
   const pageHomeTitle = useTypedSelector(
-    (state) => state.pageHome.content.title
+    ({ pageHome }) => pageHome.content.title
   );
   const pageAboutTitle = useTypedSelector(
-    (state) => state.pageAbout.content.title
+    ({ pageAbout }) => pageAbout.content.title
   );
   const pagePortfolioTitle = useTypedSelector(
-    (state) => state.pagePortfolio.content.title
+    ({ pagePortfolio }) => pagePortfolio.content.title
   );
   const pageContactTitle = useTypedSelector(
-    (state) => state.pageContact.content.title
+    ({ pageContact }) => pageContact.content.title
   );
   const pageBlogTitle = useTypedSelector(
-    (state) => state.pageBlog.content.title
+    ({ pageBlog }) => pageBlog.content.title
   );
 
   const dispatch = useDispatch();

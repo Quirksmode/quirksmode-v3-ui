@@ -1,0 +1,5 @@
+.ErrorBoundary {
+  &__details {
+    white-space: pre-wrap;
+  }
+}

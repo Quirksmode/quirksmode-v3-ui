@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { connect, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import Breadcrumbs from 'components/Breadcrumbs/Breadcrumbs';
 import Meta from 'components/Meta/Meta';
 import PageWrapper from 'components/PageWrapper/PageWrapper';
@@ -13,8 +12,7 @@ import { useTypedSelector } from 'client/redux/types';
 /**
  * Contact Page
  */
-const PageContact = ({}) => {
-  // Redux Hooks
+const PageContact: React.FC = () => {
   const dispatch = useDispatch();
   const pageContact = useTypedSelector((state) => state.pageContact);
   const pageContactForm = useTypedSelector((state) => state.pageContactForm);
@@ -22,7 +20,6 @@ const PageContact = ({}) => {
   const { content, metadata, loading, error } = pageContact;
   if (!content) return null;
   const { formSending, formSuccess, formError } = pageContactForm;
-
   const { title } = content;
 
   /**
@@ -66,29 +63,4 @@ const PageContact = ({}) => {
   );
 };
 
-PageContact.propTypes = {
-  fetchContactDataAction: PropTypes.func,
-  content: PropTypes.object,
-  metadata: PropTypes.object,
-  loading: PropTypes.bool,
-  error: PropTypes.bool,
-  formSending: PropTypes.bool,
-  formSuccess: PropTypes.bool,
-  formError: PropTypes.bool,
-};
-
-const mapStateToProps = ({ pageContact, pageContactForm }) => ({
-  content: pageContact.content,
-  metadata: pageContact.metadata,
-  loading: pageContact.loading,
-  error: pageContact.error,
-  formSending: pageContactForm.formSending,
-  formSuccess: pageContactForm.formSuccess,
-  formError: pageContactForm.formError,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  fetchContactDataAction: (...args) => dispatch(fetchContactData(...args)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(PageContact);
+export default PageContact;

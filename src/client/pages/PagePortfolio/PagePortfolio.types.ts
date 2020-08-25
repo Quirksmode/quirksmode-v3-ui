@@ -56,3 +56,7 @@ export interface ProjectTagsEntity {
   filter: string;
   term_order: string;
 }
+
+export interface RouteHistory {
+  location: any;
+}

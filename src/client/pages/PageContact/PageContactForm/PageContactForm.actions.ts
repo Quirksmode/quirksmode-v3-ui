@@ -6,21 +6,13 @@ import {
   resetTheForm,
 } from './PageContactForm.reducer';
 import { AppThunk, AppDispatch } from 'client/redux/types';
-
-export interface PageContactFormSendMailData {
-  email: string;
-  message?: string;
-  name: string;
-  subject: string;
-}
+import { PageContactFormSendMailData } from './PageContactForm.types';
 
 export const sendMail = (data: PageContactFormSendMailData): AppThunk => async (
   dispatch
 ) => {
   // Begin the sending state
   dispatch(sendMailRequest());
-
-  console.log('data', data);
 
   try {
     // Call the endpoint to send the mail

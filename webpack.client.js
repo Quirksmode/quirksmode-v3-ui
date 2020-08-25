@@ -1,24 +1,24 @@
-const path = require('path');
-const webpack = require('webpack');
-const TerserPlugin = require('terser-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const { getIfUtils, removeEmpty } = require('webpack-config-utils');
-const workboxPlugin = require('workbox-webpack-plugin');
-const Dotenv = require('dotenv-webpack');
-const ManifestPlugin = require('webpack-manifest-plugin');
-const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-const LoadablePlugin = require('@loadable/webpack-plugin');
-const CompressionPlugin = require('compression-webpack-plugin'); // Gzip
-const BrotliPlugin = require('brotli-webpack-plugin'); // Brotli
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+import path from 'path';
+import webpack from 'webpack';
+import TerserPlugin from 'terser-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
+import { CleanWebpackPlugin } from 'clean-webpack-plugin';
+import { getIfUtils, removeEmpty } from 'webpack-config-utils';
+import workboxPlugin from 'workbox-webpack-plugin';
+import Dotenv from 'dotenv-webpack';
+import ManifestPlugin from 'webpack-manifest-plugin';
+import FriendlyErrorsWebpackPlugin from 'friendly-errors-webpack-plugin';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import LoadablePlugin from '@loadable/webpack-plugin';
+import CompressionPlugin from 'compression-webpack-plugin'; // Gzip
+import BrotliPlugin from 'brotli-webpack-plugin'; // Brotli
+import CopyWebpackPlugin from 'copy-webpack-plugin';
 
 const { ifProduction, ifNotProduction } = getIfUtils(process.env.NODE_ENV);
 const IS_DEV = process.env.NODE_ENV !== 'production';
 
-const config = {
+export default {
   mode: IS_DEV ? 'development' : 'production',
   name: 'client',
   devtool: IS_DEV ? "eval-source-map" : false,
@@ -36,7 +36,8 @@ const config = {
       icons: path.resolve(__dirname, 'src/assets/icons'),
       types: path.resolve(__dirname, 'src/types'),
       tests: path.resolve(__dirname, 'src/tests'),
-      'react-dom': IS_DEV ? '@hot-loader/react-dom' : 'react-dom', // https://stackoverflow.com/questions/60563405/redux-form-warning-cannot-update-a-component-from-inside-the-function-body-of-a
+      // https://stackoverflow.com/questions/60563405/redux-form-warning-cannot-update-a-component-from-inside-the-function-body-of-a
+      'react-dom': IS_DEV ? '@hot-loader/react-dom' : 'react-dom',
       //'react-dom': 'react-dom'
     }
   },
@@ -211,5 +212,3 @@ const config = {
     ]
   },
 };
-
-module.exports = config;

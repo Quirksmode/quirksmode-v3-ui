@@ -9,8 +9,7 @@ import { useTypedSelector } from 'client/redux/types';
 /**
  * Blog Single Page
  */
-const PageBlogSingle = ({}) => {
-  // Redux Hooks
+const PageBlogSingle: React.FC = () => {
   const pageBlogSingle = useTypedSelector((state) => state.pageBlogSingle);
 
   const { content, metadata, error } = pageBlogSingle;

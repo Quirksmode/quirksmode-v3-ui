@@ -10,7 +10,7 @@ import PageHomeSkills from './PageHomeSkills/PageHomeSkills';
 import PageHomeBlog from './PageHomeBlog/PageHomeBlog';
 
 /**
- * Home Page Component
+ * Home Page
  */
 const PageHome: React.FC = () => {
   // Redux Hooks

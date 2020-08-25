@@ -8,8 +8,8 @@ export interface ContentBlocksProps {
     | ContentBlockCode
     | ContentBlockContentSidebar
   )[];
-  tags: Tags[];
-  projectURL: string;
+  tags?: Tags[];
+  projectURL?: string;
 }
 
 export interface ContentBlocksCommon {

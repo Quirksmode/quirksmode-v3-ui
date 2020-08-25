@@ -9,16 +9,12 @@ import PageWrapper from 'components/PageWrapper/PageWrapper';
 import { fetchPortfolioData } from './PagePortfolio.actions';
 import { useHistory } from 'react-router-dom';
 import { useTypedSelector } from 'client/redux/types';
-
-interface RouteHistory {
-  location: any;
-}
+import { RouteHistory } from './PagePortfolio.types';
 
 /**
  * Portfolio Page
  */
 const PagePortfolio: React.FC = () => {
-  // Redux Hooks
   const dispatch = useDispatch();
   const history: RouteHistory = useHistory();
   const pagePortfolio = useTypedSelector((state) => state.pagePortfolio);
@@ -30,7 +26,8 @@ const PagePortfolio: React.FC = () => {
   const { projectCategories, projectTags } = app;
 
   /**
-   * Fetch the Portfolio Page Data via Redux, this will trigger each time the filter updates the URL
+   * Fetch the Portfolio Page Data via Redux, this will trigger each time the filter
+   * updates the URL
    */
   useEffect(() => {
     dispatch(fetchPortfolioData(history.location.search));

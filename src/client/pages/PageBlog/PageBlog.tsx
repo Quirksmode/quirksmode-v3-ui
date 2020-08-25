@@ -9,16 +9,12 @@ import PageWrapper from 'components/PageWrapper/PageWrapper';
 import { fetchBlogData } from './PageBlog.actions';
 import { useTypedSelector } from 'client/redux/types';
 import { useHistory } from 'react-router-dom';
-
-interface RouteHistory {
-  location: any;
-}
+import { RouteHistory } from './PageBlog.types';
 
 /**
  * Blog Page
  */
 const PageBlog: React.FC = () => {
-  // Redux Hooks
   const dispatch = useDispatch();
   const history: RouteHistory = useHistory();
   const pageBlog = useTypedSelector((state) => state.pageBlog);
@@ -47,13 +43,7 @@ const PageBlog: React.FC = () => {
               <span className="Breadcrumbs__divider">&gt;</span>
               <span className="Breadcrumbs__active">{title}</span>
             </Breadcrumbs>
-            <Filter
-              history={history}
-              categories={blogCategories}
-              tags={blogTags}
-              fetchDataAction={fetchBlogData}
-              type="blog"
-            />
+            <Filter categories={blogCategories} tags={blogTags} type="blog" />
           </div>
         </section>
         <section className="Page__section Page__section--greyFade project-row-wrap clearfix">
