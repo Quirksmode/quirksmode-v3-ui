@@ -32,4 +32,8 @@
       width: 76%;
     }
   }
+
+  .btn--submitIcon {
+    max-width: 168px;
+  }
 }

@@ -25,7 +25,7 @@ const PageSearch = () => {
   const location: RouteLocation = useLocation();
   const pageSearch = useTypedSelector((state) => state.pageSearch);
 
-  const { content, metadata, loading, error } = pageSearch;
+  const { content, metadata, error } = pageSearch;
   if (!content) return null;
   const { title, searchPosts } = content;
 
@@ -37,7 +37,7 @@ const PageSearch = () => {
     const queryVars = queryString.parse(location.search);
     const searchQuery = String(queryVars.s);
     setValue(searchQuery);
-  }, [fetchSearchData, location.search]);
+  }, []);
 
   /**
    * Event Handler to Fetch the Search data when the Search Input
@@ -45,7 +45,7 @@ const PageSearch = () => {
    */
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
-    fetchSearchData(e.target.value);
+    dispatch(fetchSearchData(e.target.value));
   };
 
   /**
@@ -58,7 +58,7 @@ const PageSearch = () => {
   };
 
   return (
-    <PageWrapper error={error} loading={loading}>
+    <PageWrapper error={error}>
       <div className="Page PageSearch">
         {metadata && <Meta {...metadata} />}
         <section className="Page__section Page__section--greyFade Page__section--withFilter">

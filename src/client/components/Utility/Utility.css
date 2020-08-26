@@ -235,6 +235,7 @@
       border: none;
       height: 22px;
       margin: 0;
+      outline: none;
       padding: 0;
       position: absolute;
       right: 5px;
@@ -269,6 +270,7 @@
       color: var(--color-qm-body);
       font-size: 1.4rem;
       height: 34px;
+      outline: none;
       padding: 10px 8px 9px 10px;
       transition: background .2s ease-out;
       width: 100%;

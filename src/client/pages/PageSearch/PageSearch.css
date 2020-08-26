@@ -9,6 +9,7 @@
     color: var(--color-qm-body);
     font-size: 1.4rem;
     height: 34px;
+    outline: none;
     padding: 10px 8px 9px 10px;
     transition: background .2s ease-out;
     width: 100%;

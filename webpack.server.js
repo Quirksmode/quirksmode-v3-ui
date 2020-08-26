@@ -1,11 +1,11 @@
-import webpack  from 'webpack';
-import path from 'path';
-import CopyWebpackPlugin from 'copy-webpack-plugin';
-import webpackNodeExternals from 'webpack-node-externals';
+const webpack = require('webpack');
+const path = require('path');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const webpackNodeExternals = require('webpack-node-externals');
 
 const IS_DEV = process.env.NODE_ENV !== 'production';
 
-export default {
+const config = {
   mode: IS_DEV ? 'development' : 'production',
   name: 'server',
   target: 'node',
@@ -59,3 +59,5 @@ export default {
   ],
   externals: [webpackNodeExternals()]
 };
+
+module.exports = config;
