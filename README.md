@@ -2,15 +2,15 @@
 
 ## Welcome
 
-Hi and welcome to version 3 of my Personal Portfolio. Sadly a lot of the code that I develop professional I am unable to share with the world, so I am using this opportunity to share the codebase for my own personal portfolio.
+Hi and welcome to version 3 of my Personal Portfolio. Sadly I am unable to share the code that I develop for clients professionally, so I have decided to make my personal portfolio repository public for the very first time.
 
-My primary reason for doing this is to hopefully inspire/help other Developers who are seeking to do something similar, but additionally I realised this would also be a useful way to provide something mature/maintained for potential future employers (Please hire me if you are reading this!) to have a nose around in and see how I like to organise and develop my codebases.
+My reason for doing this is to hopefully inspire/help other developers who are seeking to create something similar.
 
-I am a huge fan of a side project as they help me to keep up on top of new technologies, trends and tooling, which is why I wanted my Portfolio to be a little bit more involved than just a simple one pager. This is effectively my best practices sandbox, a place to test new tooling, libraries, frameworks etc. without fear of deadlines, changing requirements or breaking anthing. A good example of this is the recent update to SSR and TypeScript, something I have been wanting to do for a while now. Anyway, enough waffle from me, lets dive into some more detail.
+I am a huge fan of a side project as they help me to keep on top of new technologies, trends and tooling, which is why I wanted my Portfolio to be a little bit more involved than just a simple one pager. This is effectively my best practices sandbox, a place to test new tooling, libraries, frameworks etc. without restriction or fear of breaking something. A good example of this is the recent update to SSR and TypeScript, something I have been wanting to do for a while now. Anyway, enough waffle from me, lets dive into some more detail.
 
 ## About
 
-Quirksmode is a fully responsive Universal (SSR) React Application designed to be connected up to a Headless CMS (not included here). It is composed of the following technologies:
+Quirksmode is a fully responsive Universal (SSR) React Application designed to connect to a Headless CMS (not included here). It is composed of the following technologies:
 
 - [React](https://facebook.github.io/react)
 - [Redux](https://github.com/reactjs/redux)
@@ -18,7 +18,7 @@ Quirksmode is a fully responsive Universal (SSR) React Application designed to b
 - [React Router](https://reacttraining.com/react-router)
 - [Connected React Router](https://github.com/supasate/connected-react-router)
 - [React Spring](https://www.react-spring.io/docs/hooks/basics)
-- [Webpack](https://webpack.js.org) for app bundling.
+- [Webpack](https://webpack.js.org)
 - [Node](https://nodejs.org/)
 - [Express](https://expressjs.com)
 - [TypeScript](https://www.typescriptlang.org)
@@ -47,6 +47,8 @@ Quirksmode is a fully responsive Universal (SSR) React Application designed to b
 - Progressive Web App (Workbox)
 - Hot Reloading
 - Functional Components with Hooks
+- Follows BEM methodology
+- Pages and Components are grouped into namespaced folders/files
 
 ## Requirements
 
@@ -58,7 +60,7 @@ Quirksmode is a fully responsive Universal (SSR) React Application designed to b
 - Clone the repo
 
   ```sh
-  git clone https://github.com/
+  git clone https://github.com/Quirksmode/quirksmode-v3-ui.git
   cd quirksmode-v3-ui
   ```
 
