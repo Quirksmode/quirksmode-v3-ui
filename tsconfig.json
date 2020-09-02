@@ -4,6 +4,7 @@
     "sourceMap": true,
     "noImplicitAny": true,
     "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
     "esModuleInterop": true,
     "allowJs": true,
     "skipLibCheck": true,
@@ -12,15 +13,33 @@
     "jsx": "react",
     "baseUrl": ".",
     "paths": {
-      "client/*": ["src/client/*"],
-      "components/*": ["src/client/components/*"],
-      "pages/*": ["src/client/pages/*"],
-      "hooks/*": ["src/client/hooks/*"],
-      "utils/*": ["src/client/utils/*"],
-      "assets/*": ["src/assets/*"],
-      "icons/*": ["src/assets/icons/*"],
-      "types/*": ["src/types/*"],
-      "tests/*": ["src/tests/*"]
+      "client/*": [
+        "src/client/*"
+      ],
+      "components/*": [
+        "src/client/components/*"
+      ],
+      "pages/*": [
+        "src/client/pages/*"
+      ],
+      "hooks/*": [
+        "src/client/hooks/*"
+      ],
+      "utils/*": [
+        "src/client/utils/*"
+      ],
+      "assets/*": [
+        "src/assets/*"
+      ],
+      "icons/*": [
+        "src/assets/icons/*"
+      ],
+      "types/*": [
+        "src/types/*"
+      ],
+      "tests/*": [
+        "src/tests/*"
+      ]
     }
   }
 }
