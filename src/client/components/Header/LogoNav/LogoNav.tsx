@@ -10,7 +10,9 @@ import { useTypedSelector } from 'client/redux/types';
 const LogoNav = () => {
   const dispatch = useDispatch();
   const { navItems } = useTypedSelector(({ app }) => app);
-  const { mainLogo } = useTypedSelector(({ app }) => app.siteSettings);
+  const { siteSettings } = useTypedSelector(({ app }) => app);
+  if (!siteSettings || !navItems) return null;
+  const { mainLogo } = siteSettings;
 
   const handleClick = () => {
     dispatch(
@@ -48,7 +50,7 @@ const LogoNav = () => {
           <strong>Main Navigation</strong>
         </p>
         <ul className="LogoNav__nav__items">
-          {navItems?.map((item) => (
+          {navItems.map((item) => (
             <li className="LogoNav__nav__item" key={item.id}>
               <NavLink
                 onClick={() => handleClick()}

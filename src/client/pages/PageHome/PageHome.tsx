@@ -13,16 +13,12 @@ import PageHomeBlog from './PageHomeBlog/PageHomeBlog';
  * Home Page
  */
 const PageHome: React.FC = () => {
-  // Redux Hooks
   const dispatch = useDispatch();
   const pageHome = useTypedSelector((state) => state.pageHome);
   const app = useTypedSelector((state) => state.app);
 
   const { content, metadata, loading, error } = pageHome;
-  if (!content) return null;
   const { featuredWork, intro, latestBlogPosts, skills } = content;
-
-  if (!app.siteSettings) return null;
   const { cv } = app.siteSettings;
 
   /**
@@ -40,7 +36,7 @@ const PageHome: React.FC = () => {
         <div className="page PageHome">
           {metadata && <Meta {...metadata} />}
           <h1 className="visuallyHidden">Welcome to Quirksmode</h1>
-          {featuredWork.length > 0 && (
+          {featuredWork?.length > 0 && (
             <PageHomeFeatured featuredWork={featuredWork} />
           )}
           <section className="Page__section">
@@ -51,7 +47,9 @@ const PageHome: React.FC = () => {
                   {skills?.length > 0 && <PageHomeSkills skills={skills} />}
                 </div>
                 <div className="PageHome__col">
-                  <PageHomeBlog latestBlogPosts={latestBlogPosts} />
+                  {latestBlogPosts?.length > 0 && (
+                    <PageHomeBlog latestBlogPosts={latestBlogPosts} />
+                  )}
                 </div>
               </div>
             </div>

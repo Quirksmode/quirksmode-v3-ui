@@ -1,4 +1,8 @@
-import { findByTestAttr, mountRender, reduxWrap } from 'client/tests/testUtils';
+import {
+  findByTestAttr,
+  mountRender,
+  reduxHelper,
+} from 'client/tests/testUtils';
 import Hero from '../Hero';
 import 'tests/mocks/intersectionObserver';
 
@@ -37,7 +41,8 @@ describe('Hero', () => {
   };
 
   beforeEach(() => {
-    wrapper = mountRender(reduxWrap(Hero, props));
+    const { ReduxWrapper } = reduxHelper(Hero, props);
+    wrapper = mountRender(ReduxWrapper);
   });
 
   it('matches snapshot', () => {

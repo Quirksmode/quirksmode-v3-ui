@@ -4,6 +4,8 @@ import createMockStore from 'redux-mock-store';
 import createRootReducer from 'client/redux/rootReducer';
 import { AppState } from 'client/redux/types';
 import { createBrowserHistory } from 'history';
+import React, { ReactNode } from 'react';
+import { Provider } from 'react-redux';
 
 // Setup middlewares for history tracking and thunks
 type DispatchExts = ThunkDispatch<AppState, void, AnyAction>;
@@ -18,8 +20,17 @@ export const mockStore = (customState = {}) => {
   )({} as AppState, {
     type: '@@INIT',
   });
-  return createMockStore<AppState, DispatchExts>(middleware)({
+  const store: any = createMockStore<AppState, DispatchExts>(middleware)({
     ...initialState,
     ...customState,
   });
+
+  const originalDispatch = store.dispatch;
+  store.dispatch = jest.fn(originalDispatch);
+
+  const ProviderWithStore = ({ children }: { children: ReactNode }) => (
+    <Provider store={store}>{children}</Provider>
+  );
+
+  return { store, ProviderWithStore };
 };

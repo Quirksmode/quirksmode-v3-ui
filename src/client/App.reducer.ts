@@ -8,8 +8,8 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export const initialState: AppState = {
   siteSettings: {
-    cv: null,
     mainLogo: null,
+    cv: null,
   },
   navItems: [],
   footerNavItems: [],

@@ -78,6 +78,7 @@
     "@loadable/webpack-plugin": "5.13.0",
     "@reduxjs/toolkit": "1.4.0",
     "@svgr/webpack": "5.4.0",
+    "@testing-library/react": "^11.0.3",
     "@types/compression": "1.7.0",
     "@types/enzyme": "3.10.5",
     "@types/enzyme-adapter-react-16": "1.0.6",

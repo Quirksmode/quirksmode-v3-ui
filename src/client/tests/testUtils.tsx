@@ -22,17 +22,17 @@ export const mountRender = (
   return mount(<Component {...props} />);
 };
 
-export const reduxWrap = (
-  Component: React.FC,
-  props = {},
-  state = {}
-) => () => (
-  <Provider store={mockStore(state)}>
-    <MemoryRouter>
-      <Component {...props} />
-    </MemoryRouter>
-  </Provider>
-);
+export const reduxHelper = (Component: React.FC, props = {}, state = {}) => {
+  const { store, ProviderWithStore } = mockStore(state);
+  const ReduxWrapper = () => (
+    <ProviderWithStore>
+      <MemoryRouter>
+        <Component {...props} />
+      </MemoryRouter>
+    </ProviderWithStore>
+  );
+  return { ...store, ReduxWrapper };
+};
 
 export const mockSuccess = (data: any) => ({ status: 200, response: { data } });
 export const mockError = (error: any) => ({ status: 500, response: error });
