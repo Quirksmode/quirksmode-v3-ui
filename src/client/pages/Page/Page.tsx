@@ -18,15 +18,12 @@ const Page: React.FC = () => {
   const page = useTypedSelector((state) => state.page);
 
   const { content, metadata, loading, error } = page;
-  if (!content) return null;
-  const { title, slug, contentBlocks } = content;
+  const { title, contentBlocks } = content;
 
   // Fetch the Page Data via Redux using the routes slug param
   useEffect(() => {
-    if (slug !== params.slug) {
-      dispatch(fetchPageData(params.slug));
-    }
-  }, [fetchPageData, params.slug, slug]);
+    dispatch(fetchPageData(params.slug));
+  }, [params.slug]);
 
   return (
     <PageWrapper error={error} loading={loading}>

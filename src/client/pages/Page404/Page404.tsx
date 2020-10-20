@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet';
  * 404 Page
  */
 const Page404: React.FC = () => (
-  <div className="Page Page404">
+  <div className="Page Page404" data-test="Page404">
     <Helmet>
       <title>Error - 404</title>
       <meta property="og:title" content="Error - 404" />
@@ -13,7 +13,7 @@ const Page404: React.FC = () => (
     </Helmet>
     <section className="Page__section Page__section--greyFade Page__hero">
       <div className="Page__sectionInner grid">
-        <h1>Error - 404</h1>
+        <h1 data-test="Page404__title">Error - 404</h1>
       </div>
     </section>
     <div className="Page__sectionInner ContentBlocks__inner grid">

@@ -1,7 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import { Provider } from 'react-redux';
-import { MemoryRouter } from 'react-router-dom';
+import { MemoryRouter, Route } from 'react-router-dom';
 import { mockStore } from './mocks/store';
 
 /**
@@ -22,12 +21,24 @@ export const mountRender = (
   return mount(<Component {...props} />);
 };
 
-export const reduxHelper = (Component: React.FC, props = {}, state = {}) => {
+export const reduxHelper = (
+  Component: React.FC,
+  props = {},
+  state = {},
+  routeData = {
+    initialEntries: ['/'],
+    path: '/',
+  }
+) => {
   const { store, ProviderWithStore } = mockStore(state);
+  const { initialEntries, path } = routeData;
+
   const ReduxWrapper = () => (
     <ProviderWithStore>
-      <MemoryRouter>
-        <Component {...props} />
+      <MemoryRouter initialEntries={initialEntries}>
+        <Route path={path}>
+          <Component {...props} />
+        </Route>
       </MemoryRouter>
     </ProviderWithStore>
   );

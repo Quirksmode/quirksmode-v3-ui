@@ -21,9 +21,7 @@ const PageHome: React.FC = () => {
   const { featuredWork, intro, latestBlogPosts, skills } = content;
   const { cv } = app.siteSettings;
 
-  /**
-   * Fetch the Home Page Data via Redux, but only if the data does not already exist
-   */
+  // Fetch the Home Page Data via Redux, but only if the data does not already exist
   useEffect(() => {
     if (!intro) {
       dispatch(fetchHomeData());

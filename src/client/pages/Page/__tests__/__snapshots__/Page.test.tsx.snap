@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Page matches snapshot and renders correctly with data 1`] = `[Function]`;
+
+exports[`Page renders correctly when there is no data 1`] = `[Function]`;
